@@ -1,6 +1,5 @@
 Km7::Application.routes.draw do
-  get "users/new"
-
+resources :users
   root to: 'static_pages#home'
 
   match '/ayuda',    to: 'static_pages#help'
