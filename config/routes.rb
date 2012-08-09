@@ -2,9 +2,10 @@ Km7::Application.routes.draw do
 resources :users
 resources :sessions, only: [:new, :create, :destroy]
 
-  match '/signup',  to: 'users#new'
-  match '/signin',  to: 'sessions#new'
-  match '/signout', to: 'sessions#destroy', via: :delete
+  match '/crear_usuario',  to: 'users#new'
+  match '/registrar',  to: 'sessions#new'
+  match '/salir', to: 'sessions#destroy', via: :delete
+  #match '/editar', to: 'users#edit'
 
   root to: 'static_pages#home'
 

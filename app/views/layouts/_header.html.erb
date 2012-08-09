@@ -8,21 +8,31 @@
           <li><%= link_to "Ayuda",    ayuda_path %></li>
           <!--<li><%= link_to "Registrar", '#' %></li>-->
           <% if signed_in? %>
-            <li><%= link_to "Usuarios", users_path %></li>
+            <% if current_user.admin? %>
+            <li id= "fat-menu" class="dropdown">
+              <a href="#" class="dropdown_toggle" data-toggle="dropdown">
+                Usuarios <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Todos", users_path %></li>
+                  <li><%= link_to "Crear Nuevo", crear_usuario_path %></li> 
+              </ul>
+            </li>
+            <% end %> 
             <li id= "fat-menu" class="dropdown">
               <a href="#" class="dropdown_toggle" data-toggle="dropdown">
                 Mi Cuenta <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
                 <li><%= link_to "Perfil", current_user %></li>
-                <li><%= link_to "Opciones", edit_user_path(current_user) %></li>
+                <li><%= link_to "Editar", edit_user_path(current_user) %></li>
                 <li class="divider"></li>
                 <li>
-                  <%= link_to "Salir", signout_path, method: "delete" %></li>
+                  <%= link_to "Salir", salir_path, method: "delete" %></li>
               </ul>
             </li>
             <% else %>
-            <li><%= link_to "Registrar", signin_path %></li>
+            <li><%= link_to "Registrar", registrar_path %></li>
             <% end %>
         </ul>
       </nav>
