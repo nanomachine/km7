@@ -1,4 +1,16 @@
 Km7::Application.routes.draw do
+  get "problems/new"
+
+  get "problems/show"
+
+  get "problems/index"
+
+  get "problems/create"
+
+  get "problems/destroy"
+
+  get "problems/update"
+
 resources :users
 resources :sessions, only: [:new, :create, :destroy]
 
