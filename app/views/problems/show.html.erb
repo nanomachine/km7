@@ -1,3 +1,10 @@
-<% provide(:title, 'Detalles') %>
-<h1>Detalles de la avería</h1>
-<p>Find me in app/views/problems/show.html.erb</p>
+<% provide(:title, "Detalles") %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= @problem.ptype %>, <%= @problem.id %>, <%= @problem.user %>, <%= @problem.lat %>, <%= @problem.lng %>,
+      </h1>
+    </section>
+  </aside>
+</div>

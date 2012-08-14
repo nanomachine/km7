@@ -11,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120810211318) do
+ActiveRecord::Schema.define(:version => 20120814134117) do
 
   create_table "problems", :force => true do |t|
     t.string   "user"
     t.float    "lat"
     t.float    "lng"
-    t.integer  "type"
+    t.integer  "ptype"
     t.string   "description"
     t.integer  "priority"
     t.integer  "status"

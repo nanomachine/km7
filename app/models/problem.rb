@@ -6,7 +6,7 @@
 #  user        :string(255)
 #  lat         :float
 #  lng         :float
-#  type        :integer
+#  ptype        :integer
 #  description :string(255)
 #  priority    :integer
 #  status      :integer
@@ -15,11 +15,11 @@
 #
 
 class Problem < ActiveRecord::Base
-	attr_accessible :user, :lat, :lng, :type, :description
+	attr_accessible :user, :lat, :lng, :ptype, :description
 	validates(:user, presence: true)
 	validates(:lat, presence: true)
 	validates(:lng, presence: true)
-	validates(:type, presence: true)
+	validates(:ptype, presence: true)
 end
 
 
