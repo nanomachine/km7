@@ -3,8 +3,17 @@
   <aside class="span4">
     <section>
       <h1>
-        <%= @problem.ptype %>, <%= @problem.id %>, <%= @problem.user %>, <%= @problem.lat %>, <%= @problem.lng %>,
+      	<%= image_tag @problem.avatar.url %>
       </h1>
+      <ul>
+     	<li>Problema #<%= @problem.id %></li>
+     	<li>Tipo: <%= @problem.ptype %></li>
+     	<li>Reportero: <%= @problem.user %></li>
+     	<li>Latitud: <%= @problem.lat %></li>
+     	<li>Longitud: <%= @problem.lng %></li>
+     	<li>Fecha: <%= @problem.created_at %></li>
+      </ul>
+     
     </section>
   </aside>
 </div>

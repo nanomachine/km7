@@ -1,2 +1,12 @@
-<h1>Problems#index</h1>
-<p>Find me in app/views/problems/index.html.erb</p>
+<% provide(:title, 'Problemas') %>
+<h1>Problemas</h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+	<% @problems.each do |problem| %>
+		<%= render @problems %>
+	<% end %>
+</ul>
+
+<%= will_paginate %>

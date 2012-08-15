@@ -5,9 +5,15 @@ resources :users
 resources :sessions, only: [:new, :create, :destroy]
 
   match '/crear_usuario',  to: 'users#new'
+  match '/usuarios', to: 'users#index'
+  #match '/editar', to: 'users#edit'
+  
   match '/registrar',  to: 'sessions#new'
   match '/salir', to: 'sessions#destroy', via: :delete
-  #match '/editar', to: 'users#edit'
+
+  match '/problemas', to: 'problems#index'
+  match '/reportar', to: 'problems#new'
+  
 
   root to: 'static_pages#home'
 

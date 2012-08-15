@@ -1,0 +1,13 @@
+<li>
+  <%= image_tag problem.avatar.url(:thump) %>
+  Problema #<%= problem.id %>
+  Tipo: <%= problem.ptype %>
+  Reportero: <%= problem.user %>
+  Latitud: <%= problem.lat %>
+  Longitud: <%= problem.lng %>
+  Fecha: <%= problem.created_at %>
+
+  <% if current_user.admin? %>
+  	| <%= link_to "borrar", problem, method: :delete, data: { confirm: "Está seguro que quiere borrar este reporte?" } %>
+  <% end %>
+</li>

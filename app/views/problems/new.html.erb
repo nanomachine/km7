@@ -1,2 +1,28 @@
-<h1>Problems#new</h1>
-<p>Find me in app/views/problems/new.html.erb</p>
+<% provide(:title, 'Problema Nuevo') %>
+<h1>Problema Nuevo</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for @problem, :html => {:multipart => true }  do |f| %>
+
+      <%= f.label :user, "Usuario asignador" %>
+      <%= f.text_field :user %>
+
+      <%= f.label :lat, "Latitud" %>
+      <%= f.text_field :lat %>
+
+      <%= f.label :lng, "Longitud" %>
+      <%= f.text_field :lng %>
+
+      <%= f.label :ptype, "Tipo de problema (int)" %>
+      <%= f.text_field :ptype %>
+
+      <%= f.label :description, "Descripción" %>
+      <%= f.text_area :description %>
+
+      <%= f.file_field :avatar %>
+
+      <%= f.submit "Guardar problema", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

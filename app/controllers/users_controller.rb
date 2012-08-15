@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       flash[:success] = "Bienvenido a Km7!"
       redirect_to @user
     else
-      flash.now[:error] = 'Credenciales incorrectos.'
+      flash.now[:error] = 'Credenciales incorrectos'
       render 'new'
     end
   end
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update_attributes(params[:user])
+    if @user.update_attribueveloptes(params[:user])
       flash[:success] = "Perfil actualizado"
       sign_in @user
       redirect_to @user
