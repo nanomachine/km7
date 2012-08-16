@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update_attribueveloptes(params[:user])
+    if @user.update_attributes(params[:user])
       flash[:success] = "Perfil actualizado"
       sign_in @user
       redirect_to @user

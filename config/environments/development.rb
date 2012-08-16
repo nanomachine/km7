@@ -35,7 +35,6 @@ Km7::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  # Points Paperclip image gem to ImageMagick location
-  #Paperclip.options[:command_path] = "C:\ImageMagick\"
-  Paperclip.options[:command_path] = File.join("C:", "ImageMagick")
+  Paperclip.options[:command_path] = "C:/ImageMagick"
+
 end
