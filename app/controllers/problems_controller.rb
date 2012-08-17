@@ -6,6 +6,7 @@ class ProblemsController < ApplicationController
 
   def show
     @problem = Problem.find(params[:id])
+    @json = Problem.all.to_gmaps4rails
   end
 
   def index

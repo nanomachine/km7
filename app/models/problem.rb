@@ -4,9 +4,9 @@
 #
 #  id          :integer         not null, primary key
 #  user        :string(255)
-#  lat         :float
-#  lng         :float
-#  ptype        :integer
+#  latitude    :float
+#  longitude   :float
+#  ptype       :integer
 #  description :string(255)
 #  priority    :integer
 #  status      :integer
@@ -15,19 +15,34 @@
 #
 
 class Problem < ActiveRecord::Base
-	attr_accessible :user, :lat, :lng, :ptype, :description, :avatar
+
+	acts_as_gmappable
+
+	attr_accessible :user, :latitude, :longitude, :ptype, :description, :avatar
 	validates(:user, presence: true)
-	validates(:lat, presence: true)
-	validates(:lng, presence: true)
+	validates(:latitude, presence: true)
+	validates(:longitude, presence: true)
 	validates(:ptype, presence: true)
 
-	has_attached_file :avatar, :styles => { :small => "150x150>", :medium => "300x300>", :thumb => "100x100>"}, :url => "/assets/problems/:id/:style/:basename.:extension", :path => ":rails_root/public/assets/problems/:id/:style/:basename.:extension"
+	has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>"}, :url => "/assets/problems/:id/:style/:basename.:extension", :path => ":rails_root/public/assets/problems/:id/:style/:basename.:extension"
 
 	# :styles => { :small => "150x150>", :medium => "300x300>", :thumb => "100x100>"},
 
 	validates_attachment_presence :avatar
 	validates_attachment_size :avatar, :less_than => 5.megabytes
 	validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
+
+#	def gmaps4rails_address
+#		#describe how to retrieve the address from your model, if you use directly a db column, you can dry your code
+#		"#{self.lat}, #{self.lng}" 
+#	end
+
+	def gmaps4rails_infowindow
+      "<img src=\"#{self.avatar.url(:thumb)}\"> #{self.id}"
+    end
+
+    def gmaps4rails_title
+      "#{self.description}"
+    end
+
 end
-
-

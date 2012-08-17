@@ -9,10 +9,12 @@
      	<li>Problema #<%= @problem.id %></li>
      	<li>Tipo: <%= @problem.ptype %></li>
      	<li>Reportero: <%= @problem.user %></li>
-     	<li>Latitud: <%= @problem.lat %></li>
-     	<li>Longitud: <%= @problem.lng %></li>
+     	<li>Latitud: <%= @problem.latitude %></li>
+     	<li>Longitud: <%= @problem.longitude %></li>
      	<li>Fecha: <%= @problem.created_at %></li>
       </ul>
+
+      <%= gmaps4rails(@json) %>
      
     </section>
   </aside>

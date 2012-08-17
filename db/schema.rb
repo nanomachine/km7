@@ -11,12 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120814151539) do
+ActiveRecord::Schema.define(:version => 20120816204310) do
 
   create_table "problems", :force => true do |t|
     t.string   "user"
-    t.float    "lat"
-    t.float    "lng"
+    t.float    "latitude"
+    t.float    "longitude"
     t.integer  "ptype"
     t.string   "description"
     t.integer  "priority"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(:version => 20120814151539) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.boolean  "gmaps"
+    t.string   "address"
   end
 
   create_table "users", :force => true do |t|

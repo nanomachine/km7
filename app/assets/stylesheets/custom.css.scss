@@ -155,6 +155,8 @@ aside {
     &:first-child {
       border: 0;
       padding-top: 0;
+      /* temporary fix */
+      width: 960px;
     }
     span {
       display: block;
