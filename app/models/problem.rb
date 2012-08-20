@@ -13,7 +13,6 @@
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null
 #
-
 class Problem < ActiveRecord::Base
 
 	acts_as_gmappable
