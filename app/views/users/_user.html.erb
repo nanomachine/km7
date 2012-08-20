@@ -1,8 +1,8 @@
 <li>
   <%= gravatar_for user, size: 82 %>
   <%= link_to user.name, user %>
-  <!-- If current user is admin and is NOT the user to be listed -->
-  <% if current_user.admin? && !current_user?(user) %>
+
   	| <%= link_to "borrar", user, method: :delete, data: { confirm: "Está seguro?" } %>
-  	<% end %>
+
+
 </li>
