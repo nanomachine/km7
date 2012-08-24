@@ -4,6 +4,7 @@
 <%= will_paginate %>
 
 <ul class="users">
+	<%= gmaps4rails(@json) %>
 	<% @problems.each do |problem| %>
 		<%= render @problems %>
 	<% end %>
