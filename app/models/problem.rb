@@ -15,7 +15,7 @@
 #
 class Problem < ActiveRecord::Base
 
-	acts_as_gmappable
+	acts_as_gmappable :process_geocoding => false
 
 	attr_accessible :user, :latitude, :longitude, :ptype, :description, :avatar
 	validates(:user, presence: true)
