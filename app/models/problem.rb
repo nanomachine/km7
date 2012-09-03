@@ -15,9 +15,13 @@
 #
 class Problem < ActiveRecord::Base
 
-	acts_as_gmappable :process_geocoding => false
+	acts_as_gmappable :latitude => 'latitude', :longitude => 'longitude', :process_geocoding => :geocode?,
+                  :address => "address", :normalized_address => "address",
+                  :msg => "Lo sentimos, ni Google puede localizar esa direccion"
 
-	attr_accessible :user, :latitude, :longitude, :ptype, :description, :avatar
+
+
+	attr_accessible :user, :latitude, :longitude, :ptype, :description, :avatar, :address
 	validates(:user, presence: true)
 	validates(:latitude, presence: true)
 	validates(:longitude, presence: true)
@@ -31,10 +35,10 @@ class Problem < ActiveRecord::Base
 	validates_attachment_size :avatar, :less_than => 5.megabytes
 	validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
 
-#	def gmaps4rails_address
-#		#describe how to retrieve the address from your model, if you use directly a db column, you can dry your code
-#		"#{self.lat}, #{self.lng}" 
-#	end
+	def gmaps4rails_address
+		#describe how to retrieve the address from your model, if you use directly a db column, you can dry your code
+		"#{self.latitude}, #{self.longitude}" 
+	end
 
 	def gmaps4rails_infowindow
       "<img src=\"#{self.avatar.url(:thumb)}\"> #{self.id}"
@@ -43,5 +47,9 @@ class Problem < ActiveRecord::Base
     def gmaps4rails_title
       "#{self.description}"
     end
+
+    def geocode?
+  	  (!address.blank? && (latitude.blank? || longitude.blank?)) || address_changed?
+	end
 
 end
