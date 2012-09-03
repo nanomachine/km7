@@ -166,7 +166,7 @@ DEPENDENCIES
   gmaps4rails
   jquery-rails (= 2.0.2)
   paperclip (= 3.0.4)
-  pg (= 0.12.2)
+  pg
   rails (= 3.2.1)
   rspec-rails (= 2.10.0)
   sass-rails (= 3.2.4)
