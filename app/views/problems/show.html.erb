@@ -2,6 +2,8 @@
 <div class="row">
   <aside class="span4">
     <section>
+      <%= gmaps4rails(@json) %>      
+
       <h1>
       	<%= image_tag @problem.avatar.url(:medium) %>
       </h1>
@@ -12,10 +14,7 @@
      	<li>Latitud: <%= @problem.latitude %></li>
      	<li>Longitud: <%= @problem.longitude %></li>
      	<li>Fecha: <%= @problem.created_at %></li>
-      </ul>
-
-      <%= gmaps4rails(@json) %>      
-     
+      </ul>     
     </section>
   </aside>
 </div>

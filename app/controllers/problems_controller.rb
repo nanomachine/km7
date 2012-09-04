@@ -6,11 +6,14 @@ class ProblemsController < ApplicationController
 
   def show
     @problem = Problem.find(params[:id])
-    @json = Problem.all.to_gmaps4rails
+    @json = @problem.to_gmaps4rails
+
   end
 
   def index
     @problems = Problem.paginate(page: params[:page])
+    @json = Problem.all.to_gmaps4rails
+
   end
 
   def create

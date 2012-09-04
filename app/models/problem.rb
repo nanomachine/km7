@@ -41,15 +41,15 @@ class Problem < ActiveRecord::Base
 	end
 
 	def gmaps4rails_infowindow
-      "<img src=\"#{self.avatar.url(:thumb)}\"> #{self.id}"
+    	"<img src=\"#{self.avatar.url(:thumb)}\"> #{self.id} #{self.description}"
     end
 
     def gmaps4rails_title
-      "#{self.description}"
+    	"#{self.description}"
     end
 
     def geocode?
-  	  (!address.blank? && (latitude.blank? || longitude.blank?)) || address_changed?
+  		(!address.blank? && (latitude.blank? || longitude.blank?)) || address_changed?
 	end
 
 end
