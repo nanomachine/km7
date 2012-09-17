@@ -15,6 +15,8 @@
 #
 class Problem < ActiveRecord::Base
 
+	attr_reader :avatar_remote_url
+
 	acts_as_gmappable :latitude => 'latitude', :longitude => 'longitude', :process_geocoding => :geocode?,
                   :address => "address", :normalized_address => "address",
                   :msg => "Lo sentimos, ni Google puede localizar esa direccion"
