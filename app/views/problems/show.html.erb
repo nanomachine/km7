@@ -2,7 +2,11 @@
 <div class="row">
   <aside class="span4">
     <section>
-      <%= gmaps4rails(@json) %>      
+      <%= gmaps({
+        "map_options" => {"auto_zoom" => false, "zoom" => 15 },
+        "markers" => {"data" => @json }
+        })
+      %>      
 
       <h1>
       	<%= image_tag @problem.avatar.url(:medium) %>
