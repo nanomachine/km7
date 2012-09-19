@@ -37,6 +37,8 @@ class Problem < ActiveRecord::Base
 	validates_attachment_size :avatar, :less_than => 5.megabytes
 	validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
 
+	
+
 	def gmaps4rails_address
 		#describe how to retrieve the address from your model, if you use directly a db column, you can dry your code
 		"#{self.latitude}, #{self.longitude}" 
