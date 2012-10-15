@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
   
-  #Make sure user is signed in and admin to create other users (this feature is off
+  #Make sure user is signed in and is admin to create other users (this feature is off
     #while on development phase)
 
   before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]

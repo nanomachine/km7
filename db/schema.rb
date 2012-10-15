@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120816204310) do
+ActiveRecord::Schema.define(:version => 20121015191118) do
 
   create_table "problems", :force => true do |t|
     t.string   "user"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20120816204310) do
     t.datetime "avatar_updated_at"
     t.boolean  "gmaps"
     t.string   "address"
+    t.string   "municipality"
   end
 
   create_table "users", :force => true do |t|
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20120816204310) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin",           :default => false
+    t.string   "municipality"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
