@@ -11,7 +11,7 @@ resources :sessions, only: [:new, :create, :destroy]
   match '/registrar',  to: 'sessions#new'
   match '/salir', to: 'sessions#destroy', via: :delete
 
-  match '/problemas', to: 'problems#index'
+  match '/reportes', to: 'problems#index'
   match '/reportar', to: 'problems#new'
   
 

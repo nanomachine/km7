@@ -2,6 +2,7 @@
 <div class="row">
   <aside class="span4">
     <section>
+
       <%= gmaps({
         "map_options" => {"auto_zoom" => false, "zoom" => 15 },
         "markers" => {"data" => @json }
@@ -9,10 +10,10 @@
       %>      
 
       <h1>
-      	<%= image_tag @problem.avatar.url(:medium) %>
+      	<%= image_tag @problem.avatar.url(:original) %>
       </h1>
       <ul>
-     	<li>Problema #<%= @problem.id %></li>
+     	<li>Reporte #<%= @problem.id %></li>
      	<li>Tipo: <%= @problem.ptype %></li>
      	<li>Reportero: <%= @problem.user %></li>
      	<li>Latitud: <%= @problem.latitude %></li>

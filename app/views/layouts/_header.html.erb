@@ -10,10 +10,10 @@
             <% if current_user.admin? %>
             <li id= "fat-menu" class="dropdown">
               <a href="#" class="dropdown_toggle" data-toggle="dropdown">
-                Problemas <b class="caret"></b>
+                Reportes <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to "Todos", problemas_path %></li>
+                <li><%= link_to "Todos", reportes_path %></li>
                   <li><%= link_to "Crear Nuevo", reportar_path %></li> 
               </ul>
             </li>
