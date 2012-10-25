@@ -23,7 +23,7 @@ class Problem < ActiveRecord::Base
 
 
 
-	attr_accessible :user, :latitude, :longitude, :ptype, :description, :avatar, :address
+	attr_accessible :user, :latitude, :longitude, :ptype, :description, :avatar, :address, :municipality
 	validates(:user, presence: true)
 	validates(:latitude, presence: true)
 	validates(:longitude, presence: true)
