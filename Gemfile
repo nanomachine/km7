@@ -7,6 +7,7 @@ gem 'faker', '1.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'paperclip', '3.0.4'
+gem 'aws-sdk'
 gem 'gmaps4rails'
 
 group :development, :test do
