@@ -29,7 +29,7 @@ class Problem < ActiveRecord::Base
 	validates(:longitude, presence: true)
 	validates(:ptype, presence: true)
 
-	has_attached_file :avatar,: styles => { :medium => "600x600>", :thumb => "100x100>"}, :url => "/assets/problems/:id/:style/:basename.:extension", :path => ":rails_root/public/assets/problems/:id/:style/:basename.:extension"
+	has_attached_file :avatar,:styles => { :medium => "600x600>", :thumb => "100x100>"}, :url => "/assets/problems/:id/:style/:basename.:extension", :path => ":rails_root/public/assets/problems/:id/:style/:basename.:extension"
 
 	# :styles => { :small => "150x150>", :medium => "300x300>", :thumb => "100x100>"},
 
