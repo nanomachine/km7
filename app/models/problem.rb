@@ -30,8 +30,7 @@ class Problem < ActiveRecord::Base
 	validates(:ptype, presence: true)
 
 	has_attached_file :avatar,:styles => { :medium => "400x400>", :thumb => "100x100>"}, :url => "/assets/problems/:id/:style/:basename.:extension", 
-	:path => ":rails_root/public/assets/problems/:id/:style/:basename.:extension", :storage => :s3; 
-	#:s3_credentials => "#{Rails.root}/config/s3.yml",	:bucket => "km7";
+	:path => ":rails_root/public/assets/problems/:id/:style/:basename.:extension", :storage => :s3, :s3_credentials => "#{Rails.root}/config/s3.yml",	:bucket => "km7";
 
 	# models/photo.rb
 	#has_attached_file :image,
