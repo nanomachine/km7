@@ -66,23 +66,14 @@ Km7::Application.configure do
 
   config.assets.precompile += %w( *.css *.js )
 
-  PAPERCLIP_STORAGE_OPTS = {
-    :styles => { :medium => "400x400>", :thumb => "100x100>"}, 
-    :url => "/assets/problems/:id/:style/:basename.:extension", 
-    :path => ":rails_root/public/assets/problems/:id/:style/:basename.:extension", 
-    :storage => :s3, 
-    :s3_credentials => "#{Rails.root}/config/s3.yml", 
-    :bucket=> 'km7';
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['AWS_BUCKET'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
   }
-
-  #config.paperclip_defaults = {
-  #  :storage => :s3,
-  #  :s3_credentials => {
-  #    :bucket => ENV['AWS_BUCKET'],
-  #    :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-  #    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-  #  }
-  #}
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
