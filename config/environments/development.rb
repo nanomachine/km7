@@ -37,4 +37,10 @@ Km7::Application.configure do
 
   Paperclip.options[:command_path] = "C:/ImageMagick"
 
+  #config.paperclip_defaults = {
+  #  :storage => :s3,
+  #  :s3_credentials => "#{Rails.root}/config/s3.yml",
+  #  :bucket => "km7_dev"
+  #}
+
 end

@@ -1,4 +1,8 @@
 # config/s3.yml
+development:
+  access_key_id: AKIAI26U7S6APDZX3I2Q
+  secret_code: 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
+
 production:
   access_key_id: AKIAI26U7S6APDZX3I2Q
   secret_code: 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
