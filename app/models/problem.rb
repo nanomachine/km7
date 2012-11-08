@@ -29,6 +29,21 @@ class Problem < ActiveRecord::Base
 	validates(:longitude, presence: true)
 	validates(:ptype, presence: true)
 
+
+	if Rails.env.production?
+  	has_attached_file :avatar, :styles => {:medium => "400x400>", :thumb => "100x100>"},
+					:path => ":rails_root/public/assets/problems/:id/:style/:basename.:extension",
+                    :storage => :s3,
+					:url => "/assets/problems/:id/:style/:basename.:extension",  
+					:s3_credentials => "#{Rails.root}/config/s3.yml",
+					:bucket => "km7";
+	else
+  	has_attached_file :avatar, :styles => {:medium => "400x400>", :thumb => "100x100>"},
+  					:path => ":rails_root/public/assets/problems/:id/:style/:basename.:extension",
+					:url => "/assets/problems/:id/:style/:basename.:extension";
+	end
+
+	
 	#has_attached_file :avatar,
 	#:styles => { :medium => "400x400>", :thumb => "100x100>"};
 	#:url => "/assets/problems/:id/:style/:basename.:extension", 
@@ -42,22 +57,6 @@ class Problem < ActiveRecord::Base
 	#:styles => { :medium => "400x400>", :thumb => "100x100>"}, 
 	#:url => "/assets/problems/:id/:style/:basename.:extension", 
 	#:path => ":rails_root/public/assets/problems/:id/:style/:basename.:extension";
-
-	if Rails.env.production?
-  	has_attached_file :avatar, :styles => {:medium => "400x400>", :thumb => "100x100>"},
-					:path => ":rails_root/public/assets/problems/:id/:style/:basename.:extension",
-                    :storage => :s3,
-					:url => "/assets/problems/:id/:style/:basename.:extension",  
-					:s3_credentials => "#{Rails.root}/config/s3.yml",
-					:bucket => "km7";
-	else
-  	has_attached_file :avatar, :styles => {:medium => "400x400>", :thumb => "100x100>"},
-  					:path => ":rails_root/public/assets/problems/:id/:style/:basename.:extension",
-                    :storage => :s3,
-					:url => "/assets/problems/:id/:style/:basename.:extension",  
-					:s3_credentials => "#{Rails.root}/config/s3.yml",
-					:bucket => "km7_dev";
-	end
 
 
 	# models/photo.rb
