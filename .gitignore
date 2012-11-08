@@ -15,4 +15,4 @@
 /tmp
 
 # Ignore uploaded images.
-/public/assets/problems/*.jpg
+/public/assets/problems
