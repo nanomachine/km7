@@ -12,7 +12,17 @@ class ProblemsController < ApplicationController
 
   def index
     @problems = Problem.paginate(page: params[:page])
-    @json = Problem.all.to_gmaps4rails
+    #@json = Problem.all.to_gmaps4rails
+    @json = Problem.all.to_gmaps4rails do |problem, marker|
+      marker.picture({
+                :picture => "/assets/markers/#{problem.ptype}.png",
+                :width   => 32,
+                :height  => 35
+                 })
+      marker.title   "i'm the title"
+      marker.sidebar "i'm the sidebar"
+      marker.json({ :id => problem.id})
+  end
 
   end
 
@@ -35,6 +45,8 @@ class ProblemsController < ApplicationController
 
   def update
   end
+
+
 end
 
 #Parameters: {"utf8"=>"√", "authenticity_token"=>"yuxdf1QkhDuuRnAV+qVSTjt0aq3Yo1sW9UN685GhEMc=", 

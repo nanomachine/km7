@@ -73,18 +73,14 @@ class Problem < ActiveRecord::Base
 	validates_attachment_size :avatar, :less_than => 5.megabytes
 	validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
 
-#	def gmaps4rails_marker_picture
-# 	{
-#   	"picture" => "/images/markers/#{self.ptype}.png",
-#   	"width" => 20,
-#  	"height" => 20,
-#   	"marker_anchor" => [ 5, 10],
-#   	"shadow_picture" => "/images/rails.png" ,
-#   	"shadow_width" => "110",
-#   	"shadow_height" => "110",
-#   	"shadow_anchor" => [5, 10],
-#  	}
-#	end
+	#def gmaps4rails_marker_picture
+ 	#{
+   	#"picture" => ('/images/markers/#{self.ptype}.png'),
+   	#"width" => 20,
+  	#"height" => 20,
+   	#"marker_anchor" => [ 5, 10]
+  	#}
+	#end
 
 	def gmaps4rails_address
 		#describe how to retrieve the address from your model, if you use directly a db column, you can dry your code
@@ -92,7 +88,7 @@ class Problem < ActiveRecord::Base
 	end
 
 	def gmaps4rails_infowindow
-		#<img src=\"#{self.avatar.url(:medium)}\"> 
+		#<img src=\"#{self.avatar.url(:thumb)}\"> 
     	"#{self.id} #{self.user} #{self.latitude} #{self.longitude} #{self.ptype} #{self.description}"
     end
 

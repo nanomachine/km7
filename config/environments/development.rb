@@ -35,6 +35,8 @@ Km7::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
+  config.serve_static_assets = true
+
   Paperclip.options[:command_path] = "C:/ImageMagick"
 
   #config.paperclip_defaults = {

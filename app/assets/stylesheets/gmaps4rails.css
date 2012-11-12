@@ -11,16 +11,21 @@
     
 }
 
+.map_container label { 
+  width: auto;
+  display:inline; 
+} 
+
 .gmaps4rails_map {
   width: 940px;
   height: 470px;
 }
 
-.bing_map {
+/*.bing_map {
    position: absolute;
    top: 20;
    left: 10;
    width: 400px;
    height: 400px;
    border:#555555 2px solid;
-}
+}*/
