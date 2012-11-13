@@ -4,15 +4,23 @@ class ProblemsController < ApplicationController
     @problem = Problem.new
   end
 
+#Show report details and only show selescted problem in gmap
   def show
     @problem = Problem.find(params[:id])
-    @json = @problem.to_gmaps4rails
-
+    @json = @problem.to_gmaps4rails do |problem, marker|
+      marker.picture({
+                :picture => "/assets/markers/#{problem.ptype}.png",
+                :width   => 32,
+                :height  => 35
+                 })
+      marker.title   "#{problem.description}"
+      marker.json({ :id => problem.id})
+    end
   end
 
+#Show list of reports and show all of them in gmap
   def index
     @problems = Problem.paginate(page: params[:page])
-    #@json = Problem.all.to_gmaps4rails
     @json = Problem.all.to_gmaps4rails do |problem, marker|
       marker.picture({
                 :picture => "/assets/markers/#{problem.ptype}.png",
@@ -20,10 +28,8 @@ class ProblemsController < ApplicationController
                 :height  => 35
                  })
       marker.title   "i'm the title"
-      marker.sidebar "i'm the sidebar"
       marker.json({ :id => problem.id})
-  end
-
+    end
   end
 
   def create
@@ -46,9 +52,7 @@ class ProblemsController < ApplicationController
   def update
   end
 
-
-end
-
 #Parameters: {"utf8"=>"√", "authenticity_token"=>"yuxdf1QkhDuuRnAV+qVSTjt0aq3Yo1sW9UN685GhEMc=", 
 #  "problem"=>{"user"=>"7876483097", "latitude"=>"18.378383", "longitude"=>"-67.026201", "ptype"=>"2", 
 #    "description"=>"Poste roto"}, "commit"=>"Guardar problema"}
+end
