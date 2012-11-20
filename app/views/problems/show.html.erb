@@ -15,7 +15,7 @@
       <ul>
      	<li>Reporte #<%= @problem.id %></li>
      	<li>Tipo: <%= @problem.ptype %></li>
-     	<li>Reportero: <%= @problem.user %></li>
+     	<li>Reportero: <%= User.find(@problem.user_id).name %></li>
      	<li>Latitud: <%= @problem.latitude %></li>
      	<li>Longitud: <%= @problem.longitude %></li>
      	<li>Fecha: <%= @problem.created_at %></li>

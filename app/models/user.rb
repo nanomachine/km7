@@ -14,6 +14,9 @@
 #
 
 class User < ActiveRecord::Base
+  has_many :problems
+  has_many :lists
+  
 	attr_accessible :name, :email, :telnum, :municipality, :password, :password_confirmation, :admin
 	has_secure_password
 

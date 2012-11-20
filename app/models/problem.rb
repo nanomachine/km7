@@ -14,6 +14,7 @@
 #  updated_at  :datetime        not null
 #
 class Problem < ActiveRecord::Base
+	belongs_to :user
 
 	attr_reader :avatar_remote_url
 
@@ -23,8 +24,8 @@ class Problem < ActiveRecord::Base
 
 
 
-	attr_accessible :user, :latitude, :longitude, :ptype, :description, :avatar, :address, :municipality
-	validates(:user, presence: true)
+	attr_accessible :user_id, :latitude, :longitude, :ptype, :description, :avatar, :address, :municipality
+	#validates(:user_id, presence: true)
 	validates(:latitude, presence: true)
 	validates(:longitude, presence: true)
 	validates(:ptype, presence: true)
@@ -89,7 +90,7 @@ class Problem < ActiveRecord::Base
 
 	def gmaps4rails_infowindow
 		#<img src=\"#{self.avatar.url(:thumb)}\"> 
-    	"#{self.id} #{self.user} #{self.latitude} #{self.longitude} #{self.ptype} #{self.description}"
+    	"#{self.id} #{User.find(self.user_id).name} #{self.latitude} #{self.longitude} #{self.ptype} #{self.description}"
     end
 
     def gmaps4rails_title

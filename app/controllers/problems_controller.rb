@@ -34,6 +34,9 @@ class ProblemsController < ApplicationController
 
   def create
     @problem = Problem.new(params[:problem])
+    #Para obtener el usuario actual que está creando el reporte sólo funciona
+    #por webapp. Su motivo aplicar relación belongs_to de "problems"
+    @problem.user_id = current_user.id
     if @problem.save
       flash[:success] = "Problema guardado"
       redirect_to @problem

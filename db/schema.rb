@@ -11,10 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121015191118) do
+ActiveRecord::Schema.define(:version => 20121120154726) do
+
+  create_table "lists", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "problems", :force => true do |t|
-    t.string   "user"
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "ptype"
@@ -30,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20121015191118) do
     t.boolean  "gmaps"
     t.string   "address"
     t.string   "municipality"
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|
