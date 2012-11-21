@@ -1,4 +1,4 @@
 class List < ActiveRecord::Base
 	belongs_to :user
-	has_many :problems :through :users
+	has_many :problems, :through => :users
 end
