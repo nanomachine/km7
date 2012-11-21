@@ -15,6 +15,8 @@
 #
 class Problem < ActiveRecord::Base
 	belongs_to :user
+	has_many :lists
+
 
 	attr_reader :avatar_remote_url
 
