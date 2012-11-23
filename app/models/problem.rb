@@ -3,7 +3,7 @@
 # Table name: problems
 #
 #  id          :integer         not null, primary key
-#  user        :string(255)
+#  user_id     :integer
 #  latitude    :float
 #  longitude   :float
 #  ptype       :integer
@@ -15,24 +15,24 @@
 #
 class Problem < ActiveRecord::Base
 	belongs_to :user
-	has_many :lists
-
+	has_and_belongs_to_many :lists
 
 	attr_reader :avatar_remote_url
 
+	#Mapping column information to gmpas marker
 	acts_as_gmappable :latitude => 'latitude', :longitude => 'longitude', :process_geocoding => :geocode?,
                   :address => "address", :normalized_address => "address",
                   :msg => "Lo sentimos, ni Google puede localizar esa direccion"
 
-
-
 	attr_accessible :user_id, :latitude, :longitude, :ptype, :description, :avatar, :address, :municipality
-	#validates(:user_id, presence: true)
+	validates(:user_id, presence: true)
 	validates(:latitude, presence: true)
 	validates(:longitude, presence: true)
 	validates(:ptype, presence: true)
 
 
+	#Determine where to store image related to report, in production
+	#and in development mode
 	if Rails.env.production?
   	has_attached_file :avatar, :styles => {:medium => "400x400>", :thumb => "100x100>"},
 					:path => ":rails_root/public/assets/problems/:id/:style/:basename.:extension",
@@ -46,44 +46,10 @@ class Problem < ActiveRecord::Base
 					:url => "/assets/problems/:id/:style/:basename.:extension";
 	end
 
-	
-	#has_attached_file :avatar,
-	#:styles => { :medium => "400x400>", :thumb => "100x100>"};
-	#:url => "/assets/problems/:id/:style/:basename.:extension", 
-	#:path => ":rails_root/public/assets/problems/:id/:style/:basename.:extension"
-	#:storage => :s3,
-	#:s3_credentials => "#{Rails.root}/config/s3.yml",
-	#:bucket => "km7_dev";
-
-
-	#has_attached_file :avatar,
-	#:styles => { :medium => "400x400>", :thumb => "100x100>"}, 
-	#:url => "/assets/problems/:id/:style/:basename.:extension", 
-	#:path => ":rails_root/public/assets/problems/:id/:style/:basename.:extension";
-
-
-	# models/photo.rb
-	#has_attached_file :image,
-	#  :styles => { :thumbnail => "100x100>" },
-	#  :storage => :s3,
-	#  :s3_credentials => "#{Rails.root}/config/s3.yml",
-	#  :bucket => "your_unique_s3_bucket";
-
-
-	# :styles => { :small => "150x150>", :medium => "300x300>", :thumb => "100x100>"},
-
 	validates_attachment_presence :avatar
 	validates_attachment_size :avatar, :less_than => 5.megabytes
 	validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
 
-	#def gmaps4rails_marker_picture
- 	#{
-   	#"picture" => ('/images/markers/#{self.ptype}.png'),
-   	#"width" => 20,
-  	#"height" => 20,
-   	#"marker_anchor" => [ 5, 10]
-  	#}
-	#end
 
 	def gmaps4rails_address
 		#describe how to retrieve the address from your model, if you use directly a db column, you can dry your code

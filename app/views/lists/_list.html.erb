@@ -1,0 +1,9 @@
+<li>
+    Lista #<%= list.id %>
+  <%= link_to "detalles", list %>
+
+
+  <% if current_user.admin? %>
+  	| <%= link_to "borrar", problem, method: :delete, data: { confirm: "Está seguro que quiere borrar esta lista?" } %>
+  <% end %>
+</li>

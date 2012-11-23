@@ -13,6 +13,9 @@ resources :sessions, only: [:new, :create, :destroy]
 
   match '/reportes', to: 'problems#index'
   match '/reportar', to: 'problems#new'
+
+  match '/listas', to: 'lists#index'
+  match '/listas', to: 'lists#new'
   
 
   root to: 'static_pages#home'

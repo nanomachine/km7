@@ -1,0 +1,12 @@
+<% provide(:title, 'Listas') %>
+<h1>Mis Listas</h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+	<% @lists.each do |list| %>
+		<%= render list %>
+	<% end %>
+</ul>
+
+<%= will_paginate %>

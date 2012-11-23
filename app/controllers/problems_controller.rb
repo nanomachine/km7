@@ -27,7 +27,7 @@ class ProblemsController < ApplicationController
                 :width   => 32,
                 :height  => 35
                  })
-      marker.title   "i'm the title"
+      marker.title   "#{problem.description}"
       marker.json({ :id => problem.id})
     end
   end
