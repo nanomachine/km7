@@ -19,7 +19,7 @@ class Problem < ActiveRecord::Base
 
 	attr_reader :avatar_remote_url
 
-	#Mapping column information to gmpas marker
+	#Mapping column information to gmaps marker
 	acts_as_gmappable :latitude => 'latitude', :longitude => 'longitude', :process_geocoding => :geocode?,
                   :address => "address", :normalized_address => "address",
                   :msg => "Lo sentimos, ni Google puede localizar esa direccion"

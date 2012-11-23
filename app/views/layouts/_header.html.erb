@@ -4,29 +4,42 @@
       <%= link_to "Kilómetro Siete", root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
-          <li><%= link_to "Inicio",    root_path %></li>
-          <!--<li><%= link_to "Registrar", '#' %></li>-->
+          <li><%= link_to "Hogar",    root_path %></li>
+
           <% if signed_in? %>
-            <% if current_user.admin? %>
+
+            
             <li id= "fat-menu" class="dropdown">
               <a href="#" class="dropdown_toggle" data-toggle="dropdown">
                 Reportes <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
+                <li><%= link_to "Mis Reportes", '#' %></li>
                 <li><%= link_to "Todos", reportes_path %></li>
-                  <li><%= link_to "Crear Nuevo", reportar_path %></li> 
+                <li><%= link_to "Crear Nuevo", reportar_path %></li> 
               </ul>
             </li>
             <li id= "fat-menu" class="dropdown">
               <a href="#" class="dropdown_toggle" data-toggle="dropdown">
-                Usuarios <b class="caret"></b>
+                Listas <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to "Todos", usuarios_path %></li>
-                  <li><%= link_to "Crear Nuevo", crear_usuario_path %></li> 
+                <li><%= link_to "Mis listas", '#' %></li>
+                <li><%= link_to "Crear Nueva", '#' %></li> 
               </ul>
             </li>
+            <% if current_user.admin? %>
+              <li id= "fat-menu" class="dropdown">
+                <a href="#" class="dropdown_toggle" data-toggle="dropdown">
+                  Usuarios <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Todos", usuarios_path %></li>
+                  <li><%= link_to "Crear Nuevo", crear_usuario_path %></li> 
+                </ul>
+              </li>
             <% end %> 
+
             <li id= "fat-menu" class="dropdown">
               <a href="#" class="dropdown_toggle" data-toggle="dropdown">
                 Mi Cuenta <b class="caret"></b>
@@ -39,9 +52,11 @@
                   <%= link_to "Salir", salir_path, method: "delete" %></li>
               </ul>
             </li>
+
             <% else %>
-            <li><%= link_to "Registrar", registrar_path %></li>
+            <li><%= link_to "Iniciar", registrar_path %></li>
             <% end %>
+
         </ul>
       </nav>
     </div>
