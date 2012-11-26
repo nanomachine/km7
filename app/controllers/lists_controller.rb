@@ -24,14 +24,14 @@ def new
       redirect_to @list
     else
       flash.now[:error] = 'Informacion incorrecta'
-      render 'new'
+      render 'new' 
     end
   end
 
   def destroy
     List.find(params[:id]).destroy*
     flash[:success] = "Problema borrado."
-    redirect_to problems_url
+    redirect_to lists_url
   end
 
   def update
