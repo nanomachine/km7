@@ -29,7 +29,7 @@ def new
   end
 
   def destroy
-    List.find(params[:id]).destroy*
+    List.find(params[:id]).destroy
     flash[:success] = "Problema borrado."
     redirect_to lists_url
   end

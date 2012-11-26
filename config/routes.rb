@@ -18,7 +18,6 @@ resources :sessions, only: [:new, :create, :destroy]
   match '/listas', to: 'lists#index'
   match '/crear_lista', to: 'lists#new'
   
-
   root to: 'static_pages#home'
 
   match '/ayuda',    to: 'static_pages#help'

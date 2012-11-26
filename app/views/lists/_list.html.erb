@@ -4,6 +4,6 @@
 
 
   <% if current_user.admin? %>
-  	| <%= link_to "borrar", problem, method: :delete, data: { confirm: "Está seguro que quiere borrar esta lista?" } %>
+  	| <%= link_to "borrar", list, method: :delete, data: { confirm: "Está seguro que quiere borrar esta lista?" } %>
   <% end %>
 </li>
