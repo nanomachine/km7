@@ -20,7 +20,7 @@ def new
     #por webapp. Su motivo aplicar relación belongs_to de "problems"
     @list.user_id = current_user.id
     if @list.save
-      flash[:success] = "Problema guardado"
+      flash[:success] = "Lista guardada"
       redirect_to @list
     else
       flash.now[:error] = 'Informacion incorrecta'
