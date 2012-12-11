@@ -1,12 +1,13 @@
 <% provide(:title, "Detalles") %>
 <div class="row">
   <aside class="span4">
-    <section>     
+    <section>  
       <ul>
      	<li>Lista #<%= @list.id %></li>
      	<li>Nombre: <%= @list.name %></li>
       <li>Descripción: <%= @list.description %></li>
      	<li>Fecha: <%= @list.created_at %></li>
+      <li>Reportes: <%=  %></li>
       </ul>     
     </section>
   </aside>

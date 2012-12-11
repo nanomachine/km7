@@ -2,7 +2,7 @@ Km7::Application.routes.draw do
 
 resources :problems
 resources :users
-resources :lists
+resources :lists, :member => { :show_problems => :get, :save => :post }
 resources :sessions, only: [:new, :create, :destroy]
 
   match '/crear_usuario',  to: 'users#new'
@@ -17,6 +17,7 @@ resources :sessions, only: [:new, :create, :destroy]
 
   match '/listas', to: 'lists#index'
   match '/crear_lista', to: 'lists#new'
+  match '/ver_reportes', to: 'lists#show_problems',  :via => :get
   
   root to: 'static_pages#home'
 

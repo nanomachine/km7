@@ -1,0 +1,23 @@
+<% provide(:title, 'Reportes a añadir') %>
+<h1>Reportes: <%= @list.name %></h1>
+
+<table>
+  <tr>
+    <th>Añadir</th>
+    <th>Reporte</th>
+  </tr>
+
+<% @list.candidate_problems.each do |p| %>
+	<tr>
+	    <td><%=check_box_tag p.id, 1, @list.in_list?(p), 
+		  :onclick => remote_function(
+		  :url => save_list_path(@list), 
+		  :with => "'problem=#{p.id}&amp;show=' + this.checked", 
+		  :method => :post) %>
+		</td>	
+		<td><%= p.description %></ts>
+	</tr>
+<% end %>
+</table>
+
+<%= link_to 'Back', list_path(@list) %>

@@ -2,6 +2,7 @@ class ProblemsController < ApplicationController
 
   def new
     @problem = Problem.new
+    @lists = List.all
   end
 
 #Show report details and only show selescted problem in gmap
@@ -39,6 +40,7 @@ class ProblemsController < ApplicationController
     @problem.user_id = current_user.id
     if @problem.save
       flash[:success] = "Problema guardado"
+      #@lists.problems.create(attributes={"list_id" =>3, "problem_id" => @problem.id})
       redirect_to @problem
     else
       flash.now[:error] = 'Informacion incorrecta'
