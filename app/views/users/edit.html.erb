@@ -4,11 +4,9 @@
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@user) do |f| %>
+      <%= form.file_field :avatar %>
       <%= render 'fields', f: f %>
       <%= f.submit "Guardar cambios", class: "btn btn-large btn-primary" %>
     <% end %>
-
-    <%= gravatar_for @user %>
-    <a href="http://gravatar.com/emails" TARGET= "_blank">cambiar</a>
   </div>
 </div>

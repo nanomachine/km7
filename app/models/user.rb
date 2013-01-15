@@ -16,9 +16,29 @@
 class User < ActiveRecord::Base
   has_many :problems
   has_many :lists
+
+  attr_reader :avatar_remote_url
   
-	attr_accessible :name, :email, :telnum, :municipality, :password, :password_confirmation, :admin
+	attr_accessible :name, :email, :telnum, :municipality, :password, :password_confirmation, :admin, :avatar
 	has_secure_password
+
+  if Rails.env.production?
+    has_attached_file :avatar, :styles => {:medium => "300x300>", :thumb => "100x100>"},
+          :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension",
+                    :storage => :s3,
+          :url => "/assets/users/:id/:style/:basename.:extension",  
+          :s3_credentials => "#{Rails.root}/config/s3.yml",
+          :bucket => "km7";
+  else
+    has_attached_file :avatar, :styles => {:medium => "300x300>", :thumb => "100x100>"},
+            :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension",
+          :url => "/assets/users/:id/:style/:basename.:extension";
+  end
+
+  validates_attachment_presence :avatar
+  validates_attachment_size :avatar, :less_than => 5.megabytes
+  validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
+
 
 	before_save { self.email.downcase! } 
 	before_save :create_remember_token
