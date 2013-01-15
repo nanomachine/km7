@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 
   attr_reader :avatar_remote_url
   
-	attr_accessible :name, :email, :telnum, :municipality, :password, :password_confirmation, :admin, :avatar
+	attr_accessible :name, :email, :telnum, :municipality, :password, :password_confirmation, :admin, :avatar, :avatar_file_name
 	has_secure_password
 
   if Rails.env.production?
