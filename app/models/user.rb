@@ -23,14 +23,14 @@ class User < ActiveRecord::Base
 	has_secure_password
 
   if Rails.env.production?
-    has_attached_file :avatar, :styles => {:medium => "300x300>", :thumb => "100x100>"},
+    has_attached_file :avatar, :styles => {:medium => "300x300#", :thumb => "100x100#"},
           :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension",
                     :storage => :s3,
           :url => "/assets/users/:id/:style/:basename.:extension",  
           :s3_credentials => "#{Rails.root}/config/s3.yml",
           :bucket => "km7";
   else
-    has_attached_file :avatar, :styles => {:medium => "300x300>", :thumb => "100x100>"},
+    has_attached_file :avatar, :styles => {:medium => "300x300#", :thumb => "100x100#"},
             :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension",
           :url => "/assets/users/:id/:style/:basename.:extension";
   end
