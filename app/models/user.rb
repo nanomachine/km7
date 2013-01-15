@@ -19,8 +19,15 @@ class User < ActiveRecord::Base
 
   attr_reader :avatar_remote_url
   
-	attr_accessible :name, :email, :telnum, :municipality, :password, :password_confirmation, :admin, :avatar, :avatar_file_name
+	attr_accessible :name, :email, :telnum, :municipality, :password, :password_confirmation, :admin, :avatar
 	has_secure_password
+
+  
+  validates :name, presence: true, length: { maximum: 50 }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+    validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness:  { case_sensitive: false }
+    validates :password, presence: true, length: { minimum: 6 }
+    validates :password_confirmation, presence: true
 
   if Rails.env.production?
     has_attached_file :avatar, :styles => {:medium => "300x300#", :thumb => "100x100#"},
@@ -43,11 +50,6 @@ class User < ActiveRecord::Base
 	before_save { self.email.downcase! } 
 	before_save :create_remember_token
 
-	validates :name, presence: true, length: { maximum: 50 }
- 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  	validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness:  { case_sensitive: false }
-  	validates :password, presence: true, length: { minimum: 6 }
-    validates :password_confirmation, presence: true
 
     private
 
