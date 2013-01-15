@@ -36,6 +36,12 @@ def new
   end
 
   def update
+        if @list.update_attributes(params[:list])
+      flash[:success] = "Lista actualizada"
+      redirect_to @list
+    else
+      render 'edit'
+    end
   end
 
   #Sólo debería ver los reportes que él ha sometido?

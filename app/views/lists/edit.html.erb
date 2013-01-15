@@ -1,0 +1,12 @@
+<% provide(:title, 'Editar Lista') %> 
+<h1>Actualice su lista</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@list) do |f| %>
+<!--      <%= #render 'fields', f: f %> -->
+      <%= f.submit "Guardar cambios", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+  </div>
+</div>
