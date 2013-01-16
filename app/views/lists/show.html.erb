@@ -8,6 +8,13 @@
       <li>Descripción: <%= @list.description %></li>
      	<li>Fecha: <%= @list.created_at %></li>
       <li>Reportes: <%=  %></li>
+
+      <ul class="users">
+        <% @problems.each do |problem| %>
+          <%= render problem %>
+        <% end %>
+      </ul>
+
       </ul>     
     </section>
   </aside>

@@ -8,6 +8,8 @@ def new
 #Show report details and only show selescted problem in gmap
   def show
     @list = List.find(params[:id])
+    @problems = Problem.paginate(page: params[:page])
+
   end
 
 #Show list of reports and show all of them in gmap
