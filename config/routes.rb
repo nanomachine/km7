@@ -2,8 +2,14 @@ Km7::Application.routes.draw do
 
 resources :problems
 resources :users
-resources :lists, :member => { :show_problems =>:get, :save => :post }
 resources :sessions, only: [:new, :create, :destroy]
+resources :lists do
+  member do
+    put "agregar_reporte/:problem_id", action: :add_problem, as: :add_problem
+    get :show_problems
+    post :save
+  end
+end
 
   match '/crear_usuario',  to: 'users#new'
   match '/usuarios', to: 'users#index'

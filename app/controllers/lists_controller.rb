@@ -55,6 +55,15 @@ def new
     @list = List.find(params[:id])
   end
 
+  def add_problem
+  list    = List.find(params[:id])
+  problem = Problem.find(params[:problem_id])
+
+  list.problems << problem # This appends and saves the problem selected
+
+  redirect_to list 
+  end
+
   def in_list?(problem)
     problems.include?(problem)
   end
