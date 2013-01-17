@@ -39,18 +39,18 @@ class ProblemsController < ApplicationController
     #por webapp. Su motivo aplicar relación belongs_to de "problems"
     @problem.user_id = current_user.id
     if @problem.save
-      flash[:success] = "Problema guardado"
+      flash[:success] = "Report saved"
       #@lists.problems.create(attributes={"list_id" =>3, "problem_id" => @problem.id})
       redirect_to @problem
     else
-      flash.now[:error] = 'Informacion incorrecta'
+      flash.now[:error] = 'Incorrect information'
       render 'new'
     end
   end
 
   def destroy
     Problem.find(params[:id]).destroy
-    flash[:success] = "Problema borrado."
+    flash[:success] = "Report deleted."
     redirect_to problems_url
   end
 

@@ -1,14 +1,14 @@
-<% provide(:title, 'Lista Nueva') %>
-<h1>Lista Nueva</h1>
+<% provide(:title, 'New List') %>
+<h1>New List</h1>
 
 <div class="row">
   <div class="span6 offset3">
     <%= form_for @list, :html => {:multipart => true }  do |f| %>
 
-      <%= f.label :name, "Nombre" %>
+      <%= f.label :name, "List Name" %>
       <%= f.text_field :name %>
 
-      <%= f.label :description, "Descripción" %>
+      <%= f.label :description, "Description" %>
       <%= f.text_field :description %>
 
       <%= f.submit "Guardar lista", class: "btn btn-large btn-primary" %>

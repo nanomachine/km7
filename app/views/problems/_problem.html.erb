@@ -2,12 +2,11 @@
   
   <img src="<%=problem.avatar.url(:thumb) %>">
   Reporte #<%= problem.id %>
-  <%= link_to "detalles", problem %>
+  <%= link_to "Show", problem %>
 
 
   <% if current_user.admin? %>
-  	| <%= link_to "borrar", problem, method: :delete, data: { confirm: "Está seguro que quiere borrar este reporte?" } %>
+  	| <%= link_to "Delete", problem, method: :delete, data: { confirm: "Are you sure you want to delete this report?" } %>
   <% end %>
-
 
 </li>

@@ -1,4 +1,4 @@
-<% provide(:title, "Detalles") %>
+<% provide(:title, "Details") %>
 <div class="row">
   <aside class="span4">
     <section>
@@ -13,13 +13,13 @@
       	<%= image_tag @problem.avatar.url(:medium) %>
       </h1>
       <ul>
-     	<li>Reporte #<%= @problem.id %></li>
-     	<li>Tipo: <%= @problem.ptype %></li>
-     	<li>Reportero: <%= User.find(@problem.user_id).name %></li>
+     	<li>Report #<%= @problem.id %></li>
+     	<li>Type: <%= @problem.ptype %></li>
+     	<li>User: <%= User.find(@problem.user_id).name %></li>
      	<li>Latitud: <%= @problem.latitude %></li>
      	<li>Longitud: <%= @problem.longitude %></li>
-     	<li>Fecha: <%= @problem.created_at %></li>
-      <li>Descripción: <%= @problem.description %></li>
+     	<li>Date Created: <%= @problem.created_at %></li>
+      <li>Description: <%= @problem.description %></li>
 
 
       </ul>     

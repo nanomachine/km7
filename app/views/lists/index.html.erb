@@ -1,9 +1,9 @@
-<% provide(:title, 'Listas') %>
-<h1>Mis Listas</h1>
+<% provide(:title, 'Lists') %>
+<h1>My Lists</h1>
 
 <%= will_paginate %>
 
-<%= link_to 'Lista nueva',  crear_lista_path %>
+<%= link_to 'New List',  crear_lista_path %>
 
 <ul class="users">
 	<% @lists.each do |list| %>
@@ -11,15 +11,15 @@
 	        <tr>
 	          <td><%= list.id %></td>
 	          <td><%= list.name %></td>
-	          <td><%= link_to ' Mostrar ', list %></td>
-	          <td><%= link_to '| Editar', edit_list_path(list) %></td>
-	          <td><%= link_to '| Destruir ', list, :confirm => '¿Está seguro?', 
+	          <td><%= link_to ' Show ', list %></td>
+	          <td><%= link_to '| Edit', edit_list_path(list) %></td>
+	          <td><%= link_to '| Delete ', list, :confirm => 'Are you sure you wish to delete this user?', 
 	           :method => :delete %></td>
 	        </tr>   
       	</table>	
     <% end %>
 
-    <%= link_to "Reportes", problems_path %>
+    <%= link_to "Reports", problems_path %>
 </ul>
 
 <%= will_paginate %>

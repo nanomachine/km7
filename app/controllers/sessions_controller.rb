@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       sign_in user
       redirect_back_or user
     else
-      flash.now[:error] = 'Credenciales incorrectos. Trate de nuevo.'
+      flash.now[:error] = 'Username or password is incorrect. Please, try again.'
       render 'new'
     end
   end
