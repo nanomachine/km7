@@ -1,5 +1,4 @@
 Km7::Application.routes.draw do
-
 resources :problems
 resources :users
 resources :sessions, only: [:new, :create, :destroy]
@@ -9,6 +8,9 @@ resources :lists do
     delete "remover_reporte/:problem_id", action: :remove_problem, as: :remove_problem
   end
 end
+
+#get "prob_comment/create"
+#get "prob_comment_controller/create"
 
   match '/crear_usuario',  to: 'users#new'
   match '/usuarios', to: 'users#index'
