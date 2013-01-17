@@ -11,16 +11,15 @@
 	        <tr>
 	          <td><%= list.id %></td>
 	          <td><%= list.name %></td>
-	          <td><%= link_to 'Mostrar', list %></td>
-	          <td><%= link_to 'Editar', edit_list_path(list) %></td>
-	          <td><%= link_to 'Destruir', list, :confirm => '¿Está seguro?', 
+	          <td><%= link_to ' Mostrar ', list %></td>
+	          <td><%= link_to '| Editar', edit_list_path(list) %></td>
+	          <td><%= link_to '| Destruir ', list, :confirm => '¿Está seguro?', 
 	           :method => :delete %></td>
-	          <td><%= link_to 'Reportes 1', ver_reportes_path(list) %></td>
 	        </tr>   
       	</table>	
     <% end %>
 
-    <%= link_to "Reportes 2", problems_path %>
+    <%= link_to "Reportes", problems_path %>
 </ul>
 
 <%= will_paginate %>

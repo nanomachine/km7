@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130116190729) do
+ActiveRecord::Schema.define(:version => 20130116204855) do
 
   create_table "lists", :force => true do |t|
     t.integer  "user_id"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(:version => 20130116190729) do
     t.integer "list_id"
     t.integer "problem_id"
   end
+
+  add_index "lists_problems", ["list_id", "problem_id"], :name => "by_list_and_problem", :unique => true
 
   create_table "problems", :force => true do |t|
     t.float    "latitude"

@@ -6,8 +6,7 @@ resources :sessions, only: [:new, :create, :destroy]
 resources :lists do
   member do
     put "agregar_reporte/:problem_id", action: :add_problem, as: :add_problem
-    get :show_problems
-    post :save
+    delete "remover_reporte/:problem_id", action: :remove_problem, as: :remove_problem
   end
 end
 
