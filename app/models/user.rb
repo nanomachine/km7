@@ -16,7 +16,6 @@
 class User < ActiveRecord::Base
   has_many :problems
   has_many :lists
-  has_many :prob_comments
 
   attr_reader :avatar_remote_url
   

@@ -16,7 +16,8 @@
 class Problem < ActiveRecord::Base
 	belongs_to :user
 	has_and_belongs_to_many :lists
-	has_many :prob_comments
+
+	acts_as_commentable
 
 	attr_reader :avatar_remote_url
 

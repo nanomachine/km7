@@ -18,8 +18,36 @@
      	<li>User: <%= User.find(@problem.user_id).name %></li>
      	<li>Latitud: <%= @problem.latitude %></li>
      	<li>Longitud: <%= @problem.longitude %></li>
-     	<li>Date Created: <%= @problem.created_at %></li>
+     	<li>Date Created: <%= @problem.created_at.strftime(" %b.%d %Y") %></li>
       <li>Description: <%= @problem.description %></li>
+      <li>Comments:</li>
+
+      <!--Preparing comments for disply-->
+        <% @comments = @problem.comment_threads %>
+
+      <!--This coul be made a _comment to render-->
+      <ul class="users">
+        <% @comments.each do |comment| %>
+          <% @user = User.find(comment.user_id) %>
+          <table>
+            <tr>
+              <td><%= "--"+ @user.name + "-- on "+ comment.created_at.strftime(" %b.%d %Y") + " @ " + comment.created_at.strftime("%H:%M") %></td>
+              <td><%= link_to "Delete", remove_comment_to_problems_path %>
+            </tr>
+            <tr>
+              <td colspan="100"><%= comment.body %></td>
+              <!--implement comment threading functionality-->
+            </tr>
+          </table>
+        <% end %>
+
+      <li>Comment: 
+      <%= form_tag "/problems/add_new_comment" do %>
+        <%= hidden_field_tag "id", @problem.id %>
+        <%= text_area :comment, :body, :size => "10x10  " %>
+        <%= submit_tag "Post Comment" %>
+      </li>
+      <% end %>
 
 
       </ul>     

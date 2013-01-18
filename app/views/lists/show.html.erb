@@ -24,7 +24,7 @@
       <ul class="users">
         <% @problems.each do |problem| %>
           <%= render problem %>
-                | <%= link_to "Add", add_problem_list_path(list: @list, problem_id: problem.id), method: :put %>
+                <%= link_to "Add to list", add_problem_list_path(list: @list, problem_id: problem.id), method: :put %>
         <% end %>
       </ul>
 
