@@ -1,7 +1,6 @@
 Km7::Application.routes.draw do
-resources :problems
+resources :problems 
 resources :users
-resources :comments
 resources :sessions, only: [:new, :create, :destroy]
 resources :lists do
   member do
@@ -31,10 +30,11 @@ end
 
   match '/ayuda',    to: 'static_pages#help'
   match '/nosotros',   to: 'static_pages#about'
-  match '/contacto', to: 'static_pages#contact'  
+  match '/contacto', to: 'static_pages#contact'
 
   match "/problems/add_new_comment" => "problems#add_new_comment", :as => "add_new_comment_to_problems", :via => [:post]
-  match "/problems/remove_comment" => "problems#remove_comment", :as => "remove_comment_to_problems", :via => [:delete]
+  match "/problems/:id/delete_comment" => "problems#delete_comment", :as => "delete_comment_from_problems", :via => [:delete]
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

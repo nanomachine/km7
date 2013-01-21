@@ -61,13 +61,21 @@ class ProblemsController < ApplicationController
     @problem = Problem.find(params[:id])
     @comment = Comment.build_from( @problem, current_user.id, params[:comment][:body] )
     @comment.save!
+    flash[:notice] = "Comment added!"
     redirect_to :action => :show, :id => @problem
   end
 
-  def remove_comment
-    @problem = Problem.find(params[:id])
-    @comment = Comment.find_comment_for_commentable(@problem)
-    @comment.delete!
+  def delete_comment
+      @problem = Problem.find(params[:id])
+      @comment = Comment.find(params[:comment])
+
+      if current_user.id == @comment.user_id
+          @comment.destroy
+          flash[:notice] = "Comment deleted!"
+      else
+          flash[:notice] = "Sorry, you can't delete this comment"
+      end
+      redirect_to :action => :show, :id => @problem
   end
 
 #Parameters: {"utf8"=>"√", "authenticity_token"=>"yuxdf1QkhDuuRnAV+qVSTjt0aq3Yo1sW9UN685GhEMc=", 

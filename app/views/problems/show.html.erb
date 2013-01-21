@@ -25,18 +25,21 @@
       <!--Preparing comments for disply-->
         <% @comments = @problem.comment_threads %>
 
-      <!--This coul be made a _comment to render-->
+      <!--This could be made a _comment to render-->
       <ul class="users">
         <% @comments.each do |comment| %>
           <% @user = User.find(comment.user_id) %>
           <table>
             <tr>
-              <td><%= "--"+ @user.name + "-- on "+ comment.created_at.strftime(" %b.%d %Y") + " @ " + comment.created_at.strftime("%H:%M") %></td>
-              <td><%= link_to "Delete", remove_comment_to_problems_path %>
+              <td colspan="2"><%= "--"+ @user.name + "-- on "+ comment.created_at.strftime(" %b.%d %Y") + " @ " + comment.created_at.strftime("%H:%M") %></td>
+
             </tr>
             <tr>
-              <td colspan="100"><%= comment.body %></td>
+              <td colspan="2"><%= comment.body %></td>
               <!--implement comment threading functionality-->
+            </tr>
+            <tr>
+              <td><%= link_to "Delete", delete_comment_from_problems_url(comment: comment), method: :delete, :confirm => 'Are you sure you wish to delete this comment?' %> </td>
             </tr>
           </table>
         <% end %>
@@ -44,7 +47,7 @@
       <li>Comment: 
       <%= form_tag "/problems/add_new_comment" do %>
         <%= hidden_field_tag "id", @problem.id %>
-        <%= text_area :comment, :body, :size => "10x10  " %>
+        <%= text_area :comment, :body, :size => "10x10" %>
         <%= submit_tag "Post Comment" %>
       </li>
       <% end %>
