@@ -38,6 +38,7 @@ class ProblemsController < ApplicationController
     #Para obtener el usuario actual que está creando el reporte sólo funciona
     #por webapp. Su motivo aplicar relación belongs_to de "problems"
     @problem.user_id = current_user.id
+    @problem.status = 1
     if @problem.save
       flash[:success] = "Report saved"
       #@lists.problems.create(attributes={"list_id" =>3, "problem_id" => @problem.id})

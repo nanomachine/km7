@@ -26,7 +26,7 @@ class Problem < ActiveRecord::Base
                   :address => "address", :normalized_address => "address",
                   :msg => "We're sorry, not even google can find that address, please try again."
 
-	attr_accessible :user_id, :latitude, :longitude, :ptype, :description, :avatar, :address, :municipality
+	attr_accessible :user_id, :latitude, :longitude, :ptype, :description, :avatar, :address, :municipality, :status
 	validates(:user_id, presence: true)
 	validates(:latitude, presence: true)
 	validates(:longitude, presence: true)
@@ -87,6 +87,19 @@ class Problem < ActiveRecord::Base
 	       "Vandalism"
 	    when 7
 	       "Manhole cover"
+	    else
+	       "No problem type has been specified."
+	    end
+	  end
+
+	def get_prob_status
+		case self.status
+		when 1
+	       "Unassigned"
+	    when 2
+	       "Assigned"
+	    when 3
+	       "Resolved"
 	    else
 	       "No problem type has been specified."
 	    end

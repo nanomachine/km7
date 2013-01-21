@@ -5,13 +5,10 @@
   <div class="span6 offset3">
     <%= form_for @problem, :html => {:multipart => true }  do |f| %>
 
-      <!--%= f.label :user, "Usuario asignador" %-->
-      <!--%= f.text_field :user %-->
-
-      <%= f.label :latitude, "Latitud" %>
+      <%= f.label :latitude, "Latitude" %>
       <%= f.text_field :latitude %>
 
-      <%= f.label :longitude, "Longitud" %>
+      <%= f.label :longitude, "Longitude" %>
       <%= f.text_field :longitude %>
 
       <%= f.label :municipality, "Municipality" %>
@@ -27,7 +24,7 @@
 
       <%= f.file_field :avatar %>
 
-      <%= f.submit "Guardar lista", class: "btn btn-large btn-primary" %>
+      <%= f.submit "Save", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
 </div>
