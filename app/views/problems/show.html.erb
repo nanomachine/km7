@@ -14,7 +14,7 @@
       </h1>
       <ul>
      	<li>Report #<%= @problem.id %></li>
-     	<li>Type: <%= @problem.ptype %></li>
+     	<li>Type: <%= @problem.get_prob_type %></li>
      	<li>User: <%= User.find(@problem.user_id).name %></li>
      	<li>Latitud: <%= @problem.latitude %></li>
      	<li>Longitud: <%= @problem.longitude %></li>

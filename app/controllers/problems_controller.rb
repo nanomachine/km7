@@ -78,6 +78,7 @@ class ProblemsController < ApplicationController
       redirect_to :action => :show, :id => @problem
   end
 
+
 #Parameters: {"utf8"=>"√", "authenticity_token"=>"yuxdf1QkhDuuRnAV+qVSTjt0aq3Yo1sW9UN685GhEMc=", 
 #  "problem"=>{"user"=>"7876483097", "latitude"=>"18.378383", "longitude"=>"-67.026201", "ptype"=>"2", 
 #    "description"=>"Poste roto"}, "commit"=>"Guardar problema"}

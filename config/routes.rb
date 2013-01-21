@@ -1,5 +1,5 @@
 Km7::Application.routes.draw do
-resources :problems 
+resources :problems
 resources :users
 resources :sessions, only: [:new, :create, :destroy]
 resources :lists do
@@ -34,6 +34,7 @@ end
 
   match "/problems/add_new_comment" => "problems#add_new_comment", :as => "add_new_comment_to_problems", :via => [:post]
   match "/problems/:id/delete_comment" => "problems#delete_comment", :as => "delete_comment_from_problems", :via => [:delete]
+  #match '/problems/:id/get_prob_type', :to => 'problems#get_prob_type', :as => "get_prob_type", :via => [:get]
 
 
   # The priority is based upon order of creation:

@@ -24,7 +24,7 @@ class Problem < ActiveRecord::Base
 	#Mapping column information to gmaps marker
 	acts_as_gmappable :latitude => 'latitude', :longitude => 'longitude', :process_geocoding => :geocode?,
                   :address => "address", :normalized_address => "address",
-                  :msg => "Lo sentimos, ni Google puede localizar esa direccion"
+                  :msg => "We're sorry, not even google can find that address, please try again."
 
 	attr_accessible :user_id, :latitude, :longitude, :ptype, :description, :avatar, :address, :municipality
 	validates(:user_id, presence: true)
@@ -70,5 +70,27 @@ class Problem < ActiveRecord::Base
     def geocode?
   		(!address.blank? && (latitude.blank? || longitude.blank?)) || address_changed?
 	end
+
+	def get_prob_type
+	    case self.ptype
+	    when 1
+	       "Pothole"
+	    when 2
+	       "Water pipe"
+	    when 3
+	       "Electric cable"
+	    when 4
+	       "Light post"
+	    when 5
+	       "Debris in road"
+	    when 6
+	       "Vandalism"
+	    when 7
+	       "Manhole cover"
+	    else
+	       "No problem type has been specified."
+	    end
+	  end
+
 
 end
