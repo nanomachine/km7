@@ -1,0 +1,16 @@
+<%= f.label :ptype, "Report type" %>
+<%= f.select :ptype, [["Pothole", 1], ["Water pipe", 2], ["Electric cable", 3], 
+               ["Light post", 4], ["Debris on road", 5], ["Vandalism", 6], ["Manhole cover", 7], 
+               ["Other", 8]] %>
+
+<%= f.label :description, "Description" %>
+<%= f.text_field :description %>
+
+<%= f.label :priority, "Priority" %>
+<%= f.text_field :priority %>
+
+<%= f.label :status, "Status" %>
+<%= f.select :status, [["Unassigned", 1], ["Assigned", 2], ["Resolved", 3]] %>
+
+<%= f.label :address, "Address" %>
+<%= f.text_field :address %>

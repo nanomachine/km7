@@ -1,0 +1,11 @@
+<% provide(:title, 'Edit Report') %> 
+<h1>Update report</h1>
+<div class="row">
+	  <div class="span6 offset3">
+	  <%= form_for (@problem) do |f| %>
+	    <%= render 'prob_fields', f: f %>
+	    <p>*Please fill out every field</p>
+	    <%= f.submit "Save", class: "btn btn-large btn-primary" %>
+	  <% end %>
+	</div>
+</div>
