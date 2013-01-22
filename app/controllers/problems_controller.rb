@@ -55,7 +55,22 @@ class ProblemsController < ApplicationController
     redirect_to problems_url
   end
 
+  #Before_filter for these methods edit/update to confirm the user is the owner of these reports
+  #as in user.rb, rails tutorial
+  def edit
+    @problem = Problem.find(params[:id])
+  end
+
   def update
+    @problem = Problem.find(params[:id])
+    if @problem.update_attributes(params[:problem])
+      #@problem.status_update = Time.localtime
+      flash[:success] = "Report updated"
+      redirect_to @problem
+    else
+      flash[:error] = "Report update error"
+      render 'edit'
+    end
   end
 
   def add_new_comment

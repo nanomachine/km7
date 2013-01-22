@@ -12,25 +12,24 @@ end
 #get "prob_comment/create"
 #get "prob_comment_controller/create"
 
-  match '/crear_usuario',  to: 'users#new'
-  match '/usuarios', to: 'users#index'
-  match '/editar', to: 'users#edit'
+  match '/new_user',  to: 'users#new'
+  match '/users', to: 'users#index'
+  match '/edit_user', to: 'users#edit'
   
-  match '/registrar',  to: 'sessions#new'
-  match '/salir', to: 'sessions#destroy', via: :delete
+  match '/login',  to: 'sessions#new'
+  match '/logout', to: 'sessions#destroy', via: :delete
 
-  match '/reportes', to: 'problems#index'
-  match '/reportar', to: 'problems#new'
+  match '/reports', to: 'problems#index'
+  match '/report', to: 'problems#new'
 
-  match '/listas', to: 'lists#index'
-  match '/crear_lista', to: 'lists#new'
-  match '/ver_reportes', to: 'lists#show_problems'
+  match '/lists', to: 'lists#index'
+  match '/new_list', to: 'lists#new'
   
   root to: 'static_pages#home'
 
-  match '/ayuda',    to: 'static_pages#help'
-  match '/nosotros',   to: 'static_pages#about'
-  match '/contacto', to: 'static_pages#contact'
+  match '/help',    to: 'static_pages#help'
+  match '/about_us',   to: 'static_pages#about'
+  match '/contact_us', to: 'static_pages#contact'
 
   match "/problems/add_new_comment" => "problems#add_new_comment", :as => "add_new_comment_to_problems", :via => [:post]
   match "/problems/:id/delete_comment" => "problems#delete_comment", :as => "delete_comment_from_problems", :via => [:delete]

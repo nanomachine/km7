@@ -26,17 +26,17 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash[:success] = "Bienvenido a Km7!"
+      flash[:success] = "Welcome to Km7!"
       redirect_to @user
     else
-      flash.now[:error] = 'Credenciales incorrectos'
+      flash.now[:error] = 'Username or password is incorrect'
       render 'new'
     end
   end
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "Usuario borrado"
+    flash[:success] = "User deleted"
     redirect_to users_path
   end
 
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(params[:user])
-      flash[:success] = "Perfil actualizado"
+      flash[:success] = "Profile updated"
       sign_in @user
       redirect_to @user
     else
@@ -58,7 +58,7 @@ class UsersController < ApplicationController
     def signed_in_user
       unless signed_in?
         store_location
-        redirect_to registrar_path, notice: "Favor de registrarse."
+        redirect_to registrar_path, notice: "Please sign up."
       end
     end
 

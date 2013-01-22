@@ -26,7 +26,8 @@ class Problem < ActiveRecord::Base
                   :address => "address", :normalized_address => "address",
                   :msg => "We're sorry, not even google can find that address, please try again."
 
-	attr_accessible :user_id, :latitude, :longitude, :ptype, :description, :avatar, :address, :municipality, :status
+	attr_accessible :user_id, :latitude, :longitude, :ptype, :description, :avatar, :address, 
+	:municipality, :status, :priority
 	validates(:user_id, presence: true)
 	validates(:latitude, presence: true)
 	validates(:longitude, presence: true)
@@ -36,14 +37,14 @@ class Problem < ActiveRecord::Base
 	#Determine where to store image related to report, in production
 	#and in development mode
 	if Rails.env.production?
-  	has_attached_file :avatar, :styles => {:medium => "400x400#", :thumb => "100x100#"},
+  	has_attached_file :avatar, :styles => {:medium => "300x300#", :thumb => "100x100#"},
 					:path => ":rails_root/public/assets/problems/:id/:style/:basename.:extension",
                     :storage => :s3,
 					:url => "/assets/problems/:id/:style/:basename.:extension",  
 					:s3_credentials => "#{Rails.root}/config/s3.yml",
 					:bucket => "km7";
 	else
-  	has_attached_file :avatar, :styles => {:medium => "400x400#", :thumb => "100x100#"},
+  	has_attached_file :avatar, :styles => {:medium => "300x300#", :thumb => "100x100#"},
   					:path => ":rails_root/public/assets/problems/:id/:style/:basename.:extension",
 					:url => "/assets/problems/:id/:style/:basename.:extension";
 	end
@@ -68,7 +69,7 @@ class Problem < ActiveRecord::Base
     end
 
     def geocode?
-  		(!address.blank? && (latitude.blank? || longitude.blank?)) || address_changed?
+  		#(!address.blank? && (latitude.blank? || longitude.blank?)) || address_changed?
 	end
 
 	def get_prob_type
@@ -88,7 +89,7 @@ class Problem < ActiveRecord::Base
 	    when 7
 	       "Manhole cover"
 	    else
-	       "No problem type has been specified."
+	       "Type has not been specified."
 	    end
 	  end
 
@@ -101,7 +102,7 @@ class Problem < ActiveRecord::Base
 	    when 3
 	       "Resolved"
 	    else
-	       "No problem type has been specified."
+	       "Status has not been specified."
 	    end
 	  end
 

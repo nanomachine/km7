@@ -46,11 +46,6 @@ def new
     end
   end
 
-  #Sólo debería ver los reportes que él ha sometido?
-  def candidate_problems
-    Problem.find(:all)
-  end
-
   def add_problem
     list    = List.find(params[:id])
     problem = Problem.find(params[:problem_id])
@@ -75,10 +70,6 @@ def new
 
 
     redirect_to list 
-  end
-
-  def in_list?(problem)
-    problems.include?(problem)
   end
 
 
