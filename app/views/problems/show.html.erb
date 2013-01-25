@@ -16,9 +16,11 @@
      	<li>Report #<%= @problem.id %></li>
      	<li>Type: <%= @problem.get_prob_type %></li>
       <li>Status <%= @problem.get_prob_status %></li>
+      <li>Priority: <%= @problem.priority %></li>
      	<li>User: <%= User.find(@problem.user_id).name %></li>
      	<li>Latitud: <%= @problem.latitude %></li>
      	<li>Longitud: <%= @problem.longitude %></li>
+      <li>Address: <%= @problem.address %></li>
      	<li>Date Created: <%= @problem.created_at.strftime(" %b.%d %Y") %></li>
       <li>Description: <%= @problem.description %></li>
       <li>Comments:</li>
