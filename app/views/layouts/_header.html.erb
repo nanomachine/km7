@@ -11,37 +11,6 @@
             <li id= "fat-menu" class="dropdown">
                 <%= link_to "Dashboard", a_dashboard_path %>
             </li>
-          
-            <li id= "fat-menu" class="dropdown">
-              <a href="#" class="dropdown_toggle" data-toggle="dropdown">
-                Reports <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "View Reports", reports_path %></li>
-                <li><%= link_to "New Report", report_path %></li> 
-              </ul>
-            </li>
-            <li id= "fat-menu" class="dropdown">
-              <a href="#" class="dropdown_toggle" data-toggle="dropdown">
-                Lists <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "View Lists", lists_path %></li>
-                <li><%= link_to "New List", new_list_path %></li> 
-              </ul>
-            </li>
-            <% if current_user.admin? %>
-              <li id= "fat-menu" class="dropdown">
-                <a href="#" class="dropdown_toggle" data-toggle="dropdown">
-                  Users <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><%= link_to "View Users", users_path %></li>
-                  <li><%= link_to "New User", new_user_path %></li> 
-                </ul>
-              </li>
-            <% end %> 
-
             <li id= "fat-menu" class="dropdown">
               <a href="#" class="dropdown_toggle" data-toggle="dropdown">
                 My Account <b class="caret"></b>

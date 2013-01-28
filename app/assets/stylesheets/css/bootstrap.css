@@ -436,6 +436,7 @@ a:hover {
 .row-fluid .span10 {
   width: 82.97872340425532%;
   *width: 82.92553191489361%;
+  /*added because this container appeared too slim in terms of width*/
   width:100% !important;
 }
 
