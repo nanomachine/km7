@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	<!-- start: Meta -->
+	<meta charset="utf-8">
+	<title>Administrator Dashboard - Perfectum Bootstrap Admin Template</title>
+	<meta name="description" content="Perfectum Dashboard Bootstrap Admin Template.">
+	<meta name="author" content="Łukasz Holeczek">
+	<!-- end: Meta -->
+	
+	<!-- start: Mobile Specific -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- end: Mobile Specific -->
+	
+	<!-- start: CSS -->
+	<link id="bootstrap-style" href="css/bootstrap.css" rel="styleheets">
+	<link href="css/bootstrap-responsive.css" rel="styleheets">
+	<link id="base-style" href="css/style.css" rel="styleheets">
+	<link id="base-style-responsive" href="css/style-responsive.css" rel="styleheets">
+	
+	<!--[if lt IE 7 ]>
+	<link id="ie-style" href="css/style-ie.css" rel="stylesheet">
+	<![endif]-->
+	<!--[if IE 8 ]>
+	<link id="ie-style" href="css/style-ie.css" rel="stylesheet">
+	<![endif]-->
+	<!--[if IE 9 ]>
+	<![endif]-->
+	
+	<!-- end: CSS -->
+	
+
+	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	
+		
+		
+		
+</head>
+
+<body>	
+		<div class="container-fluid">
+		<div class="row-fluid">			
+			<noscript>
+				<div class="alert alert-block span10">
+					<h4 class="alert-heading">Warning!</h4>
+					<p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+				</div>
+			</noscript>
+			
+			<div id="content" class="span10">
+			<!-- start: Content -->
+			
+			
+			<hr>
+
+			<div class="sortable row-fluid">
+				
+				<a href="/users" class="quick-button span2">
+					<i class="fa-icon-group"></i>
+					<p>Users</p>
+					<span class="notification"><%= User.count %></span>
+				</a>
+				<a href="/problems" class="quick-button span2">
+					<i class="fa-icon-book"></i>
+					<p>Reports</p>
+					<span class="notification green"><%= Problem.count %></span>
+				</a>
+				<a href="/lists" class="quick-button span2">
+					<i class="fa-icon-th-list"></i>
+					<p>Lists</p>
+					<span class="notification red"><%= List.count %></span>
+
+				</a>
+				<a class="quick-button span2">
+					<i class="fa-icon-globe"></i>
+					<p>Map</p>
+				</a>
+				<a class="quick-button span2">
+					<i class="fa-icon-envelope"></i>
+					<p>Messages</p>
+				</a>
+				<a class="quick-button span2">
+					<i class="fa-icon-calendar"></i>
+					<p>Calendar</p>
+				</a>
+				
+			</div>
+
+			<hr>
+			
+			<div class="row-fluid">
+				
+				<div class="box span8" onTablet="span12" onDesktop="span8">
+					<div class="box-header">
+						<h2><i class="icon-signal"></i><span class="break"></span>Site Statistics</h2>
+						<div class="box-icon">
+							<a href="#" class="btn-setting"><i class="icon-wrench"></i></a>
+							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
+							<a href="#" class="btn-close"><i class="icon-remove"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+						<div id="stats-chart"  class="center" style="height:300px" ></div>
+					</div>
+				</div>
+				
+				<div class="box span4 noMargin" onTablet="span12" onDesktop="span4">
+					<div class="box-header">
+						<h2><i class="icon-list"></i><span class="break"></span>Weekly Stat</h2>
+						<div class="box-icon">
+							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
+							<a href="#" class="btn-close"><i class="icon-remove"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+						<div class="sparkLineStats">
+
+	                        <ul class="unstyled">
+	                            <li>
+									<span class="sparkLineStats1 "></span> 
+									Visits: 
+									<span class="number">356</span>
+								</li>
+	                            <li>
+	                                <span class="sparkLineStats2"></span>
+	                                Unique Visitors: 
+	                                <span class="number">252</span>
+	                            </li>
+	                            <li><span class="sparkLineStats3"></span> 
+	                                Pageviews: 
+	                                <span class="number">781</span>
+	                            </li>
+	                            <li><span class="sparkLineStats4"></span>
+	                                Pages / Visit: 
+	                                <span class="number">2,19</span>
+	                            </li>
+	                            <li><span class="sparkLineStats5"></span>
+	                                Avg. Visit Duration: 
+	                                <span class="number">00:02:58</span>
+	                            </li>
+	                            <li><span class="sparkLineStats6"></span>
+	                                Bounce Rate: <span class="number">59,83%</span>
+	                            </li>
+	                            <li><span class="sparkLineStats7"></span>
+	                                % New Visits: 
+	                                <span class="number">70,79%</span>
+	                            </li>
+	                            <li><span class="sparkLineStats8"></span>
+	                                % Returning Visitor: 
+	                                <span class="number">29,21%</span>
+	                            </li>
+
+	                        </ul>
+	
+	                    </div><!-- End .sparkStats -->
+					</div>
+				</div><!--/span-->
+				
+			</div>
+			
+			<hr>
+			
+
+			
+			<hr>
+		
+			
+			<hr>
+			
+			<div class="row-fluid">
+				
+				<a class="quick-button-small span1">
+					<i class="fa-icon-group"></i>
+					<p>Users</p>
+					<span class="notification">7</span>
+				</a>
+				<a class="quick-button-small span1">
+					<i class="fa-icon-comments-alt"></i>
+					<p>Comments</p>
+					<span class="notification green">4</span>
+				</a>
+				<a class="quick-button-small span1">
+					<i class="fa-icon-shopping-cart"></i>
+					<p>Orders</p>
+				</a>
+				<a class="quick-button-small span1">
+					<i class="fa-icon-barcode"></i>
+					<p>Products</p>
+				</a>
+				<a class="quick-button-small span1">
+					<i class="fa-icon-envelope"></i>
+					<p>Messages</p>
+				</a>
+				<a class="quick-button-small span1">
+					<i class="fa-icon-calendar"></i>
+					<p>Calendar</p>
+					<span class="notification red">8</span>
+				</a>
+				
+				<a class="quick-button-small span1 noMargin">
+					<i class="fa-icon-beaker"></i>
+					<p>Projects</p>
+				</a>
+				<a class="quick-button-small span1">
+					<i class="fa-icon-thumbs-up"></i>
+					<p>Likes</p>
+					<span class="notification green">+ 11</span>
+				</a>
+				<a class="quick-button-small span1">
+					<i class="fa-icon-heart-empty"></i>
+					<p>Favorites</p>
+				</a>
+				<a class="quick-button-small span1">
+					<i class="fa-icon-bullhorn"></i>
+					<p>Notifications</p>
+					<span class="notification yellow">7</span>
+				</a>
+				<a class="quick-button-small span1">
+					<i class="fa-icon-cogs"></i>
+					<p>Settings</p>
+				</a>
+				<a class="quick-button-small span1">
+					<i class="fa-icon-dashboard"></i>
+					<p>Dashboard</p>
+				</a>
+				
+			</div>	
+			
+			<hr>
+			
+			<div class="row-fluid">
+				
+				<div class="box span8" onTablet="span12" onDesktop="span8">
+					<div class="box-header">
+						<h2><i class="icon-calendar"></i><span class="break"></span>Calendar</h2>
+					</div>
+					<div class="box-content">
+						<div id="main_calendar" class="hidden-phone"></div>
+						<div id="main_calendar_phone" class="hidden-desktop hidden-tablet"></div>
+						<div class="clearfix"></div>
+					</div>	
+				</div><!--/span-->
+				
+				<div class="box span4 noMargin" onTablet="span12" onDesktop="span4">
+					<div class="box-header">
+						<h2><i class="icon-list"></i><span class="break"></span>Support tickets</h2>
+						<div class="box-icon">
+							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
+							<a href="#" class="btn-close"><i class="icon-remove"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+						<ul class="tickets">
+							<li class="ticket">
+								<a href="#">
+									<span class="header">
+										<span class="title">Server unavaible</span>
+										<span class="number">[ #199278 ]</span>
+									</span>	
+									<span class="content">
+										<!--span class="avatar"><img src="img/avatar6.jpg" alt="Avatar"--></span>
+										<span class="name">Ashley Tan</span>
+										<span class="priority blue">[ Low priority ]</span>
+										<span class="status">Status: <span class="green">[ Complete ]</span></span>
+										<span class="date">Jul 25, 2012 11:09</span>
+									</span>	                                                        
+								</a>
+							</li>
+						  	<li class="ticket">
+								<a href="#">
+									<span class="header">
+										<span class="title">Mobile App Problem</span>
+										<span class="number">[ #199277 ]</span>
+									</span>	
+									<span class="content">
+										<!--span class="avatar"><img src="img/avatar7.jpg" alt="Avatar"--></span>
+										<span class="name">Ann Kovalsky</span>
+										<span class="priority yellow">[ Normal priority ]</span>
+										<span class="status">Status: <span class="yellow">[ Pending ]</span></span>
+										<span class="date">Jul 25, 2012 11:09</span>
+									</span>	                                                        
+								</a>
+							</li>
+							<li class="ticket">
+								<a href="#">
+									<span class="header">
+										<span class="title">PayPal issue</span>
+										<span class="number">[ #199276 ]</span>
+									</span>	
+									<span class="content">
+										<!--span class="avatar"><img src="img/avatar8.jpg" alt="Avatar"--></span>
+										<span class="name">Chris Dan</span>
+										<span class="priority red">[ High priority ]</span>
+										<span class="status">Status: <span class="blue">[ In progress ]</span></span>
+										<span class="date">Jul 25, 2012 11:09</span>
+									</span>	                                                        
+								</a>
+							</li>
+							<li class="ticket">
+								<a href="#">
+									<span class="header">
+										<span class="title">IE7 problem</span>
+										<span class="number">[ #199275 ]</span>
+									</span>	
+									<span class="content">
+										<!--span class="avatar"><img src="img/avatar9.jpg" alt="Avatar"--></span>
+										<span class="name">John Grand</span>
+										<span class="priority blue">[ Low priority ]</span>
+										<span class="status">Status: <span class="red">[ Rejected ]</span></span>
+										<span class="date">Jul 25, 2012 11:09</span>
+									</span>	                                                        
+								</a>
+							</li>
+							<li class="ticket">
+								<a href="#">
+									<span class="header">
+										<span class="title">Server unavaible</span>
+										<span class="number">[ #199274 ]</span>
+									</span>	
+									<span class="content">
+										<!--span class="avatar"><img src="img/avatar2.jpg" alt="Avatar"--></span>
+										<span class="name">Agnes Young</span>
+										<span class="priority blue">[ Low priority ]</span>
+										<span class="status">Status: <span class="green">[ Complete ]</span></span>
+										<span class="date">Jul 25, 2012 11:09</span>
+									</span>	                                                        
+								</a>
+							</li>
+						  	<li class="ticket">
+								<a href="#">
+									<span class="header">
+										<span class="title">Mobile App Problem</span>
+										<span class="number">[ #199273 ]</span>
+									</span>	
+									<span class="content">
+										<!--span class="avatar"><img src="img/avatar3.jpg" alt="Avatar"--></span>
+										<span class="name">Melanie Brown</span>
+										<span class="priority yellow">[ Normal priority ]</span>
+										<span class="status">Status: <span class="yellow">[ Pending ]</span></span>
+										<span class="date">Jul 25, 2012 11:09</span>
+									</span>	                                                        
+								</a>
+							</li>
+							<li class="ticket">
+								<a href="#">
+									<span class="header">
+										<span class="title">PayPal issue</span>
+										<span class="number">[ #199272 ]</span>
+									</span>	
+									<span class="content">
+										<!--span class="avatar"><img src="img/avatar4.jpg" alt="Avatar"--></span>
+										<span class="name">Patricia Doyle</span>
+										<span class="priority red">[ High priority ]</span>
+										<span class="status">Status: <span class="blue">[ In progress ]</span></span>
+										<span class="date">Jul 25, 2012 11:09</span>
+									</span>	                                                        
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div><!--/span-->
+			
+			</div>
+				
+			<hr>
+
+			<div class="row-fluid">	
+				
+				<div class="box span4" onTablet="span6" onDesktop="span4">
+					<div class="box-header">
+						<h2><i class="icon-list"></i><span class="break"></span>Weekly Stat</h2>
+						<div class="box-icon">
+							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
+							<a href="#" class="btn-close"><i class="icon-remove"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+						<ul class="dashboard-list">
+							<li>
+								<a href="#">
+									<i class="fa-icon-arrow-up green"></i>                               
+									<span class="green">92</span>
+									New Comments                                    
+								</a>
+							</li>
+						  <li>
+							<a href="#">
+							  <i class="fa-icon-arrow-down red"></i>
+							  <span class="red">15</span>
+							  New Registrations
+							</a>
+						  </li>
+						  <li>
+							<a href="#">
+							  <i class="fa-icon-minus blue"></i>
+							  <span class="blue">36</span>
+							  New Articles                                    
+							</a>
+						  </li>
+						  <li>
+							<a href="#">
+							  <i class="fa-icon-comment yellow"></i>
+							  <span class="yellow">45</span>
+							  User reviews                                    
+							</a>
+						  </li>
+						  <li>
+							<a href="#">
+							  <i class="fa-icon-arrow-up green"></i>                               
+							  <span class="green">112</span>
+							  New Comments                                    
+							</a>
+						  </li>
+						  <li>
+							<a href="#">
+							  <i class="fa-icon-arrow-down red"></i>
+							  <span class="red">31</span>
+							  New Registrations
+							</a>
+						  </li>
+						  <li>
+							<a href="#">
+							  <i class="fa-icon-minus blue"></i>
+							  <span class="blue">93</span>
+							  New Articles                                    
+							</a>
+						  </li>
+						  <li>
+							<a href="#">
+							  <i class="fa-icon-comment yellow"></i>
+							  <span class="yellow">254</span>
+							  User reviews                                    
+							</a>
+						  </li>
+						</ul>
+					</div>
+				</div><!--/span-->
+				
+				<div class="box span4" onTablet="span6" onDesktop="span4">
+					<div class="box-header">
+						<h2><i class="icon-user"></i><span class="break"></span>Last Users</h2>
+						<div class="box-icon">
+							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
+							<a href="#" class="btn-close"><i class="icon-remove"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+						<ul class="dashboard-list">
+							<li>
+								<a href="#">
+									<!--img class="avatar" alt="Lucas" src="img/avatar.jpg" -->
+								</a>
+								<strong>Name:</strong> <a href="#">Łukasz Holeczek</a><br>
+								<strong>Since:</strong> Jul 25, 2012 11:09<br>
+								<strong>Status:</strong> <span class="label label-success">Approved</span>                                  
+							</li>
+							<li>
+								<a href="#">
+									<!--img class="avatar" alt="Bill" src="img/avatar9.jpg" -->
+								</a>
+								<strong>Name:</strong> <a href="#">Bill Cole</a><br>
+								<strong>Since:</strong> Jul 25, 2012 11:09<br>
+								<strong>Status:</strong> <span class="label label-warning">Pending</span>                                 
+							</li>
+							<li>
+								<a href="#">
+									<!--img class="avatar" alt="Jane" src="img/avatar5.jpg" -->
+								</a>
+								<strong>Name:</strong> <a href="#">Jane Sanchez</a><br>
+								<strong>Since:</strong> Jul 25, 2012 11:09<br>
+								<strong>Status:</strong> <span class="label label-important">Banned</span>                                  
+							</li>
+							<li>
+								<a href="#">
+									<!--img class="avatar" alt="Kate" src="img/avatar6.jpg" -->
+								</a>
+								<strong>Name:</strong> <a href="#">Kate Presley</a><br>
+								<strong>Since:</strong> Jul 25, 2012 11:09<br>
+								<strong>Status:</strong> <span class="label label-info">Updates</span>                                  
+							</li>
+						</ul>
+					</div>
+				</div><!--/span-->
+				
+				<div class="box span4 noMargin" onTablet="span12" onDesktop="span4">
+					<div class="box-header">
+						<h2><i class="icon-comment"></i><span class="break"></span>Chats</h2>
+						<div class="box-icon">
+							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
+							<a href="#" class="btn-close"><i class="icon-remove"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+						<ul class="chat">
+							<li class="left">
+								<!--img class="avatar" alt="Lucas" src="img/avatar.jpg" -->
+								<span class="message"><span class="arrow"></span>
+									<span class="from">Łukasz Holeczek</span>
+									<span class="time">Jul 25, 2012 11:09</span>
+									<span class="text">
+										Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+									</span>
+								</span>	                                  
+							</li>
+							<li class="right">
+								<!--img class="avatar" alt="Lucas" src="img/avatar.jpg" -->
+								<span class="message"><span class="arrow"></span>
+									<span class="from">Łukasz Holeczek</span>
+									<span class="time">Jul 25, 2012 11:08</span>
+									<span class="text">
+										Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+									</span>
+								</span>                                  
+							</li>
+							<li class="left">
+								<!--img class="avatar" alt="Lucas" src="img/avatar.jpg" -->
+								<span class="message"><span class="arrow"></span>
+									<span class="from">Łukasz Holeczek</span>
+									<span class="time">Jul 25, 2012 11:07</span>
+									<span class="text">
+										Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+									</span>
+								</span>	                                  
+							</li>
+							<li class="right">
+								<!--img class="avatar" alt="Lucas" src="img/avatar.jpg" -->
+								<span class="message"><span class="arrow"></span>
+									<span class="from">Łukasz Holeczek</span>
+									<span class="time">Jul 25, 2012 11:06</span>
+									<span class="text">
+										Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+									</span>
+								</span>	                                  
+							</li>
+						</ul>
+						<div class="chat-form">
+							<textarea></textarea>
+							<button class="btn btn-info">Send message</button>
+						</div>	
+					</div>
+				</div><!--/span-->
+						
+			</div>
+			
+       
+					<hr>
+			<!-- end: Content -->
+			</div><!--/#content.span10-->
+				</div><!--/fluid-row-->
+				
+		<div class="modal hide fade" id="myModal">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">×</button>
+				<h3>Settings</h3>
+			</div>
+			<div class="modal-body">
+				<p>Here settings can be configured...</p>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn" data-dismiss="modal">Close</a>
+				<a href="#" class="btn btn-primary">Save changes</a>
+			</div>
+		</div>
+		
+		<div class="clearfix"></div>
+		
+		<footer>
+			<p>
+				<span style="text-align:left;float:left">&copy; <a href="http://clabs.co" target="_blank">creativeLabs</a> 2012</span>
+				<span style="text-align:right;float:right">Powered by: <a href="#">Perfectum Dashboard</a></span>
+			</p>
+
+		</footer>
+				
+	</div><!--/.fluid-container-->
+
+	<!-- start: JavaScript-->
+
+		<script src="assets/js/jquery-1.7.2.min.js"></script>
+
+		<script src="assets/js/jquery-ui-1.8.21.custom.min.js"></script>
+	
+		<script src="assets/js/bootstrap.js"></script>
+	
+		<script src="assets/js/jquery.cookie.js"></script>
+	
+		<script src='assets/js/fullcalendar.min.js'></script>
+	
+		<script src='assets/js/jquery.dataTables.min.js'></script>
+
+		<script src="assets/js/excanvas.js"></script>
+
+		<script src="assets/js/jquery.flot.min.js"></script>
+
+		<script src="assets/js/jquery.flot.pie.min.js"></script>
+
+		<script src="assets/js/jquery.flot.stack.js"></script>
+
+		<script src="assets/js/jquery.flot.resize.min.js"></script>
+	
+		<script src="assets/js/jquery.chosen.min.js"></script>
+	
+		<script src="assets/js/jquery.uniform.min.js"></script>
+		
+		<script src="assets/js/jquery.cleditor.min.js"></script>
+	
+		<script src="assets/js/jquery.noty.js"></script>
+	
+		<script src="assets/js/jquery.elfinder.min.js"></script>
+	
+		<script src="assets/js/jquery.raty.min.js"></script>
+	
+		<script src="assets/js/jquery.iphone.toggle.js"></script>
+	
+		<script src="assets/js/jquery.uploadify-3.1.min.js"></script>
+	
+		<script src="assets/js/jquery.gritter.min.js"></script>
+	
+		<script src="assets/js/jquery.imagesloaded.js"></script>
+	
+		<script src="assets/js/jquery.masonry.min.js"></script>
+	
+		<script src="assets/js/jquery.knob.js"></script>
+	
+		<script src="assets/js/jquery.sparkline.min.js"></script>
+
+		<script src="assets/js/custom.js"></script>
+
+		<script type="text/javascript">	
+
+	function message_welcome1(){
+		var unique_id = $.gritter.add({
+			// (string | mandatory) the heading of the notification
+			title: 'Welcome on Perfectum Dashboard',
+			// (string | mandatory) the text inside the notification
+			text: 'I hope you like this template',
+			// (string | optional) the image to display on the left
+			//image: 'img/avatar.jpg',
+			// (bool | optional) if you want it to fade out on its own or just sit there
+			sticky: false,
+			// (int | optional) the time you want it to be alive for before fading out
+			time: '',
+			// (string | optional) the class name you want to apply to that specific message
+			class_name: 'my-sticky-class'
+		});
+	}
+	
+	function message_welcome2(){
+		var unique_id = $.gritter.add({
+			// (string | mandatory) the heading of the notification
+			title: 'Perfectum is Amazing Theme',
+			// (string | mandatory) the text inside the notification
+			text: 'Perfectum works on all devices, computers, tablets and smartphones. Perfectum has lots of great features. Try It!',
+			// (string | optional) the image to display on the left
+			//image: 'img/avatar.jpg',
+			// (bool | optional) if you want it to fade out on its own or just sit there
+			sticky: false,
+			// (int | optional) the time you want it to be alive for before fading out
+			time: '',
+			// (string | optional) the class name you want to apply to that specific message
+			class_name: 'my-sticky-class'
+		});
+	}
+	
+	function message_welcome3(){
+		var unique_id = $.gritter.add({
+			// (string | mandatory) the heading of the notification
+			title: 'Buy Perfectum!',
+			// (string | mandatory) the text inside the notification
+			text: 'This great template can be yours today.',
+			// (string | optional) the image to display on the left
+			//image: 'img/avatar.jpg',
+			// (bool | optional) if you want it to fade out on its own or just sit there
+			sticky: false,
+			// (int | optional) the time you want it to be alive for before fading out
+			time: '',
+			// (string | optional) the class name you want to apply to that specific message
+			class_name: 'gritter-light'
+		});
+	}
+	
+	/*
+	$(document).ready(function(){
+		
+		setTimeout("message_welcome1()",5000);
+		setTimeout("message_welcome2()",10000);	
+		setTimeout("message_welcome3()",15000);
+		
+	});			
+	*/
+	</script>
+		<!-- end: JavaScript-->
+	
+</body>
+</html>
