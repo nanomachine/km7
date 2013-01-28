@@ -30,6 +30,7 @@ end
   match '/help',    to: 'static_pages#help'
   match '/about_us',   to: 'static_pages#about'
   match '/contact_us', to: 'static_pages#contact'
+  match '/a_dashboard', to: 'static_pages#admin_dashboard'
 
   match "/problems/add_new_comment" => "problems#add_new_comment", :as => "add_new_comment_to_problems", :via => [:post]
   match "/problems/:id/delete_comment" => "problems#delete_comment", :as => "delete_comment_from_problems", :via => [:delete]

@@ -7,6 +7,10 @@
           <li><%= link_to "Home",    root_path %></li>
 
           <% if signed_in? %>
+
+            <li id= "fat-menu" class="dropdown">
+                <%= link_to "Dashboard", a_dashboard_path %>
+            </li>
           
             <li id= "fat-menu" class="dropdown">
               <a href="#" class="dropdown_toggle" data-toggle="dropdown">
