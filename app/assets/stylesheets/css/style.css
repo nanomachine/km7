@@ -1687,8 +1687,10 @@ input[type="file"],
 .login-box .add-on {
 	border: 1px solid #eee !important;
 	background: #fff;
-	margin-left: -10px;
-	padding: 10px;
+	margin-left: 70px;
+	/*Added important to align login box icon*/
+	padding: 10px !important;
+	height: 20px !important;
 }
 
 .login-box .add-on i{
@@ -1703,7 +1705,11 @@ input[type="file"],
 	-webkit-box-shadow: none;
        -moz-box-shadow: none;
           	box-shadow: none;
-	height: 42px !important;		
+	height: 42px !important;
+	/*added to fix field width from spanning the whole box*/	
+	width: auto !important;	
+	/*added to align distance between input field and icon*/
+	margin-left:-70px !important;
 }
 
 .login-box .remember {

@@ -104,7 +104,20 @@ class Problem < ActiveRecord::Base
 	    else
 	       "Status has not been specified."
 	    end
-	  end
+	end
+
+	def get_prob_priority
+		case self.priority
+		when 1
+	       "Low Priority"
+	    when 2
+	       "Standard Priority"
+	    when 3
+	       "High Priority"
+	    else
+	       "Unspecified"
+	    end
+	end
 
 
 end
