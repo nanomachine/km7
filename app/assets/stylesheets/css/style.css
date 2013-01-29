@@ -365,7 +365,7 @@ h6 {
 
 .box-header .box-icon {
 	float:right;
-	margin-top: 1px;
+	margin-top: -4px;
 }
 
 .box-header .box-icon i {

@@ -1,12 +1,60 @@
 <% provide(:title, 'Users') %>
-<h1>All Users</h1>
 
-<%= will_paginate %>
+<div class="row-fluid sortable">		
+	<div class="box span12">
+		<div class="box-header" data-original-title>
+			<h2><i class="icon-user"></i><span class="break"></span>Users</h2>
 
-<ul class="users">
-	<% @users.each do |user| %>
-		<%= render user %>
-	<% end %>
-</ul>
+			<div class="box-icon">
+				<%= link_to new_user_path, class: 'btn' do %>
+					<i class="icon-plus"></i> New User
+				<% end %>
+			</div>
+		</div>
+		<div class="box-content">
+			<table class="table table-striped table-bordered bootstrap-datatable datatable">
+			  <thead>
+				  <tr>
+				  	  <th>Picture</th>
+					  <th>Name</th>
+					  <th>Email</th>
+					  <th>Municipality</th>
+					  <th>Telephone</th>
+					  <th>Date registered</th>
+					  <th>Role</th>
+					  <th>Actions</th>
+				  </tr>
+			  </thead>   
+			  <tbody>
+			  	<% @users.each do |user| %>
+					<tr>
+						<td><%= image_tag user.avatar.url(:thumb) %></td>
+						<td><%= user.name %></td>
+						<td><%= user.email %></td>
+						<td><%= user.municipality %></td>
+						<td><%= user.telnum %></td>
+						<td class="center"><%= user.created_at.strftime(" %b.%d %Y") %></td>
+						<td class="center">
+							<% if user.admin? %>
+								Administrator
+							<% else %>
+								Reporter
+							<% end %>
+						</td>
+<!--Action buttons for user index table, Delete and More Info -->
+						<td class="center">
+							<%= link_to user, class: 'btn btn-info' do %>
+								<i class="icon-zoom-in icon-white"></i> 
+							<% end %>
+							<%= link_to user, method: :delete, data: { confirm: "Delete this user?" }, class: 'btn btn-danger' do %>
+								<i class="icon-trash icon-white"></i> 
+							<% end %>
+						</td>
+					</tr>
+				<% end %>
+			  </tbody>
+		  </table>            
+		</div>
+	</div><!--/span-->
 
-<%= will_paginate %>
+</div><!--/row-->
