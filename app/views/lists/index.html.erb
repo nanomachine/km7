@@ -3,7 +3,7 @@
 
 <%= will_paginate %>
 
-<%= link_to 'New List',  crear_lista_path %>
+<%= link_to 'New List',  new_list_path %>
 
 <ul class="users">
 	<% @lists.each do |list| %>
@@ -22,4 +22,4 @@
     <%= link_to "Reports", problems_path %>
 </ul>
 
-<%= will_paginate %>``
+<%= will_paginate %>

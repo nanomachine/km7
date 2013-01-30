@@ -1,4 +1,6 @@
 Km7::Application.configure do
+
+  $stdout.sync = true
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -35,7 +37,7 @@ Km7::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.serve_static_assets = true
+  #config.serve_static_assets = true
 
   Paperclip.options[:command_path] = "C:/ImageMagick"
 
