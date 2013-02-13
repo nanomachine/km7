@@ -11,6 +11,7 @@ gem 'aws-sdk'
 gem 'gmaps4rails'
 gem 'cocaine', '0.3.2' 
 gem 'acts_as_commentable_with_threading'
+gem 'thin'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

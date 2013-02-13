@@ -19,7 +19,8 @@ Km7::Application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   # Print deprecation notices to the Rails logger
-  config.active_support.deprecation = :log
+  config.active_support.deprecation = :notify
+
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
@@ -38,6 +39,7 @@ Km7::Application.configure do
   config.assets.debug = true
 
   #config.serve_static_assets = true
+
 
   Paperclip.options[:command_path] = "C:/ImageMagick"
 
