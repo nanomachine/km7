@@ -51,6 +51,7 @@ module Km7
     # config.active_record.whitelist_attributes = true
 
     # Enable the asset pipeline
+    config.assets.initialize_on_precompile = false
     config.assets.enabled = true
 
     #config.assets.precompile += ['gmaps4rails.css']
