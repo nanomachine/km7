@@ -1,22 +1,27 @@
-<%= render 'shared/error_messages' %>
+	<%= render 'shared/error_messages' %>
 
-<%= f.label :name, "Name" %>
-<%= f.text_field :name %>
+	<%= f.label :name, "Name" %>
+	<%= f.text_field :name %>
 
-<%= f.label :email, "Email" %>
-<%= f.text_field :email %>
+	<%= f.label :email, "Email" %>
+	<%= f.text_field :email %>
 
-<%= f.label :telnum, "Telephone" %>
-<%= f.text_field :telnum %>
+	<%= f.label :telnum, "Telephone" %>
+	<%= f.text_field :telnum %>
 
-<%= f.label :municipality, "Municipality" %>
-<%= f.text_field :municipality %>
+	<%= f.label :municipality, "Municipality" %>
+	<%= f.text_field :municipality %>
 
-<%= f.label :password, "Password" %>
-<%= f.password_field :password %>
+	<%= f.label :password, "Password" %>
+	<%= f.password_field :password %>
 
-<%= f.label :password_confirmation, "Confirm" %>
-<%= f.password_field :password_confirmation %>
+	<%= f.label :password_confirmation, "Confirm" %>
+	<%= f.password_field :password_confirmation %>
 
-<%= f.check_box(:admin) %>
-<%= f.label(:admin, "Administrator?")%>
+	<%= f.label(:avatar, "Avatar")%>
+	<%= f.file_field :avatar %>
+
+	<%= f.label(:admin, "Administrator?")%>
+	<%= f.check_box(:admin) %>
+
+	<%= f.submit "Create User", class: "btn btn-large btn-success" %>
