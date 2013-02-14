@@ -167,7 +167,8 @@ aside {
       font-size: 1.6em;
       text-align: left;
       letter-spacing: -1px;
-      margin-bottom: 3px;
+      /*removed to fix footer position in profile view*/
+      /*margin-bottom: 3px;*/
     }
   }
 }
