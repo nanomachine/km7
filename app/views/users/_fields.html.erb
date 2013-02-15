@@ -1,26 +1,81 @@
+<fieldset>
 	<%= render 'shared/error_messages' %>
 
-	<%= f.label :name, "Name" %>
-	<%= f.text_field :name %>
+	<div class="control-group">
+		<label class="control-label" for="focusedInput">Full Name</label>
+			<div class="controls">
+				<div class="input-xlarge focused" id="focusedInput" type="text">
+					<%= f.text_field :name %>
+				</div>
+			</div>
+	</div>
 
-	<%= f.label :email, "Email" %>
-	<%= f.text_field :email %>
 
-	<%= f.label :telnum, "Telephone" %>
-	<%= f.text_field :telnum %>
+	<div class="control-group">
+		<label class="control-label" for="focusedInput">Email</label>
+			<div class="controls">
+				<div class="input-xlarge focused" id="focusedInput" type="text">
+					<%= f.text_field :email %>
+				</div>
+			</div>
+	</div>
 
-	<%= f.label :municipality, "Municipality" %>
-	<%= f.text_field :municipality %>
+	<div class="control-group">
+		<label class="control-label" for="focusedInput">Telephone</label>
+			<div class="controls">
+				<div class="input-xlarge focused" id="focusedInput" type="text">
+					<%= f.text_field :telnum %>
+				</div>
+			</div>
+	</div>
 
-	<%= f.label :password, "Password" %>
-	<%= f.password_field :password %>
+	<div class="control-group">
+		<label class="control-label" for="focusedInput">Municipality</label>
+			<div class="controls">
+				<div class="input-xlarge focused" id="focusedInput" type="text">
+					<%= f.text_field :municipality %>
+				</div>
+			</div>
+	</div>
 
-	<%= f.label :password_confirmation, "Confirm" %>
-	<%= f.password_field :password_confirmation %>
-	<%= f.label(:avatar, "Avatar")%>
-	<%= f.file_field :avatar %>
+	<div class="control-group">
+		<label class="control-label" for="focusedInput">Password</label>
+			<div class="controls">
+				<div class="input-xlarge focused" id="focusedInput" type="text">
+					<%= f.password_field :password %>
+				</div>
+			</div>
+	</div>
 
-	<%= f.label(:admin, "Administrator?")%>
-	<%= f.check_box(:admin) %>
+	<div class="control-group">
+		<label class="control-label" for="focusedInput">Confirm Password</label>
+			<div class="controls">
+				<div class="input-xlarge focused" id="focusedInput" type="text">
+					<%= f.password_field :password_confirmation %>
+				</div>
+			</div>
+	</div>
 
-	<%= f.submit "Create User", class: "btn btn-large btn-success" %>
+	<div class="control-group">
+		<label class="control-label" for="focusedInput">Upload Avatar</label>
+			<div class="controls">
+				<div class="input-xlarge focused" id="focusedInput" type="text">
+					<%= f.file_field :avatar %>
+				</div>
+			</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="focusedInput">Administrator?</label>
+			<div class="controls">
+				<div class="input-xlarge focused" id="focusedInput" type="text">
+					<%= f.check_box(:admin) %>
+				</div>
+			</div>
+	</div>
+
+	<div class="form-actions">
+		<%= f.submit "Create", class: "btn btn-large btn-success" %>
+	</div>
+
+</fieldset>

@@ -32,17 +32,18 @@
 				<h2>Login to your account</h2>
 					<%= form_for(:session, url: sessions_path, :html => {:class => "form-horizontal"}) do |f| %>
 						    <div class="input-prepend" title="Username">
-							<span class="add-on"><i class="icon-user"></i></span>
-					    	<%= f.text_field :email, :placeholder => "type username" %>
-					    </div>
-						    <div class="clearfix"></div>
+								<span class="add-on"><i class="icon-user"></i></span>
+					    		<%= f.text_field :email, :placeholder => "type username" %>
+					   		 </div>
 						    <div class="input-prepend" title="Password">
-							<span class="add-on"><i class="icon-lock"></i></span>
-					    	<%= f.password_field :password, :placeholder => "type password" %>
-					    </div>
-						    <div class="button-login">	
-						<%= f.submit "Login", class: "btn btn-primary" %>
-						</div>
+								<span class="add-on"><i class="icon-lock"></i></span>
+					    		<%= f.password_field :password, :placeholder => "type password" %>
+					    	</div>
+					    	<label class="remember" for="remember"><input type="checkbox" id="remember" />Remember me</label>
+
+							<div class="button-login">	
+								<%= f.submit "Login", class: 'btn btn-large btn-success'%>
+							</div>
 						<div class="clearfix"></div>
 					<% end %>
 					<hr>
