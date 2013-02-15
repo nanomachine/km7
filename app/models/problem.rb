@@ -27,7 +27,9 @@ class Problem < ActiveRecord::Base
                   :msg => "We're sorry, not even google can find that address, please try again."
 
 	attr_accessible :user_id, :latitude, :longitude, :ptype, :description, :avatar, :address, 
-	:municipality, :status, :priority
+	:municipality, :status, :priority, :c_name, :c_telnum, :c_email
+
+	#The following must be present for the report to be worth anything
 	validates(:user_id, presence: true)
 	validates(:latitude, presence: true)
 	validates(:longitude, presence: true)
@@ -49,6 +51,7 @@ class Problem < ActiveRecord::Base
 					:url => "/assets/problems/:id/:style/:basename.:extension";
 	end
 
+	#Make sure the image attachments are submitted
 	validates_attachment_presence :avatar
 	validates_attachment_size :avatar, :less_than => 5.megabytes
 	validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
@@ -71,6 +74,8 @@ class Problem < ActiveRecord::Base
     def geocode?
   		#(!address.blank? && (latitude.blank? || longitude.blank?)) || address_changed?
 	end
+
+# Helper methods to map integer properties to string values for UI purposes
 
 	def get_prob_type
 	    case self.ptype

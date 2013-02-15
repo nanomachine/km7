@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
     validates :password, presence: true, length: { minimum: 6 }
     validates :password_confirmation, presence: true
 
+# Where to store the user avatar depending on the environment
   if Rails.env.production?
     has_attached_file :avatar, :styles => {:medium => "300x300#", :thumb => "100x100#"},
           :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension",
@@ -41,12 +42,11 @@ class User < ActiveRecord::Base
             :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension",
           :url => "/assets/users/:id/:style/:basename.:extension";
   end
-
   validates_attachment_presence :avatar
   validates_attachment_size :avatar, :less_than => 5.megabytes
   validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
 
-
+# Make sure email is downcased and store the session's remember token.
 	before_save { self.email.downcase! } 
 	before_save :create_remember_token
 
