@@ -1651,7 +1651,7 @@ input[type="file"],
 
 .login-box h2 {
 	color: #646464;
-	/*margin-left: 30px; center top login message*/
+	margin-left: 30px;
 	font-family: monaco;
 	font-weight: normal;
 }
@@ -1671,7 +1671,8 @@ input[type="file"],
 .login-box .input-prepend {
 	background: #fff;
 	width: 100%;
-	text-align: center;
+	/*Removed to fix input field position*/
+	/*text-align: center;*/
 	padding: 15px 0px;
 	border-left: 3px solid #fff;
 }
@@ -1687,10 +1688,12 @@ input[type="file"],
 .login-box .add-on {
 	border: 1px solid #eee !important;
 	background: #fff;
-	margin-left: 70px;
-	/*Added important to align login box icon*/
+	margin-left: 10px;
+	margin-right: -10px;
+	padding: 10px;
+	/*Added important to align login box icon
 	padding: 10px !important;
-	height: 20px !important;
+	height: 20px !important;*/
 }
 
 .login-box .add-on i{
@@ -1707,9 +1710,9 @@ input[type="file"],
           	box-shadow: none;
 	height: 42px !important;
 	/*added to fix field width from spanning the whole box*/	
-	width: auto !important;	
+	/*width: auto !important;*/
 	/*added to align distance between input field and icon*/
-	margin-left:-70px !important;
+	/*margin-left:-70px !important;*/
 }
 
 .login-box .remember {

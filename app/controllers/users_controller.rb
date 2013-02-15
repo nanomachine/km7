@@ -58,7 +58,7 @@ class UsersController < ApplicationController
     def signed_in_user
       unless signed_in?
         store_location
-        redirect_to registrar_path, notice: "Please sign up."
+        redirect_to new_user_path, notice: "Please sign up."
       end
     end
 

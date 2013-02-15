@@ -18,13 +18,6 @@
 	<!--[if lt IE 9]>
 	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-
-	
-			<!--img/bg-login.jpg
-		-->
-	<style type="text/css">
-		body { background: url() !important; }
-	</style>
 </head>
 
 <body>
@@ -32,8 +25,9 @@
 		<div class="row-fluid">	
 			<div class="login-box">
 				<div class="icons">
-					<a href="index.html"><i class="icon-home"></i></a>
-					<a href="#"><i class="icon-cog"></i></a>
+					<%= link_to root_path do %>
+						<i class="icon-home"></i>
+					<% end %>
 				</div>
 				<h2>Login to your account</h2>
 					<%= form_for(:session, url: sessions_path, :html => {:class => "form-horizontal"}) do |f| %>
