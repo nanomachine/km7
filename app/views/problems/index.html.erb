@@ -1,9 +1,11 @@
 <% provide(:title, 'Reports') %>
-<h1>All Reports</h1> 
-
 <body>
 	<div class="row-fluid">
 		<div class="box span8" onTablet="span12" onDesktop="span8">
+			<div class="box-header">
+				<h2><i class="icon-file"></i><span class="break"></span>Reports Map</h2>
+
+			</div>
 			<div class="box-content">
 				<%= gmaps4rails(@json) %>  
 			</div>
@@ -14,10 +16,6 @@
 		<div class="box span4 noMargin" onTablet="span12" onDesktop="span4">
 			<div class="box-header">
 				<h2><i class="icon-list"></i><span class="break"></span>Report tickets</h2>
-				<div class="box-icon">
-					<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
-					<a href="#" class="btn-close"><i class="icon-remove"></i></a>
-				</div>
 			</div>
 			<div class="box-content">
 				<ul class="tickets">

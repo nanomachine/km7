@@ -1670,7 +1670,7 @@ input[type="file"],
 
 .login-box .input-prepend {
 	background: #fff;
-	width: 100%;
+	width: 86%;
 	/*Removed to fix input field position*/
 	/*text-align: center;*/
 	padding: 15px 0px;
