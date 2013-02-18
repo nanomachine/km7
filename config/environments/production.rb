@@ -15,7 +15,7 @@ Km7::Application.configure do
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = false
+  config.assets.compile = true
 
   #config.assets.paths << "#{Gmaps4rails::Engine.config.root}/public/stylesheets"
   #config.assets.precompile << "gmaps4rails.css"
@@ -64,7 +64,6 @@ Km7::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :stderr
 
-  config.assets.precompile = true
 
   config.assets.precompile += %w( *.css *.js )
 
