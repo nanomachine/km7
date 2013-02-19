@@ -407,6 +407,11 @@ h6 {
   	padding-left: 20px;
 	/*background: url(../../img/dbg.jpg);*/
 	background-image: -webkit-linear-gradient(top, #075a03, #00940b);
+	background-image: -moz-linear-gradient(top left, #075A03 0%, #00940B 100%);
+	background-image: -o-linear-gradient(top left, #075A03 0%, #00940B 100%);
+	background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, #075A03), color-stop(1, #00940B));
+	background-image: -ms-linear-gradient(top left, #075A03 0%, #00940B 100%);
+
 	border-left: 0px solid #0a0c0e;
 	border-right: 0px solid #0a0c0e;
 	border-top: 1px solid #0a0c0e;
