@@ -15,7 +15,8 @@
 			  <thead>
 				  <tr>
 				  	  <th>Picture</th>
-					  <th>Name</th>
+					  <th>First Name</th>
+					  <th>Last Name</th>			  
 					  <th>Email</th>
 					  <th>Municipality</th>
 					  <th>Telephone</th>
@@ -29,6 +30,7 @@
 					<tr>
 						<td><%= image_tag user.avatar.url(:thumb) %></td>
 						<td><%= user.name %></td>
+						<td><%= user.last_name %></td>
 						<td><%= user.email %></td>
 						<td><%= user.municipality %></td>
 						<td><%= user.telnum %></td>
@@ -36,6 +38,8 @@
 						<td class="center">
 							<% if user.admin? %>
 								Administrator
+							<% elsif user.sub_admin?%>
+								Sub-Administrator
 							<% else %>
 								Reporter
 							<% end %>
@@ -45,8 +49,11 @@
 							<%= link_to user, class: 'btn btn-info' do %>
 								<i class="icon-zoom-in icon-white"></i> 
 							<% end %>
-							<%= link_to user, method: :delete, data: { confirm: "Delete this user?" }, class: 'btn btn-danger' do %>
-								<i class="icon-trash icon-white"></i> 
+<!-- If current user is admin and is NOT the user to be listed -->
+							<% if current_user.admin? && !current_user?(user) %>
+								<%= link_to user, method: :delete, data: { confirm: "Delete this user?" }, class: 'btn btn-danger' do %>
+									<i class="icon-trash icon-white"></i> 
+								<% end %>
 							<% end %>
 						</td>
 					</tr>

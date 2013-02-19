@@ -1,8 +1,0 @@
-<li>
-  <%= image_tag user.avatar.url(:thumb) %>
-  <%= link_to user.name, user %>
-  	  <!-- If current user is admin and is NOT the user to be listed -->
-  <% if current_user.admin? && !current_user?(user) %>
-   	| <%= link_to "Delete", user, method: :delete, data: { confirm: "Are you sure?" } %>
-   	<% end %> 
-</li>

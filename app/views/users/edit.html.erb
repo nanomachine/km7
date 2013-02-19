@@ -1,12 +1,13 @@
-<% provide(:title, 'Edit User') %> 
-<h1>Update your profile</h1>
-
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
-      <%= render 'fields', f: f %>
-      <%= f.file_field :avatar %>
-      <%= f.submit "Save", class: "btn btn-large btn-primary" %>
-    <% end %>
-  </div>
-</div>
+<% provide(:title, 'Edit Profile') %>
+<div class="row-fluid sortable">
+	<div class="box span12">
+		<div class="box-header" data-original-title>
+			<h2><i class="icon-edit"></i><span class="break"></span>Edit Profile</h2>
+		</div>
+		<div class="box-content">
+		    <%= form_for(@user) do |f| %>
+		      <%= render 'update_fields', f: f %>
+			<% end %>
+		</div>
+	</div><!--/span-->
+</div><!--/row-->

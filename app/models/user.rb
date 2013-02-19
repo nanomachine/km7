@@ -19,15 +19,19 @@ class User < ActiveRecord::Base
 
   attr_reader :avatar_remote_url
   
-	attr_accessible :name, :email, :telnum, :municipality, :password, :password_confirmation, :admin, :avatar
+	attr_accessible :name, :last_name, :email, :telnum, :municipality, :password, :password_confirmation, :admin, :sub_admin, :avatar
 	has_secure_password
 
   
   validates :name, presence: true, length: { maximum: 50 }
+  validates :last_name, presence: true, length: { maximum: 50 }
+  validates :telnum, presence: true, length: { maximum: 20 }
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-    validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness:  { case_sensitive: false }
-    validates :password, presence: true, length: { minimum: 6 }
-    validates :password_confirmation, presence: true
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness:  { case_sensitive: false }
+  validates :password, presence: true, length: { minimum: 6 }
+  validates :password_confirmation, presence: true
+
 
 # Where to store the user avatar depending on the environment
   if Rails.env.production?
@@ -39,7 +43,7 @@ class User < ActiveRecord::Base
           :bucket => "km7";
   else
     has_attached_file :avatar, :styles => {:medium => "300x300#", :thumb => "100x100#"},
-            :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension",
+          :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension",
           :url => "/assets/users/:id/:style/:basename.:extension";
   end
   validates_attachment_presence :avatar
