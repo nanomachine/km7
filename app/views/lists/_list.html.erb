@@ -1,9 +1,25 @@
-<li>
-    Lista #<%= list.id %>
-  <%= link_to "detalles", list %>
+<fieldset>
+	<div class="control-group">
+		<label class="control-label" for="focusedInput">List Name</label>
+			<div class="controls">
+				<div class="input-xlarge focused" id="focusedInput" type="text">
+					<%= f.text_field :name, :placeholder => "Give the list a new name..." %>
+				</div>
+			</div>
+	</div>
 
 
-  <% if current_user.admin? %>
-  	| <%= link_to "borrar", list, method: :delete, data: { confirm: "Está seguro que quiere borrar esta lista?" } %>
-  <% end %>
-</li>
+	<div class="control-group">
+		<label class="control-label" for="focusedInput">Description</label>
+			<div class="controls">
+				<div class="input-xlarge focused" id="focusedInput" type="text">
+					<%= f.text_field :description, :placeholder => "Update list description..." %>
+				</div>
+			</div>
+	</div>
+
+	<div class="form-actions">
+		<%= f.submit "Update", class: "btn btn-large btn-success" %>
+	</div>
+
+</fieldset>

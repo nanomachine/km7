@@ -1,12 +1,13 @@
-<% provide(:title, 'Edit List') %> 
-<h1>Update list</h1>
-
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@list) do |f| %>
-<!--      <%= #render 'fields', f: f %> -->
-      <%= f.submit "Save", class: "btn btn-large btn-primary" %>
-    <% end %>
-
-  </div>
-</div>
+<% provide(:title, 'Edit List') %>
+<div class="row-fluid sortable">
+	<div class="box span12">
+		<div class="box-header" data-original-title>
+			<h2><i class="icon-edit"></i><span class="break"></span>Edit List</h2>
+		</div>
+		<div class="box-content">
+	    	<%= form_for @list, :html => {:multipart => true, :class => "form-horizontal" }  do |f| %>
+	    	<%= render 'list', f: f %>
+			<% end %>
+		</div>
+	</div><!--/span-->
+</div><!--/row-->

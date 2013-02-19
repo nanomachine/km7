@@ -12,6 +12,7 @@ def new
 
   end
 
+
 #Show list of reports and show all of them in gmap
   def index
     @lists = List.paginate(page: params[:page])
@@ -37,13 +38,19 @@ def new
     redirect_to lists_url
   end
 
+  def edit
+    @list = List.find(params[:id])
+  end
+
   def update
-    if @list.update_attributes(params[:list])
-      flash[:success] = "List updated"
-      redirect_to @list
-    else
-      render 'edit'
-    end
+    @list = List.find(params[:id])
+      if @list.update_attributes(params[:list])
+        flash[:success] = "List updated"
+        redirect_to @list
+      else
+        flash[:error] = "List update error"
+        render 'edit'
+      end
   end
 
   def add_problem
