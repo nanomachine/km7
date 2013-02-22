@@ -16,6 +16,7 @@
 				<li class="active"><a href="#mine">My Lists</a></li>
 				<li><a href="#all">All Lists</a></li>
 			</ul>
+<!-- Create partial for list indexing to eleminite repeated code -->
 			<div id="myTabContent" class="tab-content">
 				<div class="tab-pane active" id="mine">
 					<table class="table table-striped table-bordered bootstrap-datatable datatable">
@@ -39,7 +40,7 @@
 									<%= @owner.last_name %>
 								</td>
 								<td><%= list.created_at.strftime(" %b.%d %Y") %></td>
-		<!--Action buttons for list index table, Delete and More Info -->
+<!--Action buttons for list index table, Delete and More Info -->
 								<td class="center">
 									<%= link_to list, class: 'btn btn-info' do %>
 										<i class="icon-zoom-in icon-white"></i> 

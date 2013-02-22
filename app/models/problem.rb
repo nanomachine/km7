@@ -26,14 +26,15 @@ class Problem < ActiveRecord::Base
                   :address => "address", :normalized_address => "address",
                   :msg => "We're sorry, not even google can find that address, please try again."
 
-	attr_accessible :user_id, :latitude, :longitude, :ptype, :description, :avatar, :address, 
+	attr_accessible :user_id, :title, :latitude, :longitude, :ptype, :description, :avatar, :address, 
 	:municipality, :status, :priority, :c_name, :c_telnum, :c_email
 
 	#The following must be present for the report to be worth anything
-	validates(:user_id, presence: true)
+	#validates(:title, presence: true)
+	#validates(:user_id, presence: true)
 	validates(:latitude, presence: true)
 	validates(:longitude, presence: true)
-	validates(:ptype, presence: true)
+	#validates(:ptype, presence: true)
 
 
 	#Determine where to store image related to report, in production
@@ -107,7 +108,7 @@ class Problem < ActiveRecord::Base
 	    when 3
 	       "Resolved"
 	    else
-	       "Status has not been specified."
+	       "Unspecified"
 	    end
 	end
 

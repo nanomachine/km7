@@ -1,16 +1,56 @@
-<%= f.label :ptype, "Report type" %>
-<%= f.select :ptype, [["Pothole", 1], ["Water pipe", 2], ["Electric cable", 3], 
-               ["Light post", 4], ["Debris on road", 5], ["Vandalism", 6], ["Manhole cover", 7], 
-               ["Other", 8]] %>
+<fieldset>
+	<p>*Please fill out every field</p>
+	<div class="control-group">
+		<label class="control-label" for="focusedInput">Report Title</label>
+			<div class="controls">
+				<div class="input-xlarge focused" id="focusedInput" type="text">
+					<%= f.text_field :title, :placeholder => "Give the report a title..." %>
+				</div>
+			</div>
+	</div>
 
-<%= f.label :description, "Description" %>
-<%= f.text_field :description %>
 
-<%= f.label :priority, "Priority" %>
-<%= f.text_field :priority %>
+	<div class="control-group">
+		<label class="control-label" for="focusedInput">Description</label>
+			<div class="controls">
+				<div class="input-xlarge focused" id="focusedInput" type="text">
+					<%= f.text_field :description, :placeholder => "Update situation and location description..." %>
+				</div>
+			</div>
+	</div>
 
-<%= f.label :status, "Status" %>
-<%= f.select :status, [["Unassigned", 1], ["Assigned", 2], ["Resolved", 3]] %>
+	<div class="control-group">
+		<label class="control-label" for="focusedInput">Type</label>
+			<div class="controls">
+				<div class="input-xlarge focused" id="focusedInput" type="text">
+					<%= f.select :ptype, [["Pothole", 1], ["Water pipe", 2], ["Electric cable", 3], 
+	               	["Light post", 4], ["Debris on road", 5], ["Vandalism", 6], ["Manhole cover", 7], 
+	               	["Other", 8]] %>				
+               	</div>
+			</div>
+	</div>
 
-<%= f.label :address, "Address" %>
-<%= f.text_field :address %>
+	<div class="control-group">
+		<label class="control-label" for="focusedInput">Priority</label>
+			<div class="controls">
+				<div class="input-xlarge focused" id="focusedInput" type="text">
+					<%= f.select :priority, [["Unassigned", 1], ["Assigned", 2], ["Resolved", 3]] %>
+				</div>
+			</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="focusedInput">Status</label>
+			<div class="controls">
+				<div class="input-xlarge focused" id="focusedInput" type="text">
+					<%= f.select :status, [["Low", 1], ["Medium", 2], ["High", 3]] %>
+				</div>
+			</div>
+	</div>
+
+	<div class="form-actions">
+		<%= f.submit "Update", class: "btn btn-large btn-success" %>
+	</div>
+
+</fieldset>
+

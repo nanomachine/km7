@@ -16,18 +16,25 @@
 		<div class="box span4 noMargin" onTablet="span12" onDesktop="span4">
 			<div class="box-header">
 				<h2><i class="icon-list"></i><span class="break"></span>Report tickets</h2>
+				<div class="box-icon">
+					<%= link_to new_problem_path, class: 'btn' do %>
+					<i class="icon-plus"></i>
+				<% end %>
+			</div>
 			</div>
 			<div class="box-content">
 				<ul class="tickets">
 					<li class="ticket">
 						<% @problems.each do |problem| %>
+						<% @user = User.find(problem.user_id) %>
 							<span class="header">	
-								<span class="title"><%= link_to problem.get_prob_type, problem%></span>
-								<span class="number"><%= link_to "[#"+problem.id.to_s+"]", problem%></span>
+								<span class="title"><%= link_to problem.title, problem %></span>
+								<span class="number"><%= link_to problem.get_prob_type, problem%> <%= link_to "[#"+problem.id.to_s+"]", problem%></span>
 							</span>
 							<span class="content">
 								<span class="avatar">  <img src="<%=problem.avatar.url(:thumb) %>"></span>
-								<span class="name">By:<%= User.find(problem.user_id).name %></span>
+								<span class="name">By:<%= @user.name %> 
+									<%= @user.last_name %></span>
 								<!-- Implement priority partial for viewing -->
 								<span class="priority blue">[ <%=problem.get_prob_priority %> ]</span>
 								<span class="status">Status: <span class="green">[ <%= problem.get_prob_status %> ]</span></span>

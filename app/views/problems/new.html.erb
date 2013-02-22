@@ -1,30 +1,92 @@
-<% provide(:title, 'Reporte Nuevo') %>
-<h1>New Report</h1>
+<% provide(:title, 'New Report') %>
+<div class="row-fluid sortable">
+  <div class="box span12">
+    <div class="box-header" data-original-title>
+      <h2><i class="icon-edit"></i><span class="break"></span>New Report</h2>
+    </div>
+    <div class="box-content">
+          <%= form_for @problem, :html => {:multipart => true, :class => "form-horizontal" }  do |f| %>
+          <fieldset>
+          <div class="control-group">
+            <label class="control-label" for="focusedInput">Title</label>
+            <div class="controls">
+              <div class="input-xlarge focused" id="focusedInput" type="text">
+                <%= f.text_field :title, :placeholder => "Please provide a title for the report..." %>
+              </div>
+            </div>
+          </div>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for @problem, :html => {:multipart => true }  do |f| %>
+          <div class="control-group">
+            <label class="control-label" for="focusedInput">Description</label>
+            <div class="controls">
+              <div class="input-xlarge focused" id="focusedInput" type="text">
+                <%= f.text_field :description, :placeholder => "Provide a short description of the situation and/or location..." %>
+              </div>
+            </div>
+          </div>
 
-      <%= f.label :latitude, "Latitude" %>
-      <%= f.text_field :latitude %>
+          <div class="control-group">
+            <label class="control-label" for="focusedInput">Latitude</label>
+            <div class="controls">
+              <div class="input-xlarge focused" id="focusedInput" type="text">
+                <%= f.text_field :latitude %>
+              </div>
+            </div>
+          </div>
 
-      <%= f.label :longitude, "Longitude" %>
-      <%= f.text_field :longitude %>
+          <div class="control-group">
+            <label class="control-label" for="focusedInput">Longitude</label>
+            <div class="controls">
+              <div class="input-xlarge focused" id="focusedInput" type="text">
+                <%= f.text_field :longitude %>
+              </div>
+            </div>
+          </div>
 
-      <%= f.label :municipality, "Municipality" %>
-      <%= f.text_field :municipality %>
-
-      <%= f.label :ptype, "Report Type" %>
-      <%= f.select :ptype, [["Pothole", 1], ["Water pipe", 2], ["Electric cable", 3], 
+         <div class="control-group">
+           <label class="control-label" for="focusedInput">Type</label>
+           <div class="controls">
+             <div class="input-xlarge focused" id="focusedInput" type="text">
+             <%= f.select :ptype, [["Pothole", 1], ["Water pipe", 2], ["Electric cable", 3], 
                ["Light post", 4], ["Debris on road", 5], ["Vandalism", 6], ["Manhole cover", 7], 
                ["Other", 8]] %>
+             </div>
+           </div>
+         </div>
 
-      <%= f.label :description, "Description" %>
-      <%= f.text_area :description %>
+        <div class="control-group">
+            <label class="control-label" for="focusedInput">Priority</label>
+              <div class="controls">
+                <div class="input-xlarge focused" id="focusedInput" type="text">
+                  <%= f.select :priority, [["Unassigned", 1], ["Assigned", 2], ["Resolved", 3]] %>
+                </div>
+              </div>
+          </div>
 
-      <%= f.file_field :avatar %>
+          <div class="control-group">
+            <label class="control-label" for="focusedInput">Status</label>
+              <div class="controls">
+                <div class="input-xlarge focused" id="focusedInput" type="text">
+                  <%= f.select :status, [["Low", 1], ["Medium", 2], ["High", 3]] %>
+                </div>
+              </div>
+          </div>
 
-      <%= f.submit "Save", class: "btn btn-large btn-primary" %>
-    <% end %>
-  </div>
-</div>
+          <div class="control-group">
+            <label class="control-label" for="focusedInput">Image</label>
+            <div class="controls">
+              <div class="input-xlarge focused" id="focusedInput" type="text">
+                <%= f.file_field :avatar %>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-actions">
+            <%= f.submit "Create", class: "btn btn-large btn-success" %>
+          </div>
+        </fieldset>
+      <% end %>
+    </div>
+  </div><!--/span-->
+</div><!--/row-->

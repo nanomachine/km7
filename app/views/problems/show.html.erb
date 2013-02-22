@@ -7,17 +7,24 @@
         "map_options" => {"auto_zoom" => false, "zoom" => 15 },
         "markers" => {"data" => @json }
         })
-      %>      
+      %>
+
+      <% @user = User.find(@problem.user_id) %>
 
       <h1>
       	<%= image_tag @problem.avatar.url(:medium) %>
       </h1>
       <ul>
-     	<li>Report #<%= @problem.id %></li>
+     	<li>Report #<%= @problem.id %>
+        <% if current_user.admin?%>
+    |     <%= link_to "Edit", edit_problem_path %>
+        <% end %>
+      </li>
+      <li>Title: <%= @problem.title %></li>
      	<li>Type: <%= @problem.get_prob_type %></li>
       <li>Status <%= @problem.get_prob_status %></li>
       <li>Priority: <%= @problem.priority %></li>
-     	<li>User: <%= User.find(@problem.user_id).name %></li>
+     	<li>User: <%= @user.name %> <%= @user.last_name =%></li>
      	<li>Latitud: <%= @problem.latitude %></li>
      	<li>Longitud: <%= @problem.longitude %></li>
       <li>Address: <%= @problem.address %></li>

@@ -1,11 +1,14 @@
-<% provide(:title, 'Edit Report') %> 
-<h1>Update report</h1>
-<div class="row">
-	  <div class="span6 offset3">
-	  <%= form_for (@problem) do |f| %>
-	    <%= render 'prob_fields', f: f %>
-	    <p>*Please fill out every field</p>
-	    <%= f.submit "Save", class: "btn btn-large btn-primary" %>
-	  <% end %>
+<% provide(:title, 'Update Report') %>
+<div class="row-fluid sortable">
+	<div class="box span12">
+		<div class="box-header" data-original-title>
+			<h2><i class="icon-edit"></i><span class="break"></span>Update Report 
+				<%= @problem.title %> <%= "[#"+@problem.id.to_s+"]" %></h2>
+		</div>
+		<div class="box-content">
+		  <%= form_for (@problem) do |f| %>
+		    <%= render 'prob_fields', f: f %>
+		  <% end %>
+		</div>
 	</div>
 </div>
