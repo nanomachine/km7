@@ -65,7 +65,7 @@ Km7::Application.configure do
   config.active_support.deprecation = :stderr
 
 
-  config.assets.precompile += %w( *.css *.js )
+  #config.assets.precompile += %w( *.css *.js )
 
   #config.paperclip_defaults = {
   #  :storage => :s3,
