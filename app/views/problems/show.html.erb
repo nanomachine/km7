@@ -12,7 +12,7 @@
       <% @user = User.find(@problem.user_id) %>
 
       <h1>
-      	<%= image_tag @problem.avatar.url(:medium) %>
+      	<%= image_tag @problem.avatar.url(:original) %>
       </h1>
       <ul>
      	<li>Report #<%= @problem.id %>
