@@ -13,6 +13,39 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require_tree .
-//
+//= require gmaps4rails/gmaps4rails.base.js.coffee
+//= require gmaps4rails/gmaps4rails.bing.js.coffee
+//= require gmaps4rails/gmaps4rails.googlemaps.js.coffee
+//= require gmaps4rails/gmaps4rails.mapquest.js.coffee
+//= require gmaps4rails/gmaps4rails.openlayers.js.coffee
+//= require bootstrap.js
+//= require custom.js
+//= require excanvas.js
+//= require fullcalendar.min.js
+//= require jquery-1.7.2.min.js
+//= require jquery-ui-1.8.21.custom.min.js
+//= require jquery.chosen.min.js
+//= require jquery.cleditor.min.js
+//= require jquery.cookie.js
+//= require jquery.dataTables.min.js
+//= require jquery.elfinder.min.js
+//= require jquery.flot.min.js
+//= require jquery.flot.pie.min.js
+//= require jquery.flot.resize.min.js
+//= require jquery.gritter.min.js
+//= require jquery.imagesloaded.js
+//= require jquery.iphone.toggle.js
+//= require jquery.knob.js
+//= require jquery.masonry.min.js
+//= require jquery.noty.js
+//= require jquery.raty.min.js
+//= require jquery.sparkline.min.js
+//= require jquery.uniform.min.js
+//= require jquery.uploadify-3.1.min.js
+//= require lists.js.coffee
+//= require problems.js.coffee
+//= require sessions.js.coffee
+//= require static_pages.js.coffee
+//= require users.js.coffee
+
 
