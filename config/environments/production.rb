@@ -64,8 +64,8 @@ Km7::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :stderr
 
-  config.assets.precompile << "gmaps4rails.css"
-  #config.assets.precompile += %w( *.css *.js )
+  #config.assets.precompile << "gmaps4rails.css"
+  config.assets.precompile += %w( *.css *.js )
 
   #config.paperclip_defaults = {
   #  :storage => :s3,
