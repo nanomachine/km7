@@ -53,7 +53,7 @@ module Km7
     # Enable the asset pipeline
     config.assets.initialize_on_precompile = false
     config.assets.enabled = true
-
+    #config.assets.paths << Rails.root.join("app", "assets", "fonts")
     #config.assets.precompile += ['gmaps4rails.css']
 	#config.assets.precompile += %w( *.js *.css )
     #config.assets.precompile << /(^[^_\/]|\/[^_])[^\/]*$/
