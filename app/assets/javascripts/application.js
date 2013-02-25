@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require bootstrap.js
 //= require custom.js
 //= require excanvas.js
 //= require fullcalendar.min.js
