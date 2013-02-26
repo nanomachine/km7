@@ -10,9 +10,11 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery-1.7.2.min.js
-//= require jquery-ui-1.8.21.custom.min.js
-//= require bootstrap.js
+//= require jquery-1.9.1.min.js
+//= require jquery-migrate-1.0.0.min.js
+//= require jquery-ui-1.10.0.custom.min.js
+//= require jquery.ui.touch-punch.js
+//= require bootstrap.min.js
 //= require gmaps4rails/gmaps4rails.base.js.coffee
 //= require gmaps4rails/gmaps4rails.bing.js.coffee
 //= require gmaps4rails/gmaps4rails.googlemaps.js.coffee
