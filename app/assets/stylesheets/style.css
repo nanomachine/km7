@@ -1,8 +1,8 @@
 /*
 * Author: Łukasz Holeczek
 * Template: Perfectum Dashboard Bootstrap Theme
-* Version: 1.0.3
-* Bootstrap version: 2.2.2
+* Version: 1.0.4
+* Bootstrap version: 2.3.0
 * Copyright 2012 creativeLabs
 * www: http://clabs.co
 * mail: lukasz@clabs.co
@@ -29,10 +29,15 @@
 /* Basic
 =================================================================== */
 
+/* Eliminate default black background
 body {
+	background: url(../img/bg.jpg) repeat-y top right, 
+				url(../img/dbg.jpg) repeat top left;
 	color: #646464;
 	border: none;
 }
+*/
+
 
 #overlay {
 	background: #080808;
@@ -365,7 +370,7 @@ h6 {
 
 .box-header .box-icon {
 	float:right;
-	margin-top: -4px;
+	margin-top: 1px;
 }
 
 .box-header .box-icon i {
@@ -405,13 +410,7 @@ h6 {
   	min-height: 40px;
   	padding-right: 20px;
   	padding-left: 20px;
-	/*background: url(../../img/dbg.jpg);*/
-	background-image: -webkit-linear-gradient(top, #075a03, #00940b);
-	background-image: -moz-linear-gradient(top left, #075A03 0%, #00940B 100%);
-	background-image: -o-linear-gradient(top left, #075A03 0%, #00940B 100%);
-	background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, #075A03), color-stop(1, #00940B));
-	background-image: -ms-linear-gradient(top left, #075A03 0%, #00940B 100%);
-
+	background: url(img/dbg.jpg);
 	border-left: 0px solid #0a0c0e;
 	border-right: 0px solid #0a0c0e;
 	border-top: 1px solid #0a0c0e;
@@ -522,6 +521,21 @@ a.brand span {
   	-webkit-border-radius: 2px;
        -moz-border-radius: 2px;
           	border-radius: 2px;
+}
+
+.sidebar-nav > ul > li > ul {
+	margin: 0px;
+	padding: 5px 0px 5px 25px;
+	list-style: none;
+	display: none;
+}
+
+.sidebar-nav > ul > li > ul > li {
+	padding: 5px 0px 5px 0px;
+}
+
+.sidebar-nav > ul > li > ul > li > a:hover {
+	text-decoration: none;
 }
 
 .nav-tabs.nav-stacked > li > a > i {
@@ -1324,17 +1338,17 @@ ul.chat li .message .text {
 
 
 .btn-primary {
-  	background-color: #0E6107;
+  	background-color: #006dcc;
   	color: #ffffff;
-  	background-image: -moz-linear-gradient(top, #0E6107, #33A833);
-  	background-image: -ms-linear-gradient(top, #0E6107, #33A833);
-  	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0E6107), to(#33A833));
-  	background-image: -webkit-linear-gradient(top, #0E6107, #33A833);
-  	background-image: -o-linear-gradient(top, #0E6107, #33A833);
-  	background-image: linear-gradient(top, #0E6107, #33A833);
+  	background-image: -moz-linear-gradient(top, #67c2ef, #2FABE9);
+  	background-image: -ms-linear-gradient(top, #67c2ef, #2FABE9);
+  	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#67c2ef), to(#2FABE9));
+  	background-image: -webkit-linear-gradient(top, #67c2ef, #2FABE9);
+  	background-image: -o-linear-gradient(top, #67c2ef, #2FABE9);
+  	background-image: linear-gradient(top, #67c2ef, #2FABE9);
   	background-repeat: repeat-x;
-  	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#'0E6107, endColorstr='#'33A833, GradientType=0);
-  	border-color: #10CC00 #10CC00 #008005;
+  	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#'67c2ef, endColorstr='#'2FABE9, GradientType=0);
+  	border-color: #1598d9 #1598d9 #007bb8 #1598d9;
   	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 
@@ -1343,12 +1357,12 @@ ul.chat li .message .text {
 .btn-primary.active,
 .btn-primary.disabled,
 .btn-primary[disabled] {
-  	background-color: #33A833;
+  	background-color: #2FABE9;
 }
 
 .btn-primary:active,
 .btn-primary.active {
-  	background-color: #33A833 \9;
+  	background-color: #2FABE9 \9;
 }
 
 .btn-warning {
@@ -1538,12 +1552,10 @@ ul.chat li .message .text {
 .tab-menu.nav-tabs {
   	*zoom: 1;
 	margin-top: -52px;
-	/*added to fix tab placement in List index*/
-	margin-left: 35px;
 }
 
 .tab-menu.nav-tabs > li {
-  	float: left;
+  	float: right;
 }
 
 .tab-menu.nav-tabs {
@@ -1677,9 +1689,8 @@ input[type="file"],
 
 .login-box .input-prepend {
 	background: #fff;
-	width: 86%;
-	/*Removed to fix input field position*/
-	/*text-align: center;*/
+	width: 100%;
+	text-align: center;
 	padding: 15px 0px;
 	border-left: 3px solid #fff;
 }
@@ -1695,12 +1706,8 @@ input[type="file"],
 .login-box .add-on {
 	border: 1px solid #eee !important;
 	background: #fff;
-	margin-left: 10px;
-	margin-right: -10px;
+	margin-left: -10px;
 	padding: 10px;
-	/*Added important to align login box icon
-	padding: 10px !important;
-	height: 20px !important;*/
 }
 
 .login-box .add-on i{
@@ -1715,11 +1722,7 @@ input[type="file"],
 	-webkit-box-shadow: none;
        -moz-box-shadow: none;
           	box-shadow: none;
-	height: 42px !important;
-	/*added to fix field width from spanning the whole box*/	
-	/*width: auto !important;*/
-	/*added to align distance between input field and icon*/
-	/*margin-left:-70px !important;*/
+	height: 42px !important;		
 }
 
 .login-box .remember {
@@ -2153,12 +2156,11 @@ div.uploader{
 
 /* Footer
 =================================================================== */
-
 /*
 footer {
 	position: relative;
 	min-height: 24px;
-	background: url(../../img/dbg.jpg);
+	background: url(img/dbg.jpg);
 	border-top: 1px solid #0a0c0e;
 	border-bottom: 2px solid #0a0c0e;
 	text-shadow: 1px 1px 1px #0a0c0e;
@@ -2171,10 +2173,11 @@ footer {
 	   -moz-box-shadow: 0 -4px 0 rgba(0,0,0,.1);
 	        box-shadow: 0 -4px 0 rgba(0,0,0,.1);
 }
-*/
+
 footer p {
 	position: relative;
 }
+*/
 
 /* Sparkline stats
 =================================================================== */

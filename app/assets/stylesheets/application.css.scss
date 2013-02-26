@@ -9,7 +9,33 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ *= require "bootstrap-responsive.min.css"
+ *= require "bootstrap.min.css"
+ *= require "chosen.css"
+ *= require "custom.css.scss"
+ *= require "elfinder.min.css"
+ *= require "elfinder.theme.css"
+ *= require "font-awesome-ie7.css"
+ *= require "font-awesome.css"
+ *= require "fullcalendar.css"
+ *= require "gmaps4rails.css"
+ *= require "jquery-ui-1.8.21.custom.css"
+ *= require "jquery.cleditor.css"
+ *= require "jquery.gritter.css"
+ *= require "jquery.iphone.toggle.css"
+ *= require "jquery.noty.css"
+ *= require "lists.css.scss"
+ *= require "noty_theme_default.css"
+ *= require "problems.css.scss"
+ *= require "sessions.css.scss"
+ *= require "static_pages.css.scss"
+ *= require "style-ie.css"
+ *= require "style-responsive.css"
+ *= require "style.css"
+ *= require "uniform.default.css"
+ *= require "uploadify.css"
+ *= require "users.css.scss"
+ *= require "bootstrap_and_overrides.css.scss"
 */
 
 @mixin hidden {

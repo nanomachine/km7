@@ -1,7 +1,6 @@
+/* Eliminate default black background
 body {
-	/*
-	background: url(../../img/dbg.jpg) repeat;
-	*/
+	background: url(img/dbg.jpg) repeat !important;
 }
 		
 #content {
@@ -12,6 +11,7 @@ body {
 	position: relative;
 	z-index: 1px;
 }	
+*/
 	
 .sidebar-nav > ul{
 	margin: 20px 0px 0px -20px;
@@ -95,7 +95,7 @@ body {
 }
 
 footer {
-	/*margin: -20px -20px 0px -20px;*/
+	margin: -20px -20px 0px -20px;
 	padding: 10px 20px;
 	position: relative;
 	z-index: 2;

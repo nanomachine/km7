@@ -1,4 +1,4 @@
-x<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="head">
 <en>
 	
@@ -40,12 +40,9 @@ x<!DOCTYPE html>
 					    		<%= f.password_field :password, :placeholder => "type password" %>
 					    	</div>
 
-							<label class="control-label" for="focusedInput">Remember Me</label>
-								<div class="controls">
-									<div class="input-xlarge focused" id="focusedInput" type="text">
-										<%= f.check_box(:remember_me) %>
-									</div>
-								</div>
+							
+							<label class="remember" for="remember"><input type="checkbox" id="remember" />Remember me</label>
+
 
 							<div class="button-login">	
 								<%= f.submit "Login", class: 'btn btn-large btn-success'%>
