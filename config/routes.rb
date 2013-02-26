@@ -4,8 +4,8 @@ resources :users
 resources :sessions, only: [:new, :create, :destroy]
 resources :lists do
   member do
-    put "agregar_reporte/:problem_id", action: :add_problem, as: :add_problem
-    delete "remover_reporte/:problem_id", action: :remove_problem, as: :remove_problem
+    put "add_problem_list:problem_id", action: :add_problem, as: :add_problem
+    delete "remove_problem_list/:problem_id", action: :remove_problem, as: :remove_problem
   end
 end
 

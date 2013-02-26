@@ -40,14 +40,14 @@ class Problem < ActiveRecord::Base
 	#Determine where to store image related to report, in production
 	#and in development mode
 	if Rails.env.production?
-  	has_attached_file :avatar, :styles => {:medium => "300x300#", :thumb => "100x100#"},
+  	has_attached_file :avatar, :styles => {:medium => "640x480", :thumb => "300x300#"},
 					:path => ":rails_root/public/assets/problems/:id/:style/:basename.:extension",
                     :storage => :s3,
 					:url => "/assets/problems/:id/:style/:basename.:extension",  
 					:s3_credentials => "#{Rails.root}/config/s3.yml",
 					:bucket => "km7";
 	else
-  	has_attached_file :avatar, :styles => {:medium => "300x300#", :thumb => "100x100#"},
+  	has_attached_file :avatar, :styles => {:medium => "640x480", :thumb => "300x300#"},
   					:path => ":rails_root/public/assets/problems/:id/:style/:basename.:extension",
 					:url => "/assets/problems/:id/:style/:basename.:extension";
 	end
