@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 
   attr_reader :avatar_remote_url
   
-	attr_accessible :name, :last_name, :email, :telnum, :municipality, :password, :password_confirmation, :admin, :sub_admin, :avatar
+	attr_accessible :name, :last_name, :email, :telnum, :municipality, :password, :password_confirmation, :admin, :sub_admin, :avatar, :remember_me
 	has_secure_password
 
   

@@ -39,10 +39,13 @@
 								<span class="add-on"><i class="icon-lock"></i></span>
 					    		<%= f.password_field :password, :placeholder => "type password" %>
 					    	</div>
-
 							
-							<label class="remember" for="remember"><input type="checkbox" id="remember" />Remember me</label>
-
+							<div class="control-group">
+								<label class="control-label" for="focusedInput">Remember Me</label>
+								<div class="controls">
+								  <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+								</div>
+							</div>
 
 							<div class="button-login">	
 								<%= f.submit "Login", class: 'btn btn-large btn-success'%>
