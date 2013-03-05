@@ -1,7 +1,10 @@
 Km7::Application.routes.draw do
+  get "password_resets/new"
+
 resources :problems
 resources :users
 resources :sessions, only: [:new, :create, :destroy]
+resources :password_resets
 resources :lists do
   member do
     put "add_problem_list:problem_id", action: :add_problem, as: :add_problem

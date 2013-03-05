@@ -42,8 +42,10 @@ Km7::Application.configure do
 
   #config.serve_static_assets = true
 
+  config.action_mailer.default_url_options = { :host => "localhost:3000" }
 
   Paperclip.options[:command_path] = "C:/ImageMagick"
+
 
   #config.paperclip_defaults = {
   #  :storage => :s3,
