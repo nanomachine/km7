@@ -23,14 +23,14 @@ class User < ActiveRecord::Base
 	has_secure_password
 
   
-  validates :name, presence: true, length: { maximum: 50 }
-  validates :last_name, presence: true, length: { maximum: 50 }
-  validates :telnum, presence: true, length: { maximum: 20 }
+  validates :name, presence: true, length: { maximum: 50 } , unless: Proc.new { |a| !a.new_record? }
+  validates :last_name, presence: true, length: { maximum: 50 }, unless: Proc.new { |a| !a.new_record? }
+  validates :telnum, presence: true, length: { maximum: 20 }, unless: Proc.new { |a| !a.new_record? }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness:  { case_sensitive: false }
-  validates :password, presence: true, length: { minimum: 6 }
-  validates :password_confirmation, presence: true
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness:  { case_sensitive: false }, unless: Proc.new { |a| !a.new_record? }
+  validates :password, presence: true, length: { minimum: 6 }, unless: Proc.new { |a| !a.new_record? && a.password.blank? }
+  validates :password_confirmation, presence: true, unless: Proc.new { |a| !a.new_record? && a.password_confirmation.blank? }
 
 
 # Where to store the user avatar depending on the environment
@@ -46,9 +46,9 @@ class User < ActiveRecord::Base
           :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension",
           :url => "/assets/users/:id/:style/:basename.:extension";
   end
-  validates_attachment_presence :avatar
-  validates_attachment_size :avatar, :less_than => 5.megabytes
-  validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
+  validates_attachment_presence :avatar, unless: Proc.new { |a| !a.new_record?}
+  validates_attachment_size :avatar, :less_than => 5.megabytes, unless: Proc.new { |a| !a.new_record?}
+  validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png'], unless: Proc.new { |a| !a.new_record?}
 
 # Make sure email is downcased and store the session's remember token.
 	before_save { self.email.downcase! }
@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
     self.password_reset_sent_at = Time.zone.now
 
 #This could be dangerous because it is bypassing user validation
-    save!(:validate => false)
+    save!
     UserMailer.password_reset(self).deliver 
   end
 
