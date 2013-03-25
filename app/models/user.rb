@@ -22,7 +22,8 @@ class User < ActiveRecord::Base
 	attr_accessible :name, :last_name, :email, :telnum, :municipality, :password, :password_confirmation, :admin, :sub_admin, :avatar, :remember_me
 	has_secure_password
 
-  
+
+# Validations upon creating a new user
   validates :name, presence: true, length: { maximum: 50 } , unless: Proc.new { |a| !a.new_record? }
   validates :last_name, presence: true, length: { maximum: 50 }, unless: Proc.new { |a| !a.new_record? }
   validates :telnum, presence: true, length: { maximum: 20 }, unless: Proc.new { |a| !a.new_record? }
@@ -46,6 +47,7 @@ class User < ActiveRecord::Base
           :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension",
           :url => "/assets/users/:id/:style/:basename.:extension";
   end
+# Avatar validations
   validates_attachment_presence :avatar, unless: Proc.new { |a| !a.new_record?}
   validates_attachment_size :avatar, :less_than => 5.megabytes, unless: Proc.new { |a| !a.new_record?}
   validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png'], unless: Proc.new { |a| !a.new_record?}
@@ -57,8 +59,6 @@ class User < ActiveRecord::Base
   def send_password_reset
     generate_token(:password_reset_token)
     self.password_reset_sent_at = Time.zone.now
-
-#This could be dangerous because it is bypassing user validation
     save!
     UserMailer.password_reset(self).deliver 
   end

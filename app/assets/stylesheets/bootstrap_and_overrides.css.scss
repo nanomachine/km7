@@ -1,6 +1,9 @@
 @import "bootstrap";
+
 body { padding-top: 60px; }
-/*@import "bootstrap-responsive";*/
+
+@import "bootstrap-responsive";
+
 
 /*Main container------------------------------------------*/
 .row-fluid .span10 {
@@ -77,4 +80,6 @@ height: 32px;
 .box-header .box-icon {
 margin-top: -4px;
 }
+
+
 
