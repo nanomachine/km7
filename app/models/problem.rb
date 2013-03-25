@@ -31,10 +31,10 @@ class Problem < ActiveRecord::Base
 
 	#The following must be present for the report to be worth anything
 	#validates(:title, presence: true)
-	#validates(:user_id, presence: true)
+	validates(:user_id, presence: true)
 	validates(:latitude, presence: true)
 	validates(:longitude, presence: true)
-	#validates(:ptype, presence: true)
+	validates(:ptype, presence: true)
 
 
 	#Determine where to store image related to report, in production
@@ -53,9 +53,9 @@ class Problem < ActiveRecord::Base
 	end
 
 	#Make sure the image attachments are submitted
-	#validates_attachment_presence :avatar
-	#validates_attachment_size :avatar, :less_than => 5.megabytes
-	#validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
+	validates_attachment_presence :avatar
+	validates_attachment_size :avatar, :less_than => 5.megabytes
+	validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
 
 
 	def gmaps4rails_address

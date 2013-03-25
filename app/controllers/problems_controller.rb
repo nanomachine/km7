@@ -35,10 +35,16 @@ class ProblemsController < ApplicationController
 
   def create
     @problem = Problem.new(params[:problem])
-    #Para obtener el usuario actual que está creando el reporte sólo funciona
-    #por webapp. Su motivo aplicar relación belongs_to de "problems"
-    @problem.user_id = current_user.id
-    #Hardcoded problem status, take care of this later
+#Para obtener el usuario actual que está creando el reporte sólo funciona
+#por webapp. Su motivo aplicar relación belongs_to de "problems"
+
+#This works only for dev purposes for submitting reports from the web application 
+#and set the curret_user as the reporting, if the submitting problem has no id
+#assing the current_user as owner.
+    if !@problem.user_id
+      @problem.user_id = current_user.id
+    end
+#Hardcoded problem status, take care of this later
     @problem.status = 1
     if @problem.save
       flash[:success] = "Report saved"
