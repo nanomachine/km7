@@ -36,7 +36,8 @@
 								<span class="name">By:<%= @user.name %> 
 									<%= @user.last_name %></span>
 								<!-- Implement priority partial for viewing -->
-								<span class="priority blue">[ <%=problem.get_prob_priority %> ]</span>
+								<span> <%= link_to "Delete", problem,  method: :delete, data: { confirm: "Delete this report?" }, class: 'priority blue' %></span>
+								<!--<span class="priority blue">[ <%=problem.get_prob_priority %> ]</span>-->
 								<span class="status">Status: <span class="green">[ <%= problem.get_prob_status %> ]</span></span>
 								<span class="date"><%= problem.created_at.strftime(" %b.%d %Y") %></span>
 							</span>	                                                        
