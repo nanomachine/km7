@@ -1,0 +1,4 @@
+.row-fluid .span10 {
+ /*added because this container appeared too slim in terms of width*/
+  width:100%;
+}
