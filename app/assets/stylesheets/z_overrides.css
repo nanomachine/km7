@@ -1,4 +1,63 @@
-.row-fluid .span10 {
+
+/*Main container extend to complete width*/
  /*added because this container appeared too slim in terms of width*/
+.row-fluid .span10 {
   width:100%;
+}
+
+/*Tabs-----------------------------------------------------*/
+.tab-menu.nav-tabs {
+/*added to fix tab placement in List index*/
+	margin-left: 35px;
+}
+
+.tab-menu.nav-tabs > li {
+	float: left;
+}
+
+/*Navbar-------------------------------------------------------*/	
+.nav > li > a:hover {
+ 	background-color: transparent;
+ }
+
+ /*Login screen-------------------------------------------------------------------*/
+
+ .login-box .input-prepend {	
+	width: 86%;
+}
+ .login-box h2 {
+   margin-left: 30px;
+}
+
+ .login-box .add-on {
+   /*Added important to align login box icon*/
+   margin-left: 10px;
+   margin-right: -10px;
+   padding: 10px;
+}
+
+/*Forms------------------------------------------------------------------------*/
+.form-search input, .form-search textarea, .form-search select, .form-search .help-inline, .form-search .uneditable-input, .form-inline input, .form-inline textarea, .form-inline select, .form-inline .help-inline, .form-inline .uneditable-input, .form-horizontal input, .form-horizontal textarea, .form-horizontal select, .form-horizontal .help-inline, .form-horizontal .uneditable-input {
+height: 32px;
+}
+
+/*Margin top ----------------------------------------------------------------------*/
+
+.box-header .box-icon {
+margin-top: -4px;
+}
+
+/*Main container */
+.container-fluid {
+padding-left: 0px;
+padding-right: 0px;
+}
+
+/*Pages background */
+/* Eliminate default black background*/
+body {
+	background: url(img/bg.jpg) repeat-y top right, 
+				url(img/bg.jpg) repeat top left;
+	color: #646464;
+	border: none;
 }
