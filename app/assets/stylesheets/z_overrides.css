@@ -23,7 +23,7 @@
 /*Make dashboard container span entire screen*/
  .navbar-fixed-top .container, .navbar-fixed-bottom .container {
 width: auto;
-padding-left: 30px;
+padding-left: 50px;
 }
 
  /*Login screen-------------------------------------------------------------------*/
@@ -59,11 +59,15 @@ padding-left: 0px;
 padding-right: 0px;
 }
 
+.span10 {
+width: auto;
+}
+
 /*Pages background */
 /* Eliminate default black background*/
 body {
 	background: url(img/bg.jpg) repeat-y top right, 
-				url(img/bg.jpg) repeat top left;
+				url(img/dbg.jpg) repeat top left;
 	color: #646464;
 	border: none;
 }
