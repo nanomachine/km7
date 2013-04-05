@@ -20,6 +20,12 @@
  	background-color: transparent;
  }
 
+/*Make dashboard container span entire screen*/
+ .navbar-fixed-top .container, .navbar-fixed-bottom .container {
+width: auto;
+padding-left: 30px;
+}
+
  /*Login screen-------------------------------------------------------------------*/
 
  .login-box .input-prepend {	

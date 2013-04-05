@@ -54,11 +54,18 @@
 			
 			<div id="content" class="span10">
 			<!-- start: Content -->
-			
-			
-			<hr>
-
 			<div class="sortable row-fluid">
+
+
+				<a href="/a_dashboard" class="quick-button span2">
+					<i class="fa-icon-dashboard"></i>
+					<p>Dashboard</p>
+				</a>
+
+				<a class="quick-button span2">
+					<i class="fa-icon-envelope"></i>
+					<p>Messages</p>
+				</a>
 				
 				<a href="/users" class="quick-button span2">
 					<i class="fa-icon-group"></i>
@@ -66,7 +73,7 @@
 					<span class="notification"><%= User.count %></span>
 				</a>
 				<a href="/reports" class="quick-button span2">
-					<i class="fa-icon-book"></i>
+					<i class="fa-icon-eye-open"></i>
 					<p>Reports</p>
 					<span class="notification green"><%= Problem.count %></span>
 				</a>
@@ -80,14 +87,7 @@
 					<i class="fa-icon-globe"></i>
 					<p>Map</p>
 				</a>
-				<a class="quick-button span2">
-					<i class="fa-icon-envelope"></i>
-					<p>Messages</p>
-				</a>
-				<a class="quick-button span2">
-					<i class="fa-icon-calendar"></i>
-					<p>Calendar</p>
-				</a>
+
 				
 			</div>
 
@@ -550,7 +550,8 @@
        
 					<hr>
 			<!-- end: Content -->
-			</div><!--/#content.span10-->
+			</div>
+			<!--/#content.span10-->
 		</div><!--/fluid-row-->
 </body>
 </html>
