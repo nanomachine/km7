@@ -2,7 +2,7 @@
 /*Main container extend to complete width*/
  /*added because this container appeared too slim in terms of width*/
 .row-fluid .span10 {
-  width:100%;
+  width:auto;
 }
 
 /*Tabs-----------------------------------------------------*/
@@ -63,11 +63,55 @@ padding-right: 0px;
 width: auto;
 }
 
+/* Content */
+
+#content {
+padding: 25px 25px 25px 40px;
+}
+
 /*Pages background */
 /* Eliminate default black background*/
 body {
 	background: url(img/bg.jpg) repeat-y top right, 
-				url(img/dbg.jpg) repeat top left;
+				url(img/bg.jpg) repeat top left;
 	color: #646464;
 	border: none;
+}
+
+footer {
+position: relative;
+
+padding-bottom: 24px;
+padding-left: 50px;
+padding-right: 50px;
+
+min-height: 24px;
+background: url(img/dbg.jpg);
+border-top: 1px solid #0a0c0e;
+border-bottom: 2px solid #0a0c0e;
+text-shadow: 1px 1px 1px #0a0c0e;
+color: #A7A7A7;
+-webkit-border-radius: 0px;
+-moz-border-radius: 0px;
+border-radius: 0px;
+-webkit-box-shadow: 0 -4px 0 rgba(0,0,0,.1);
+-moz-box-shadow: 0 -4px 0 rgba(0,0,0,.1);
+box-shadow: 0 -4px 0 rgba(0,0,0,.1);
+}
+
+/* Setting hover color for all hrefs in footer*/
+footer a:hover {
+color: #005580;
+text-decoration: underline;
+}
+
+/*Navbar hover, focus */
+.navbar .nav>li>a:focus, .navbar .nav>li>a:hover {
+background-color: transparent;
+color: #005580;
+text-decoration: underline;
+}
+
+.navbar .nav > li > a {
+color: white;
 }
