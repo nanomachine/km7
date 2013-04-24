@@ -5,6 +5,12 @@
   width:auto;
 }
 
+/*Created this row fluid box to use for main content boxes in the views centralized*/
+.fluid-box {
+width: 93%;
+padding-left: 50px;
+}
+
 /*Tabs-----------------------------------------------------*/
 .tab-menu.nav-tabs {
 /*added to fix tab placement in List index*/
@@ -24,6 +30,7 @@
  .navbar-fixed-top .container, .navbar-fixed-bottom .container {
 width: auto;
 padding-left: 50px;
+padding-right: 28px;
 }
 
  /*Login screen-------------------------------------------------------------------*/
@@ -53,6 +60,12 @@ height: 32px;
 margin-top: -4px;
 }
 
+
+/*Added this to fix new user button in Users view*/
+.box-header .box-icon a {
+margin: 0px 18px;
+}
+
 /*Main container */
 .container-fluid {
 padding-left: 0px;
@@ -66,11 +79,11 @@ width: auto;
 /* Content */
 
 #content {
-padding: 25px 25px 25px 40px;
+padding: 6px 25px 25px 40px;
 }
 
 /*Pages background */
-/* Eliminate default black background*/
+/* Eliminate default black background named dbg*/
 body {
 	background: url(img/bg.jpg) repeat-y top right, 
 				url(img/bg.jpg) repeat top left;
@@ -81,7 +94,7 @@ body {
 footer {
 position: relative;
 
-padding-bottom: 24px;
+/*padding-bottom: 24px;*/
 padding-left: 50px;
 padding-right: 50px;
 
@@ -115,3 +128,29 @@ text-decoration: underline;
 .navbar .nav > li > a {
 color: white;
 }
+
+/*Fixed menu bar with reduced width to prevent run-off*/
+.menu-bar-fixed{
+	position:fixed;
+	width:93%;
+	z-index: 2;
+	background: url(img/bg.jpg) repeat-y top right, 
+				url(img/bg.jpg) repeat top left;
+	padding-top: 15px;
+	padding-bottom: 20px;
+	padding-right: 30px;
+	margin-top: -20px;
+
+}
+
+#menu-bar-content{
+	position:static;
+    margin-bottom:125px;
+}
+
+/*Home screen to have the appropriate bottom margin, for it to stay stuck to the bottom of the creen*/
+
+.hero-unit {
+margin-bottom: 8.5%;
+}
+

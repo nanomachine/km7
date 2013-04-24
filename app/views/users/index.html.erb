@@ -1,66 +1,67 @@
 <% provide(:title, 'Users') %>
 
-<div class="row-fluid sortable">		
-	<div class="box span12">
-		<div class="box-header">
-			<h2><i class="icon-user"></i><span class="break"></span>Users</h2>
-			<div class="box-icon">
-				<%= link_to new_user_path, class: 'btn' do %>
-					<i class="icon-plus"></i> New User
-				<% end %>
+   	<%= render 'layouts/sidebar' %>
+	<div class="row-fluid fluid-box">		
+		<!--div class="box span10" onTablet="span10" onDesktop="span10"-->
+		<div class="box span12">
+			<div class="box-header">
+				<h2><i class="icon-user"></i><span class="break"></span>Users</h2>
+				<div class="box-icon">
+					<%= link_to new_user_path, class: 'btn btn-success' do %>
+						<i class="icon-plus"></i> New User
+					<% end %>
+				</div>
 			</div>
-		</div>
-		<div class="box-content">
-			<table class="table table-striped table-bordered bootstrap-datatable datatable">
-			  <thead>
-				  <tr>
-				  	  <th>Picture</th>
-					  <th>First Name</th>
-					  <th>Last Name</th>			  
-					  <th>Email</th>
-					  <th>Municipality</th>
-					  <th>Telephone</th>
-					  <th>Date registered</th>
-					  <th>Role</th>
-					  <th>Actions</th>
-				  </tr>
-			  </thead>   
-			  <tbody>
-			  	<% @users.each do |user| %>
-					<tr>
-						<td><%= image_tag user.avatar.url(:thumb) %></td>
-						<td><%= user.name %></td>
-						<td><%= user.last_name %></td>
-						<td><%= user.email %></td>
-						<td><%= user.municipality %></td>
-						<td><%= user.telnum %></td>
-						<td class="center"><%= user.created_at.strftime(" %b.%d %Y") %></td>
-						<td class="center">
-							<% if user.admin? %>
-								Administrator
-							<% elsif user.sub_admin?%>
-								Sub-Administrator
-							<% else %>
-								Reporter
-							<% end %>
-						</td>
-<!--Action buttons for user index table, Delete and More Info -->
-						<td class="center">
-							<%= link_to user, class: 'btn btn-info' do %>
-								<i class="icon-zoom-in icon-white"></i> 
-							<% end %>
-<!-- If current user is admin and is NOT the user to be listed -->
-							<% if current_user.admin? && !current_user?(user) %>
-								<%= link_to user, method: :delete, data: { confirm: "Delete this user?" }, class: 'btn btn-danger' do %>
-									<i class="icon-trash icon-white"></i> 
+			<div class="box-content">
+				<table class="table table-striped table-bordered bootstrap-datatable datatable">
+				  <thead>
+					  <tr>
+					  	  <th>Picture</th>
+						  <th>First Name</th>
+						  <th>Last Name</th>			  
+						  <th>Email</th>
+						  <th>Municipality</th>
+						  <th>Telephone</th>
+						  <th>Date registered</th>
+						  <th>Role</th>
+						  <th>Actions</th>
+					  </tr>
+				  </thead>   
+				  <tbody>
+				  	<% @users.each do |user| %>
+						<tr>
+							<td><%= image_tag user.avatar.url(:thumb) %></td>
+							<td><%= user.name %></td>
+							<td><%= user.last_name %></td>
+							<td><%= user.email %></td>
+							<td><%= user.municipality %></td>
+							<td><%= user.telnum %></td>
+							<td class="center"><%= user.created_at.strftime(" %b.%d %Y") %></td>
+							<td class="center">
+								<% if user.admin? %>
+									Administrator
+								<% elsif user.sub_admin?%>
+									Sub-Administrator
+								<% else %>
+									Reporter
 								<% end %>
-							<% end %>
-						</td>
-					</tr>
-				<% end %>
-			  </tbody>
-		  </table>          
-		</div>
-	</div><!--/span-->
-
-</div><!--/row-->
+							</td>
+	<!--Action buttons for user index table, Delete and More Info -->
+							<td class="center">
+								<%= link_to user, class: 'btn btn-info' do %>
+									<i class="icon-zoom-in icon-white"></i> 
+								<% end %>
+	<!-- If current user is admin and is NOT the user to be listed -->
+								<% if current_user.admin? && !current_user?(user) %>
+									<%= link_to user, method: :delete, data: { confirm: "Delete this user?" }, class: 'btn btn-danger' do %>
+										<i class="icon-trash icon-white"></i> 
+									<% end %>
+								<% end %>
+							</td>
+						</tr>
+					<% end %>
+				  </tbody>
+			  </table>          
+			</div>
+		</div><!--/span-->
+	</div><!--/row-->
