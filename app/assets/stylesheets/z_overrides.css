@@ -9,6 +9,7 @@
 .fluid-box {
 width: 93%;
 padding-left: 50px;
+margin-top: -17px;
 }
 
 /*Tabs-----------------------------------------------------*/
@@ -136,7 +137,7 @@ color: white;
 	z-index: 2;
 	background: url(img/bg.jpg) repeat-y top right, 
 				url(img/bg.jpg) repeat top left;
-	padding-top: 15px;
+	padding-top: 20px;
 	padding-bottom: 20px;
 	padding-right: 30px;
 	margin-top: -20px;

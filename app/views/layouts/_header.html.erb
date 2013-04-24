@@ -1,11 +1,10 @@
 <header class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to "Kilómetro Siete", root_path, id: "logo" %>
+
+      <%= link_to "Kilómetro Siete", '#', id: "logo" %>
       <nav>
         <ul class="nav pull-right">
-          <li><%= link_to "Home",    root_path %></li>
-
           <% if signed_in? %>
 
             <li id= "fat-menu" class="dropdown">
