@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:session][:email])
     if user && user.authenticate(params[:session][:password])
         sign_in user
-        redirect_to a_dashboard
+        redirect_to a_dashboard_path
     else
       flash.now[:error] = 'Username or password is incorrect. Please, try again.'
       render 'new'
