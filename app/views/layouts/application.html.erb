@@ -16,10 +16,11 @@
     <!--[if IE 9 ]>
     <![endif]-->
     
-    <%= render 'layouts/shim' %>  
   </head>
   <body>
     <%= render 'layouts/header' %>
+    <%= render 'layouts/shim' %>  
+
     <div class="container-fluid">
       <% flash.each do |key, value| %>
         <%= content_tag(:div, value, class: "alert alert-#{key}") %>

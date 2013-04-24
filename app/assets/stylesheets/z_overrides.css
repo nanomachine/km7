@@ -157,10 +157,33 @@ margin-bottom: 8.5%;
 
 
 /*Dropdown for number of items to show, for tables*/
-select {
+
+label input, label textarea, label select {
 display: inline-block;
 }
 
 input, textarea, select, .uneditable-input {
 padding: 4px 6px;
+width: 220px;
+}
+
+/*Search input field for users table*/
+
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+display: inline-block;
+height: auto;
+}
+
+/*Making fonts look like perfectums*/
+
+label, input, button, select, textarea {
+font-size: 14px;
+font-weight: normal;
+line-height: 20px;
+}
+
+label {
+display: block;
+margin-bottom: 5px;
+color: #646464;
 }

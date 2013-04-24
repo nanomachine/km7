@@ -1,5 +1,5 @@
 <% provide(:title, 'New Report') %>
-<div class="row-fluid sortable">
+<div class="row-fluid fluid-box">
   <div class="box span12">
     <div class="box-header" data-original-title>
       <h2><i class="icon-edit"></i><span class="break"></span>New Report</h2>
@@ -11,16 +11,7 @@
             <label class="control-label" for="focusedInput">Title</label>
             <div class="controls">
               <div class="input-xlarge focused" id="focusedInput" type="text">
-                <%= f.text_field :title, :placeholder => "Please provide a title for the report..." %>
-              </div>
-            </div>
-          </div>
-
-          <div class="control-group">
-            <label class="control-label" for="focusedInput">Description</label>
-            <div class="controls">
-              <div class="input-xlarge focused" id="focusedInput" type="text">
-                <%= f.text_field :description, :placeholder => "Provide a short description of the situation and/or location..." %>
+                <%= f.text_field :title, :placeholder => "Please provide a title..." %>
               </div>
             </div>
           </div>
@@ -81,9 +72,21 @@
             </div>
           </div>
 
+          <div class="control-group">
+            <label class="control-label" for="textarea2">Description</label>
+            <div class="controls">
+              <div class="input-xlarge focused" id="focusedInput" type="text">
+                <%= f.text_area :description, :placeholder => "Provide a short description of the situation and/or location..." %>
+              </div>
+            </div>
+          </div>
+
 
           <div class="form-actions">
-            <%= f.submit "Create", class: "btn btn-large btn-success" %>
+            <%= f.submit "Create", class: "btn btn-success" %>
+            <%= link_to reports_path, data: { confirm: "Abandon report submission?" }, class: 'btn' do %>
+              <i></i> Cancel
+            <% end %>
           </div>
         </fieldset>
       <% end %>

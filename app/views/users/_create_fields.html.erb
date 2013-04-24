@@ -92,7 +92,10 @@
 	</div>
 
 	<div class="form-actions">
-		<%= f.submit "Create", class: "btn btn-large btn-success" %>
+		<%= f.submit "Create", class: "btn btn-success" %>
+		<%= link_to users_path, data: { confirm: "Abandon user creation?" }, class: 'btn' do %>
+			<i></i> Cancel
+		<% end %>
 	</div>
 
 </fieldset>

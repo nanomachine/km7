@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
 
 # Where to store the user avatar depending on the environment
   if Rails.env.production?
-    has_attached_file :avatar, :styles => {:medium => "300x300#", :thumb => "100x100#"},
+    has_attached_file :avatar, :styles => {:medium => "500x500#", :thumb => "100x100#"},
           :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension",
                     :storage => :s3,
           :url => "/assets/users/:id/:style/:basename.:extension",  

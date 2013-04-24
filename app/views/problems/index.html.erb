@@ -4,49 +4,63 @@
 	<div class="row-fluid fluid-box">
 		<div class="box span12">
 			<div class="box-header">
-				<h2><i class="icon-file"></i><span class="break"></span>Reports Map</h2>
+				<h2><i class="icon-file"></i><span class="break"></span>Reports</h2>
 
-			</div>
-			<div class="box-content">
-				<%= gmaps4rails(@json) %>  
+				<div class="box-icon">
+					<%= link_to new_problem_path, class: 'btn btn-success' do %>
+						<i class="icon-plus"></i> New Report
+					<% end %>
+				</div>
+
 			</div>
 		</div>
+		<div class="box-content">
+			<table class="table table-striped table-bordered bootstrap-datatable datatable">
+				  <thead>
+					  <tr>
+					  	  <th>Report</th>
+					  	  <th>Picture</th>
+						  <th>Address</th>
+					  	  <th>Description</th>			  
+						  <th>Type</th>
+						  <th>Priority</th>
+						  <th>Status</th>
+						  <th>Date submitted</th>
+						  <th>Reporter</th>
+					  </tr>
+				  </thead>   
+				  <tbody>
+				  	<% @problems.each do |problem| %>
+						<tr>
+							<td><%= problem.id %></td>
+							<td><%= image_tag problem.avatar.url(:thumb) %></td>
 
-		<hr>
+							<td><%= problem.address %></td>
+							<td><%= problem.description %></td>
+							<td><%= problem.get_prob_type %></td>
+							<td><%= problem.get_prob_priority %></td>
+							<td><%= problem.get_prob_status %></td>
+							<td class="center"><%= problem.created_at.strftime(" %b.%d %Y") %></td>
+							<td><%= User.find(problem.user_id).name %> <%= User.find(problem.user_id).last_name%> </td>
 
-		<div class="box span4 noMargin" onTablet="span12" onDesktop="span4">
-			<div class="box-header">
-				<h2><i class="icon-list"></i><span class="break"></span>Report tickets</h2>
-				<div class="box-icon">
-					<%= link_to new_problem_path, class: 'btn' do %>
-					<i class="icon-plus"></i>
-				<% end %>
-			</div>
-			</div>
-			<div class="box-content">
-				<ul class="tickets">
-					<li class="ticket">
-						<% @problems.each do |problem| %>
-						<% @user = User.find(problem.user_id) %>
-							<span class="header">	
-								<span class="title"><%= link_to problem.title, problem %></span>
-								<span class="number"><%= link_to problem.get_prob_type, problem%> <%= link_to "[#"+problem.id.to_s+"]", problem%></span>
-							</span>
-							<span class="content">
-								<span class="avatar">  <img src="<%=problem.avatar.url(:thumb) %>"></span>
-								<span class="name">By:<%= @user.name %> 
-									<%= @user.last_name %></span>
-								<!-- Implement priority partial for viewing -->
-								<span> <%= link_to "Delete", problem,  method: :delete, data: { confirm: "Delete this report?" }, class: 'priority blue' %></span>
-								<!--<span class="priority blue">[ <%=problem.get_prob_priority %> ]</span>-->
-								<span class="status">Status: <span class="green">[ <%= problem.get_prob_status %> ]</span></span>
-								<span class="date"><%= problem.created_at.strftime(" %b.%d %Y") %></span>
-							</span>	                                                        
-						<% end %>
-					</li>
-				</ul>
-			</div>
-		</div><!--/span-->
+	<!--Action buttons for problem index table, Delete and More Info -->
+							<td class="center">
+								<%= link_to problem, class: 'btn btn-info' do %>
+									<i class="icon-zoom-in icon-white"></i> 
+								<% end %>
+
+								<% if current_user.admin? %>
+									<%= link_to problem, method: :delete, data: { confirm: "Delete this report?" }, class: 'btn btn-danger' do %>
+										<i class="icon-trash icon-white"></i> 
+									<% end %>
+								<% end %>
+
+							</td>
+						</tr>
+					<% end %>
+				  </tbody>
+			  </table>
+		</div>
 	</div>
 
 
