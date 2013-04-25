@@ -1,16 +1,61 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="span4">
-    <section>
-      <ul>
-        <%= image_tag @user.avatar.url(:thumb) %>
-        <li><%= @user.id %></li>
-        <li><%= @user.name %></li>
-        <li><%= @user.last_name %></li>
-        <li><%= @user.email %></li>
-        <li><%= @user.telnum %></li>
-        <li><%= @user.municipality %></li>
-      </ul>
-    </section>
-  </aside>
+
+<%= render 'layouts/sidebar' %>
+
+<div class="row-fluid fluid-box">
+  <div class="box span4">
+    <div class="box-content well">
+      <%= image_tag @user.avatar.url(:medium) %>
+    </div>
+  </div><!--/span-->
+
+  <div class="box span4 ">
+    <h1 class="h1-profile"><%= @user.name %> <%= @user.last_name %></h1>
+    <h2> 
+      <% if @user.admin? %>
+        Administrator
+      <% elsif @user.sub_admin?%>
+        Sub-Administrator
+      <% else %>
+        Reporter
+      <% end %>
+          </h2>
+      <h2 class="h2-profile"><i class="icon-barcode"></i> #    <%= @user.id %></h2>
+      <h2 class="h2-profile"><i class="fa-icon-phone"></i>    <%= @user.telnum %></h2>
+      <h2 class="h2-profile"><i class="icon-envelope"></i>    <%= @user.email %></h2>
+      <h2 class="h2-profile"><i class="icon-map-marker"></i>    <%= @user.municipality %>, PR</h2>
+            
+  </div><!--/span-->
+
+  <div class="box span4">
+          <div class="span2" ontablet="span4" ondesktop="span2">
+                      <div class="circleStatsItem red">
+              <i class="fa-icon-thumbs-up"></i>
+              <span class="plus">+</span>
+              <span class="percent">%</span>
+                          <div style="width:120px;display:inline;&quot;"><canvas width="120" height="120"></canvas><input type="text" value="58" class="orangeCircle" style="width: 60px; position: absolute; margin-top: 42.857142857142854px; margin-left: -90px; font-size: 30px; border: none; background-image: none; font-family: Arial; font-weight: bold; text-align: center; color: rgb(250, 88, 51); padding: 2px 0px 0px; -webkit-appearance: none; background-position: initial initial; background-repeat: initial initial;" readonly="readonly"></div>
+                      </div>
+            <div class="box-small-title">User satisfaction</div>
+          </div>
+
+          <div class="span2" ontablet="span4" ondesktop="span2">
+                      <div class="circleStatsItem red">
+              <i class="fa-icon-thumbs-up"></i>
+              <span class="plus">+</span>
+              <span class="percent">%</span>
+                          <div style="width:120px;display:inline;&quot;"><canvas width="120" height="120"></canvas><input type="text" value="58" class="orangeCircle" style="width: 60px; position: absolute; margin-top: 42.857142857142854px; margin-left: -90px; font-size: 30px; border: none; background-image: none; font-family: Arial; font-weight: bold; text-align: center; color: rgb(250, 88, 51); padding: 2px 0px 0px; -webkit-appearance: none; background-position: initial initial; background-repeat: initial initial;" readonly="readonly"></div>
+                      </div>
+            <div class="box-small-title">User satisfaction</div>
+          </div>
+          
+          <div class="span2" ontablet="span4" ondesktop="span2">
+                      <div class="circleStatsItem red">
+              <i class="fa-icon-thumbs-up"></i>
+              <span class="plus">+</span>
+              <span class="percent">%</span>
+                          <div style="width:120px;display:inline;&quot;"><canvas width="120" height="120"></canvas><input type="text" value="58" class="orangeCircle" style="width: 60px; position: absolute; margin-top: 42.857142857142854px; margin-left: -90px; font-size: 30px; border: none; background-image: none; font-family: Arial; font-weight: bold; text-align: center; color: rgb(250, 88, 51); padding: 2px 0px 0px; -webkit-appearance: none; background-position: initial initial; background-repeat: initial initial;" readonly="readonly"></div>
+                      </div>
+            <div class="box-small-title">User satisfaction</div>
+          </div>
+  </div>
 </div>

@@ -1,6 +1,8 @@
 <% provide(:title, 'Reports') %>
 
 	<%= render 'layouts/sidebar' %>
+	<%= will_paginate %>
+
 	<div class="row-fluid fluid-box">
 		<div class="box span12">
 			<div class="box-header">
@@ -27,6 +29,7 @@
 						  <th>Status</th>
 						  <th>Date submitted</th>
 						  <th>Reporter</th>
+						  <th>Actions</th>
 					  </tr>
 				  </thead>   
 				  <tbody>
@@ -62,6 +65,8 @@
 			  </table>
 		</div>
 	</div>
+	<%= will_paginate %>
+
 
 
 

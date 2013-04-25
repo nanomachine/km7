@@ -187,3 +187,27 @@ display: block;
 margin-bottom: 5px;
 color: #646464;
 }
+
+/*Fix containing box dimensions in User Profile*/
+.row-fluid .span4 {
+width: 23.915%;
+}
+
+.box-content {
+margin-top: 0px;
+}
+
+/*Using headings to represent User attributes in user profile, making adjustments*/
+/*---------------must verify font size, names tend to overflow and run to the next line*/
+
+.h1-profile {
+text-align: left;
+font-size: 39px;
+margin-top: 15px;
+
+}
+
+.h2-profile {
+margin-top: 0px;
+text-align: left;
+}
