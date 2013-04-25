@@ -44,14 +44,20 @@ padding-right: 28px;
 }
 
  .login-box .add-on {
-   /*Added important to align login box icon*/
+   /*Added important to align login box icon-------------------------------------------*/
    margin-left: 10px;
    margin-right: -10px;
    padding: 10px;
 }
 
 /*Forms------------------------------------------------------------------------*/
-.form-search input, .form-search textarea, .form-search select, .form-search .help-inline, .form-search .uneditable-input, .form-inline input, .form-inline textarea, .form-inline select, .form-inline .help-inline, .form-inline .uneditable-input, .form-horizontal input, .form-horizontal textarea, .form-horizontal select, .form-horizontal .help-inline, .form-horizontal .uneditable-input {
+.form-search input, .form-search textarea, .form-search select, 
+.form-search .help-inline, .form-search .uneditable-input, 
+.form-inline input, .form-inline textarea, .form-inline select, 
+.form-inline .help-inline, .form-inline .uneditable-input, 
+.form-horizontal input, .form-horizontal textarea, 
+.form-horizontal select, .form-horizontal .help-inline, 
+.form-horizontal .uneditable-input {
 height: 32px;
 }
 
@@ -62,12 +68,12 @@ margin-top: -4px;
 }
 
 
-/*Added this to fix new user button in Users view*/
+/*Added this to fix new user button in Users view------------------------------*/
 .box-header .box-icon a {
 margin: 0px 18px;
 }
 
-/*Main container */
+/*Main container ----------------------------------------------------------------*/
 .container-fluid {
 padding-left: 0px;
 padding-right: 0px;
@@ -77,14 +83,14 @@ padding-right: 0px;
 width: auto;
 }
 
-/* Content */
+/* Content ----------------------------------------------------------------*/
 
 #content {
 padding: 6px 25px 25px 40px;
 }
 
 /*Pages background */
-/* Eliminate default black background named dbg*/
+/* Eliminate default black background named dbg----------------*/
 body {
 	background: url(img/bg.jpg) repeat-y top right, 
 				url(img/bg.jpg) repeat top left;
@@ -95,7 +101,7 @@ body {
 footer {
 position: relative;
 
-/*padding-bottom: 24px;*/
+/*padding-bottom: 24px;----------------------------------------*/
 padding-left: 50px;
 padding-right: 50px;
 
@@ -113,13 +119,13 @@ border-radius: 0px;
 box-shadow: 0 -4px 0 rgba(0,0,0,.1);
 }
 
-/* Setting hover color for all hrefs in footer*/
+/* Setting hover color for all hrefs in footer--------------------*/
 footer a:hover {
 color: #005580;
 text-decoration: underline;
 }
 
-/*Navbar hover, focus */
+/*Navbar hover, focus ---------------------------------------------*/
 .navbar .nav>li>a:focus, .navbar .nav>li>a:hover {
 background-color: transparent;
 color: #005580;
@@ -130,7 +136,7 @@ text-decoration: underline;
 color: white;
 }
 
-/*Fixed menu bar with reduced width to prevent run-off*/
+/*Fixed menu bar with reduced width to prevent run-off-----------*/
 .menu-bar-fixed{
 	position:fixed;
 	width:93%;
@@ -200,14 +206,21 @@ margin-top: 0px;
 /*Using headings to represent User attributes in user profile, making adjustments*/
 /*---------------must verify font size, names tend to overflow and run to the next line*/
 
-.h1-profile {
+.h1-profile{
 text-align: left;
 font-size: 39px;
 margin-top: 15px;
+line-height: 32px;
 
 }
 
 .h2-profile {
 margin-top: 0px;
 text-align: left;
+}
+
+/*Circle statistics for user profiles-----------------------------------------*/
+
+.box-small-title {
+margin: 10px 31px;
 }
