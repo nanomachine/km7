@@ -14,6 +14,7 @@
       <h1 class="h1-profile"><%= @user.name %></h1>
       <h1 class="h1-profile"><%= @user.last_name %></h1>
 
+      <h2 class="h2-profile"><i class="icon-barcode"></i>    <%= @user.id %></h2>
       <h2 class="h2-profile">
         <i class="icon-user"></i>      
         <% if @user.admin? %>
@@ -24,10 +25,9 @@
           Reporter
         <% end %>
             </h2>
-        <h2 class="h2-profile"><i class="icon-barcode"></i> #    <%= @user.id %></h2>
+        <h2 class="h2-profile"><i class="icon-map-marker"></i>    <%= @user.municipality %>, PR</h2>
         <h2 class="h2-profile"><i class="fa-icon-phone"></i>    <%= @user.telnum %></h2>
         <h2 class="h2-profile"><i class="icon-envelope"></i>    <%= @user.email %></h2>
-        <h2 class="h2-profile"><i class="icon-map-marker"></i>    <%= @user.municipality %>, PR</h2>
               
     </div><!--/span-->
     <div class="row-fluid fluid-box">
@@ -91,10 +91,6 @@
     <div class="box span3">
       <div class="box-header">
         <h2><i class="icon-list"></i><span class="break"></span>Report tickets</h2>
-        <div class="box-icon">
-          <%= link_to new_problem_path, class: 'btn btn-success' do %>
-          <i class="icon-plus"></i>
-        <% end %>
       </div>
       </div>
       <div class="box-content">

@@ -197,7 +197,8 @@ color: #646464;
 /*Fix containing box dimensions in User Profile*/
 .row-fluid .span4 {
 width: 23.915%;
-padding:70px;
+padding-top:70px;
+padding-left:40px;
 }
 
 .box-content {
