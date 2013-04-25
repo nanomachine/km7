@@ -197,6 +197,7 @@ color: #646464;
 /*Fix containing box dimensions in User Profile*/
 .row-fluid .span4 {
 width: 23.915%;
+padding:70px;
 }
 
 .box-content {
@@ -210,13 +211,14 @@ margin-top: 0px;
 text-align: left;
 font-size: 39px;
 margin-top: 15px;
-line-height: 32px;
+line-height: 9px;
 
 }
 
 .h2-profile {
 margin-top: 0px;
 text-align: left;
+line-height: 0;
 }
 
 /*Circle statistics for user profiles-----------------------------------------*/
