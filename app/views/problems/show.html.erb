@@ -1,68 +1,106 @@
 <% provide(:title, "Details") %>
-<div class="row">
-  <aside class="span4">
-    <section>
 
-      <%= gmaps({
-        "map_options" => {"auto_zoom" => false, "zoom" => 15 },
-        "markers" => {"data" => @json }
-        })
-      %>
+<%= render 'layouts/sidebar' %>
 
-      <% @user = User.find(@problem.user_id) %>
+<div class="row-fluid fluid-box">
+  <div class="span12">
+    <div class="box span6">
+      <div class="box-header">
+        <h2><i class="fa-icon-eye-open"></i><span class="break"></span>Report #<%=@problem.id%> - <%= @problem.title %></h2>
+      </div>
+      <div class="box-content">
+          <%= image_tag @problem.avatar.url(:medium) %>
+        </div>
+    </div>
+  
+    <div class="box span6 noMargin">
+      <div class="box-header">
+        <h2><i class="fa-icon-globe"></i><span class="break"></span>Location</h2>
+      </div>
+        <div class="box-content">
+          <%= gmaps({
+              "map_options" => {"auto_zoom" => false, "zoom" => 15 },
+              "markers" => {"data" => @json }
+              })
+            %>
+        </div>
+    </div>
 
-      <h1>
-      	<%= image_tag @problem.avatar.url(:original) %>
-      </h1>
-      <ul>
-     	<li>Report #<%= @problem.id %>
-        <% if current_user.admin?%>
-    |     <%= link_to "Edit", edit_problem_path %>
-        <% end %>
-      </li>
-      <li>Title: <%= @problem.title %></li>
-     	<li>Type: <%= @problem.get_prob_type %></li>
-      <li>Status <%= @problem.get_prob_status %></li>
-      <li>Priority: <%= @problem.priority %></li>
-     	<li>User: <%= @user.name %> <%= @user.last_name =%></li>
-     	<li>Latitud: <%= @problem.latitude %></li>
-     	<li>Longitud: <%= @problem.longitude %></li>
-      <li>Address: <%= @problem.address %></li>
-     	<li>Date Created: <%= @problem.created_at.strftime(" %b.%d %Y") %></li>
-      <li>Description: <%= @problem.description %></li>
-      <li>Comments:</li>
+    <div class="span6 ">
+          <div class="box span6">
+              <h2 class="h2-profile">Reporter: <%= User.find(@problem.user_id).name %> <%= User.find(@problem.user_id).last_name %></h2>
+              <h2 class="h2-profile">Latitude: <%= @problem.latitude %></h2>
+              <h2 class="h2-profile">Type: <%= @problem.get_prob_type %></h2>
+              <h2 class="h2-profile">Status: <%= @problem.get_prob_status %></h2>
+          </div>
+          <div class="box span6">
+              <h2 class="h2-profile">Priority: <%= @problem.get_prob_priority %></h2>
+              <h2 class="h2-profile">Longitude: <%= @problem.longitude %></h2>
+              <h2 class="h2-profile">Submitted on: <%= @problem.created_at.strftime(" %b.%d %Y") %></h2>
+              <h2 class="h2-profile">Updated on: <%= @problem.updated_at.strftime(" %b.%d %Y") %></h2>
 
-      <!--Preparing comments for disply-->
-        <% @comments = @problem.comment_threads %>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
 
-      <!--This could be made a _comment to render-->
-      <ul class="users">
-        <% @comments.each do |comment| %>
-          <% @user = User.find(comment.user_id) %>
-          <table>
-            <tr>
-              <td colspan="2"><%= "--"+ @user.name + "-- on "+ comment.created_at.strftime(" %b.%d %Y") + " @ " + comment.created_at.strftime("%H:%M") %></td>
 
-            </tr>
-            <tr>
-              <td colspan="2"><%= comment.body %></td>
-              <!--implement comment threading functionality-->
-            </tr>
-            <tr>
-              <td><%= link_to "Delete", delete_comment_from_problems_url(comment: comment), method: :delete, :confirm => 'Are you sure you wish to delete this comment?' %> </td>
-            </tr>
-          </table>
-        <% end %>
+<div class="row-fluid fluid-box">
+  <div class="span12">
 
-      <li>Comment: 
-      <%= form_tag "/problems/add_new_comment" do %>
-        <%= hidden_field_tag "id", @problem.id %>
-        <%= text_area :comment, :body, :size => "10x10" %>
-        <%= submit_tag "Post Comment" %>
-      </li>
-      <% end %>
+    <div class="box span3">
+      <div class="box-header">
+        <h2><i class="icon-tasks"></i><span class="break"></span>Address</h2>
+      </div>
+        <div class="box-content">
+          <%= @problem.address %>
+        </div>
+    </div>
+    
+    <div class="box span3">
+      <div class="box-header">
+        <h2><i class="icon-tasks"></i><span class="break"></span>Description</h2>
+      </div>
+        <div class="box-content">
+          <%= @problem.description %>
+        </div>
+    </div>
 
-      </ul>     
-    </section>
-  </aside>
+    <div class="box span6">
+      <div class="box-header">
+        <h2><i class="icon-comment"></i><span class="break"></span>Comments</h2>
+      </div>
+      <div class="box-content">
+        <!--Preparing comments for dispaly-->
+         <% @comments = @problem.comment_threads %>
+        <!--This could be made a _comment to render-->
+        <ul class="users">
+          <% @comments.each do |comment| %>
+            <% @user = User.find(comment.user_id) %>
+            <table>
+              <tr>
+                <td colspan="2"><%= "--"+ @user.name + "-- on "+ comment.created_at.strftime(" %b.%d %Y") + " @ " + comment.created_at.strftime("%H:%M") %></td>
+
+              </tr>
+              <tr>
+                <td colspan="2"><%= comment.body %></td>
+                <!--implement comment threading functionality-->
+              </tr>
+              <tr>
+                <td><%= link_to "Delete", delete_comment_from_problems_url(comment: comment), method: :delete, :confirm => 'Are you sure you wish to delete this comment?' %> </td>
+              </tr>
+            </table>
+          <% end %>
+          <li>Comment: 
+            <%= form_tag "/problems/add_new_comment" do %>
+              <%= hidden_field_tag "id", @problem.id %>
+              <%= text_area :comment, :body, :size => "10x10" %>
+              <%= submit_tag "Post Comment" %>
+          </li>
+          <% end %>
+        </ul> 
+      </div>    
+    </div>
+  </div>
 </div>

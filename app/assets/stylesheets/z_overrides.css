@@ -196,10 +196,11 @@ color: #646464;
 
 /*Fix containing box dimensions in User Profile*/
 .row-fluid .span4 {
-width: 23.915%;
+width: 31.915%;
 padding-top:70px;
 padding-left:40px;
 }
+
 
 .box-content {
 margin-top: 0px;
@@ -213,6 +214,13 @@ text-align: left;
 font-size: 39px;
 margin-top: 15px;
 line-height: 9px;
+}
+
+.h1-report{
+text-align: left;
+font-size: 25px;
+margin-top: 15px;
+line-height: 9px;
 
 }
 
@@ -222,8 +230,10 @@ text-align: left;
 line-height: 0;
 }
 
+
 /*Circle statistics for user profiles-----------------------------------------*/
 
 .box-small-title {
 margin: 10px 31px;
 }
+
