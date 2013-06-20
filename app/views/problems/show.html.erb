@@ -12,10 +12,15 @@
           <%= image_tag @problem.avatar.url(:medium) %>
         </div>
     </div>
-  
+
     <div class="box span6 noMargin">
       <div class="box-header">
         <h2><i class="fa-icon-globe"></i><span class="break"></span>Location</h2>
+        <div class="box-icon">
+          <%= link_to "#", class: 'btn btn-success' do %>
+            <i class="icon-plus"></i> Add to list
+          <% end %>
+        </div>
       </div>
         <div class="box-content">
           <%= gmaps({
@@ -27,20 +32,18 @@
     </div>
 
     <div class="span6 ">
-          <div class="box span6">
-              <h2 class="h2-profile">Reporter: <%= User.find(@problem.user_id).name %> <%= User.find(@problem.user_id).last_name %></h2>
-              <h2 class="h2-profile">Latitude: <%= @problem.latitude %></h2>
-              <h2 class="h2-profile">Type: <%= @problem.get_prob_type %></h2>
-              <h2 class="h2-profile">Status: <%= @problem.get_prob_status %></h2>
-          </div>
-          <div class="box span6">
-              <h2 class="h2-profile">Priority: <%= @problem.get_prob_priority %></h2>
-              <h2 class="h2-profile">Longitude: <%= @problem.longitude %></h2>
-              <h2 class="h2-profile">Submitted on: <%= @problem.created_at.strftime(" %b.%d %Y") %></h2>
-              <h2 class="h2-profile">Updated on: <%= @problem.updated_at.strftime(" %b.%d %Y") %></h2>
-
-          </div>
-        </div>
+      <div class="box span6">
+        <h2 class="h2-profile">Reporter: <%= User.find(@problem.user_id).name %> <%= User.find(@problem.user_id).last_name %></h2>
+        <h2 class="h2-profile">Latitude: <%= @problem.latitude %></h2>
+        <h2 class="h2-profile">Type: <%= @problem.get_prob_type %></h2>
+        <h2 class="h2-profile">Status: <%= @problem.get_prob_status %></h2>
+      </div>
+      <div class="box span6">
+        <h2 class="h2-profile">Priority: <%= @problem.get_prob_priority %></h2>
+        <h2 class="h2-profile">Longitude: <%= @problem.longitude %></h2>
+        <h2 class="h2-profile">Submitted on: <%= @problem.created_at.strftime(" %b.%d %Y") %></h2>
+        <h2 class="h2-profile">Updated on: <%= @problem.updated_at.strftime(" %b.%d %Y") %></h2>
+      </div>
     </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-<% provide(:title, 'Users') %>
+ provide(:title, 'Users') %>
 
    	<%= render 'layouts/sidebar' %>
    	<%= will_paginate %>
@@ -9,7 +9,7 @@
 			<div class="box-header">
 				<h2><i class="icon-user"></i><span class="break"></span>Users</h2>
 				<div class="box-icon">
-					<%= link_to new_user_path, class: 'btn btn-success' do %>
+					<%= link_to add_problem_list_path(list: @list, problem_id: problem.id), method: :put , class: 'btn btn-success' do %>
 						<i class="icon-plus"></i> New User
 					<% end %>
 				</div>
