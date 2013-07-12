@@ -95,7 +95,7 @@
                 <span class="number"><%= link_to problem.get_prob_type, problem%> <%= link_to "[#"+problem.id.to_s+"]", problem%></span>
               </span>
               <span class="content">
-                <span class="avatar">  <img src="<%=problem.avatar.url(:thumb) %>"></span>
+                <span class="avatar">  <img src=<%=problem.avatar.url(:thumb) %>> </span>
                 <span class="name">By:<%= @user.name %> 
                   <%= @user.last_name %></span>
                 <!-- Implement priority partial for viewing -->

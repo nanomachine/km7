@@ -67,7 +67,7 @@ Km7::Application.configure do
   config.assets.precompile << "gmaps4rails.css"
   #config.assets.precompile += %w( *.css *.js )
 
-  config.action_mailer.default_url_options = { :host => "floating-inlet-7893.herokuapp.com" }
+  config.action_mailer.default_url_options = { :host => "km7.herokuapp.com" }
 
 
   #config.paperclip_defaults = {
