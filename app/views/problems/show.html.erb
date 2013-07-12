@@ -21,6 +21,11 @@
     <div class="box span6">
       <div class="box-header">
         <h2><i class="fa-icon-globe"></i><span class="break"></span>Map</h2>
+          <div class="box-icon">
+            <%= link_to "#", class: 'btn btn-success btn-setting' do %>
+              <i class="icon-plus"></i> Add to list
+            <% end %>
+          </div>
       </div>
       <div class="box-content">
         <div class="row-fluid">
@@ -28,12 +33,10 @@
             <%= gmaps({
               "map_options" => {"auto_zoom" => false, "zoom" => 15 },
               "markers" => {"data" => @json }
-              
               })
             %>
           </div>
-          <div class="span12">
-
+          <div class="box span12 ">
               <div class="box span4">
                   <h3>Address:</h3>
                     <p>
@@ -56,31 +59,34 @@
     </div>
 </div>
 
-<hr>
-
 <div class="row-fluid fluid-box">
+
+  <!--  Description Box     -->
+      <div class="box span4 noMargin">
+        <div class="box-header">
+          <h2><i class="fa-icon-list"></i><span class="break"></span>Description</h2>
+        </div>
+
+        <div class="box-content">
+          <div class="row-fluid">
+            <div class="box span12">
+              <p>
+                <%= @problem.description %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
   <!--  Details Box     -->
-      <div class="box span6 noMargin">
+      <div class="box span4 noMargin">
         <div class="box-header">
           <h2><i class="fa-icon-list"></i><span class="break"></span>Details</h2>
-          <div class="box-icon">
-            <%= link_to "#", class: 'btn btn-success btn-setting' do %>
-              <i class="icon-plus"></i> Add to list
-            <% end %>
-          </div>
         </div>
         <div class="box-content">
             <div class="row-fluid">
 
-              <div class="box span4">
-
-                <h3>Description:</h3>
-                  <p>
-                    <%= @problem.description %>
-                </p>
-              </div>
-
-              <div class="box span4">
+              <div class="box span6">
                 <h3>Reporter:</h3>
                   <p><%= User.find(@problem.user_id).name %> <%= User.find(@problem.user_id).last_name %></p>
                 <h3>Type:</h3>
@@ -89,7 +95,7 @@
                   <p><%= @problem.get_prob_status %></p>
               </div>
 
-              <div class="box span4">
+              <div class="box span6">
                 <h3>Priority:</h3>
                   <p><%= @problem.get_prob_priority %></p>
                 <h3>Submitted on:</h3>
@@ -103,39 +109,53 @@
       </div>
 
   <!-- Comment box    -->
-      <div class="box span6">
+      <div class="box span4 noMargin">
         <div class="box-header">
           <h2><i class="icon-comment"></i><span class="break"></span>Comments</h2>
         </div>
         <div class="box-content">
           <!--Preparing comments for dispaly-->
            <% @comments = @problem.comment_threads %>
-          <!--This could be made a _comment to render-->
-          <ul class="users">
-            <% @comments.each do |comment| %>
-              <% @user = User.find(comment.user_id) %>
-              <table>
-                <tr>
-                  <td colspan="2"><%= "--"+ @user.name + "-- on "+ comment.created_at.strftime(" %b.%d %Y") + " @ " + comment.created_at.strftime("%H:%M") %></td>
+          <!--This could be made a _comment partial to render-->
+            <ul class="chat">
+              <% @comments.each do |comment| %>
+                <% @user = User.find(comment.user_id) %>
 
-                </tr>
-                <tr>
-                  <td colspan="2"><%= comment.body %></td>
-                  <!--implement comment threading functionality-->
-                </tr>
-                <tr>
-                  <td><%= link_to "Delete", delete_comment_from_problems_url(comment: comment), method: :delete, :confirm => 'Are you sure you wish to delete this comment?' %> </td>
-                </tr>
-              </table>
-            <% end %>
-            <li>Comment: 
+<!-- Aling all of current user's comments to the right for organization -->
+                <% if current_user!= @user %>
+                  <li class="left">
+                    <img class="avatar" alt=<%= @user.name %> src=<%= @user.avatar.url(:medium) %>>
+                    <span class="message"><span class="arrow"></span>
+                      <span class="from"><%= @user.name + " " + @user.last_name %></span>
+                      <span class="time"><%= comment.created_at.strftime(" %b.%d %Y at %T") %> </span>
+                      <span class="text">
+                        <%= comment.body %>
+                      </span>
+                    </span>  
+                  </li>
+                <% else %>
+                  <li class="right">
+                    <img class="avatar" src=<%= current_user.avatar.url(:medium) %>>
+                    <span class="message"><span class="arrow"></span>
+                      <span class="from"><%= current_user.name + " " + current_user.last_name %></span>
+                      <span class="time"><%= comment.created_at.strftime(" %b.%d %Y at %T") %> </span>
+                      <span class="text">
+                        <%= comment.body %>
+                      </span>
+                    </span>  
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>   
+
+          </ul> 
+            <div class="chat-form">
               <%= form_tag "/problems/add_new_comment" do %>
                 <%= hidden_field_tag "id", @problem.id %>
                 <%= text_area :comment, :body, :size => "10x10" %>
                 <%= submit_tag "Post Comment" %>
-            </li>
-            <% end %>
-          </ul> 
+              <% end %>
+            </div> 
         </div>    
       </div>
     </div>
