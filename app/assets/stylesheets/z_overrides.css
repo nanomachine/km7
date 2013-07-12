@@ -13,12 +13,14 @@ margin-top: -17px;
 }
 
 /*Tabs-----------------------------------------------------*/
-.tab-menu.nav-tabs {
+/*These are a variation of perfectums stock tabs aligned at the top left side of the bounding box*/
+
+.tab-menu.nav-tabs.tabs-lists {
 /*added to fix tab placement in List index*/
 	margin-left: 35px;
 }
 
-.tab-menu.nav-tabs > li {
+.tab-menu.nav-tabs.tabs-lists> li {
 	float: left;
 }
 
@@ -197,7 +199,7 @@ color: #646464;
 /*Fix containing box dimensions in User Profile*/
 .row-fluid .span4 {
 width: 31.915%;
-padding-top:70px;
+padding-top:0px;
 padding-left:40px;
 }
 
