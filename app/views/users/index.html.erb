@@ -9,8 +9,10 @@ add provide(:title, 'Users') %>
 			<div class="box-header">
 				<h2><i class="icon-user"></i><span class="break"></span>Users</h2>
 				<div class="box-icon">
-					<%= link_to new_user_path, class: 'btn btn-success' do %>
-						<i class="icon-plus"></i> New User
+					<% if current_user.admin? %>
+						<%= link_to new_user_path, class: 'btn btn-success' do %>
+							<i class="icon-plus"></i> New User
+						<% end %>
 					<% end %>
 				</div>
 			</div>

@@ -56,8 +56,10 @@
 									<%= link_to edit_list_path(list), class: 'btn btn-success' do %>
 										<i class="icon-edit icon-white"></i> 
 									<% end %>
-									<%= link_to list, method: :delete, data: { confirm: "Delete this list?" }, class: 'btn btn-danger' do %>
-										<i class="icon-trash icon-white"></i> 
+                  					<% if current_user.admin? || current_user.id==list.user_id %>
+										<%= link_to list, method: :delete, data: { confirm: "Delete this list?" }, class: 'btn btn-danger' do %>
+											<i class="icon-trash icon-white"></i> 
+										<% end %>
 									<% end %>
 								</td>
 							</tr>
@@ -98,8 +100,10 @@
 										<%= link_to edit_list_path(list), class: 'btn btn-success' do %>
 											<i class="icon-edit icon-white"></i> 
 										<% end %>
-										<%= link_to list, method: :delete, data: { confirm: "Delete this list?" }, class: 'btn btn-danger' do %>
-											<i class="icon-trash icon-white"></i> 
+	                  					<% if current_user.admin? || current_user.id==list.user_id %>
+											<%= link_to list, method: :delete, data: { confirm: "Delete this list?" }, class: 'btn btn-danger' do %>
+												<i class="icon-trash icon-white"></i> 
+											<% end %>
 										<% end %>
 									</td>
 								</tr>
