@@ -46,19 +46,19 @@
          </div>
 
         <div class="control-group">
-            <label class="control-label" for="focusedInput">Priority</label>
+            <label class="control-label" for="focusedInput">Status</label>
               <div class="controls">
                 <div class="input-xlarge focused" id="focusedInput" type="text">
-                  <%= f.select :priority, [["Unassigned", 1], ["Assigned", 2], ["Resolved", 3]] %>
+                  <%= f.select :status, [["Unassigned", 1], ["Assigned", 2], ["Resolved", 3]] %>
                 </div>
               </div>
           </div>
 
           <div class="control-group">
-            <label class="control-label" for="focusedInput">Status</label>
+            <label class="control-label" for="focusedInput">Priority</label>
               <div class="controls">
                 <div class="input-xlarge focused" id="focusedInput" type="text">
-                  <%= f.select :status, [["Low", 1], ["Medium", 2], ["High", 3]] %>
+                  <%= f.select :priority, [["Low", 1], ["Medium", 2], ["High", 3]] %>
                 </div>
               </div>
           </div>

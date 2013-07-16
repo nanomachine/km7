@@ -4,9 +4,9 @@
 
 <!--Bounding box heading with report id and title as well as tabbed view of photo and map -->
 <div class="row-fluid fluid-box">
-    <div class="box span12">
-      <h1 class="h1-list">Report #<%=@problem.id%> - <%= @problem.title %></h1>
-    </div>
+  <div class="box span12">
+    <h1 class="h1-list">Report #<%=@problem.id%> - <%= @problem.title %></h1>
+  </div>
 </div>
 
 <div class="row-fluid fluid-box">
@@ -26,7 +26,7 @@
       <div class="box-header">
         <h2><i class="fa-icon-globe"></i><span class="break"></span>Map</h2>
         <div class="box-icon">
-          <%= link_to "#", class: "btn btn-success btn-setting" do %>
+          <%= link_to "#", class: "btn btn-success" do %>
           <i class="icon-plus"></i> Add to list
           <% end %>
         </div>
@@ -76,7 +76,13 @@
     <div class="box span4 ">
       <div class="box-header">
         <h2><i class="fa-icon-list"></i><span class="break"></span>Details</h2>
+        <div class="box-icon">
+          <%= link_to "#", class: "btn btn-primary btn-setting" do %>
+          <i class="icon-edit"></i> Edit 
+          <% end %>
+        </div>
       </div>
+
       <div class="box-content">
         <div class="row-fluid">
 
@@ -118,40 +124,91 @@
           <!-- Aling all of current user's comments to the right for organization -->
           <% if current_user!= @user %>
           <li class="left">
-            <img class="avatar" alt=<%= @user.name %> src=<%= @user.avatar.url(:medium) %>>
-            <span class="message">
-              <span class="arrow"></span>
-              <span class="from"><%= @user.name + " " + @user.last_name %></span>
-              <span class="time"><%= comment.created_at.strftime(" %b.%d %Y at %T") %> </span>
-              <span class="text">
-                <%= comment.body %>
-              </span>
-            </span>  
-          </li>
-          <% else %>
-          <li class="right">
-            <img class="avatar" src=<%= current_user.avatar.url(:medium) %>>
-            <span class="message">
-              <span class="arrow"></span>
-              <span class="from"><%= current_user.name + " " + current_user.last_name %></span>
-              <span class="time"><%= comment.created_at.strftime(" %b.%d %Y at %T") %> </span>
-              <span class="text">
-                <%= comment.body %>
-              </span>
-            </span>  
-          </li>
-          <% end %>
-          <% end %>
-        </ul>   
-      </ul> 
-      <div class="chat-form">
-        <%= form_tag "/problems/add_new_comment" do %>
-        <%= hidden_field_tag "id", @problem.id %>
-        <%= text_area :comment, :body, :size => "10x10" %>
-        <%= submit_tag "Post Comment" %>
-        <% end %>
-      </div> 
-    </div>    
+           <img class="avatar" alt=<%= @user.name %> src=<%= @user.avatar.url(:medium) %>>
+           <span class="message">
+             <span class="arrow"></span>
+             <span class="from"><%= @user.name + " " + @user.last_name %></span>
+             <span class="time"><%= comment.created_at.strftime(" %b.%d %Y at %T") %> </span>
+             <span class="text">
+               <%= comment.body %>
+             </span>
+           </span>  
+         </li>
+         <% else %>
+         <li class="right">
+           <img class="avatar" src=<%= current_user.avatar.url(:medium) %>>
+           <span class="message">
+             <span class="arrow"></span>
+             <span class="from"><%= current_user.name + " " + current_user.last_name %></span>
+             <span class="time"><%= comment.created_at.strftime(" %b.%d %Y at %T") %> </span>
+             <span class="text">
+               <%= comment.body %>
+             </span>
+           </span>  
+         </li>
+         <% end %>
+         <% end %>
+       </ul>   
+     </ul> 
+     <div class="chat-form">
+       <%= form_tag "/problems/add_new_comment" do %>
+       <%= hidden_field_tag "id", @problem.id %>
+       <%= text_area :comment, :body, :size => "10x10" %>
+       <%= submit_tag "Post Comment" %>
+       <% end %>
+     </div> 
+   </div>    
+ </div>
+</div>
+</div>
+
+
+<!-- Modal window to edit report details...............................................................-->
+
+<%= form_for @problem, :html => {:class => "form-horizontal"} do |f| %>
+
+<div class="modal hide fade" id="myModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal"></button>
+    <h3>Edit Report</h3>
   </div>
-</div>
-</div>
+
+  <div class="modal-body">
+    <div class="control-group">
+      <label class="control-label" for="focusedInput">Type</label>
+      <div class="controls">
+        <div class="input-xlarge focused" id="focusedInput" type="text">
+          <%= f.select :ptype, [["Pothole", 1], ["Water pipe", 2], ["Electric cable", 3], 
+          ["Light post", 4], ["Debris on road", 5], ["Vandalism", 6], ["Manhole cover", 7], ["Other", 8]] %>        
+        </div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label" for="focusedInput">Priority</label>
+      <div class="controls">
+        <div class="input-xlarge focused" id="focusedInput" type="text">
+          <%= f.select :priority, [["Low", 1], ["Medium", 2], ["High", 3]] %>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label" for="focusedInput">Status</label>
+      <div class="controls">
+        <div class="input-xlarge focused" id="focusedInput" type="text">
+          <%= f.select :status, [["Unassigned", 1], ["Assigned", 2], ["Resolved", 3]] %>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="modal-footer"> 
+      <a class="form-action btn" data-dismiss="modal">Close</a>
+      <a class="form-action"> <%= f.submit "Update", class: "btn btn-primary" %> </a>
+    </div>
+  </div>
+<% end %>
+
+  <div class="form-actions"
+  </div>
+
