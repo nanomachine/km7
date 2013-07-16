@@ -196,13 +196,6 @@ margin-bottom: 5px;
 color: #646464;
 }
 
-/*Fix containing box dimensions in User Profile*/
-.row-fluid .span4 {
-width: 31.915%;
-
-}
-
-
 .box-content {
 margin-top: 0px;
 }
@@ -243,5 +236,13 @@ line-height: 9px;
 
 .box-small-title {
 margin: 10px 31px;
+}
+
+/*Temporary fix for over-extended td's in the Reports index view Description-----*/
+
+td {
+  min-width: 30px;
+  max-width: 30px;
+  overflow: auto;
 }
 

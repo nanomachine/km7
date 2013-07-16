@@ -44,7 +44,7 @@
               <% @list.problems.each do |problem| %>
                 <tr>
                   <td><%= problem.id %></td>
-                  <td><%=link_to image_tag(problem.avatar.url(:thumb)), problem %> </td>
+                  <td><%= link_to image_tag(problem.avatar.url(:thumb)), problem %> </td>
                   <td><%= problem.address %></td>
                   <td><%= problem.description %></td>
                   <td><%= problem.get_prob_type %></td>
