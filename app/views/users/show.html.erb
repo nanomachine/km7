@@ -18,17 +18,17 @@
       <h2 class="h2-profile">
         <i class="icon-user"></i>      
         <% if @user.admin? %>
-          Administrator
+        Administrator
         <% elsif @user.sub_admin?%>
-          Sub-Administrator
+        Sub-Administrator
         <% else %>
-          Reporter
+        Reporter
         <% end %>
-            </h2>
-        <h2 class="h2-profile"><i class="icon-map-marker"></i>    <%= @user.municipality %>, PR</h2>
-        <h2 class="h2-profile"><i class="fa-icon-phone"></i>    <%= @user.telnum %></h2>
-        <h2 class="h2-profile"><i class="icon-envelope"></i>    <%= @user.email %></h2>
-              
+      </h2>
+      <h2 class="h2-profile"><i class="icon-map-marker"></i>    <%= @user.municipality %>, PR</h2>
+      <h2 class="h2-profile"><i class="fa-icon-phone"></i>    <%= @user.telnum %></h2>
+      <h2 class="h2-profile"><i class="icon-envelope"></i>    <%= @user.email %></h2>
+      
     </div><!--/span-->
     <div class="row-fluid ">
       <div class="circleStats span6">
@@ -90,25 +90,25 @@
           <li class="ticket">
             <% @user.problems.each do |problem| %>
 
-              <span class="header"> 
-                <span class="title"><%= link_to problem.title, problem %></span>
-                <span class="number"><%= link_to problem.get_prob_type, problem%> <%= link_to "[#"+problem.id.to_s+"]", problem%></span>
-              </span>
-              <span class="content">
-                <span class="avatar">  <img src=<%=problem.avatar.url(:thumb) %>> </span>
-                <span class="name">By:<%= @user.name %> 
-                  <%= @user.last_name %></span>
+            <span class="header"> 
+              <span class="title"><%= link_to problem.title, problem %></span>
+              <span class="number"><%= link_to problem.get_prob_type, problem%> <%= link_to "[#"+problem.id.to_s+"]", problem%></span>
+            </span>
+            <span class="content">
+              <span class="avatar">  <img src=<%=problem.avatar.url(:thumb) %>> </span>
+              <span class="name">By:<%= @user.name %> 
+                <%= @user.last_name %></span>
                 <!-- Implement priority partial for viewing -->
                 <span class="priority blue">[ <%=problem.get_prob_priority %> ]</span>
                 <span class="status">Status: <span class="green">[ <%= problem.get_prob_status %> ]</span></span>
                 <span class="date"><%= problem.created_at.strftime(" %b.%d %Y") %></span>
               </span>                                                         
-            <% end %>
-          </li>
-        </ul>
-      </div>
-    </div><!--/span-->
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div><!--/span-->
+
+    </div>
 
   </div>
-
-</div>
