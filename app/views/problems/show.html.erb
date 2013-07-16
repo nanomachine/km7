@@ -26,7 +26,7 @@
       <div class="box-header">
         <h2><i class="fa-icon-globe"></i><span class="break"></span>Map</h2>
         <div class="box-icon">
-          <%= link_to "#", class: "btn btn-success" do %>
+          <%= link_to "#", class: "btn btn-success btn-setting-list" do %>
           <i class="icon-plus"></i> Add to list
           <% end %>
         </div>
@@ -161,8 +161,6 @@
  </div>
 </div>
 </div>
-
-
 <!-- Modal window to edit report details...............................................................-->
 
 <%= form_for @problem, :html => {:class => "form-horizontal"} do |f| %>
@@ -202,13 +200,48 @@
       </div>
     </div>
   </div>
-    <div class="modal-footer"> 
-      <a class="form-action btn" data-dismiss="modal">Close</a>
-      <a class="form-action"> <%= f.submit "Update", class: "btn btn-primary" %> </a>
-    </div>
+  <div class="modal-footer"> 
+    <a class="form-action btn" data-dismiss="modal">Close</a>
+    <a class="form-action"> <%= f.submit "Update", class: "btn btn-success" %> </a>
   </div>
+</div>
 <% end %>
 
-  <div class="form-actions"
+
+
+<div class="modal hide fade" id="myModalList">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal"></button>
+    <h3>Choose a list</h3>
   </div>
+  <div class="modal-body">
+    <table class="table table-condensed datatable">
+      <thead>
+        <tr>
+          <th>List #</th>
+          <th>Name</th>
+          <th>Date Created</th>
+          <th>Actions</th>
+        </tr>
+      </thead>     
+       <tbody>
+              <% current_user.lists.each do |list| %>
+                <% @owner = User.find(list.user_id) %>
+              <tr>
+                <td><%= list.id %></td>
+                <td><%= list.name %></td>
+                <td><%= list.created_at.strftime(" %b.%d %Y %T") %></td>
+<!--Action buttons for last column of list index table, Delete and More Info -->
+                <td class="center">
+                  <%= link_to add_problem_list_path(list: list, id: list.id, problem_id: @problem.id), class: 'btn btn-mini btn-success', method: :put do %>
+                    <i>Add to list</i> 
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+            </tbody>
+    </table> 
+  </div>
+</div>
+
 

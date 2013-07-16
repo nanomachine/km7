@@ -275,6 +275,13 @@ function template_functions(){
 		e.preventDefault();
 		$('#myModal').modal('show');
 	});
+
+	/* --- Modal for Add to list ------*/
+	
+	$('.btn-setting-list').click(function(e){
+		e.preventDefault();
+		$('#myModalList').modal('show');
+	});
 	
 	
 	/* ---------- Progress  ---------- */
