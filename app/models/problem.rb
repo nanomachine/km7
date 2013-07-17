@@ -78,6 +78,34 @@ class Problem < ActiveRecord::Base
 	end
 
 # Helper methods to map integer properties to string values for UI purposes
+	def get_owner_name
+
+		@owner = User.find(self.user_id)
+		owner_name = @owner.name + " " + @owner.last_name
+
+		return owner_name
+	end
+
+	def is_in_list?
+		@lists = List.all
+		@lists.each do |list|
+			if list.problems.include?(self)
+				return true
+			else
+				return false
+			end
+		end
+
+	end
+
+	def get_containing_list
+		@lists = List.all
+		@lists.each do |list|
+			if list.problems.include?(self)
+				return list
+			end
+		end
+	end
 
 	def get_prob_type
 	    case self.ptype
@@ -98,7 +126,7 @@ class Problem < ActiveRecord::Base
 	    else
 	       "Unspecified"
 	    end
-	  end
+	 end
 
 	def get_prob_status
 		case self.status
@@ -125,6 +153,4 @@ class Problem < ActiveRecord::Base
 	       "Unspecified"
 	    end
 	end
-
-
 end

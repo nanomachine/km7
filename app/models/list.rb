@@ -7,4 +7,11 @@ class List < ActiveRecord::Base
 	validates(:name, presence: true, uniqueness: true)
 	validates(:description, presence: true)
 
+	def get_owner_name
+		@owner = User.find(self.user_id)
+		owner_name = @owner.name + " " + @owner.last_name
+
+		return owner_name
+	end
+
 end

@@ -54,29 +54,34 @@ def new
   end
 
   def add_problem
-    list    = List.find(params[:id])
-    problem = Problem.find(params[:problem_id])
+    @list    = List.find(params[:id])
+    @problem = Problem.find(params[:problem_id])
 
-    if !list.problems.include?(problem)
-      list.problems << problem # This appends and saves the problem selected
+    if !@list.problems.include?(@problem)
+      @list.problems << @problem # This appends and saves the problem selected
+      #Change the report status, it is now assigned to whomever added it to the list
+      @problem.status = 2
+      @problem.save
       flash[:notice] = "Report added"
-      redirect_to list
+      redirect_to @list
     else 
-      flash[:notice] = "Report is already in the list"
-      redirect_to list
+      flash[:notice] = "Report is already on the list"
+      redirect_to @list
     end
 
   end
 
   def remove_problem
-    list    = List.find(params[:id])
-    problem = Problem.find(params[:problem_id])
-
-    list.problems.destroy(problem) # This removes the problem selected
+    @list    = List.find(params[:id])
+    @problem = Problem.find(params[:problem_id])
+    #Change the report status back to being unassigned
+    @problem.status = 1
+    @problem.save
+    @list.problems.destroy(@problem) # This removes the problem selected
     flash[:notice] = "Report removed"
 
 
-    redirect_to list 
+    redirect_to @list 
   end
 
 

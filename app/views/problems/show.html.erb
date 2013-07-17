@@ -26,8 +26,12 @@
       <div class="box-header">
         <h2><i class="fa-icon-globe"></i><span class="break"></span>Map</h2>
         <div class="box-icon">
-          <%= link_to "#", class: "btn btn-success btn-setting-list" do %>
-          <i class="icon-plus"></i> Add to list
+          <% if !@problem.is_in_list? %>
+            <%= link_to "#", class: "btn btn-success btn-setting-list" do %>
+              <i class="icon-plus"></i> Add to list
+            <% end %>
+          <% else %>
+            <a href="#" class="btn btn-danger" data-rel="tooltip"  title="This report has already been assigned"><i class="icon-plus"></i>Add to list</a>
           <% end %>
         </div>
       </div>
@@ -88,18 +92,27 @@
 
           <div class="box span6">
             <h3>Reporter:</h3>
-            <p><%= User.find(@problem.user_id).name %> <%= User.find(@problem.user_id).last_name %></p>
+            <p><%= @problem.get_owner_name%></p>
+            <% if @problem.is_in_list? %>
+              <h3>Assigned to:</h3>
+              <p><%= @problem.get_containing_list.get_owner_name %></p>
+            <% end %>
             <h3>Type:</h3>
             <p><%= @problem.get_prob_type %></p>
-            <h3>Status:</h3>
-            <p><%= @problem.get_prob_status %></p>
+            <h3>Submitted on:</h3>
+            <p><%= @problem.created_at.strftime(" %b.%d %Y") %></p>
+
           </div>
 
           <div class="box span6">
             <h3>Priority:</h3>
             <p><%= @problem.get_prob_priority %></p>
-            <h3>Submitted on:</h3>
-            <p><%= @problem.created_at.strftime(" %b.%d %Y") %></p>
+            <% if @problem.is_in_list? %>
+              <h3>List:</h3>
+              <p><%= @problem.get_containing_list.name%>
+            <% end %>
+            <h3>Status:</h3>
+            <p><%= @problem.get_prob_status %></p>
             <h3>Updated on:</h3>
             <p><%= @problem.updated_at.strftime(" %b.%d %Y") %></p>
           </div>
@@ -187,15 +200,6 @@
       <div class="controls">
         <div class="input-xlarge focused" id="focusedInput" type="text">
           <%= f.select :priority, [["Low", 1], ["Medium", 2], ["High", 3]] %>
-        </div>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <label class="control-label" for="focusedInput">Status</label>
-      <div class="controls">
-        <div class="input-xlarge focused" id="focusedInput" type="text">
-          <%= f.select :status, [["Unassigned", 1], ["Assigned", 2], ["Resolved", 3]] %>
         </div>
       </div>
     </div>
