@@ -4,7 +4,7 @@ class List < ActiveRecord::Base
 
 	attr_accessible :user_id, :name, :created_at, :description
 	validates(:user_id, presence: true)
-	validates(:name, presence: true)
+	validates(:name, presence: true, uniqueness: true)
 	validates(:description, presence: true)
 
 end

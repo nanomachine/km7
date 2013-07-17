@@ -14,9 +14,14 @@
         <h2><i class="icon-file"></i><span class="break"></span><%=@list.description%></h2>
 
         <div class="box-icon">
-<!-- Only have the ability to delete list if the user is an administrator o the owner of the list -->
+<!-- Only have the ability to delete or edit the list if the user is an administrator o the owner of the list -->
 
           <% if current_user.admin? || current_user.id==@list.user_id %>
+
+            <%= link_to '#', class: 'btn btn-success btn-setting' do %>
+              <i class="icon-edit icon-white"></i> Edit List
+            <% end %>
+
             <%= link_to @list, method: :delete, data: { confirm: "Delete this list?" }, class: 'btn btn-danger' do %>
               <i class="fa-icon-minus"></i> Delete List
             <% end %>
@@ -72,3 +77,40 @@
 </div>
 
 <%= will_paginate @problems%>
+
+
+<!-- Modal window to edit report details...............................................................-->
+
+<%= form_for @list, :html => {:class => "form-horizontal"} do |f| %>
+
+<div class="modal hide fade" id="myModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal"></button>
+    <h3>Edit List Details</h3>
+  </div>
+
+  <div class="modal-body">
+    <div class="control-group">
+      <label class="control-label" for="focusedInput">List Name</label>
+      <div class="controls">
+        <div class="input-xlarge focused" id="focusedInput" type="text">
+          <%= f.text_field :name %>        
+        </div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label" for="focusedInput">Description</label>
+      <div class="controls">
+        <div class="input-xlarge focused" id="focusedInput" type="text">
+          <%= f.text_area :description, size: "10x6"%>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer"> 
+    <a class="form-action btn" data-dismiss="modal">Close</a>
+    <a class="form-action"> <%= f.submit "Update", class: "btn btn-success" %> </a>
+  </div>
+</div>
+<% end %>

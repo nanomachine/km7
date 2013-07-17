@@ -29,8 +29,9 @@ class Problem < ActiveRecord::Base
 	attr_accessible :user_id, :title, :latitude, :longitude, :ptype, :description, :avatar, :address, 
 	:municipality, :status, :priority, :c_name, :c_telnum, :c_email
 
-	#The following must be present for the report to be worth anything
-	#validates(:title, presence: true)
+	#The following must be present for the report to be worth anything,
+	#Title validation is commented because mobile app still does not provide one and validation would prevent upload.
+	#validates(:title, presence: true, uniqueness: true)
 	validates(:user_id, presence: true)
 	validates(:latitude, presence: true)
 	validates(:longitude, presence: true)
