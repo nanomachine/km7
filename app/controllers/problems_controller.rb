@@ -71,7 +71,6 @@ class ProblemsController < ApplicationController
   def update
     @problem = Problem.find(params[:id])
     if @problem.update_attributes(params[:problem])
-      #@problem.status_update = Time.localtime
       flash[:success] = "Report updated"
       redirect_to @problem
     else

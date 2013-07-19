@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130305171533) do
+ActiveRecord::Schema.define(:version => 20130719131821) do
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id",   :default => 0
@@ -39,8 +39,9 @@ ActiveRecord::Schema.define(:version => 20130305171533) do
   end
 
   create_table "lists_problems", :id => false, :force => true do |t|
-    t.integer "list_id"
-    t.integer "problem_id"
+    t.integer  "list_id"
+    t.integer  "problem_id"
+    t.datetime "added_at"
   end
 
   add_index "lists_problems", ["list_id", "problem_id"], :name => "by_list_and_problem", :unique => true
@@ -67,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20130305171533) do
     t.string   "c_telnum"
     t.string   "c_email"
     t.string   "title"
+    t.datetime "assigned_at"
   end
 
   create_table "users", :force => true do |t|
