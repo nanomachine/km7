@@ -13,5 +13,4 @@ class List < ActiveRecord::Base
 
 		return owner_name
 	end
-
 end

@@ -10,12 +10,19 @@ def new
     @list = List.find(params[:id])
     @problems = Problem.paginate(page: params[:page])
 
+    #Respond to will create a call to csv and prepare the list for .xls exporting
+    #See lists/show.xls.erb for table formatting details
+    respond_to do |format|
+      format.html
+      format.xls
+    end
   end
 
 
 #Show list of reports and show all of them in gmap
   def index
     @lists = List.paginate(page: params[:page])
+
   end
 
   def create

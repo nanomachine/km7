@@ -140,7 +140,7 @@
 			<label class="control-label" for="focusedInput">Title</label>
 			<div class="controls">
 				<div class="input-xlarge focused" id="focusedInput" type="text">
-					<%= f.text_field :title, :placeholder => "Please provide a title..." %>
+					<%= f.text_field :title,  :maxlength=>'30', :placeholder => "Please provide a title..." %>
 				</div>
 			</div>
 		</div>
@@ -149,7 +149,7 @@
 			<label class="control-label" for="focusedInput">Address</label>
 			<div class="controls">
 				<div class="input-xlarge focused" id="focusedInput" type="text">
-					<%= f.text_area :address, :placeholder => "Provide address in spanish...", size: "10x2" %>
+					<%= f.text_area :address, :placeholder => "...", size: "10x2" %>
 				</div>
 			</div>
 		</div>

@@ -14,8 +14,10 @@
         <h2><i class="icon-file"></i><span class="break"></span><%=@list.description%></h2>
 
         <div class="box-icon">
+          <%= link_to list_path(format: "xls"), class: 'btn btn-info' do %>
+            <i class="icon-download-alt icon-white"></i> Export .xls
+          <% end %>
 <!-- Only have the ability to delete or edit the list if the user is an administrator o the owner of the list -->
-
           <% if current_user.admin? || current_user.id==@list.user_id %>
 
             <%= link_to '#', class: 'btn btn-success btn-setting' do %>
