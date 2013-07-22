@@ -12,7 +12,7 @@
     <div class="row-fluid fluid-box">
       <div class="box span3">
         <% if @problem.status==3 %>
-          <%= link_to "#", class: 'btn btn-sucess' do %>
+          <%= link_to "#", class: 'btn btn-success' do %>
             <i class="icon-ok icon-white"></i> Resolved
           <% end %>
         <% elsif @problem.status==2 %>
@@ -32,7 +32,7 @@
           <% end %>
         <% elsif @problem.priority==2 %>
           <%= link_to "#", class: 'btn btn-warning' do %>
-            <i class="icon-exclamation-sign icon-white"></i> Medium Priority 
+            <i class="icon-exclamation-sign icon-white"></i> Normal Priority 
           <% end %>
         <% else %>
           <%= link_to "#", class: 'btn btn-success' do %>
@@ -60,15 +60,46 @@
       <div class="box-header">
         <h2><i class="fa-icon-globe"></i><span class="break"></span>Map</h2>
         <div class="box-icon">
+
+          <!-- If the report is not in a list show button to add to a list
+          else show button to resolve and button to see list. -->
           <% if !@problem.is_in_list? %>
-            <%= link_to "#", class: "btn btn-success btn-setting-list" do %>
-              <i class="icon-plus"></i> Add to list
+            <!-- Show unresolve button if the report has been resolved but the containing list has been deleted -->
+            <% if @problem.status==3 %>
+              <%= link_to problem_path(:problem => {:status => 1}), :method => :put, :confirm => "Are you sure?", class: "btn btn-danger" do %>
+                <i class="fa-icon-check-empty"></i> Unresolve
+              <% end %>
+            <% else %>
+              <%= link_to "#", class: "btn btn-success btn-setting-list" do %>
+                <i class="icon-plus"></i> Add to list
+              <% end %>
             <% end %>
+
+          <!-- We enter here if the report is currently contained in a list--> 
           <% else %>
-            <%= link_to @problem.get_containing_list, class: "btn btn-info" do %>
-              <i class="icon-list-alt"></i> Go to list
+            <!-- If the problem has not been resolved and the current user 
+            is the owner of the report allow Resolve button functionality -->
+            <%if @problem.status != 3 %>
+              <% if current_user.id == @problem.user_id || current_user.admin? %>
+                <%= link_to problem_path(:problem => {:status => 3, :resolved_at => Time.now, :resolved_id => current_user.id}), :method => :put, :confirm => "Are you sure this report has been resolved?", class: "btn btn-success" do %>
+                  <i class="icon-check"></i> Resolve
+                <% end %>
+              <% end %>
+            <% else %>
+              <!-- If the report has been marked as resolved and the current user 
+              is the owner or admin enable Unresolve button functionality -->
+              <% if current_user.id == @problem.user_id || current_user.admin?%>
+                <%= link_to problem_path(:problem => {:status => 2}), :method => :put, :confirm => "Are you sure?", class: "btn btn-danger" do %>
+                  <i class="fa-icon-check-empty"></i> Unresolve
+                <% end %>
+              <% end %>
             <% end %>
+            <%= link_to @problem.get_containing_list, class: "btn btn-info" do %>
+                <i class="icon-list-alt"></i> Go to list
+              <% end %>
           <% end %>
+
+
         </div>
       </div>
       <div class="box-content">
@@ -132,37 +163,43 @@
           <div class="box span6">
             <h3>Reporter:</h3>
             <p><%= @problem.get_owner_name%></p>
-            <% if @cont_list %>
-            <h3>Assigned to:</h3>
-            <p><%= @cont_list.get_owner_name %></p>
-            <% end %>
             <h3>Type:</h3>
             <p><%= @problem.get_prob_type %></p>
-            <h3>Submitted on:</h3>
-            <p><%= @problem.created_at.strftime("%b.%d %Y  @ %T") %></p>
             <% if @cont_list %>
-            <h3>Assigned on:</h3>
-            <p><%= @problem.assigned_at.strftime("%b.%d %Y @ %T") %></p>
+              <h3>Assigned to:</h3>
+              <p><%= @cont_list.get_owner_name %></p>
+              <h3>List:</h3>
+              <p><%= @cont_list.name%>
             <% end %>
-
+            <h3>Status:</h3>
+            <p><%= @problem.get_prob_status %></p>
+            <% if @problem.resolved_at != nil %>
+              <h3>Resolved by:</h3>
+              <p><%= User.find(@problem.resolved_id).name %> <%= User.find(@problem.resolved_id).last_name %></p>
+            <% end %>
           </div>
 
           <div class="box span6">
             <h3>Priority:</h3>
             <p><%= @problem.get_prob_priority %></p>
-            <% if @cont_list%>
-            <h3>List:</h3>
-            <p><%= @cont_list.name%>
-              <% end %>
-              <h3>Status:</h3>
-              <p><%= @problem.get_prob_status %></p>
-              <h3>Updated on:</h3>
-              <p><%= @problem.updated_at.strftime(" %b.%d %Y @ %T") %></p>
-            </div>
-
+            <h3>Submitted on:</h3>
+            <p><%= @problem.created_at.strftime("%b.%d %Y  @ %T") %></p>
+            <% if @cont_list %>
+              <h3>Assigned on:</h3>
+              <p><%= @problem.assigned_at.strftime("%b.%d %Y @ %T") %></p>
+            <% end %>
+            <h3>Updated on:</h3>
+            <p><%= @problem.updated_at.strftime(" %b.%d %Y @ %T") %></p>
+            <!-- Show resolved information even if the report has been marked again as 
+            unresolved to save the previous state of the report with time evidence and person responsible -->
+            <% if @problem.resolved_at != nil %>
+              <h3>Resolved on:</h3>
+              <p><%= @problem.resolved_at.strftime(" %b.%d %Y @ %T") %></p>
+            <% end %>
           </div>
         </div>
       </div>
+    </div>
 
       <!-- Comment box    -->
       <div class="box span4 ">

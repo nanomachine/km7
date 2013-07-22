@@ -40,7 +40,15 @@ def new
   end
 
   def destroy
-    List.find(params[:id]).destroy
+# Unassign all contained reports unless already resolved
+    @list = List.find(params[:id])
+    @list.problems.each do |problem|
+      if problem.status!=3
+        problem.status = 1
+        problem.save
+      end
+    end
+    @list.destroy
     flash[:success] = "List deleted."
     redirect_to lists_url
   end
@@ -83,8 +91,10 @@ def new
     @list    = List.find(params[:id])
     @problem = Problem.find(params[:problem_id])
     #Change the report status back to being unassigned
-    @problem.status = 1
-    @problem.save
+    if @problem.status!= 3
+      @problem.status = 1
+      @problem.save
+    end
     @list.problems.destroy(@problem) # This removes the problem selected
     flash[:notice] = "Report removed"
 

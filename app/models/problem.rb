@@ -27,7 +27,7 @@ class Problem < ActiveRecord::Base
                   :msg => "We're sorry, not even google can find that address, please try again."
 
 	attr_accessible :user_id, :title, :latitude, :longitude, :ptype, :description, :avatar, :address, 
-	:municipality, :status, :priority, :c_name, :c_telnum, :c_email, :assigned_at
+	:municipality, :status, :priority, :c_name, :c_telnum, :c_email, :assigned_at, :resolved_at, :resolved_id
 
 	#The following must be present for the report to be worth anything,
 	#Title validation is commented because mobile app still does not provide one and validation would prevent upload.
@@ -91,11 +91,9 @@ class Problem < ActiveRecord::Base
 		@lists.each do |list|
 			if list.problems.include?(self)
 				return true
-			else
-				return false
 			end
 		end
-
+		return false
 	end
 
 	def get_containing_list
@@ -144,11 +142,11 @@ class Problem < ActiveRecord::Base
 	def get_prob_priority
 		case self.priority
 		when 1
-	       "Low Priority"
+	       "Low"
 	    when 2
-	       "Standard Priority"
+	       "Normal"
 	    when 3
-	       "High Priority"
+	       "High "
 	    else
 	       "Unspecified"
 	    end
