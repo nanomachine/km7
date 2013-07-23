@@ -36,21 +36,57 @@ padding-left: 50px;
 padding-right: 28px;
 }
 
- /*Login screen-------------------------------------------------------------------*/
+ /*Login screen-------------------------------------------------------------------
+ A hell of a lot of tweaking was done for this to be correct
+*/
 
- .login-box .input-prepend {	
-	width: 86%;
-}
- .login-box h2 {
-   margin-left: 30px;
+.login-box {
+	background: rgba(45,45,45,0.3) 0%;
+	box-shadow: 0px 0px 0px 5px rgba(0,0,0,0.3);
 }
 
- .login-box .add-on {
-   /*Added important to align login box icon-------------------------------------------*/
-   margin-left: 10px;
-   margin-right: -10px;
-   padding: 10px;
+
+.login-box .input-prepend {
+background: rgba(255, 255, 255, 0);
+width: 90%;
+padding: 15px 0px 15px 0px;
+border-left: 3px solid rgba(255, 255, 255, 0);
 }
+
+/*Align icons at left side of inpud fields */
+.login-box .add-on {
+border: 1px solid #eee !important;
+background: #fff;
+margin-left: 0px;
+padding: 11px;
+}
+
+/*Align remember me */
+.login-box .remember {
+margin-top: 20px;
+margin-left: 20px;
+margin-bottom: 20px;
+float: left;
+}
+
+.login-box input[type="text"], .login-box input[type="password"] {
+width: 90%;
+}
+
+
+.hr-login {
+border-top: 1px solid #5A5555;
+border-bottom: 1px solid #494242;
+}
+
+/*Remove hero-unit background and lower bottom margin in login screen*/
+.hero-unit {
+margin-bottom: -145px;
+background-color: rgba(245, 245, 245, 0);
+
+}
+
+
 
 /*Forms------------------------------------------------------------------------
 .form-search input, .form-search textarea, .form-search select, 
@@ -107,11 +143,12 @@ body {
 
 
 footer {
-position: relative;
-
-/*padding-bottom: 24px;----------------------------------------*/
-padding-left: 50px;
-padding-right: 50px;
+position: fixed;
+left:0px;
+bottom:0px;
+height:20px;
+width:98%;
+margin-left: -4px;
 
 min-height: 24px;
 background: url(img/dbg.jpg);
@@ -126,6 +163,14 @@ border-radius: 0px;
 -moz-box-shadow: 0 -4px 0 rgba(0,0,0,.1);
 box-shadow: 0 -4px 0 rgba(0,0,0,.1);
 }
+
+/* IE 6 */
+* html #footer {
+   position:absolute;
+   top:expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+'px');
+}
+
+
 
 /* Setting hover color for all hrefs in footer--------------------*/
 footer a:hover {
@@ -161,12 +206,6 @@ color: white;
 #menu-bar-content{
 	position:static;
     margin-bottom:125px;
-}
-
-/*Home screen to have the appropriate bottom margin, for it to stay stuck to the bottom of the creen*/
-
-.hero-unit {
-margin-bottom: 8.5%;
 }
 
 
@@ -234,6 +273,13 @@ color: #333333;
 font-size: 39px;
 margin-top: 15px;
 line-height: 9px;
+}
+
+.h1-login{
+color:rgb(58,58,58) !important;
+letter-spacing:0.1px;
+font-size: 18px
+
 }
 
 

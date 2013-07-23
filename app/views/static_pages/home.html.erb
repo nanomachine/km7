@@ -1,12 +1,62 @@
-<div class="center hero-unit">
-<%= image_tag("km7logo1.png", alt: "km7") %>
-  <h1>Welcome to Km7</h1>
+<head>
+	<style type="text/css">
+	body { 
+		background: url(images/km7emptyroad.jpg) no-repeat center center fixed;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+	}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row-fluid">
 
-  <h2>
-    This is the new version of the web application
-    <a href="http://www.km-7.com/">Kilómetro Siete</a>
-  </h2>
+			<div class="row-fluid">
+				<!--User hero-unit thave large header -->
+				<div class="span12 hero-unit">
+					<h1>Welcome to Km7</h1>
+					<h2>
+						This is the new version of the web application
+						<a href="http://www.km-7.com/">Kilómetro Siete</a>
+					</h2>
+				</div>
 
-  <%= link_to "Sign Up", new_user_path, class: "btn btn-large btn-primary btn-success" %>
-</div>
+				<div class="row-fluid">
+					<div class="login-box center">
+
+						<%= form_for(:session, url: sessions_path, :html => {:class => "form-horizontal"}) do |f| %>
+						<div class="input-prepend" title="Username">
+							<span class="add-on"><i class="icon-user"></i></span>
+							<%= f.text_field :email, :placeholder => "type username" %>
+						</div>
+
+						<div class="clearfix"></div>
+
+						<div class="input-prepend" title="Password">
+							<span class="add-on"><i class="icon-lock"></i></span>
+							<%= f.password_field :password, :placeholder => "type password" %>
+						</div>
+
+						<div class="clearfix"></div>
+
+						<h1 class="h1-login remember" for="remember"><input type="checkbox" id="remember" />Remember me</h1>
+
+						<h1 class="box"><%=link_to "Forgot Password?", new_password_reset_path, :class => 'h1-login'%></h1>
+						<div class="clearfix"></div>
+						<hr class="hr-login">
+						<div class="buttons">	
+							<%= f.submit "          Login          ", class: 'btn-large btn-info'%>
+						</div>
+						<% end %>
+
+
+					</div><!--/span-->
+				</div>
+			</div><!--/row-->
+
+		</div><!--/fluid-row-->	
+	</div><!--/.fluid-container-->
+</body>
 
