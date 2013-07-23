@@ -29,7 +29,8 @@
 								<th>Report</th>
 								<th>Picture</th>
 								<th>Address</th>
-								<th>Title</th>
+								<th>Municipality</td>
+								<th>Report Title</th>
 								<th>Description</th>			  
 								<th>Type</th>
 								<th>Priority</th>
@@ -45,6 +46,7 @@
 								<td><%= problem.id %></td>
 								<td><%= link_to image_tag(problem.avatar.url(:thumb)), problem %> </td>
 								<td><%= problem.address %></td>
+								<td><%= problem.municipality %></td>
 								<td><%= problem.title %></td>
 								<td><%= problem.description %></td>
 								<td><%= problem.get_prob_type %></td>
@@ -149,7 +151,16 @@
 			<label class="control-label" for="focusedInput">Address</label>
 			<div class="controls">
 				<div class="input-xlarge focused" id="focusedInput" type="text">
-					<%= f.text_area :address, :placeholder => "...", size: "10x2" %>
+					<%= f.text_area :address, size: "10x2" %>
+				</div>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="focusedInput">Municipality</label>
+			<div class="controls">
+				<div class="input-xlarge focused" id="focusedInput" type="text">
+					<%= f.text_field :municipality %>
 				</div>
 			</div>
 		</div>
@@ -179,15 +190,6 @@
 					<%= f.select :ptype, [["Pothole", 1], ["Water pipe", 2], ["Electric cable", 3], 
 					["Light post", 4], ["Debris on road", 5], ["Vandalism", 6], ["Manhole cover", 7], 
 					["Other", 8]] %>
-				</div>
-			</div>
-		</div>
-
-		<div class="control-group">
-			<label class="control-label" for="focusedInput">Status</label>
-			<div class="controls">
-				<div class="input-xlarge focused" id="focusedInput" type="text">
-					<%= f.select :status, [["Unassigned", 1], ["Assigned", 2], ["Resolved", 3]] %>
 				</div>
 			</div>
 		</div>

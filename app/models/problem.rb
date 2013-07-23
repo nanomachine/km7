@@ -27,7 +27,7 @@ class Problem < ActiveRecord::Base
                   :msg => "We're sorry, not even google can find that address, please try again."
 
 	attr_accessible :user_id, :title, :latitude, :longitude, :ptype, :description, :avatar, :address, 
-	:municipality, :status, :priority, :c_name, :c_telnum, :c_email, :assigned_at, :resolved_at, :resolved_id
+	:municipality, :status, :priority, :assigned_at, :resolved_at, :resolved_id
 
 	#The following must be present for the report to be worth anything,
 	#Title validation is commented because mobile app still does not provide one and validation would prevent upload.

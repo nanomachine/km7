@@ -23,11 +23,11 @@ add provide(:title, 'Users') %>
 					  	  <th>Picture</th>
 						  <th>First Name</th>
 						  <th>Last Name</th>			  
-						  <th>Email</th>
+						  <th>Email Address</th>
 						  <th>Municipality</th>
 						  <th>Telephone</th>
-						  <th>Date registered</th>
-						  <th>Role</th>
+						  <th>Registered</th>
+						  <th>User Role</th>
 						  <th>Actions</th>
 					  </tr>
 				  </thead>   
@@ -40,8 +40,8 @@ add provide(:title, 'Users') %>
 							<td><%= user.email %></td>
 							<td><%= user.municipality %></td>
 							<td><%= user.telnum %></td>
-							<td class="center"><%= user.created_at.strftime(" %b.%d %Y") %></td>
-							<td class="center">
+							<td><%= user.created_at.strftime(" %b.%d %Y") %></td>
+							<td>
 								<% if user.admin? %>
 									Administrator
 								<% elsif user.sub_admin?%>

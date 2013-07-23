@@ -100,7 +100,11 @@ body {
 				url(img/bg.jpg) repeat top left;
 	color: #646464;
 	border: none;
+	/* Fix the little space on top of the km7 navigation bar----*/
+	padding-top: 55px;
+
 }
+
 
 footer {
 position: relative;

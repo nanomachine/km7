@@ -49,6 +49,15 @@
     <div class="box span6">
       <div class="box-header">
         <h2><i class="fa-icon-eye-open"></i><span class="break"></span>Report Type: <%= @problem.get_prob_type %></h2>
+        <div class="box-icon">
+          <%= link_to "#", class: "btn btn-info btn-setting" do %>
+            <i class="icon-edit"></i> Edit 
+          <% end %>
+
+          <%= link_to @problems, method: :delete, data: { confirm: "Delete this report?" }, class: 'btn btn-danger' do %>
+            <i class="icon-trash icon-white"></i> Delete
+          <% end %>
+        </div>
       </div>
       <div class="box-content">
         <%= image_tag @problem.avatar.url(:medium) %>
@@ -71,7 +80,7 @@
               <% end %>
             <% else %>
               <%= link_to "#", class: "btn btn-success btn-setting-list" do %>
-                <i class="icon-plus"></i> Add to list
+                <i class="icon-plus"></i> Add report to list
               <% end %>
             <% end %>
 
@@ -147,11 +156,7 @@
     <div class="box span4 ">
       <div class="box-header">
         <h2><i class="fa-icon-list"></i><span class="break"></span>Details</h2>
-        <div class="box-icon">
-          <%= link_to "#", class: "btn btn-setting" do %>
-          <i class="icon-edit"></i> Edit 
-          <% end %>
-        </div>
+
       </div>
 
       <div class="box-content">

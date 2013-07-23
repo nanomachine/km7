@@ -44,7 +44,11 @@ class ProblemsController < ApplicationController
     if !@problem.user_id
       @problem.user_id = current_user.id
     end
-#Hardcoded problem status, take care of this later
+#Geocoding addresses to coordinates does not work well in Puerto Rico hence its implementationwill be postponed or abandoned
+   #@geocoded = Gmaps4rails.geocode(@problem.address)
+   #puts @geocoded
+
+#When report is first created, its status is initially Unassigned, hence it is set to 1
     @problem.status = 1
     if @problem.save
       flash[:success] = "Report saved"
@@ -52,7 +56,7 @@ class ProblemsController < ApplicationController
       redirect_to @problem
     else
       flash.now[:error] = 'Incorrect information'
-      render 'new'
+      redirect_to problems_url
     end
   end
 
