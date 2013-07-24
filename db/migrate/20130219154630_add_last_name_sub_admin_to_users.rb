@@ -6,7 +6,6 @@ class AddLastNameSubAdminToUsers < ActiveRecord::Migration
   end
 
   def self.down
-    remove_column :users, :last_name, :string
     remove_column :users, :sub_admin, :boolean
   end
 end

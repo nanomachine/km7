@@ -1,7 +1,7 @@
 <head>
 	<style type="text/css">
 	body { 
-		background: url(images/km7emptyroad.jpg) no-repeat center center fixed;
+		background: url(images/km7theroad.jpg) no-repeat center center fixed;
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
 		-o-background-size: cover;
@@ -43,7 +43,7 @@
 
 						<h1 class="h1-login remember" for="remember"><input type="checkbox" id="remember" />Remember me</h1>
 
-						<h1 class="box"><%=link_to "Forgot Password?", new_password_reset_path, :class => 'h1-login'%></h1>
+						<h1 class="box"><%=link_to "Forgot Password?", "#", :class => 'h1-login btn-setting'%></h1>
 						<div class="clearfix"></div>
 						<hr class="hr-login">
 						<div class="buttons">	
@@ -59,4 +59,30 @@
 		</div><!--/fluid-row-->	
 	</div><!--/.fluid-container-->
 </body>
+
+<%= form_tag password_resets_path, :method => :post do %>
+<div class="modal hide fade" id="myModal">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"></button>
+		<h3>Reset Password</h3>
+		<p>Please enter your email and we will send you instructions to reset your password.</p>
+	</div>
+
+	<div class="modal-body">
+	    <div class="control-group">
+	      <label class="control-label" for="focusedInput">Email</label>
+	      <div class="controls">
+	        <div class="input-xlarge focused" id="focusedInput" type="text">
+	          <%= text_field_tag :email, params[:email] %>     
+	        </div>
+	      </div>
+	    </div>		
+	</div>
+	<div class="modal-footer"> 
+    	<a class="form-action btn" data-dismiss="modal">Close</a>
+		<a class="form-action"><%= submit_tag "Reset Password", class: "btn btn-success" %>
+		</a>
+	</div>
+</div>
+<% end %>
 

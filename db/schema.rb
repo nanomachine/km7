@@ -85,7 +85,6 @@ ActiveRecord::Schema.define(:version => 20130722181649) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "last_name"
-    t.boolean  "sub_admin"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
   end

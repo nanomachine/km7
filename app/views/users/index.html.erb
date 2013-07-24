@@ -44,8 +44,6 @@ add provide(:title, 'Users') %>
 							<td>
 								<% if user.admin? %>
 									Administrator
-								<% elsif user.sub_admin?%>
-									Sub-Administrator
 								<% else %>
 									Reporter
 								<% end %>
@@ -157,15 +155,6 @@ add provide(:title, 'Users') %>
 					<div class="controls">
 						<div class="input-xlarge focused" id="focusedInput" type="text">
 							<%= f.check_box(:admin) %>
-						</div>
-					</div>
-			</div>
-
-			<div class="control-group">
-				<label class="control-label" for="focusedInput">Sub-Administrator?</label>
-					<div class="controls">
-						<div class="input-xlarge focused" id="focusedInput" type="text">
-							<%= f.check_box(:sub_admin) %>
 						</div>
 					</div>
 			</div>
