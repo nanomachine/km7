@@ -80,8 +80,9 @@ border-bottom: 1px solid #494242;
 }
 
 /*Remove hero-unit background and lower bottom margin in login screen*/
-.hero-unit {
-margin-bottom: -145px;
+.hero-unit-login {
+margin-bottom: -90px;
+margin-top: -25px;
 background-color: rgba(245, 245, 245, 0);
 
 }
