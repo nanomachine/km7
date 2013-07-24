@@ -43,6 +43,8 @@ padding-right: 28px;
 .login-box {
 	background: rgba(45,45,45,0.3) 0%;
 	box-shadow: 0px 0px 0px 5px rgba(0,0,0,0.3);
+	margin-top:0px;
+	margin-bottom:0px;
 }
 
 
@@ -81,8 +83,8 @@ border-bottom: 1px solid #494242;
 
 /*Remove hero-unit background and lower bottom margin in login screen*/
 .hero-unit-login {
-margin-bottom: -90px;
-margin-top: -25px;
+margin-top: -15px;
+margin-bottom: -15px;
 background-color: rgba(245, 245, 245, 0);
 
 }
