@@ -1,7 +1,27 @@
 module SessionsHelper
-	def sign_in(user)
+	def sign_in_remember(user)
+
 		cookies.permanent[:remember_token] = user.remember_token
 		self.current_user = user
+		puts "hice sign in permanente--------------------------"
+		puts current_user.name
+
+
+		#remember_token = User.remember_token
+		#cookies[:remember_token] = { value:   remember_token,
+        #                     		expires: 1.minute.from_now.utc }
+        #user.update_attribute(:remember_token, User.encrypt(remember_token))
+		#self.current_user = user
+	end
+
+	def sign_in(user)
+
+		remember_token = user.remember_token
+		cookies[:remember_token] = {value: remember_token, expires: 1.minute.from_now.utc}
+		self.current_user = user
+		puts "NO hice sign in permanente--------------------------"
+		puts current_user.name
+
 	end
 
 	def signed_in?
@@ -16,7 +36,7 @@ module SessionsHelper
 		@current_user ||= User.find_by_remember_token(cookies[:remember_token]) if cookies[:remember_token]
 	end
 
-	def current_user?(user)
+	def current_user?(user) 	
 		user == current_user
 	end
 

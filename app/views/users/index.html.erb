@@ -106,6 +106,24 @@ add provide(:title, 'Users') %>
 			</div>
 
 			<div class="control-group">
+				<label class="control-label" for="focusedInput">Password</label>
+					<div class="controls">
+						<div class="input-xlarge focused" id="focusedInput" type="text">
+							<%= f.password_field :password %>
+						</div>
+					</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="focusedInput">Confirm Password</label>
+					<div class="controls">
+						<div class="input-xlarge focused" id="focusedInput" type="text">
+							<%= f.password_field :password_confirmation %>
+						</div>
+					</div>
+			</div>
+
+			<div class="control-group">
 				<label class="control-label" for="focusedInput">Telephone</label>
 					<div class="controls">
 						<div class="input-xlarge focused" id="focusedInput" type="text">
@@ -123,23 +141,6 @@ add provide(:title, 'Users') %>
 					</div>
 			</div>
 
-			<div class="control-group">
-				<label class="control-label" for="focusedInput">Password</label>
-					<div class="controls">
-						<div class="input-xlarge focused" id="focusedInput" type="text">
-							<%= f.password_field :password %>
-						</div>
-					</div>
-			</div>
-
-			<div class="control-group">
-				<label class="control-label" for="focusedInput">Confirm Password</label>
-					<div class="controls">
-						<div class="input-xlarge focused" id="focusedInput" type="text">
-							<%= f.password_field :password_confirmation %>
-						</div>
-					</div>
-			</div>
 
 			<div class="control-group">
 				<label class="control-label" for="focusedInput">Upload Avatar</label>

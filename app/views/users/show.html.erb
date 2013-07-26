@@ -19,8 +19,6 @@
         <i class="icon-user"></i>      
         <% if @user.admin? %>
         Administrator
-        <% elsif @user.sub_admin?%>
-        Sub-Administrator
         <% else %>
         Reporter
         <% end %>

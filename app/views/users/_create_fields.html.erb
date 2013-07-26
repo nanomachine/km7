@@ -82,15 +82,6 @@
 			</div>
 	</div>
 
-	<div class="control-group">
-		<label class="control-label" for="focusedInput">Sub-Administrator?</label>
-			<div class="controls">
-				<div class="input-xlarge focused" id="focusedInput" type="text">
-					<%= f.check_box(:sub_admin) %>
-				</div>
-			</div>
-	</div>
-
 	<div class="form-actions">
 		<%= f.submit "Create", class: "btn btn-success" %>
 		<%= link_to users_path, data: { confirm: "Abandon user creation?" }, class: 'btn' do %>
