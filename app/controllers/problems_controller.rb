@@ -104,14 +104,7 @@ class ProblemsController < ApplicationController
       redirect_to :action => :show, :id => @problem
   end
 
-  @type1 = Problems.where(:p_type => 1).count
-  @type2 = Problems.where(:p_type => 2).count
-  @type3 = Problems.where(:p_type => 3).count
-  @type4 = Problems.where(:p_type => 4).count
-  @type5 = Problems.where(:p_type => 5).count
-  @type6 = Problems.where(:p_type => 6).count
-  @type7 = Problems.where(:p_type => 7).count
-  @type8 = Problems.where(:p_type => 8).count
+  @type1 = Problem.all.where(:p_type => 1).count
 
 
 #Parameters: {"utf8"=>"√", "authenticity_token"=>"yuxdf1QkhDuuRnAV+qVSTjt0aq3Yo1sW9UN685GhEMc=", 
