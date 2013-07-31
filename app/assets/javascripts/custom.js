@@ -1110,12 +1110,12 @@ function charts() {
 
 	/* ---------- Pie chart ---------- */
 	var data = [
-	{ label: "Internet Explorer",  data: 12},
-	{ label: "Mobile",  data: 27},
-	{ label: "Safari",  data: 85},
-	{ label: "Opera",  data: 64},
-	{ label: "Firefox",  data: 90},
-	{ label: "Chrome",  data: 112}
+	{ label: "Pothole",  data: 12},
+	{ label: "Water Pipe",  data: 27},
+	{ label: "Electric Cable",  data: 85},
+	{ label: "Light Post",  data: 64},
+	{ label: "Vandalism",  data: 90},
+	{ label: "Manhole cover",  data: 112}
 	];
 	
 	if($("#piechart").length)

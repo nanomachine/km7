@@ -151,4 +151,16 @@ class Problem < ActiveRecord::Base
 	       "Unspecified"
 	    end
 	end
+
+	def get_unresolved
+	  	@unresolved = Problem.find(:status => 3, :order => "created_at")
+	end
+
+	def get_type_count(type_number)
+
+		@problems_of_type = Problems.find[:type => 'type_number'].count
+		return @problems_of_type
+	end
+
 end
+
