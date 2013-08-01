@@ -1068,27 +1068,50 @@ function charts() {
 	if($("#stackchart").length)
 	{
 		var d1 = [];
-		for (var i = 0; i <= 10; i += 1)
-		d1.push([i, parseInt(Math.random() * 30)]);
+		d1.push([1, <%= "gon.u_holes" %>]);
+		d1.push([2, <%= "gon.u_water" %>]);
+		d1.push([3, <%= "gon.u_electric" %>]);
+		d1.push([4, <%= "gon.u_light" %>]);
+		d1.push([5, <%= "gon.u_debris" %>]);
+		d1.push([6, <%= "gon.u_vandalism" %>]);
+		d1.push([7, <%= "gon.u_manhole" %>]);
+
 
 		var d2 = [];
-		for (var i = 0; i <= 10; i += 1)
-			d2.push([i, parseInt(Math.random() * 30)]);
+		d2.push([1, <%= "gon.a_holes" %>]);
+		d2.push([2, <%= "gon.a_water" %>]);
+		d2.push([3, <%= "gon.a_electric" %>]);
+		d2.push([4, <%= "gon.a_light" %>]);
+		d2.push([5, <%= "gon.a_debris" %>]);
+		d2.push([6, <%= "gon.a_vandalism" %>]);
+		d2.push([7, <%= "gon.a_manhole" %>]);
+
 
 		var d3 = [];
-		for (var i = 0; i <= 10; i += 1)
-			d3.push([i, parseInt(Math.random() * 30)]);
+		d3.push([1, <%= "gon.r_holes" %>]);
+		d3.push([2, <%= "gon.r_water" %>]);
+		d3.push([3, <%= "gon.r_electric" %>]);
+		d3.push([4, <%= "gon.r_light" %>]);
+		d3.push([5, <%= "gon.r_debris" %>]);
+		d3.push([6, <%= "gon.r_vandalism" %>]);
+		d3.push([7, <%= "gon.r_manhole" %>]);
+
 
 		var stack = 0, bars = true, lines = false, steps = false;
 
 		function plotWithOptions() {
-			$.plot($("#stackchart"), [ d1, d2, d3 ], {
+			$.plot($("#stackchart"), 
+				[ 
+					{ label: "Unassinged", data: d1},
+					{ label: "Assigned", data: d2},
+					{ label: "Resolved", data: d3}
+				],{
 				series: {
 					stack: stack,
 					lines: { show: lines, fill: true, steps: steps },
 					bars: { show: bars, barWidth: 0.6 },
 				},
-				colors: ["#FA5833", "#2FABE9", "#FABB3D"]
+				colors: ["#FA5833", "#FABB3D", "#78CD51"]
 			});
 		}
 

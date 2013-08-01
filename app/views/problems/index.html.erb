@@ -29,10 +29,9 @@
 							<tr>
 								<th>Report</th>
 								<th>Picture</th>
+								<th>Title</th>			  
 								<th>Address</th>
 								<th>Municipality</td>
-								<th>Report Title</th>
-								<th>Description</th>			  
 								<th>Type</th>
 								<th>Priority</th>
 								<th>Status</th>
@@ -46,10 +45,9 @@
 							<tr>
 								<td><%= problem.id %></td>
 								<td><%= link_to image_tag(problem.avatar.url(:thumb)), problem %> </td>
+								<td><%= problem.title %></td>
 								<td><%= problem.address %></td>
 								<td><%= problem.municipality %></td>
-								<td><%= problem.title %></td>
-								<td><%= problem.description %></td>
 								<td><%= problem.get_prob_type %></td>
 								<td><%= problem.get_prob_priority %></td>
 								<td><%= problem.get_prob_status %></td>

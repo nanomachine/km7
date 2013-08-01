@@ -18,6 +18,33 @@ class ApplicationController < ActionController::Base
     gon.vandalism = Problem.where(ptype: 6 ).count  # or whatever you want to set here
     gon.manhole = Problem.where(ptype: 7 ).count  # or whatever you want to set here
 
+    gon.u_holes = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='1' AND status='1'").count
+    gon.a_holes = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='1' AND status='2'").count
+    gon.r_holes = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='1' AND status='3'").count
+
+    gon.u_water = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='2' AND status='1'").count
+    gon.a_water = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='2' AND status='2'").count
+    gon.r_water = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='2' AND status='3'").count
+
+    gon.u_electric = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='3' AND status='1'").count
+    gon.a_electric = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='3' AND status='2'").count
+    gon.r_electric = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='3' AND status='3'").count
+
+    gon.u_light = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='4' AND status='1'").count
+    gon.a_Light = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='4' AND status='2'").count
+    gon.r_light = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='4' AND status='3'").count
+
+    gon.u_debris = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='5' AND status='1'").count
+    gon.a_debris = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='5' AND status='2'").count
+    gon.r_debris = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='5' AND status='3'").count
+
+    gon.u_vandalism = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='6' AND status='1'").count
+    gon.a_vandalism = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='6' AND status='2'").count
+    gon.r_vandalism = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='6' AND status='3'").count
+
+    gon.u_manhole = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='7' AND status='1'").count
+    gon.a_manhole = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='7' AND status='2'").count
+    gon.r_manhole = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='75' AND status='3'").count
     
 
   end
