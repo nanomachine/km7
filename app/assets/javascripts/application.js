@@ -43,7 +43,7 @@
 //= require jquery.masonry.min.js
 //= require jquery.knob.js
 //= require jquery.sparkline.min.js
-//= require custom.js
+//= require custom.js.erb
 //= require lists.js.coffee
 //= require problems.js.coffee
 //= require sessions.js.coffee

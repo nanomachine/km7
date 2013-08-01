@@ -58,7 +58,6 @@ class Problem < ActiveRecord::Base
 	validates_attachment_size :avatar, :less_than => 5.megabytes
 	validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
 
-
 	def gmaps4rails_address
 		#describe how to retrieve the address from your model, if you use directly a db column, you can dry your code
 		"#{self.latitude}, #{self.longitude}" 
@@ -155,12 +154,6 @@ class Problem < ActiveRecord::Base
 	def get_unresolved
 	  	@unresolved = Problem.find(:status => 3, :order => "created_at")
 	end
-
-#	def get_type_count(type_number)
-#
-#		@problems_of_type = Problems.find[:type => 'type_number'].count
-#		return @problems_of_type
-#	end
 
 end
 
