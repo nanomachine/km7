@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
     gon.vandalism = Problem.where(ptype: 6 ).count  # or whatever you want to set here
     gon.manhole = Problem.where(ptype: 7 ).count  # or whatever you want to set here
 
+    
 
   end
 

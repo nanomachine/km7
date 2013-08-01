@@ -104,15 +104,11 @@ class ProblemsController < ApplicationController
       redirect_to :action => :show, :id => @problem
   end
 
-    def get_type_count
-    @report_type_count = Problem.where("ptype = 1").count
-
-    return @report_type_count
-    end
-
-
-
-
+#    def get_type_count
+#    @report_type_count = Problem.where("ptype = 1").count
+#
+#    return @report_type_count
+#    end
 
 #Parameters: {"utf8"=>"√", "authenticity_token"=>"yuxdf1QkhDuuRnAV+qVSTjt0aq3Yo1sW9UN685GhEMc=", 
 #  "problem"=>{"user"=>"7876483097", "latitude"=>"18.378383", "longitude"=>"-67.026201", "ptype"=>"2", 

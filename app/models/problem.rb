@@ -151,9 +151,5 @@ class Problem < ActiveRecord::Base
 	    end
 	end
 
-	def get_unresolved
-	  	@unresolved = Problem.find(:status => 3, :order => "created_at")
-	end
-
 end
 
