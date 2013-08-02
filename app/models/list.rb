@@ -13,4 +13,9 @@ class List < ActiveRecord::Base
 
 		return owner_name
 	end
+
+	def get_owner
+		@owner = User.find(self.user_id)
+		return @owner_name
+	end
 end

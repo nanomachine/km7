@@ -293,11 +293,6 @@ font-weight: normal !important;
 margin: 10px 31px;
 }
 
-/*Temporary fix for over-extended td's in the Reports index view Description-----*/
 
-td {
-  min-width: 30px;
-  max-width: 30px;
-  overflow: auto;
-}
+
 

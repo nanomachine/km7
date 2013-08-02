@@ -5,11 +5,14 @@ class ApplicationController < ActionController::Base
 
   private
 
-#Used in custom.js.erb to populate donutchart
+
+
+  def set_gon_values
+
+#Used in custom.js.erb to populate donutchart and stackchart
 #this should be implemented by retreiving a hash with
 #ptype as key and count as value
 
-  def set_gon_values
     gon.holes = Problem.where(ptype: 1 ).count  # or whatever you want to set here
     gon.water = Problem.where(ptype: 2 ).count  # or whatever you want to set here
     gon.electric = Problem.where(ptype: 3 ).count  # or whatever you want to set here
@@ -31,7 +34,7 @@ class ApplicationController < ActionController::Base
     gon.r_electric = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='3' AND status='3'").count
 
     gon.u_light = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='4' AND status='1'").count
-    gon.a_Light = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='4' AND status='2'").count
+    gon.a_light = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='4' AND status='2'").count
     gon.r_light = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='4' AND status='3'").count
 
     gon.u_debris = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='5' AND status='1'").count
@@ -45,7 +48,6 @@ class ApplicationController < ActionController::Base
     gon.u_manhole = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='7' AND status='1'").count
     gon.a_manhole = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='7' AND status='2'").count
     gon.r_manhole = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='75' AND status='3'").count
-    
 
   end
 

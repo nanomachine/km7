@@ -25,29 +25,23 @@
       </h2>
       <h2 class="h2-profile"><i class="icon-map-marker"></i>    <%= @user.municipality %>, PR</h2>
       <h2 class="h2-profile"><i class="fa-icon-phone"></i>    <%= @user.telnum %></h2>
-      <h2 class="h2-profile"><i class="icon-envelope"></i>    <%= @user.email %></h2>
+      <h2 class="h2-profile"><i class="icon-envelope"></i>    <%= @user.email %></h2> 
+        <%= @user.resolved_reports.to_d %>
+        <%= @user.assigned_reports.to_d %>
+        <%= @user.problems.count.to_d %>
+
+
+
       
     </div><!--/span-->
     <div class="row-fluid ">
       <div class="circleStats span6">
-        <div class="box span4 circle-box">                  
-          <div class="span2" onTablet="span4" onDesktop="span2">
-            <div class="circleStatsItem red">
-              <i class="fa-icon-eye-open"></i>
-              <span class="plus">+</span>
-              <span class="percent">%</span>
-              <input type="text" value="58" class="orangeCircle" />
-            </div>
-            <div class="box-small-title">Reports Assigned</div>
-          </div>
-        </div>
         <div class="box span4 circle-box">
           <div class="span2" onTablet="span4" onDesktop="span2">
-            <div class="circleStatsItem blue">
+            <div class="circleStatsItem green">
               <i class="fa-icon-check"></i>
-              <span class="plus">+</span>
               <span class="percent">%</span>
-              <input type="text" value="8" class="blueCircle" />
+              <input type="text" value=<%=(@user.resolved_reports.to_d/Problem.where(status: 3).count.to_d)*100 %> class="greenCircle" />
             </div>
             <div class="box-small-title">Reports Resolved</div>
           </div>
@@ -56,13 +50,26 @@
           <div class="span2" onTablet="span4" onDesktop="span2">
             <div class="circleStatsItem yellow">
               <i class="fa-icon-warning-sign"></i>
-              <span class="plus">+</span>
               <span class="percent">%</span>
-              <input type="text" value="12" class="yellowCircle" />
+              <input type="text" value=<%= (@user.assigned_reports.to_d/Problem.where(status: 2).count.to_d)*100 %> class="yellowCircle" />
             </div>
-            <div class="box-small-title">Reports Pending</div>
+            <div class="box-small-title">Reports Assigned</div>
           </div>
         </div>
+
+
+        <div class="box span4 circle-box">                  
+          <div class="span2" onTablet="span4" onDesktop="span2">
+            <div class="circleStatsItem red">
+              <i class="fa-icon-eye-open"></i>
+              <span class="percent">%</span>
+              <input type="text" value=<%= (@user.problems.count.to_d/Problem.all.count.to_d)*100 %> class="orangeCircle" />
+            </div>
+            <div class="box-small-title">Reports Submitted</div>
+          </div>
+        </div>
+
+
       </div>
     </div>
   </div>
@@ -81,12 +88,12 @@
 
     <div class="box span3">
       <div class="box-header">
-        <h2><i class="icon-list"></i><span class="break"></span>Reports</h2>
+        <h2><i class="icon-list"></i><span class="break"></span>Recent Reports</h2>
       </div>
       <div class="box-content">
         <ul class="tickets">
           <li class="ticket">
-            <% @user.problems.each do |problem| %>
+            <% @user.problems.limit(5).each do |problem| %>
 
             <span class="header"> 
               <span class="title"><%= link_to problem.title, problem %></span>
@@ -106,7 +113,6 @@
           </ul>
         </div>
       </div><!--/span-->
-
     </div>
-
-  </div>
+  </div>\
+<hr>

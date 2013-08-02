@@ -17,7 +17,7 @@ module SessionsHelper
 	def sign_in(user)
 
 		remember_token = user.remember_token
-		cookies[:remember_token] = {value: remember_token, expires: 2.hours.from_now.utc}
+		cookies[:remember_token] = {value: remember_token, expires: 8.hours.from_now.utc}
 #----------------------------When token expires redirect to login
 		self.current_user = user
 		#puts "NO hice sign in permanente--------------------------"

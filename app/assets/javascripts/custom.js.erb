@@ -884,7 +884,7 @@ function charts() {
 		var visitors = [[1, randNum()-10], [2, randNum()-10], [3, randNum()-10], [4, randNum()],[5, randNum()],[6, 4+randNum()],[7, 5+randNum()],[8, 6+randNum()],[9, 6+randNum()],[10, 8+randNum()],[11, 9+randNum()],[12, 10+randNum()],[13,11+randNum()],[14, 12+randNum()],[15, 13+randNum()],[16, 14+randNum()],[17, 15+randNum()],[18, 15+randNum()],[19, 16+randNum()],[20, 17+randNum()],[21, 18+randNum()],[22, 19+randNum()],[23, 20+randNum()],[24, 21+randNum()],[25, 14+randNum()],[26, 24+randNum()],[27,25+randNum()],[28, 26+randNum()],[29, 27+randNum()], [30, 31+randNum()]];
 
 		var plot = $.plot($("#stats-chart"),
-			   [ { data: pageviews, label: "pageviews"}, { data: visitors, label: "visitors" } ], {
+			   [ { data: pageviews, label: "<%= 2.month.ago.strftime('%B') %>"}, { data: visitors, label: "<%= 1.month.ago.strftime('%B')%>" } ], {
 				   series: {
 					   lines: { show: true,
 								lineWidth: 3,
@@ -1102,7 +1102,7 @@ function charts() {
 		function plotWithOptions() {
 			$.plot($("#stackchart"), 
 				[ 
-					{ label: "Unassinged", data: d1},
+					{ label: "Pending", data: d1},
 					{ label: "Assigned", data: d2},
 					{ label: "Resolved", data: d3}
 				],{

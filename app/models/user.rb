@@ -68,5 +68,32 @@ class User < ActiveRecord::Base
       self[column] = SecureRandom.urlsafe_base64
     end while User.exists?(column => self[column])
   end
+
+  def assigned_reports
+    @total_assigned = 0
+    self.lists.each do |list|
+      @total_assigned = @total_assigned + list.problems.count
+    end
+    return @total_assigned
+  end
+
+  def resolved_reports
+    @total_resolved = 0
+    Problem.all.each do |p|
+      if p.resolved_id == self.id
+        @total_resolved = @total_resolved + 1
+      end
+    return @total_resolved
+    end
+  end
+
+  def current_month_resolved
+
+  end
+
+  def previous_month_resolved
+
+  end
+
 end
 

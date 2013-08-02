@@ -86,6 +86,8 @@ class Problem < ActiveRecord::Base
 	end
 
 	def is_in_list?
+#Este search se debe hacer para las listas activas porque buscar por todas 
+#las listas que existen no hace sentido
 		@lists = List.all
 		@lists.each do |list|
 			if list.problems.include?(self)
@@ -128,7 +130,7 @@ class Problem < ActiveRecord::Base
 	def get_prob_status
 		case self.status
 		when 1
-	       "Unassigned"
+	       "Pending"
 	    when 2
 	       "Assigned"
 	    when 3
