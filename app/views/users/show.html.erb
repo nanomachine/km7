@@ -44,7 +44,7 @@
           <div class="circleStatsItem yellow">
             <i class="fa-icon-warning-sign"></i>
             <span class="percent">%</span>
-            <input type="text" value=<%= (@user.assigned_reports/Problem.where(status: 2).count.to_d)*100 %> class="yellowCircle" />
+            <input type="text" value=<%= (@user.assigned_reports/BigDecimal(Problem.where(status: 2).count))*100 %> class="yellowCircle" />
           </div>
           <div class="box-small-title">Reports Assigned</div>
         </div>
@@ -54,7 +54,7 @@
           <div class="circleStatsItem red">
             <i class="fa-icon-eye-open"></i>
             <span class="percent">%</span>
-            <input type="text" value=<%= (@user.problems.count.to_d/Problem.all.count.to_d)*100 %> class="orangeCircle" />
+            <input type="text" value=<%= (@user.problems.count.to_d/BigDecimal(Problem.all.count)*100) %> class="orangeCircle" />
           </div>
           <div class="box-small-title">Reports Submitted</div>
         </div>
@@ -75,7 +75,7 @@
       <div class="box-content">
         <ul class="tickets">
           <li class="ticket">
-            <% @user.problems.limit(5).each do |problem| %>
+            <% @user.problems.order("created_at").limit(5).each do |problem| %>
             <!-- Only show active reports, no Resolved reports -->
             <span class="header"> 
               <span class="title"><%= link_to problem.title, problem %></span>
