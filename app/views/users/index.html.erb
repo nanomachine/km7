@@ -21,8 +21,7 @@ add provide(:title, 'Users') %>
 				  <thead>
 					  <tr>
 					  	  <th>Picture</th>
-						  <th>First Name</th>
-						  <th>Last Name</th>			  
+						  <th>Full Name</th>
 						  <th>Email Address</th>
 						  <th>Municipality</th>
 						  <th>Telephone</th>
@@ -35,8 +34,7 @@ add provide(:title, 'Users') %>
 				  	<% @users.each do |user| %>
 						<tr>
 							<td><%=link_to image_tag(user.avatar.url(:thumb)), user %> </td>
-							<td><%= user.name %></td>
-							<td><%= user.last_name %></td>
+							<td><%= user.name %> <%= user.last_name %></td>
 							<td><%= user.email %></td>
 							<td><%= user.municipality %></td>
 							<td><%= user.telnum %></td>

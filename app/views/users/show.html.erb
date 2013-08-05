@@ -26,93 +26,117 @@
       <h2 class="h2-profile"><i class="icon-map-marker"></i>    <%= @user.municipality %>, PR</h2>
       <h2 class="h2-profile"><i class="fa-icon-phone"></i>    <%= @user.telnum %></h2>
       <h2 class="h2-profile"><i class="icon-envelope"></i>    <%= @user.email %></h2> 
-        <%= @user.resolved_reports.to_d %>
-        <%= @user.assigned_reports.to_d %>
-        <%= @user.problems.count.to_d %>
-
-
-
-      
     </div><!--/span-->
-    <div class="row-fluid ">
-      <div class="circleStats span6">
-        <div class="box span4 circle-box">
-          <div class="span2" onTablet="span4" onDesktop="span2">
-            <div class="circleStatsItem green">
-              <i class="fa-icon-check"></i>
-              <span class="percent">%</span>
-              <input type="text" value=<%=(@user.resolved_reports.to_d/Problem.where(status: 3).count.to_d)*100 %> class="greenCircle" />
-            </div>
-            <div class="box-small-title">Reports Resolved</div>
+
+    <div class="box span6">
+      <div class="box span4 circle-box">
+        <div class="span2" onTablet="span4" onDesktop="span2">
+          <div class="circleStatsItem green">
+            <i class="fa-icon-check"></i>
+            <span class="percent">%</span>
+            <input type="text" value=<%=(@user.resolved_reports.to_d/Problem.where(status: 3).count.to_d)*100 %> class="greenCircle" />
           </div>
+          <div class="box-small-title">Reports Resolved</div>
         </div>
-        <div class="box span4 circle-box">
-          <div class="span2" onTablet="span4" onDesktop="span2">
-            <div class="circleStatsItem yellow">
-              <i class="fa-icon-warning-sign"></i>
-              <span class="percent">%</span>
-              <input type="text" value=<%= (@user.assigned_reports.to_d/Problem.where(status: 2).count.to_d)*100 %> class="yellowCircle" />
-            </div>
-            <div class="box-small-title">Reports Assigned</div>
+      </div>
+      <div class="box span4 circle-box">
+        <div class="span2" onTablet="span4" onDesktop="span2">
+          <div class="circleStatsItem yellow">
+            <i class="fa-icon-warning-sign"></i>
+            <span class="percent">%</span>
+            <input type="text" value=<%= (@user.assigned_reports.to_d/Problem.where(status: 2).count.to_d)*100 %> class="yellowCircle" />
           </div>
+          <div class="box-small-title">Reports Assigned</div>
         </div>
-
-
-        <div class="box span4 circle-box">                  
-          <div class="span2" onTablet="span4" onDesktop="span2">
-            <div class="circleStatsItem red">
-              <i class="fa-icon-eye-open"></i>
-              <span class="percent">%</span>
-              <input type="text" value=<%= (@user.problems.count.to_d/Problem.all.count.to_d)*100 %> class="orangeCircle" />
-            </div>
-            <div class="box-small-title">Reports Submitted</div>
+      </div>
+      <div class="box span4 circle-box">                  
+        <div class="span2" onTablet="span4" onDesktop="span2">
+          <div class="circleStatsItem red">
+            <i class="fa-icon-eye-open"></i>
+            <span class="percent">%</span>
+            <input type="text" value=<%= (@user.problems.count.to_d/Problem.all.count.to_d)*100 %> class="orangeCircle" />
           </div>
+          <div class="box-small-title">Reports Submitted</div>
         </div>
-
-
       </div>
     </div>
   </div>
 </div>
 
+
 <div class="row-fluid fluid-box">
   <div class="span12">
-    <div class="box span8">
-      <div class="box-header">
-        <h2><i class="icon-signal"></i><span class="break"></span>Report resolution - two-month comparison</h2>
-      </div>
-      <div class="box-content">
-        <div id="stats-chart"  class="center" style="height:300px" ></div>
-      </div>
-    </div>
 
-    <div class="box span3">
+
+    <div class="box span4">
       <div class="box-header">
-        <h2><i class="icon-list"></i><span class="break"></span>Recent Reports</h2>
+        <h2><i class="icon-list"></i><span class="break"></span>Most Recent Reports</h2>
       </div>
       <div class="box-content">
         <ul class="tickets">
           <li class="ticket">
             <% @user.problems.limit(5).each do |problem| %>
-
+            <!-- Only show active reports, no Resolved reports -->
             <span class="header"> 
               <span class="title"><%= link_to problem.title, problem %></span>
               <span class="number"><%= link_to problem.get_prob_type, problem%> <%= link_to "[#"+problem.id.to_s+"]", problem%></span>
             </span>
             <span class="content">
               <span class="avatar">  <img src=<%=problem.avatar.url(:thumb) %>> </span>
-              <span class="name">By:<%= @user.name %> 
+              <span class="name"><strong>Submitted By: </strong><%= @user.name %> 
                 <%= @user.last_name %></span>
-                <!-- Implement priority partial for viewing -->
-                <span class="priority blue">[ <%=problem.get_prob_priority %> ]</span>
-                <span class="status">Status: <span class="green">[ <%= problem.get_prob_status %> ]</span></span>
                 <span class="date"><%= problem.created_at.strftime(" %b.%d %Y") %></span>
-              </span>                                                         
+                <!-- Implement priority partial for viewing -->
+                <% if problem.status == 1 %>
+                <span class="status"><span class="label label-important"><%= problem.get_prob_status %></span>
+              </span>   
+              <% elsif problem.status == 2 %>
+              <span class="status"><span class="label label-warning"><%= problem.get_prob_status %></span>
+              <%= " "+  problem.get_containing_list.get_owner_name %></span>
+              <% elsif problem.status == 3 %>
+              <span class="status"><span class="label label-success"><%= problem.get_prob_status %></span>
+              <%= " "+  problem.get_containing_list.get_owner_name %></span>
               <% end %>
-            </li>
-          </ul>
-        </div>
-      </div><!--/span-->
-    </div>
-  </div>\
+              <span class="priority blue"><strong>[ <%=problem.get_prob_priority %> ]</strong></span> 
+            </span>                                                         
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div><!--/span-->
+
+    <div class="box span5" >
+      <div class="box-header">
+        <h2><i class="icon-list"></i><span class="break"></span>Reports Summary</h2>
+      </div>
+      <div class="box-content">
+        <ul class="dashboard-list">
+          <li>
+            <a href="#">
+              <i class="fa-icon-check green"></i>                               
+              <span class="green"><%= @user.resolved_reports.to_s + "/"+ Problem.where(status: 3).count.to_s %> </span>
+              Reports Resolved                                   
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa-icon-warning-sign yellow"></i>
+              <span class="yellow"><%= @user.assigned_reports.to_s + "/" + Problem.where(status: 2).count.to_s %> </span>
+              Reports Assigned
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa-icon-eye-open red"></i>
+              <span class="red"><%= @user.problems.count.to_s +  "/" + Problem.all.count.to_s %></span>
+              Reports Submitted                                    
+            </a>
+          </li>                                  
+        </ul>
+      </div>
+    </div><!--/span-->
+
+
+  </div>
+</div>\
 <hr>

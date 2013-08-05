@@ -19,7 +19,6 @@
 		<div class="box-content">
 			<ul class="nav tab-menu nav-tabs tabs-lists" id="myTab">
 				<li class="active"><a href="#all">All Reports</a></li>
-				<li><a href="#mine">My Reports</a></li>
 			</ul>
 
 			<div id="myTabContent" class="tab-content">
@@ -31,7 +30,6 @@
 								<th>Picture</th>
 								<th>Address</th>
 								<th>Title</th>			  
-								<th>Description</th>			  
 								<th>Type</th>
 								<th>Priority</th>
 								<th>Status</th>
@@ -47,57 +45,6 @@
 								<td><%= link_to image_tag(problem.avatar.url(:thumb)), problem %> </td>
 								<td><%= problem.address %></td>
 								<td><%= problem.title %></td>
-								<td><%= problem.description %></td>
-								<td><%= problem.get_prob_type %></td>
-								<td><%= problem.get_prob_priority %></td>
-								<td><%= problem.get_prob_status %></td>
-								<td class="center"><%= problem.created_at.strftime(" %b.%d %Y") %></td>
-								<td><%= User.find(problem.user_id).name %> <%= User.find(problem.user_id).last_name%> </td>
-
-								<!--Action buttons for problem index table, Delete and More Info -->
-								<td class="center">
-									<%= link_to problem, class: 'btn btn-info' do %>
-									<i class="icon-zoom-in icon-white"></i> 
-									<% end %>
-
-									<% if current_user.admin? %>
-									<%= link_to problem, method: :delete, data: { confirm: "Delete this report?" }, class: 'btn btn-danger' do %>
-									<i class="icon-trash icon-white"></i> 
-									<% end %>
-									<% end %>
-
-								</td>
-							</tr>
-							<% end %>
-						</tbody>
-					</table>
-				</div>
-
-				<div class="tab-pane" id="mine">
-					<table class="table table-striped table-bordered bootstrap-datatable datatable">
-						<thead>
-							<tr>
-								<th>Report</th>
-								<th>Picture</th>
-								<th>Title</th>			  
-								<th>Address</th>
-								<th>Municipality</td>
-								<th>Type</th>
-								<th>Priority</th>
-								<th>Status</th>
-								<th>Date submitted</th>
-								<th>Reporter</th>
-								<th>Actions</th>
-							</tr>
-						</thead>   
-						<tbody>
-							<% current_user.problems.each do |problem| %>
-							<tr>
-								<td><%= problem.id %></td>
-								<td><%= link_to image_tag(problem.avatar.url(:thumb)), problem %> </td>
-								<td><%= problem.title %></td>
-								<td><%= problem.address %></td>
-								<td><%= problem.municipality %></td>
 								<td><%= problem.get_prob_type %></td>
 								<td><%= problem.get_prob_priority %></td>
 								<td><%= problem.get_prob_status %></td>
