@@ -28,13 +28,13 @@
       <h2 class="h2-profile"><i class="icon-envelope"></i>    <%= @user.email %></h2> 
     </div><!--/span-->
 
-    <div class="box span6">
+    <div class="box span6 box_circle_stat">
       <div class="box span4 circle-box">
         <div class="span2" onTablet="span4" onDesktop="span2">
           <div class="circleStatsItem green">
             <i class="fa-icon-check"></i>
             <span class="percent">%</span>
-            <input type="text" value=<%=(@user.resolved_reports.to_d/Problem.where(status: 3).count.to_d)*100 %> class="greenCircle" />
+            <input type="text" value=<%=(@user.resolved_reports/Problem.where(status: 3).count.to_d)*100 %> class="greenCircle" />
           </div>
           <div class="box-small-title">Reports Resolved</div>
         </div>
@@ -44,7 +44,7 @@
           <div class="circleStatsItem yellow">
             <i class="fa-icon-warning-sign"></i>
             <span class="percent">%</span>
-            <input type="text" value=<%= (@user.assigned_reports.to_d/Problem.where(status: 2).count.to_d)*100 %> class="yellowCircle" />
+            <input type="text" value=<%= (@user.assigned_reports/Problem.where(status: 2).count.to_d)*100 %> class="yellowCircle" />
           </div>
           <div class="box-small-title">Reports Assigned</div>
         </div>
@@ -114,14 +114,14 @@
           <li>
             <a href="#">
               <i class="fa-icon-check green"></i>                               
-              <span class="green"><%= @user.resolved_reports.to_s + "/"+ Problem.where(status: 3).count.to_s %> </span>
+              <span class="green"><%= @user.resolved_reports.to_i.to_s + "/"+ Problem.where(status: 3).count.to_s %> </span>
               Reports Resolved                                   
             </a>
           </li>
           <li>
             <a href="#">
               <i class="fa-icon-warning-sign yellow"></i>
-              <span class="yellow"><%= @user.assigned_reports.to_s + "/" + Problem.where(status: 2).count.to_s %> </span>
+              <span class="yellow"><%= @user.assigned_reports.to_i.to_s + "/" + Problem.where(status: 2).count.to_s %> </span>
               Reports Assigned
             </a>
           </li>

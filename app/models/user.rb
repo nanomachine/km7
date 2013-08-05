@@ -70,18 +70,18 @@ class User < ActiveRecord::Base
   end
 
   def assigned_reports
-    @total_assigned = 0
+    @total_assigned = 0.0
     self.lists.each do |list|
-      @total_assigned = @total_assigned + list.problems.count
+      @total_assigned = @total_assigned + list.problems.count.to_d
     end
     return @total_assigned
   end
 
   def resolved_reports
-    @total_resolved = 0
+    @total_resolved = 0.0
     Problem.all.each do |p|
       if p.resolved_id == self.id
-        @total_resolved = @total_resolved + 1
+        @total_resolved = @total_resolved + 1.0
       end
     return @total_resolved
     end

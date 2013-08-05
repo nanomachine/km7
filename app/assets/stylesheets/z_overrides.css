@@ -289,6 +289,10 @@ font-weight: normal !important;
 
 /*Circle statistics for user profiles-----------------------------------------*/
 
+.box_circle_stat{
+padding-top: 45px;
+}
+
 .box-small-title {
 margin: 10px 31px;
 }
