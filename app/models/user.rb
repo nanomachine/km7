@@ -72,7 +72,7 @@ class User < ActiveRecord::Base
   def assigned_reports
     @total_assigned = 0.0
     self.lists.each do |list|
-      @total_assigned = @total_assigned + list.problems.count.to_d
+      @total_assigned = @total_assigned + BigDecimal(list.problems.count)
     end
     return @total_assigned
   end

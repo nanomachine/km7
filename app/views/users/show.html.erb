@@ -54,7 +54,7 @@
           <div class="circleStatsItem red">
             <i class="fa-icon-eye-open"></i>
             <span class="percent">%</span>
-            <input type="text" value=<%= (@user.problems.count.to_d/BigDecimal(Problem.all.count)*100) %> class="orangeCircle" />
+            <input type="text" value=<%= (BigDecimal(@user.problems.count)/BigDecimal(Problem.all.count)*100) %> class="orangeCircle" />
           </div>
           <div class="box-small-title">Reports Submitted</div>
         </div>
