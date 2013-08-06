@@ -114,21 +114,21 @@
           <li>
             <a href="#">
               <i class="fa-icon-check green"></i>                               
-              <span class="green"><%= @user.resolved_reports.to_i.to_s + "/"+ Problem.where(status: 3).count.to_s %> </span>
+              <span class="green"><%= @user.resolved_reports.to_i %>/<%= Problem.where(status: 3).count %> </span>
               Reports Resolved                                   
             </a>
           </li>
           <li>
             <a href="#">
               <i class="fa-icon-warning-sign yellow"></i>
-              <span class="yellow"><%= @user.assigned_reports.to_i.to_s + "/" + Problem.where(status: 2).count.to_s %> </span>
+              <span class="yellow"><%= @user.assigned_reports.to_i %>/<%= Problem.where(status: 2).count%> </span>
               Reports Assigned
             </a>
           </li>
           <li>
             <a href="#">
               <i class="fa-icon-eye-open red"></i>
-              <span class="red"><%= @user.problems.count.to_s +  "/" + Problem.all.count.to_s %></span>
+              <span class="red"><%= @user.problems.count %>/<%= Problem.all.count%></span>
               Reports Submitted                                    
             </a>
           </li>                                  
