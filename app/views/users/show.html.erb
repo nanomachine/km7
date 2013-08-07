@@ -35,7 +35,8 @@
             <i class="fa-icon-check"></i>
             <span class="percent">%</span>
             <% @all_resolved = Problem.where(status: 3).size %>
-            <% @resolved = (@user.resolved_reports/@all_resolved)*100 %>
+            <% @my_resolved = @user.resolved_reports*100 %>
+            <% @resolved = @my_resolved/@all_resolved %>
             <input type="text" value=<%= "#{@resolved}" %> class="greenCircle" />
           </div>
           <div class="box-small-title">Reports Resolved</div>
