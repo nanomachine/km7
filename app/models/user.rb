@@ -83,7 +83,7 @@ class User < ActiveRecord::Base
       if p.resolved_id == self.id
         @total_resolved = @total_resolved + 1.0
       end
-    return @total_resolved
+     return @total_resolved
     end
   end
 
