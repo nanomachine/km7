@@ -74,7 +74,7 @@ def new
 
     if !@list.problems.include?(@problem)
       @list.problems << @problem # This appends and saves the problem selected
-      #Change the report status, it is now assigned to whomever added it to the list
+      #Change the report status, it is now assigned to the owner of the list
       @problem.status = 2
       @problem.assigned_at = Time.now
       @problem.save

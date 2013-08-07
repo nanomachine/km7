@@ -20,54 +20,12 @@
 	the other tab will list all created lists -->
 	<div class="box-content">
 		<ul class="nav tab-menu nav-tabs tabs-lists" id="myTab">
-			<li class="active"><a href="#mine">My Lists</a></li>
-			<li><a href="#all">All Lists</a></li>
+			<li class="active"><a href="#all">All Lists</a></li>
 		</ul>
 		<!-- Create partial for list indexing to eleminite repeated code -->
 		<div id="myTabContent" class="tab-content">
-			<div class="tab-pane active" id="mine">
-				<table class="table table-striped table-bordered bootstrap-datatable datatable">
-					<thead>
-						<tr>
-							<th>List #</th>
-							<th>Name</th>
-							<th>Description</th>
-							<th>Owner</th>
-							<th>Date Created</th>
-							<th>Reports</th>
-							<th>Actions</th>
-						</tr>
-					</thead>   
-					<tbody>
-						<% current_user.lists.each do |list| %>
-						<% @owner = User.find(list.user_id) %>
-						<tr>
-							<td><%= list.id %></td>
-							<td><%= list.name %></td>
-							<td><%= list.description %></td>
-							<td><%= @owner.name %>
-								<%= @owner.last_name %>
-							</td>
-							<td><%= list.created_at.strftime(" %b.%d %Y") %></td>
-							<td><%= list.problems.size %></td>
-							<!--Action buttons for last column of list index table, Delete and More Info -->
-							<td>
-								<%= link_to list, class: 'btn btn-info' do %>
-								<i class="icon-zoom-in icon-white"></i> 
-								<% end %>
-								<% if current_user.admin? || current_user.id==@owner.id %>
-								<%= link_to list, method: :delete, data: { confirm: "Delete this list?" }, class: 'btn btn-danger' do %>
-								<i class="icon-trash icon-white"></i> 
-								<% end %>
-								<% end %>
-							</td>
-						</tr>
-						<% end %>
-					</tbody>
-				</table>
-			</div>
 			<!-- Content for all lists tab -->
-			<div class="tab-pane" id="all">
+			<div class="tab-pane active" id="all">
 				<table class="table table-striped table-bordered bootstrap-datatable datatable">
 					<thead>
 						<tr>
@@ -94,12 +52,12 @@
 							<!--Action buttons for list index table, Delete and More Info -->
 							<td class="center">
 								<%= link_to list, class: 'btn btn-info' do %>
-								<i class="icon-zoom-in icon-white"></i> 
+									<i class="icon-zoom-in icon-white"></i> 
 								<% end %>
 								<% if current_user.admin? || current_user.id==list.user_id %>
-								<%= link_to list, method: :delete, data: { confirm: "Delete this list?" }, class: 'btn btn-danger' do %>
-								<i class="icon-trash icon-white"></i> 
-								<% end %>
+									<%= link_to list, method: :delete, data: { confirm: "Delete this list?" }, class: 'btn btn-danger' do %>
+										<i class="icon-trash icon-white"></i> 
+									<% end %>
 								<% end %>
 							</td>
 						</tr>

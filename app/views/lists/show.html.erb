@@ -56,13 +56,13 @@
                   <td><%= problem.get_prob_type %></td>
                   <td><%= problem.get_prob_priority %></td>
                   <td><%= problem.get_prob_status %></td>
-                  <td class="center"><%= problem.created_at.strftime(" %b.%d %Y") %></td>
-                  <td><%= User.find(problem.user_id).name %> <%= User.find(problem.user_id).last_name%> </td>
-                  <td class="center">
+                  <td><%= problem.created_at.strftime(" %b.%d %Y") %></td>
+                  <td><%= problem.get_owner_name %></td>
+                  <td>
+<!-- Only display the option to remove reports from a list if current user is owner or admin
+Make it impossible to remove a resolved report from the list -->
 
-<!-- Only display the option to remove reports from a list if current user is owner or admin -->
-
-                  <% if current_user.admin? || current_user.id == @list.user_id %>
+                  <% if problem.status != 3 && (current_user.admin? || current_user.id == @list.user_id)  %>
                     <%= link_to remove_problem_list_path(list: @list,  problem_id: problem.id), class: 'btn btn-mini btn-danger', method: :delete, :confirm => 'Are you sure you wish to remove this report from the list?' do %>
                       <i>Remove</i> 
                     <% end %>
