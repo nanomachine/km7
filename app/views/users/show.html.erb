@@ -59,8 +59,8 @@
             <i class="fa-icon-eye-open"></i>
             <span class="percent">%</span>
             <% @all_submitted = Problem.all.size %>
-            <% @all_submitted = @all_submitted.to_d %>
-            <% @submitted =(@user.problems.count/@all_submitted)*100 %>
+            <% @my_problems = @user.problems.count*100 %>
+            <% @submitted = @my_problems/@all_submitted %>
             <input type="text" value= <%= "#{@submitted}" %> class="orangeCircle" />
           </div>
           <div class="box-small-title">Reports Submitted</div>
