@@ -104,6 +104,7 @@ class ProblemsController < ApplicationController
       redirect_to :action => :show, :id => @problem
   end
 
+=begin  
   def get_last_month_reports
     @last_month = 0
     Problem.all.each do |problem|
@@ -115,7 +116,8 @@ class ProblemsController < ApplicationController
   end
 
 
-  def get_before_last_month_reports
+
+def get_before_last_month_reports
     @before_last_month = 0
     Problem.all.each do |problem|
       if problem.created_at.month == 2.month.ago
@@ -124,6 +126,7 @@ class ProblemsController < ApplicationController
     end
     return @last_month
   end
+=end
 
 #    def get_type_count
 #    @report_type_count = Problem.where("ptype = 1").count
