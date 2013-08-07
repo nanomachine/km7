@@ -34,8 +34,8 @@
           <div class="circleStatsItem green">
             <i class="fa-icon-check"></i>
             <span class="percent">%</span>
-            <% @resolved = (@user.resolved_reports/BigDecimal(Problem.where(status: 3).count)*100).to_s %>
-            <input type="text" value=<%= @resolved %> class="greenCircle" />
+            <% @resolved = ((@user.resolved_reports/BigDecimal(Problem.where(status: 3).count))*100).to_s %>
+            <input type="text" value="<%= @resolved %>" class="greenCircle" />
           </div>
           <div class="box-small-title">Reports Resolved</div>
         </div>
@@ -46,7 +46,7 @@
             <i class="fa-icon-warning-sign"></i>
             <span class="percent">%</span>
             <% @assigned = ((@user.assigned_reports/BigDecimal(Problem.where(status: 2).count))*100).to_s %>
-            <input type="text" value= <%= @assigned %> class="yellowCircle" />
+            <input type="text" value= "<%= @assigned %>" class="yellowCircle" />
           </div>
           <div class="box-small-title">Reports Assigned</div>
         </div>
@@ -57,7 +57,7 @@
             <i class="fa-icon-eye-open"></i>
             <span class="percent">%</span>
             <% @submitted =((@user.problems.count/BigDecimal(Problem.all.count))*100).to_s %>
-            <input type="text" value= <%= @submitted %> class="orangeCircle" />
+            <input type="text" value= "<%= @submitted %>" class="orangeCircle" />
           </div>
           <div class="box-small-title">Reports Submitted</div>
         </div>
