@@ -36,7 +36,7 @@
             <span class="percent">%</span>
             <% @all_resolved = Problem.where(status: 3).size %>
             <% @resolved = (@user.resolved_reports/@all_resolved)*100 %>
-            <input type="text" value="<%= @resolved %>" class="greenCircle" />
+            <input type="text" value=<%= "#{@resolved}" %> class="greenCircle" />
           </div>
           <div class="box-small-title">Reports Resolved</div>
         </div>
@@ -48,7 +48,7 @@
             <span class="percent">%</span>
             <% @all_assigned = Problem.where(status: 2).size %>
             <% @assigned = (@user.assigned_reports/@all_assigned)*100 %>
-            <input type="text" value= "<%= @assigned %>" class="yellowCircle" />
+            <input type="text" value= <%="#{@assigned}" %> class="yellowCircle" />
           </div>
           <div class="box-small-title">Reports Assigned</div>
         </div>
@@ -61,7 +61,7 @@
             <% @all_submitted = Problem.all.size %>
             <% @all_submitted = @all_submitted.to_d %>
             <% @submitted =(@user.problems.count/@all_submitted)*100 %>
-            <input type="text" value= "<%= @submitted %>" class="orangeCircle" />
+            <input type="text" value= <%= "#{@submitted}" %> class="orangeCircle" />
           </div>
           <div class="box-small-title">Reports Submitted</div>
         </div>
