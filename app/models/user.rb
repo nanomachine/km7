@@ -70,7 +70,7 @@ class User < ActiveRecord::Base
   end
 
   def assigned_reports
-    @total_assigned = 0
+    @total_assigned = 0.0
     self.lists.each do |list|
       @total_assigned = @total_assigned + list.problems.count
     end
@@ -78,7 +78,7 @@ class User < ActiveRecord::Base
   end
 
   def resolved_reports
-    @total_resolved = 0
+    @total_resolved = 0.0
 #Only reports whose status is 3 are resolved, it is not enough that they have
 # resolved_id non-null, that could mean that it was incorrectly marked as resolved
 # by someone and has since been corrected back to being Assigned..

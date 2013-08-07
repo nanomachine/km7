@@ -34,9 +34,14 @@
           <div class="circleStatsItem green">
             <i class="fa-icon-check"></i>
             <span class="percent">%</span>
+<!-- The "if" blocks are needed to avoid Zero Division -->
             <% @all_resolved = Problem.where(status: 3).count %>
             <% @my_resolved = @user.resolved_reports %>
-            <% @resolved = (@my_resolved*100)/@all_resolved %>
+              <% if @all_resolved != 0 %>
+                <% @resolved = (@my_resolved*100)/@all_resolved %>
+              <% else %>
+                <%resolved = 0 %>
+              <% end %>
             <input type="text" value=<%= "#{@resolved}" %> class="greenCircle" />
           </div>
           <div class="box-small-title">Reports Resolved</div>
@@ -49,7 +54,11 @@
             <span class="percent">%</span>
             <% @all_assigned = Problem.where(status: 2).count %>
             <% @my_assigned = @user.assigned_reports*100 %>
-            <% @assigned = @my_assigned/@all_assigned %>
+            <% if @all_assigned != 0 %>
+              <% @assigned = @my_assigned/@all_assigned %>
+            <% else %>
+              <% @assigned = 0 %>
+            <% end %>
             <input type="text" value= <%="#{@assigned}" %> class="yellowCircle" />
           </div>
           <div class="box-small-title">Reports Assigned</div>
@@ -62,7 +71,11 @@
             <span class="percent">%</span>
             <% @all_submitted = Problem.all.count %>
             <% @my_problems = @user.problems.count*100 %>
-            <% @submitted = @my_problems/@all_submitted %>
+            <% if @all_submitted != 0 %>
+              <% @submitted = @my_problems/@all_submitted %>
+            <% else %>
+              <% @submitted = 0 %>
+            <% end %>
             <input type="text" value= <%= "#{@submitted}" %> class="orangeCircle" />
           </div>
           <div class="box-small-title">Reports Submitted</div>
