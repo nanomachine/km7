@@ -110,15 +110,18 @@
                 <span class="date"><%= problem.created_at.strftime(" %b.%d %Y") %></span>
                 <!-- Implement priority partial for viewing -->
                 <% if problem.status == 1 %>
-                <span class="status"><span class="label label-important"><%= problem.get_prob_status %></span>
-              </span>   
-              <% elsif problem.status == 2 %>
-              <span class="status"><span class="label label-warning"><%= problem.get_prob_status %></span>
-              <%= " "+  problem.get_containing_list.get_owner_name %></span>
-              <% elsif problem.status == 3 %>
-              <span class="status"><span class="label label-success"><%= problem.get_prob_status %></span>
-              <%= " "+  problem.get_containing_list.get_owner_name %></span>
-              <% end %>
+                  <span class="status"><span class="label label-important"><%= problem.get_prob_status %></span>
+                  </span>   
+                <% elsif problem.status == 2 %>
+                  <span class="status"><span class="label label-warning"><%= problem.get_prob_status %></span>
+                  <%= " "+  problem.get_containing_list.get_owner_name %></span>
+                <% elsif problem.status == 3 %>
+                  <span class="status"><span class="label label-success"><%= problem.get_prob_status %></span> 
+<!-- We need to double check that if the report is resolved it it contained in a list which is no necessarily so, if a report is resolved and the list is deleted afterwards. The report will still appear as resolved -->
+                  <% if problem.is_in_list? %>
+                    <%= " "+  problem.get_containing_list.get_owner_name %></span>
+                  <% end %>
+                <% end %>
               <span class="priority blue"><strong>[ <%=problem.get_prob_priority %> ]</strong></span> 
             </span>                                                         
             <% end %>
