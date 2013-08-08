@@ -120,6 +120,8 @@
 <!-- We need to double check that if the report is resolved it it contained in a list which is no necessarily so, if a report is resolved and the list is deleted afterwards. The report will still appear as resolved -->
                   <% if problem.is_in_list? %>
                     <%= " "+  problem.get_containing_list.get_owner_name %></span>
+                  <% else %>
+                    <%= " Unlisted" %>
                   <% end %>
                 <% end %>
               <span class="priority blue"><strong>[ <%=problem.get_prob_priority %> ]</strong></span> 

@@ -1,3 +1,7 @@
+<% if signed_in? %>
+    <%= redirect_to dashboard_url%>
+<% end %>
+
 <head>
 	<style type="text/css">
 	body { 
