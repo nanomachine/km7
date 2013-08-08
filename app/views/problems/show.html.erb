@@ -335,17 +335,19 @@ he/she can add reports -->
       </thead>     
       <tbody>
         <% current_user.lists.order("created_at desc").each do |list| %>
-          <tr>
-            <td><%= list.id %></td>
-            <td><%= list.name %></td>
-            <td><%= list.created_at.strftime(" %b.%d %Y %T") %></td>
-            <!--Action buttons for last column of list index table, Delete and More Info -->
-            <td class="center">
-              <%= link_to add_problem_list_path(list: list, id: list.id, problem_id: @problem.id), class: 'btn btn-mini btn-success', method: :put do %>
-              <i>Add to list</i> 
-              <% end %>
-            </td>
-          </tr>
+          <% if list.active %>
+            <tr>
+              <td><%= list.id %></td>
+              <td><%= list.name %></td>
+              <td><%= list.created_at.strftime(" %b.%d %Y %T") %></td>
+              <!--Action buttons for last column of list index table, Delete and More Info -->
+              <td class="center">
+                <%= link_to add_problem_list_path(list: list, id: list.id, problem_id: @problem.id), class: 'btn btn-mini btn-success', method: :put do %>
+                <i>Add to list</i> 
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table> 

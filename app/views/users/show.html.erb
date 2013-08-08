@@ -89,8 +89,7 @@
 <div class="row-fluid fluid-box">
   <div class="span12">
 
-
-    <div class="box span5">
+    <div class="box span4">
       <div class="box-header">
         <h2><i class="icon-list"></i><span class="break"></span>Most Recent Reports</h2>
       </div>
@@ -132,7 +131,7 @@
       </div>
     </div><!--/span-->
 
-    <div class="box span5" >
+    <div class="box span3" >
       <div class="box-header">
         <h2><i class="icon-list"></i><span class="break"></span>Reports Summary</h2>
       </div>
@@ -163,7 +162,36 @@
       </div>
     </div><!--/span-->
 
-
+    <div class="box span4">
+      <div class="box-header">
+        <h2><i class="icon-list"></i><span class="break"></span>Most Recent Lists</h2>
+      </div>
+      <div class="box-content">
+        <ul class="tickets">
+          <li class="ticket">
+            <% @user.lists.order("created_at desc").limit(5).each do |list| %>
+            <!-- Only show active reports, no Resolved reports -->
+            <span class="header"> 
+              <span class="title"><%= link_to list.name, list %></span>
+              <span class="number"> <%= link_to "[#"+list.id.to_s+"]", list%></span>
+            </span>
+            <span class="content">
+              <span class="avatar"> </span>
+              <span class="name"><strong>Created By: </strong><%= list.get_owner_name %></span>
+                <span class="date"><%= list.created_at.strftime(" %b.%d %Y") %></span>
+                <!-- Implement priority partial for viewing -->
+                <% if list.active %>
+                  <span class="status"><span class="label label-success">Active</span>
+                  </span>   
+                <% else %>
+                  <span class="status"><span class="label label-default">Closed</span>
+                  </span>                                                         
+                <% end %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div><!--/span-->
   </div>
 </div>\
 <hr>

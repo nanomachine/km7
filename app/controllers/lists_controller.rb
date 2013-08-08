@@ -27,9 +27,13 @@ def new
 
   def create
     @list = List.new(params[:list])
-    #Para obtener el usuario actual que esta creando el reporte solo funciona
-    #por webapp. Su motivo aplicar relación belongs_to de "problems"
+#Para obtener el usuario actual que esta creando el reporte solo funciona
+#por webapp. Su motivo aplicar relación belongs_to de "problems"
     @list.user_id = current_user.id
+#Activate the list when it is created, enabling it for use
+#If list is closed it will only be browsable, not editable
+    @list.active = true
+
     if @list.save
       flash[:success] = "List saved"
       redirect_to @list
@@ -64,7 +68,7 @@ def new
         redirect_to @list
       else
         flash[:error] = "List update error"
-        render 'edit'
+        redirect_to @list
       end
   end
 

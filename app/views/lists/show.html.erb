@@ -6,19 +6,29 @@
 <div class="row-fluid fluid-box">
   <div class="span12">
     <div class="box span12">
-        <h1 class="h1-list">List #<%=@list.id%> - <%= @list.name %></h1>
-        <p class= "center"><%=@list.description%></p>
+      <h1 class="h1-list">List #<%=@list.id%> - <%= @list.name %></h1>
+      <p class= "center"><%=@list.description%></p>
+      <p class= "center">
+        <% if @list.active %>
+        <%= link_to "#", class: 'btn btn-success' do %>
+        <i class="icon-ok icon-white"></i> Active
+        <% end %>
+        <% else %>
+        <%= link_to "#", class: 'btn' do %>
+        <i class="icon-lock"></i> Closed 
+        <% end %>
+      </p>
+      <% end %>    
     </div>
 
     <div class="box span12">
       <div class="box-header">
         <div class="box-icon">
           <%= link_to list_path(format: "xls"), class: 'btn btn-info' do %>
-            <i class="icon-download-alt icon-white"></i> Export .xls
+          <i class="icon-download-alt icon-white"></i> Export to .xls
           <% end %>
-<!-- Only have the ability to delete or edit the list if the user is an administrator o the owner of the list -->
+<!-- Only have the ability to delete or edit the list if the user is an administrator or the owner of the list -->
           <% if current_user.admin? || current_user.id==@list.user_id %>
-
             <%= link_to '#', class: 'btn btn-success btn-setting' do %>
               <i class="icon-edit icon-white"></i> Edit List
             <% end %>
@@ -30,51 +40,51 @@
         </div>
 
       </div>
-        <div class="box-content">
-            <table class="table table-striped table-bordered bootstrap-datatable datatable">
-                <thead>
-                   <tr>
-                    <th>Report</th>
-                    <th>Picture</th>
-                    <th>Address</th>
-                    <th>Description</th>        
-                    <th>Type</th>
-                    <th>Priority</th>
-                    <th>Status</th>
-                    <th>Date submitted</th>
-                    <th>Reporter</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>   
-              <tbody>
-              <% @list.problems.each do |problem| %>
-                <tr>
-                  <td><%= problem.id %></td>
-                  <td><%= link_to image_tag(problem.avatar.url(:thumb)), problem %> </td>
-                  <td><%= problem.address %></td>
-                  <td><%= problem.description %></td>
-                  <td><%= problem.get_prob_type %></td>
-                  <td><%= problem.get_prob_priority %></td>
-                  <td><%= problem.get_prob_status %></td>
-                  <td><%= problem.created_at.strftime(" %b.%d %Y") %></td>
-                  <td><%= problem.get_owner_name %></td>
-                  <td>
+      <div class="box-content">
+        <table class="table table-striped table-bordered bootstrap-datatable datatable">
+          <thead>
+           <tr>
+            <th>Report</th>
+            <th>Picture</th>
+            <th>Address</th>
+            <th>Description</th>        
+            <th>Type</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Date submitted</th>
+            <th>Reporter</th>
+            <th>Actions</th>
+          </tr>
+        </thead>   
+        <tbody>
+          <% @list.problems.each do |problem| %>
+          <tr>
+            <td><%= problem.id %></td>
+            <td><%= link_to image_tag(problem.avatar.url(:thumb)), problem %> </td>
+            <td><%= problem.address %></td>
+            <td><%= problem.description %></td>
+            <td><%= problem.get_prob_type %></td>
+            <td><%= problem.get_prob_priority %></td>
+            <td><%= problem.get_prob_status %></td>
+            <td><%= problem.created_at.strftime(" %b.%d %Y") %></td>
+            <td><%= problem.get_owner_name %></td>
+            <td>
 <!-- Only display the option to remove reports from a list if current user is owner or admin
-Make it impossible to remove a resolved report from the list -->
+  Make it impossible to remove a resolved report from the list -->
 
-                  <% if problem.status != 3 && (current_user.admin? || current_user.id == @list.user_id)  %>
-                    <%= link_to remove_problem_list_path(list: @list,  problem_id: problem.id), class: 'btn btn-mini btn-danger', method: :delete, :confirm => 'Are you sure you wish to remove this report from the list?' do %>
-                      <i>Remove</i> 
-                    <% end %>
-                  <% end %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+  <% if problem.status != 3 && (current_user.admin? || current_user.id == @list.user_id)  %>
+  <%= link_to remove_problem_list_path(list: @list,  problem_id: problem.id), class: 'btn btn-mini btn-danger', method: :delete, :confirm => 'Are you sure you wish to remove this report from the list?' do %>
+  <i>Remove</i> 
+  <% end %>
+  <% end %>
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 </div>
 
 <%= will_paginate @problems%>
@@ -105,6 +115,15 @@ Make it impossible to remove a resolved report from the list -->
       <div class="controls">
         <div class="input-xlarge focused" id="focusedInput" type="text">
           <%= f.text_area :description, size: "10x6"%>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label" for="focusedInput">Active?</label>
+      <div class="controls">
+        <div class="input-xlarge focused" id="focusedInput" type="text">
+          <%= f.check_box(:active) %>
         </div>
       </div>
     </div>

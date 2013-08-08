@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  #skip_before_filter :require_login
 
   def new
   end
@@ -12,7 +13,7 @@ class SessionsController < ApplicationController
       else
         sign_in user
       end
-        redirect_to a_dashboard_path
+        redirect_to dashboard_path
     else
       flash.now[:error] = 'Username or password is incorrect. Please, try again.'
       render 'new'
