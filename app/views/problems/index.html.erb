@@ -18,11 +18,12 @@
 		</div>
 		<div class="box-content">
 			<ul class="nav tab-menu nav-tabs tabs-lists" id="myTab">
-				<li class="active"><a href="#all">All Reports</a></li>
+				<li class="active"><a href="#active">Active Reports</a></li>
+				<li><a href="#resolved">Resolved Reports</a></li>
 			</ul>
 
 			<div id="myTabContent" class="tab-content">
-				<div class="tab-pane active" id="all">
+				<div class="tab-pane active" id="active">
 					<table class="table table-striped table-bordered bootstrap-datatable datatable">
 						<thead>
 							<tr>
@@ -39,7 +40,9 @@
 							</tr>
 						</thead>   
 						<tbody>
-							<% @problems.each do |problem| %>
+<!-- Show only reports whose status is NOT 3 (Resolved)-->
+							<% @problems.where("status NOT IN(?)", 3).each do |problem| %>
+
 							<tr>
 								<td><%= problem.id %></td>
 								<td><%= link_to image_tag(problem.avatar.url(:thumb)), problem %> </td>
@@ -69,107 +72,157 @@
 						</tbody>
 					</table>
 				</div>
+
+				<div class="tab-pane" id="resolved">
+					<table class="table table-striped table-bordered bootstrap-datatable datatable">
+						<thead>
+							<tr>
+								<th>Report</th>
+								<th>Picture</th>
+								<th>Address</th>
+								<th>Title</th>			  
+								<th>Type</th>
+								<th>Priority</th>
+								<th>Status</th>
+								<th>Date submitted</th>
+								<th>Reporter</th>
+								<th>Actions</th>
+							</tr>
+						</thead>   
+						<tbody>
+<!-- Show only resolved reports -->
+							<% @problems.where(status: 3).each do |problem| %>
+							<tr>
+								<td><%= problem.id %></td>
+								<td><%= link_to image_tag(problem.avatar.url(:thumb)), problem %> </td>
+								<td><%= problem.address %></td>
+								<td><%= problem.title %></td>
+								<td><%= problem.get_prob_type %></td>
+								<td><%= problem.get_prob_priority %></td>
+								<td><%= problem.get_prob_status %></td>
+								<td class="center"><%= problem.created_at.strftime(" %b.%d %Y") %></td>
+								<td><%= User.find(problem.user_id).name %> <%= User.find(problem.user_id).last_name%> </td>
+
+								<!--Action buttons for problem index table, Delete and More Info -->
+								<td class="center">
+									<%= link_to problem, class: 'btn btn-info' do %>
+									<i class="icon-zoom-in icon-white"></i> 
+									<% end %>
+
+									<% if current_user.admin? %>
+									<%= link_to problem, method: :delete, data: { confirm: "Delete this report?" }, class: 'btn btn-danger' do %>
+									<i class="icon-trash icon-white"></i> 
+									<% end %>
+									<% end %>
+
+								</td>
+							</tr>
+							<% end %>
+						</tbody>
+						</table>
+					</div>
+
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-<%= will_paginate %>
+	<%= will_paginate %>
 
-<%= form_for :problem, :html => {:class => "form-horizontal"} do |f| %>
+	<%= form_for :problem, :html => {:class => "form-horizontal"} do |f| %>
 
-<div class="modal hide fade" id="myModal">
-	<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal"></button>
-		<h3>New Report</h3>
+	<div class="modal hide fade" id="myModal">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"></button>
+			<h3>New Report</h3>
+		</div>
+
+		<div class="modal-body">
+			<div class="control-group">
+				<label class="control-label" for="focusedInput">Title</label>
+				<div class="controls">
+					<div class="input-xlarge focused" id="focusedInput" type="text">
+						<%= f.text_field :title,  :maxlength=>'30', :placeholder => "Please provide a title..." %>
+					</div>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="focusedInput">Address</label>
+				<div class="controls">
+					<div class="input-xlarge focused" id="focusedInput" type="text">
+						<%= f.text_area :address, size: "10x2" %>
+					</div>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="focusedInput">Municipality</label>
+				<div class="controls">
+					<div class="input-xlarge focused" id="focusedInput" type="text">
+						<%= f.text_field :municipality %>
+					</div>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="focusedInput">Latitude</label>
+				<div class="controls">
+					<div class="input-xlarge focused" id="focusedInput" type="text">
+						<%= f.text_field :latitude %>
+					</div>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="focusedInput">Longitude</label>
+				<div class="controls">
+					<div class="input-xlarge focused" id="focusedInput" type="text">
+						<%= f.text_field :longitude %>
+					</div>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="focusedInput">Type</label>
+				<div class="controls">
+					<div class="input-xlarge focused" id="focusedInput" type="text">
+						<%= f.select :ptype, [["Pothole", 1], ["Water pipe", 2], ["Electric cable", 3], 
+						["Light post", 4], ["Debris on road", 5], ["Vandalism", 6], ["Manhole cover", 7], 
+						["Other", 8]] %>
+					</div>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="focusedInput">Priority</label>
+				<div class="controls">
+					<div class="input-xlarge focused" id="focusedInput" type="text">
+						<%= f.select :priority, [["Low", 1], ["Medium", 2], ["High", 3]] %>
+					</div>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="focusedInput">Image</label>
+				<div class="controls">
+					<div class="input-xlarge focused" id="focusedInput" type="text">
+						<%= f.file_field :avatar %>
+					</div>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="textarea2">Description</label>
+				<div class="controls">
+					<div class="input-xlarge focused" id="focusedInput" type="text">
+						<%= f.text_area :description, :placeholder => "Provide a short description of the situation and/or location...", size: "10x6" %>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer"> 
+				<a class="form-action btn" data-dismiss="modal">Close</a>
+				<a class="form-action"> <%= f.submit "Create", class: "btn btn-success" %> </a>
+			</div>
+		</div>
 	</div>
-
-	<div class="modal-body">
-		<div class="control-group">
-			<label class="control-label" for="focusedInput">Title</label>
-			<div class="controls">
-				<div class="input-xlarge focused" id="focusedInput" type="text">
-					<%= f.text_field :title,  :maxlength=>'30', :placeholder => "Please provide a title..." %>
-				</div>
-			</div>
-		</div>
-
-		<div class="control-group">
-			<label class="control-label" for="focusedInput">Address</label>
-			<div class="controls">
-				<div class="input-xlarge focused" id="focusedInput" type="text">
-					<%= f.text_area :address, size: "10x2" %>
-				</div>
-			</div>
-		</div>
-
-		<div class="control-group">
-			<label class="control-label" for="focusedInput">Municipality</label>
-			<div class="controls">
-				<div class="input-xlarge focused" id="focusedInput" type="text">
-					<%= f.text_field :municipality %>
-				</div>
-			</div>
-		</div>
-
-		<div class="control-group">
-			<label class="control-label" for="focusedInput">Latitude</label>
-			<div class="controls">
-				<div class="input-xlarge focused" id="focusedInput" type="text">
-					<%= f.text_field :latitude %>
-				</div>
-			</div>
-		</div>
-
-		<div class="control-group">
-			<label class="control-label" for="focusedInput">Longitude</label>
-			<div class="controls">
-				<div class="input-xlarge focused" id="focusedInput" type="text">
-					<%= f.text_field :longitude %>
-				</div>
-			</div>
-		</div>
-
-		<div class="control-group">
-			<label class="control-label" for="focusedInput">Type</label>
-			<div class="controls">
-				<div class="input-xlarge focused" id="focusedInput" type="text">
-					<%= f.select :ptype, [["Pothole", 1], ["Water pipe", 2], ["Electric cable", 3], 
-					["Light post", 4], ["Debris on road", 5], ["Vandalism", 6], ["Manhole cover", 7], 
-					["Other", 8]] %>
-				</div>
-			</div>
-		</div>
-
-		<div class="control-group">
-			<label class="control-label" for="focusedInput">Priority</label>
-			<div class="controls">
-				<div class="input-xlarge focused" id="focusedInput" type="text">
-					<%= f.select :priority, [["Low", 1], ["Medium", 2], ["High", 3]] %>
-				</div>
-			</div>
-		</div>
-
-		<div class="control-group">
-			<label class="control-label" for="focusedInput">Image</label>
-			<div class="controls">
-				<div class="input-xlarge focused" id="focusedInput" type="text">
-					<%= f.file_field :avatar %>
-				</div>
-			</div>
-		</div>
-
-		<div class="control-group">
-			<label class="control-label" for="textarea2">Description</label>
-			<div class="controls">
-				<div class="input-xlarge focused" id="focusedInput" type="text">
-					<%= f.text_area :description, :placeholder => "Provide a short description of the situation and/or location...", size: "10x6" %>
-				</div>
-			</div>
-		</div>
-		<div class="modal-footer"> 
-			<a class="form-action btn" data-dismiss="modal">Close</a>
-			<a class="form-action"> <%= f.submit "Create", class: "btn btn-success" %> </a>
-		</div>
-	</div>
-</div>
-<% end %>
+	<% end %>
