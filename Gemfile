@@ -13,6 +13,7 @@ gem 'cocaine', '~>0.5.0'
 gem 'acts_as_commentable_with_threading'
 gem 'thin'
 gem 'gon'
+gem 'devise'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

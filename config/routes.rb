@@ -1,4 +1,6 @@
 Km7::Application.routes.draw do
+  devise_for :users
+
   get "password_resets/new"
 
 resources :problems
