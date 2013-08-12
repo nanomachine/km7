@@ -63,6 +63,14 @@ class User < ActiveRecord::Base
     UserMailer.password_reset(self).deliver 
   end
 
+  def get_role
+    if self.admin
+      return "Administrator"
+    else
+      return "Reporter"
+    end
+  end
+
   def generate_token(column)
     begin
       self[column] = SecureRandom.urlsafe_base64
@@ -88,6 +96,15 @@ class User < ActiveRecord::Base
       end
     end
     return @total_resolved
+  end
+
+  def self.most_resolved
+  end
+
+  def self.most_assigned
+  end
+
+  def self.most_submitted 
   end
 end
 

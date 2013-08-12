@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<% provide(:title, 'Dashboard') %>
+
 
 <html lang="en">
 <body>	
@@ -53,113 +54,176 @@
 							<span class="number"><%= link_to problem.get_prob_type, problem%> <%= link_to "[#"+problem.id.to_s+"]", problem%></span>
 						</span>
 						<span class="content">
-							<span class="avatar">  <img src=<%=problem.avatar.url(:thumb) %>> </span>
+							<span class="avatar"><%=link_to image_tag(problem.avatar.url(:thumb)), @problem %> </span>
 							<span class="name"><strong>Submitted by: </strong><%= problem.get_owner_name %></span>
 							<!-- Implement priority partial for viewing -->
 							<span class="date"><u><%= problem.created_at.strftime(" %b.%d %Y") %></u></span>
 
 							<% if problem.status == 1 %>
-							<span class="status"><span class="label label-important"><%= problem.get_prob_status %></span>
-						</span>   
-						<% elsif problem.status == 2 %>
-						<span class="status"><span class="label label-warning"><%= problem.get_prob_status %></span>
-						<%= " "+  problem.get_containing_list.get_owner_name %></span>
+								<span class="status"><span class="label label-important"><%= problem.get_prob_status %></span>
+								</span>   
+							<% elsif problem.status == 2 %>
+								<span class="status"><span class="label label-warning"><%= problem.get_prob_status %></span>
+								<%= " "+  problem.get_containing_list.get_owner_name %></span>
+							<% end %>
+							<span class="priority "><strong>Priority: </strong>[ <%=problem.get_prob_priority %> ]</span>	
+							</span>                                                         
 						<% end %>
-						<span class="priority "><strong>Priority: </strong>[ <%=problem.get_prob_priority %> ]</span>	
-					</span>                                                         
-					<% end %>
 				</li>
 			</ul>
 		</div>
 	</div><!--/span-->
 
 
-		<div class="box span4" onTablet="span6" onDesktop="span4">
+	<div class="box span3" >
+		<div class="box-header">
+			<h2><i class="icon-list"></i><span class="break"></span>Reports Summary</h2>
+		</div>
+		<div class="box-content">
+			<ul class="dashboard-list">
+				<li>
+					<a href="#">
+						<i class="fa-icon-check green"></i>    
+						<% @problem_count = Problem.all.count  %>                          
+						<span class="green"><%= Problem.where(status: 3).count %>/<%= @problem_count %> </span>
+						Reports Resolved                                   
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="fa-icon-warning-sign yellow"></i>
+						<span class="yellow"><%= Problem.where(status: 2).count%>/<%= @problem_count %> </span>
+						Reports Assigned
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="fa-icon-eye-open red"></i>
+						<span class="red"><%= Problem.where(created_at: 2.month.ago..1.month.ago).count%></span>
+						Reports Submitted                                    
+					</a>
+				</li>                                  
+			</ul>
+		</div>
+	</div><!--/span-->
+
+			<div class="box span4 noMargin" onTablet="span12" onDesktop="span4">
 			<div class="box-header">
-				<h2><i class="icon-list"></i><span class="break"></span>Weekly Statistics</h2>
-				<div class="box-icon">
-					<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
-					<a href="#" class="btn-close"><i class="icon-remove"></i></a>
-				</div>
+				<h2><i class="icon-list"></i><span class="break"></span>Distinguished Users</h2>
 			</div>
+			<!-- Graph to show the 5 (or any number desired) oldest unresolved reports -->
 			<div class="box-content">
-				<ul class="dashboard-list">
-					<li>
-						<a href="#">
-							<i class="fa-icon-arrow-up green"></i>         <span class="green">92</span>
-							New Reports                                  
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<i class="fa-icon-arrow-down red"></i>
-							<span class="red">15</span>
-							Resolved Reports
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<i class="fa-icon-minus blue"></i>
-							<span class="blue">36</span>
-							Assigned Reports                                    
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div><!--/span-->
+
+				<ul class="tickets">
+					<li class="ticket">
+<!-- Show distinguished users to incentivate healthy competition -->
+						<% @distinguished = User.first %>
+						<span class="header"> 
+							<span class="title"><strong>Most Resolved Reports (This week): </strong></span>
+							<span class="number green">Reports resolved: <strong><u> <%=@distinguished.problems.count.to_s%>  </u></strong></span>
+						</span>
+						<span class="content">
+							<span class="avatar">							<%= link_to image_tag(@distinguished.avatar.url(:thumb)), @distinguished %></span>
 
 
+							<span class="name"><u><%= link_to @distinguished.name+" "+@distinguished.last_name, @distinguished %></u></span>
+							<!-- Implement priority partial for viewing -->
+							<span class="date">Since: <u><%= @distinguished.created_at.strftime(" %b.%d %Y") %></u></span>
+							<span class="status">Role: <strong><%= @distinguished.get_role %> </strong> </span>  
+							<span class="priority ">Municipality: <%=@distinguished.municipality %></span> 
+						</span>                                                         
+				</li>
+
+			</ul>
+
+				<ul class="tickets">
+					<li class="ticket">
+<!-- Show distinguished users to incentivate healthy competition -->
+						<% @distinguished = User.last %>
+						<span class="header"> 
+							<span class="title"><strong>Most Submitted Reports (This week): </strong></span>
+							<span class="number green">Submitted this week: <strong><u> <%=@distinguished.problems.count.to_s%>  </u></strong></span>
+						</span>
+						<span class="content">
+							<span class="avatar">							<%= link_to image_tag(@distinguished.avatar.url(:thumb)), @distinguished %></span>
 
 
+							<span class="name"><u><%= link_to @distinguished.name+" "+@distinguished.last_name, @distinguished %></u></span>
+							<!-- Implement priority partial for viewing -->
+							<span class="date">Since: <u><%= @distinguished.created_at.strftime(" %b.%d %Y") %></u></span>
+							<span class="status">Role: <strong><%= @distinguished.get_role %> </strong> </span>  
+							<span class="priority ">Municipality: <%=@distinguished.municipality %></span> 
+						</span>                                                         
+				</li>
+
+			</ul>
+
+				
+				<ul class="tickets">
+					<li class="ticket">
+<!-- Show distinguished users to incentivate healthy competition -->
+						<% @distinguished = User.first %>
+						<span class="header"> 
+							<span class="title"><strong>Most Resolved Reports: </strong></span>
+							<span class="number green">Reports resolved: <strong><u> <%=@distinguished.resolved_reports.to_i.to_s%>  </u></strong></span>
+						</span>
+						<span class="content">
+							<span class="avatar">							<%= link_to image_tag(@distinguished.avatar.url(:thumb)), @distinguished %></span>
 
 
-		<div class="box span3 ">
-			<div class="box-header">
-				<h2><i class="icon-list"></i><span class="break"></span>Weekly Statistics</h2>
+							<span class="name"><u><%= link_to @distinguished.name+" "+@distinguished.last_name, @distinguished %></u></span>
+							<!-- Implement priority partial for viewing -->
+							<span class="date">Since: <u><%= @distinguished.created_at.strftime(" %b.%d %Y") %></u></span>
+							<span class="status">Role: <strong><%= @distinguished.get_role %> </strong> </span>  
+							<span class="priority ">Municipality: <%=@distinguished.municipality %></span> 
+						</span>                                                         
+				</li>
 
-			</div>
-			<div class="box-content">
-				<div class="sparkLineStats">
-					<ul class="unstyled">
-						<li>
-							<span class="sparkLineStats1 "></span> 
-							Visits: 
-							<span class="number">356</span>
-						</li>
-						<li>
-							<span class="sparkLineStats2"></span>
-							Unique Visitors: 
-							<span class="number">252</span>
-						</li>
-						<li><span class="sparkLineStats3"></span> 
-							Pageviews: 
-							<span class="number">781</span>
-						</li>
-						<li><span class="sparkLineStats4"></span>
-							Pages / Visit: 
-							<span class="number">2,19</span>
-						</li>
-						<li><span class="sparkLineStats5"></span>
-							Avg. Visit Duration: 
-							<span class="number">00:02:58</span>
-						</li>
-						<li><span class="sparkLineStats6"></span>
-							Bounce Rate: <span class="number">59,83%</span>
-						</li>
-						<li><span class="sparkLineStats7"></span>
-							% New Visits: 
-							<span class="number">70,79%</span>
-						</li>
-						<li><span class="sparkLineStats8"></span>
-							% Returning Visitor: 
-							<span class="number">29,21%</span>
-						</li>
+			</ul>
 
-					</ul>
+				<ul class="tickets">
+					<li class="ticket">
+<!-- Show distinguished users to incentivate healthy competition -->
+						<% @distinguished = User.last %>
+						<span class="header"> 
+							<span class="title"><strong>Most Currently Assigned Reports: </strong></span>
+							<span class="number green">Reports assigned: <strong><u> <%=@distinguished.assigned_reports.to_i%>  </u></strong></span>
+						</span>
+						<span class="content">
+							<span class="avatar">							<%= link_to image_tag(@distinguished.avatar.url(:thumb)), @distinguished %></span>
+							<span class="name"><u><%= link_to @distinguished.name+" "+@distinguished.last_name, @distinguished %></u></span>
+							<!-- Implement priority partial for viewing -->
+							<span class="date">Since: <u><%= @distinguished.created_at.strftime(" %b.%d %Y") %></u></span>
+							<span class="status">Role: <strong><%= @distinguished.get_role %> </strong> </span>  
+							<span class="priority ">Municipality: <%=@distinguished.municipality %></span> 
+						</span>                                                         
+				</li>
 
-				</div><!-- End .sparkStats -->
-			</div>
-		</div><!--/span-->
+			</ul>
+
+				<ul class="tickets">
+					<li class="ticket">
+<!-- Show distinguished users to incentivate healthy competition -->
+						<% @distinguished = User.last %>
+						<span class="header"> 
+							<span class="title"><strong>Most Submitted Reports: </strong></span>
+							<span class="number green">Reports submitted: <strong><u> <%=@distinguished.problems.count.to_s%>  </u></strong></span>
+						</span>
+						<span class="content">
+							<span class="avatar">							<%= link_to image_tag(@distinguished.avatar.url(:thumb)), @distinguished %></span>
+
+
+							<span class="name"><u><%= link_to @distinguished.name+" "+@distinguished.last_name, @distinguished %></u></span>
+							<!-- Implement priority partial for viewing -->
+							<span class="date">Since: <u><%= @distinguished.created_at.strftime(" %b.%d %Y") %></u></span>
+							<span class="status">Role: <strong><%= @distinguished.get_role %> </strong> </span>  
+							<span class="priority ">Municipality: <%=@distinguished.municipality %></span> 
+						</span>                                                         
+				</li>
+
+			</ul>
+		</div>
+	</div><!--/span-->
 
 </div>
 

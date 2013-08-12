@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       flash.now[:error] = 'Username or password is incorrect'
-      render 'new'
+      redirect_to @user
     end
   end
 
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
       sign_in @user
       redirect_to @user
     else
-      render 'edit'
+      redirect_to @user
     end
   end
 
