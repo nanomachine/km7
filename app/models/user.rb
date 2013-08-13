@@ -103,8 +103,9 @@ class User < ActiveRecord::Base
   end
 
   def self.most_resolved
-    @most_resolved = User.new
+    @most_resolved = User.first
     User.all.each do |user|
+# If the current (new) user's report count is lower, the instanceed user is the one with the most resolved.
       if @most_resolved.resolved_reports.count < user.resolved_reports.count
         @most_resolved = user
       end
@@ -113,7 +114,7 @@ class User < ActiveRecord::Base
   end
 
   def self.most_assigned
-    @most_assigned = User.new
+    @most_assigned = User.first
     User.all.each do |user|
       if @most_assigned.assigned_reports.count < user.assigned_reports.count
         @most_assigned = user
@@ -123,7 +124,7 @@ class User < ActiveRecord::Base
   end
 
   def self.most_submitted 
-    @most_submitted = User.new
+    @most_submitted = User.first
     User.all.each do |user|
       if @most_submitted.problems.count < user.problems.count
         @most_submitted = user
