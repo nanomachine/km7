@@ -79,7 +79,7 @@ class ProblemsController < ApplicationController
       redirect_to @problem
     else
       flash[:error] = "Report update error"
-      render 'edit'
+      redirect_to @problem
     end
   end
 

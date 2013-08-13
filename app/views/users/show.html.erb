@@ -10,7 +10,7 @@
       </div>
     </div><!--/span-->
 
-    <div class="box span3 ">
+    <div class="box span4 ">
       <h1 class="h1-profile"><%= @user.name %></h1>
       <h1 class="h1-profile"><%= @user.last_name %></h1>
 
@@ -28,7 +28,7 @@
       <h2 class="h2-profile"><i class="icon-envelope"></i>    <%= @user.email %></h2> 
     </div><!--/span-->
 
-    <div class="box span6 box_circle_stat">
+    <div class="box span5 box_circle_stat">
       <div class="box span4 circle-box">
         <div class="span2" onTablet="span4" onDesktop="span2">
           <div class="circleStatsItem green">
@@ -36,7 +36,7 @@
             <span class="percent">%</span>
 <!-- The "if" blocks are needed to avoid Zero Division -->
             <% @all_resolved = Problem.where(status: 3).count %>
-            <% @my_resolved = @user.resolved_reports %>
+            <% @my_resolved = @user.resolved_reports.count %>
               <% if @all_resolved != 0 %>
                 <% @resolved = (@my_resolved*100)/@all_resolved %>
               <% else %>
@@ -53,7 +53,7 @@
             <i class="fa-icon-warning-sign"></i>
             <span class="percent">%</span>
             <% @all_assigned = Problem.where(status: 2).count %>
-            <% @my_assigned = @user.assigned_reports*100 %>
+            <% @my_assigned = @user.assigned_reports.count*100 %>
             <% if @all_assigned != 0 %>
               <% @assigned = @my_assigned/@all_assigned %>
             <% else %>
@@ -141,14 +141,14 @@
           <li>
             <a href="#">
               <i class="fa-icon-check green"></i>                               
-              <span class="green"><%= @user.resolved_reports.to_i %>/<%= Problem.where(status: 3).count %> </span>
+              <span class="green"><%= @user.resolved_reports.count %>/<%= Problem.where(status: 3).count %> </span>
               Reports Resolved                                   
             </a>
           </li>
           <li>
             <a href="#">
               <i class="fa-icon-warning-sign yellow"></i>
-              <span class="yellow"><%= @user.assigned_reports.to_i %>/<%= Problem.where(status: 2).count%> </span>
+              <span class="yellow"><%= @user.assigned_reports.count %>/<%= Problem.where(status: 2).count%> </span>
               Reports Assigned
             </a>
           </li>

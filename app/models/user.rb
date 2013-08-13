@@ -78,33 +78,58 @@ class User < ActiveRecord::Base
   end
 
   def assigned_reports
-    @total_assigned = 0.0
+    @total_assigned = []
     self.lists.each do |list|
-      @total_assigned = @total_assigned + list.problems.count
+      if list.active
+        list.problems.each do |problem|
+          @total_assigned << problem
+        end
+      end
     end
     return @total_assigned
   end
 
   def resolved_reports
-    @total_resolved = 0.0
+    @total_resolved = []
 #Only reports whose status is 3 are resolved, it is not enough that they have
 # resolved_id non-null, that could mean that it was incorrectly marked as resolved
 # by someone and has since been corrected back to being Assigned..
-    Problem.where(status: 3).each do |p|
+    Problem.where(status: 3).each do |p|  
       if p.resolved_id == self.id
-        @total_resolved = @total_resolved + 1
+        @total_resolved << p
       end
     end
     return @total_resolved
   end
 
   def self.most_resolved
+    @most_resolved = User.new
+    User.all.each do |user|
+      if @most_resolved.resolved_reports.count < user.resolved_reports.count
+        @most_resolved = user
+      end
+    end
+    return @most_resolved
   end
 
   def self.most_assigned
+    @most_assigned = User.new
+    User.all.each do |user|
+      if @most_assigned.assigned_reports.count < user.assigned_reports.count
+        @most_assigned = user
+      end
+    end
+    return @most_assigned
   end
 
   def self.most_submitted 
+    @most_submitted = User.new
+    User.all.each do |user|
+      if @most_submitted.problems.count < user.problems.count
+        @most_submitted = user
+      end
+    end
+    return @most_submitted
   end
 end
 
