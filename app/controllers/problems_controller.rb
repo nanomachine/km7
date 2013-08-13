@@ -14,7 +14,7 @@ class ProblemsController < ApplicationController
                 :width   => 32,
                 :height  => 35
                  })
-      marker.title   "#{problem.description}"
+      marker.title   "#{problem.title}"
       marker.json({ :id => problem.id})
     end
   end
@@ -22,15 +22,6 @@ class ProblemsController < ApplicationController
 #Show list of reports and show all of them in gmap
   def index
     @problems = Problem.paginate(page: params[:page])
-    @json = Problem.all.to_gmaps4rails do |problem, marker|
-      marker.picture({
-                :picture => "/assets/markers/#{problem.ptype}.png",
-                :width   => 32,
-                :height  => 35
-                 })
-      marker.title   "#{problem.description}"
-      marker.json({ :id => problem.id})
-    end
   end
 
   def create

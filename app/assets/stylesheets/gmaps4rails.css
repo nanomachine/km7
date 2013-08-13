@@ -7,6 +7,8 @@
   -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
   box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
   width: 800px;
+/*Added to fix info window display distortion, as suggested by apneadiving Gmaps4Rails */
+  max-width: none;
     
 }
 
@@ -16,5 +18,5 @@
 } 
 
 .gmaps4rails_map {
-  height:250px;
+  height:375px;
 }

@@ -1,9 +1,10 @@
 <% provide(:title, "Details") %>
+<html lang="en">
 
 <%= render 'layouts/sidebar' %>
 
 <!--Bounding box heading with report id and title as well as tabbed view of photo and map -->
-
+<body>
 <div class="row-fluid fluid-box">
   <div class="box span6">
     <h1 class="h1-report">#<%=@problem.id%> - <%= @problem.title %></h1>
@@ -116,7 +117,7 @@
           <div class="span12">
             <%= gmaps({"map_options" => {"auto_zoom" => false, "zoom" => 15 },"markers" => {"data" => @json }})%>
           </div> 
-          <div class="span12">
+          <!--div class="span12">
             <div class="box span4">
               <h3>Address:</h3>
                   <p>
@@ -131,7 +132,7 @@
                   <h3>Longitude:</h3>
                   <p><%= @problem.longitude %></p>
                 </div>
-              </div>
+              </div-->
             </div>
           </div>
         </div>
@@ -354,4 +355,34 @@ he/she can add reports -->
   </div>
 </div>
 <hr>
+
+<script type="text/javascript">
+  
+  function message_infowindow(){
+    var unique_id = $.gritter.add({
+      // (string | mandatory) the heading of the notification
+      title: 'Click on the map marker for location details',
+      // (string | mandatory) the text inside the notification
+      text: ' ',
+      // (string | optional) the image to display on the left
+      image: '',
+      // (bool | optional) if you want it to fade out on its own or just sit there
+      sticky: true,
+      // (int | optional) the time you want it to be alive for before fading out
+      time: '5000',
+      // (string | optional) the class name you want to apply to that specific message
+      class_name: 'my-sticky-class'
+    });
+  }
+  
+  
+  $(document).ready(function(){
+    
+    setTimeout("message_infowindow()",5000);
+    
+  });     
+  </script>
+
+</body>
+</html>
 

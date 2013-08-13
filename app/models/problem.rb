@@ -65,7 +65,12 @@ class Problem < ActiveRecord::Base
 
 	def gmaps4rails_infowindow
 		#<img src=\"#{self.avatar.url(:thumb)}\"> 
-    	"#{self.id} #{User.find(self.user_id).name} #{self.latitude} #{self.longitude} #{self.ptype} #{self.description}"
+    	"<h1 class='h1-infowindow'>##{self.id} - #{self.title}</h1>
+    	<ul>
+        	<li><strong>Address:</strong> #{self.address}</li>
+    		<li><strong>Latitude:</strong> #{self.latitude} </li>
+    		<li><strong>Longitude:</strong> #{self.longitude} </li>
+    	</ul>"
     end
 
     def gmaps4rails_title
