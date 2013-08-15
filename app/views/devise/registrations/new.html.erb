@@ -3,16 +3,88 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+<div class="control-group">
+				<label class="control-label" for="focusedInput">First Name</label>
+				<div class="controls">
+					<div class="input-xlarge focused" id="focusedInput" type="text">
+						<%= f.text_field :name %>
+					</div>
+				</div>
+			</div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+			<div class="control-group">
+				<label class="control-label" for="focusedInput">Last Name</label>
+				<div class="controls">
+					<div class="input-xlarge focused" id="focusedInput" type="text">
+						<%= f.text_field :last_name %>
+					</div>
+				</div>
+			</div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+			<div class="control-group">
+				<label class="control-label" for="focusedInput">Email</label>
+				<div class="controls">
+					<div class="input-xlarge focused" id="focusedInput" type="text">
+						<%= f.text_field :email %>
+					</div>
+				</div>
+			</div>
 
-  <div><%= f.submit "Sign up" %></div>
+			<div class="control-group">
+				<label class="control-label" for="focusedInput">Telephone</label>
+				<div class="controls">
+					<div class="input-xlarge focused" id="focusedInput" type="text">
+						<%= f.text_field :telnum %>
+					</div>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="focusedInput">Municipality</label>
+				<div class="controls">
+					<div class="input-xlarge focused" id="focusedInput" type="text">
+						<%= f.text_field :municipality %>
+					</div>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="focusedInput">Password</label>
+				<div class="controls">
+					<div class="input-xlarge focused" id="focusedInput" type="text">
+						<%= f.password_field :password %>
+					</div>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="focusedInput">Confirm Password</label>
+				<div class="controls">
+					<div class="input-xlarge focused" id="focusedInput" type="text">
+						<%= f.password_field :password_confirmation %>
+					</div>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="focusedInput">Upload Avatar</label>
+				<div class="controls">
+					<div class="input-xlarge focused" id="focusedInput" type="text">
+						<%= f.file_field :avatar %>
+					</div>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="focusedInput">Administrator?</label>
+				<div class="controls">
+					<div class="input-xlarge focused" id="focusedInput" type="text">
+						<%= f.check_box(:admin) %>
+					</div>
+				</div>
+			</div>
+
+  		<div><%= f.submit "Sign up" %></div>
 <% end %>
 
 <%= render "devise/shared/links" %>
