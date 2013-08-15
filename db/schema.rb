@@ -88,7 +88,6 @@ ActiveRecord::Schema.define(:version => 20130809033935) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "last_name"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.string   "encrypted_password",     :default => "",    :null => false
@@ -101,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20130809033935) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "authentication_token"
+    t.string   "last_name"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
