@@ -14,13 +14,20 @@
 #
 
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable,
+  # :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable,:recoverable, :rememberable, :trackable, :validatable
+
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me
   has_many :problems
   has_many :lists
 
   attr_reader :avatar_remote_url
   
 	attr_accessible :name, :last_name, :email, :telnum, :municipality, :password, :password_confirmation, :admin, :avatar, :remember_me
-	has_secure_password
+	#has_secure_password
 
 
 # Validations upon creating a new user
@@ -32,6 +39,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness:  { case_sensitive: false }, unless: Proc.new { |a| !a.new_record? }
   validates :password, presence: true, length: { minimum: 6 }, unless: Proc.new { |a| !a.new_record? && a.password.blank? }
   validates :password_confirmation, presence: true, unless: Proc.new { |a| !a.new_record? && a.password_confirmation.blank? }
+
 
 
 # Where to store the user avatar depending on the environment
@@ -47,6 +55,9 @@ class User < ActiveRecord::Base
           :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension",
           :url => "/assets/users/:id/:style/:basename.:extension";
   end
+
+
+
 # Avatar validations
   validates_attachment_presence :avatar, unless: Proc.new { |a| !a.new_record?}
   validates_attachment_size :avatar, :less_than => 5.megabytes, unless: Proc.new { |a| !a.new_record?}
@@ -54,21 +65,13 @@ class User < ActiveRecord::Base
 
 # Make sure email is downcased and store the session's remember token.
 	before_save { self.email.downcase! }
-	before_save { generate_token(:remember_token)}
+#	before_save { generate_token(:remember_token)}
 
-  def send_password_reset
+=begin  def send_password_reset
     generate_token(:password_reset_token)
     self.password_reset_sent_at = Time.zone.now
     save!
-    UserMailer.password_reset(self).deliver 
-  end
-
-  def get_role
-    if self.admin
-      return "Administrator"
-    else
-      return "Reporter"
-    end
+    UserMailer.password_reset(self).deliver
   end
 
   def generate_token(column)
@@ -76,6 +79,17 @@ class User < ActiveRecord::Base
       self[column] = SecureRandom.urlsafe_base64
     end while User.exists?(column => self[column])
   end
+=end
+
+  def get_role
+
+    if self.admin
+      return "Administrator"
+    else
+      return "Reporter"
+    end
+  end
+ 
 
   def assigned_reports
     @total_assigned = []

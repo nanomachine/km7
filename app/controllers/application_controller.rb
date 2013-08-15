@@ -1,18 +1,14 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  #protect_from_forgery with: :exception
+  #include SessionsHelper
   before_filter :set_gon_values
-  #before_filter :require_login
-  include SessionsHelper
+  before_filter :authenticate_user!
 
   private
 
-=begin
-  def require_login
-    unless signed_in?
-      redirect_to signin_path
-    end
+  def after_sign_in_path_for(user)
+      dashboard_path
   end
-=end
 
   def set_gon_values
 
