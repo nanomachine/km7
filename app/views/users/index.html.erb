@@ -52,7 +52,7 @@ add provide(:title, 'Users') %>
 									<i class="icon-zoom-in icon-white"></i> 
 								<% end %>
 	<!-- If current user is admin and is NOT the user to be listed -->
-								<% if current_user.admin? && !current_user?(user) %>
+								<% if current_user.admin? && current_user.id != user.id %>
 									<%= link_to user, method: :delete, data: { confirm: "Delete this user?" }, class: 'btn btn-danger' do %>
 										<i class="icon-trash icon-white"></i> 
 									<% end %>

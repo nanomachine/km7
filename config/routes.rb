@@ -1,12 +1,13 @@
 Km7::Application.routes.draw do
-  devise_for :users
+devise_for :users
+#devise_for :users, :path => "auth", :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock', :registration => 'register', :sign_up => 'cmon_let_me_in' }
 
-  get "password_resets/new"
+#get "password_resets/new"
 
 resources :problems
 resources :users
-resources :sessions, only: [:new, :create, :destroy]
-resources :password_resets
+#resources :sessions, only: [:new, :create, :destroy]
+#resources :password_resets
 resources :lists do
   member do
     put "add_problem_list:problem_id", action: :add_problem, as: :add_problem
@@ -21,16 +22,20 @@ end
   match '/users', to: 'users#index'
   match '/edit_user', to: 'users#edit'
   
-  match '/login',  to: 'sessions#new'
-  match '/logout', to: 'sessions#destroy', via: :delete
+  #match '/login',  to: 'sessions#new'
+  #match '/logout', to: 'sessions#destroy', via: :delete
 
   match '/reports', to: 'problems#index'
   match '/report', to: 'problems#new'
 
   match '/lists', to: 'lists#index'
   match '/new_list', to: 'lists#new'
+
+  devise_scope :user do
+  root to: "devise/sessions#new"
+  end
   
-  root to: 'static_pages#home'
+  #root to: 'static_pages#admin_dashboard'
 
   match '/help',    to: 'static_pages#help'
   match '/about_us',   to: 'static_pages#about'
