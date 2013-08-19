@@ -85,9 +85,12 @@ class Problem < ActiveRecord::Base
 	def get_owner_name
 
 		@owner = User.find(self.user_id)
-		owner_name = @owner.name + " " + @owner.last_name
+		@owner_name = "No last name"
+		if @owner.last_name
+			@owner_name = @owner.name + " " + @owner.last_name
+		end
 
-		return owner_name
+		return @owner_name
 	end
 
 	def is_in_list?
