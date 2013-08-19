@@ -301,6 +301,10 @@ padding-top: 45px;
 margin: 10px 31px;
 }
 
+/* Lower the clickable map marker notification position so it stands out */
+.gritter-item{
+margin-top: 165px;
+}
 
 
 
