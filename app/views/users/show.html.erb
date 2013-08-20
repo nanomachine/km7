@@ -40,7 +40,7 @@
               <% if @all_resolved != 0 %>
                 <% @resolved = (@my_resolved*100)/@all_resolved %>
               <% else %>
-                <%resolved = 0 %>
+                <% @resolved = 0 %>
               <% end %>
             <input type="text" value=<%= "#{@resolved}" %> class="greenCircle" />
           </div>

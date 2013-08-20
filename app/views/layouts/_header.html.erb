@@ -2,26 +2,18 @@
   <div class="navbar-inner">
     <div class="container">
 
-      <%= link_to "Kilómetro Siete", '#', id: "logo" %>
+      <%= link_to "Kilómetro Siete", '/', id: "logo" %>
       <nav>
         <ul class="nav pull-right">
           <% if user_signed_in? %>
+              <!--li id= "fat-menu" class= "dropdown">
+                <%= link_to "Welcome " + current_user.name + ",", current_user %>
+              </li-->
 
-            <li id= "fat-menu" class="dropdown">
-              <a href="#" class="dropdown_toggle" data-toggle="dropdown">
-                My Account <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Profile", current_user %></li>
-                
-                <li><!--%= link_to "Edit", edit_user_path(current_user) %--></li>
-                <li class="divider"></li>
-                <li>
-                  <%= link_to "Sign Out", destroy_user_session_path, method: "delete" %></li>
-              </ul>
-            </li>
+              <li id= "fat-menu" class="dropdown">
+                  <%= link_to "Sign Out", destroy_user_session_path, method: "delete" %>
+              </li>
             <% end %>
-
         </ul>
       </nav>
     </div>

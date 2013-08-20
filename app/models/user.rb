@@ -82,6 +82,11 @@ class User < ActiveRecord::Base
   end
 =end
 
+  def get_full_name
+    @full_name = self.name + " " + self.last_name
+    return @full_name
+  end
+
   def get_role
 
     if self.admin
