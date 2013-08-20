@@ -42,14 +42,17 @@
 							<% if devise_mapping.rememberable? -%>
 
 								<div class="clearfix"></div>
-								<%= f.check_box :remember_me %> <%= f.label :remember_me %>
+								<h1 class="h1-login remember"><%= f.check_box :remember_me %>		
+								Remember me</h1>
 
 							<% end %>
 
-							<%= render "devise/shared/links" %>
+
+							<h1 class="box"><%= link_to "Forgot your password?", new_password_path(resource_name), :class => 'h1-login btn-setting'%></h1>
+							
+							<div class="clearfix"></div>							
 
 
-							<h1 class="box"><!--%=link_to "Forgot Password?", "#", :class => 'h1-login btn-setting'%--></h1>
 							<div class="clearfix"></div>
 							<hr class="hr-login">
 							<div class="buttons">	
@@ -66,3 +69,28 @@
 	</div><!--/.fluid-container-->
 </body>
 
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+  <%= devise_error_messages! %>
+<div class="modal hide fade" id="myModal">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"></button>
+		<h3>Reset Password</h3>
+		<p>Please enter your email and we will send you instructions to reset your password.</p>
+	</div>
+
+	<div class="modal-body">
+	    <div class="control-group">
+	      <label class="control-label" for="focusedInput">Email</label>
+	      <div class="controls">
+	        <div class="input-xlarge focused" id="focusedInput" type="text">
+  				<%= f.email_field :email, :autofocus => true %></div>
+	        </div>
+	      </div>
+	    </div>		
+	<div class="modal-footer"> 
+		<a class="form-action btn" data-dismiss="modal">Close</a>
+		<a class="form-action"> <%= f.submit "Send", class: "btn btn-success" %> </a>
+		</a>
+	</div>
+</div>
+<% end %>
