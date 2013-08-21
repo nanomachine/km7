@@ -10,10 +10,8 @@
       </div>
     </div><!--/span-->
 
-    <div class="box span4 ">
-      <h1 class="h1-profile"><%= @user.name %></h1>
-      <h1 class="h1-profile"><%= @user.last_name %></h1>
-
+    <div class="box span3 ">
+      <h1 class="h1-profile"><%= @user.get_full_name %></h1>
       <h2 class="h2-profile"><i class="icon-barcode"></i>    <%= @user.id %></h2>
       <h2 class="h2-profile">
         <i class="icon-user"></i>      
@@ -26,6 +24,10 @@
       <h2 class="h2-profile"><i class="icon-map-marker"></i>    <%= @user.municipality %>, PR</h2>
       <h2 class="h2-profile"><i class="fa-icon-phone"></i>    <%= @user.telnum %></h2>
       <h2 class="h2-profile"><i class="icon-envelope"></i>    <%= @user.email %></h2> 
+      <h1 class="btn-group">
+        <button class="btn btn-setting">Edit Details </button>
+        <button class="btn btn-setting1">Change Password</button>
+      </h1>
     </div><!--/span-->
 
     <div class="box span5 box_circle_stat">
@@ -195,5 +197,148 @@
       </div>
     </div><!--/span-->
   </div>
-</div>\
+</div>
 <hr>
+
+<%= form_for @user, :html => {:class => "form-horizontal"} do |f| %>
+
+<div class="modal hide fade" id="myModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal"></button>
+    <h3>Edit Info</h3>
+  </div>
+
+  <div class="modal-body">
+    <div class="control-group">
+        <label class="control-label" for="focusedInput">First Name</label>
+          <div class="controls">
+            <div class="input-xlarge focused" id="focusedInput" type="text">
+              <%= f.text_field :name %>
+            </div>
+          </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="focusedInput">Last Name</label>
+          <div class="controls">
+            <div class="input-xlarge focused" id="focusedInput" type="text">
+              <%= f.text_field :last_name %>
+            </div>
+          </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="focusedInput">Email</label>
+          <div class="controls">
+            <div class="input-xlarge focused" id="focusedInput" type="text">
+              <%= f.text_field :email %>
+            </div>
+          </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="focusedInput">Telephone</label>
+          <div class="controls">
+            <div class="input-xlarge focused" id="focusedInput" type="text">
+              <%= f.text_field :telnum %>
+            </div>
+          </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="focusedInput">Municipality</label>
+          <div class="controls">
+            <div class="input-xlarge focused" id="focusedInput" type="text">
+              <%= f.text_field :municipality %>
+            </div>
+          </div>
+      </div>
+
+
+      <div class="control-group">
+        <label class="control-label" for="focusedInput">Change Picture</label>
+          <div class="controls">
+            <div class="input-xlarge focused" id="focusedInput" type="text">
+              <%= f.file_field :avatar %>
+            </div>
+          </div>
+      </div>
+
+  <div class="modal-footer"> 
+    <a class="form-action btn" data-dismiss="modal">Close</a>
+    <a class="form-action"> <%= f.submit "Update", class: "btn btn-success" %> </a>
+  </div>
+</div>
+<% end %>
+
+<!-- Change Password_________________________________________________________________________ -->
+<%= form_for @user, :html => {:class => "form-horizontal"} do |f| %>
+
+<div class="modal hide fade" id="myModal1">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal"></button>
+    <h3>Edit Info</h3>
+  </div>
+
+  <div class="modal-body">
+    <div class="control-group">
+        <label class="control-label" for="focusedInput">First Name</label>
+          <div class="controls">
+            <div class="input-xlarge focused" id="focusedInput" type="text">
+              <%= f.text_field :name %>
+            </div>
+          </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="focusedInput">Last Name</label>
+          <div class="controls">
+            <div class="input-xlarge focused" id="focusedInput" type="text">
+              <%= f.text_field :last_name %>
+            </div>
+          </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="focusedInput">Email</label>
+          <div class="controls">
+            <div class="input-xlarge focused" id="focusedInput" type="text">
+              <%= f.text_field :email %>
+            </div>
+          </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="focusedInput">Telephone</label>
+          <div class="controls">
+            <div class="input-xlarge focused" id="focusedInput" type="text">
+              <%= f.text_field :telnum %>
+            </div>
+          </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="focusedInput">Municipality</label>
+          <div class="controls">
+            <div class="input-xlarge focused" id="focusedInput" type="text">
+              <%= f.text_field :municipality %>
+            </div>
+          </div>
+      </div>
+
+
+      <div class="control-group">
+        <label class="control-label" for="focusedInput">Change Picture</label>
+          <div class="controls">
+            <div class="input-xlarge focused" id="focusedInput" type="text">
+              <%= f.file_field :avatar %>
+            </div>
+          </div>
+      </div>
+
+  <div class="modal-footer"> 
+    <a class="form-action btn" data-dismiss="modal">Close</a>
+    <a class="form-action"> <%= f.submit "Update", class: "btn btn-success" %> </a>
+  </div>
+</div>
+<% end %>
