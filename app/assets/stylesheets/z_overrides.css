@@ -306,5 +306,16 @@ margin: 10px 31px;
 margin-top: 165px;
 }
 
+/* Fix font for buttons in btn-group when using link_to */
+.a-button {
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+font-weight: normal;
+line-height: 18px;
+letter-spacing: 0px;
+}
 
-
+/* Add a bottom border for forms */
+.form-actions{
+	border-bottom: 1px solid #e5e5e5;
+}

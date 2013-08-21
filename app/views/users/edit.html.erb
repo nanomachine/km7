@@ -1,11 +1,16 @@
-<% provide(:title, 'Edit Profile') %>
+<% provide(:title, 'Edit Profile Details') %>
+
+<%= render 'layouts/sidebar' %>
+
 <div class="row-fluid sortable">
-	<div class="box span12">
+	<div class="box span4">
+	</div>
+	<div class="box span4">
 		<div class="box-header" data-original-title>
 			<h2><i class="icon-edit"></i><span class="break"></span>Edit Profile</h2>
 		</div>
 		<div class="box-content">
-		    <%= form_for(@user) do |f| %>
+		    <%= form_for(@user, :html => {:class => "form-horizontal"}) do |f| %>
 		      <%= render 'update_fields', f: f %>
 			<% end %>
 		</div>

@@ -41,6 +41,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
   end
 
   def update
@@ -53,7 +54,29 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_password
+    @user = User.find(current_user.id)
+    if @user.update_attributes(params[:user])
+      # Sign in the user by passing validation in case his password changed
+      sign_in @user, :bypass => true
+      redirect_to @user
+    else
+      redirect_to @user
+    end
+  end
+
+
 =begin
+  private
+
+  #This method should work but for some reason .required does not run for HashWithIndifferentAccess
+  #This could present a problem for logging from the mobile app
+
+  def user_params
+    params.required(:user).permit(:password, :password_confirmation)
+  end
+
+
   private
 
     def signed_in_user

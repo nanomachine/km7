@@ -6,6 +6,13 @@ devise_for :users
 
 resources :problems
 resources :users
+resource :user, only: [:show] do
+  collection do
+    put 'update_password'
+    #Only works in Rails master branch
+    #patch 'update_password'
+  end
+end
 #resources :sessions, only: [:new, :create, :destroy]
 #resources :password_resets
 resources :lists do
