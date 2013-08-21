@@ -51,16 +51,6 @@
       <div class="box-header">
         <h2><i class="fa-icon-eye-open"></i><span class="break"></span>Report Type: <%= @problem.get_prob_type %></h2>
         <div class="box-icon">
-<!-- Anybody can see the edit button, to correct details, last person who updates it is recorded -->
-          <%= link_to "#", class: "btn btn-info btn-setting" do %>
-            <i class="icon-edit"></i> Edit 
-          <% end %>
-<!-- Only the owner of the report or an administrator can see the delete button -->
-          <% if current_user.id == @problem.user_id || current_user.admin? %>
-            <%= link_to @problems, method: :delete, data: { confirm: "Delete this report?" }, class: 'btn btn-danger' do %>
-              <i class="icon-trash icon-white"></i> Delete
-            <% end %>
-          <% end %>
         </div>
       </div>
       <div class="box-content">
@@ -73,42 +63,6 @@
       <div class="box-header">
         <h2><i class="fa-icon-globe"></i><span class="break"></span>Map</h2>
         <div class="box-icon">
-
-<!-- If the report is not in a list show button to add to a list else show button to resolve and button to see list. -->
-          <% if !@problem.is_in_list? %>
-<!-- Show unresolve button if the report has been resolved but the containing list has been deleted -->
-            <% if @problem.status==3 && current_user.admin?%>
-              <%= link_to problem_path(:problem => {:status => 1}), :method => :put, :confirm => "Are you sure?", class: "btn btn-danger" do %>
-                <i class="fa-icon-check-empty"></i> Unresolve
-              <% end %>
-            <% else %>
-              <%= link_to "#", class: "btn btn-success btn-setting-list" do %>
-              <i class="icon-plus"></i> Add report to list
-              <% end %>
-            <% end %>
-<!-- We enter here if the report is currently contained in a list--> 
-          <% else %>
-<!-- Prepare the data to indicate that it is contained in a list -->
-            <% @cont_list = @problem.get_containing_list %>
-            <% @list_owner = @cont_list.get_owner %>
-
-<!-- If the problem has not been resolved and the current user is the owner of the report or admin allow Resolve button functionality -->
-            <%if @problem.status != 3 && (current_user == @list_owner || current_user.admin?)%>
-              <%= link_to problem_path(:problem => {:status => 3, :resolved_at => Time.now, :resolved_id => current_user.id}), :method => :put, :confirm => "Are you sure this report has been resolved?\nOnly an administrator can undo this action.", class: "btn btn-success" do %>
-                <i class="icon-check"></i> Resolve
-              <% end %>
-            <% else %>
-<!-- If the report has been marked as resolved and the current user is the owner or admin enable Unresolve button functionality -->
-              <% if current_user.admin?%>
-                <%= link_to problem_path(:problem => {:status => 2}), :method => :put, :confirm => "Are you sure?", class: "btn btn-danger" do %>
-                  <i class="fa-icon-check-empty"></i> Unresolve
-                <% end %>
-              <% end %>
-            <% end %>
-            <%= link_to @problem.get_containing_list, class: "btn btn-info" do %>
-              <i class="icon-list-alt"></i> Go to list
-            <% end %>
-          <% end %>
         </div>
       </div>
 
@@ -116,28 +70,61 @@
         <div class="row-fluid">
           <div class="span12">
             <%= gmaps({"map_options" => {"auto_zoom" => false, "zoom" => 15 },"markers" => {"data" => @json }})%>
-          </div> 
-          <!--div class="span12">
-            <div class="box span4">
-              <h3>Address:</h3>
-                  <p>
-                    <%= @problem.address %>
-                  </p>
-                </div>
-                <div class="box span4">
-                  <h3>Latitude:</h3>
-                  <p><%= @problem.latitude %></p>
-                </div>
-                <div class="box span4">
-                  <h3>Longitude:</h3>
-                  <p><%= @problem.longitude %></p>
-                </div>
-              </div-->
-            </div>
           </div>
         </div>
+
+
+          <div class=" box span12 center">
+              <h1 class="btn-group">
+<!-- Anybody can see the edit button, to correct details, last person who updates it is recorded -->
+                <%= link_to "#", class: "btn a-button btn-setting" do %><i class="icon-edit"></i> Edit Details
+                <% end %>
+
+<!-- If the report is not in a list show button to add to a list else show button to resolve and button to see list. -->
+                <% if !@problem.is_in_list? %>
+<!-- Show unresolve button if the report has been resolved but the containing list has been deleted -->
+                  <% if @problem.status==3 && current_user.admin?%>
+                      <%= link_to problem_path(:problem => {:status => 1}), :method => :put, :confirm => "Are you sure?", class: "btn a-button" do %> Unresolve 
+                      <% end %>
+                  <% else %>
+                      <%= link_to "#", class: "btn btn-setting-list" do %>Add report to list
+                      <% end %>
+                  <% end %>
+<!-- We enter here if the report is currently contained in a list--> 
+                <% else %>
+<!-- Prepare the data to indicate that it is contained in a list -->
+                  <% @cont_list = @problem.get_containing_list %>
+                  <% @list_owner = @cont_list.get_owner %>
+<!-- If the problem has not been resolved and the current user is the owner of the report or admin allow Resolve button functionality -->
+                  <%if @problem.status != 3 && (current_user == @list_owner || current_user.admin?)%>
+                    <%= link_to problem_path(:problem => {:status => 3, :resolved_at => Time.now, :resolved_id => current_user.id}), :method => :put, :confirm => "Are you sure this report has been resolved?\nOnly an administrator can undo this action.", class: "btn a-button btn-success" do %><i class="icon-check"></i> Resolve
+                    <% end %>
+                  <% else %>
+<!-- If the report has been marked as resolved and the current user is the owner or admin enable Unresolve button functionality -->
+                    <% if current_user.admin?%>
+                      <%= link_to problem_path(:problem => {:status => 2}), :method => :put, :confirm => "Are you sure?", class: "btn a-button btn-warning" do %><i class="icon-ban-circle"></i> Unresolve
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                  <%= link_to @problem.get_containing_list, class: "btn a-button btn-info" do %><i class="icon-list-alt"></i> Go to list
+                  <% end %>
+                <% end %>
+
+<!-- Only the owner of the report or an administrator can see the delete button -->
+                <% if (current_user.id == @problem.user_id || current_user.admin?) && @problem.status != 3 %>
+                  <%= link_to @problems, method: :delete, data: { confirm: "Delete this report?" }, class: 'btn a-button btn-danger' do %>
+                    <i class="icon-trash"></i> Delete
+                  <% end %>
+                <% end %>
+              </h1>
+          </div>
+
+
+
       </div>
     </div>
+  </div>
+</div>
 
     <div class="row-fluid fluid-box">
       <div class="span12">

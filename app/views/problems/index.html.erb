@@ -60,7 +60,7 @@
 									<i class="icon-zoom-in icon-white"></i> 
 									<% end %>
 
-									<% if current_user.admin? %>
+									<% if current_user.admin? && problem.status != 3%>
 									<%= link_to problem, method: :delete, data: { confirm: "Delete this report?" }, class: 'btn btn-danger' do %>
 									<i class="icon-trash icon-white"></i> 
 									<% end %>
@@ -109,7 +109,7 @@
 									<i class="icon-zoom-in icon-white"></i> 
 									<% end %>
 
-									<% if current_user.admin? %>
+									<% if current_user.admin? && problem.status != 3%>
 									<%= link_to problem, method: :delete, data: { confirm: "Delete this report?" }, class: 'btn btn-danger' do %>
 									<i class="icon-trash icon-white"></i> 
 									<% end %>
