@@ -97,7 +97,7 @@
 								<%= link_to list, class: 'btn btn-info' do %>
 								<i class="icon-zoom-in icon-white"></i> 
 								<% end %>
-								<% if current_user.admin? || current_user.id==list.get_owner.id %>
+								<% if current_user.admin? || current_user.id==list.user_id %>
 								<%= link_to list, method: :delete, data: { confirm: "Delete this list?" }, class: 'btn btn-danger' do %>
 								<i class="icon-trash icon-white"></i> 
 								<% end %>
