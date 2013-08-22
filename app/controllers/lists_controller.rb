@@ -38,8 +38,8 @@ def new
       flash[:success] = "List saved"
       redirect_to @list
     else
-      flash.now[:error] = 'Incorrect information'
-      render 'new' 
+      flash[:error] = 'Incomplete information, list not created'
+      redirect_to  lists_path 
     end
   end
 

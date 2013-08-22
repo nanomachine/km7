@@ -29,8 +29,8 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to Km7!"
       redirect_to @user
     else
-      flash.now[:error] = 'Username or password is incorrect'
-      redirect_to @user
+      flash[:error] = 'Incomplete information, user not created'
+      redirect_to users_path
     end
   end
 

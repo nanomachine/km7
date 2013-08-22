@@ -17,6 +17,7 @@
 //= require jquery-ui-1.10.0.custom.min.js
 //= require jquery.ui.touch-punch.js
 //= require bootstrap.min.js
+//= require bootstrap-alert
 //= require gmaps4rails/gmaps4rails.base.js.coffee
 //= require gmaps4rails/gmaps4rails.bing.js.coffee
 //= require gmaps4rails/gmaps4rails.googlemaps.js.coffee
