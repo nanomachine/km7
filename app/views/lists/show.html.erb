@@ -10,13 +10,9 @@
           <h2 class="h2-show"><%=@list.description%></h2>
           <p class= "center">
             <% if @list.active %>
-              <%= link_to "#", class: 'btn btn-success' do %>
-                <i class="icon-ok icon-white"></i> Active
-              <% end %>
+              <span class="label label-success label-hero-unit">Active</span>
             <% else %>
-              <%= link_to "#", class: 'btn' do %>
-                <i class="icon-lock"></i> Closed 
-              <% end %>
+              <span class="label label-hero-unit">Closed</span>
             <% end %> 
           </p>  
         </div>
@@ -28,21 +24,27 @@
     <div class="span12">
       <div class="box span12">
         <div class="box-header">
+          <h2><i class="icon-file"></i><span class="break"></span></h2>
           <div class="box-icon">
-            <%= link_to list_path(format: "xls"), class: 'btn btn-info' do %>
-            <i class="icon-download-alt icon-white"></i> Export to .xls
-            <% end %>
-  <!-- Only have the ability to delete or edit the list if the user is an administrator or the owner of the list -->
-            <% if current_user.admin? || current_user.id==@list.user_id %>
-              <%= link_to '#', class: 'btn btn-success btn-setting' do %>
-                <i class="icon-edit icon-white"></i> Edit List
+            <div class="btn-group">
+              <%= link_to list_path(format: "xls"), class: 'btn btn-info a-button' do %>
+              <i class="icon-download-alt icon-white"></i> Export to .xls
               <% end %>
+    <!-- Only have the ability to delete or edit the list if the user is an administrator or the owner of the list -->
+              <% if current_user.admin? || current_user.id==@list.user_id %>
+                <%= link_to '#', class: 'btn btn-success btn-setting a-button' do %>
+                  <i class="icon-edit icon-white"></i> Edit List
+                <% end %>
 
-              <%= link_to @list, method: :delete, data: { confirm: "Delete this list?" }, class: 'btn btn-danger' do %>
-                <i class="fa-icon-minus"></i> Delete List
+                <%= link_to @list, method: :delete, data: { confirm: "Delete this list?" }, class: 'btn btn-danger a-button' do %>
+                  <i class="fa-icon-minus"></i> Delete List
+                <% end %>
               <% end %>
-            <% end %>
+            </div>
           </div>
+
+
+
 
         </div>
         <div class="box-content">
