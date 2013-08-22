@@ -46,7 +46,7 @@ class ProblemsController < ApplicationController
       #@lists.problems.create(attributes={"list_id" =>3, "problem_id" => @problem.id})
       redirect_to @problem
     else
-      flash.now[:error] = 'Incorrect information'
+      flash[:error] = 'Incomplete information, report not created'
       redirect_to problems_url
     end
   end
