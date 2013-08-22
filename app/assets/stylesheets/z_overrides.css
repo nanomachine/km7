@@ -89,6 +89,13 @@ background-color: rgba(245, 245, 245, 0);
 
 }
 
+.hero-unit-show {
+margin-top: -60px;
+margin-bottom: -50px;
+background-color: rgba(245, 245, 245, 0);
+
+}
+
 
 
 /*Forms------------------------------------------------------------------------
@@ -288,6 +295,18 @@ font-weight: normal !important;
 
 .h1-infowindow{
 	margin-bottom: 10px;
+}
+
+
+.hero-unit h1 {
+margin-bottom: 12px;
+font-size: 45px;
+line-height: 1;
+letter-spacing: -1px;
+}
+
+.h2-show {
+	margin-bottom: 20px;
 }
 
 
