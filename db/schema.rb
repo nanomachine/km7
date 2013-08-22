@@ -80,7 +80,6 @@ ActiveRecord::Schema.define(:version => 20130819133604) do
     t.string   "telnum"
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
-    t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin",                  :default => false
     t.string   "municipality"
@@ -88,8 +87,6 @@ ActiveRecord::Schema.define(:version => 20130819133604) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "password_reset_token"
-    t.datetime "password_reset_sent_at"
     t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
