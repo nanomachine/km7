@@ -84,10 +84,10 @@
                 <% if !@problem.is_in_list? %>
 <!-- Show unresolve button if the report has been resolved but the containing list has been deleted -->
                   <% if @problem.status==3 && current_user.admin?%>
-                      <%= link_to problem_path(:problem => {:status => 1}), :method => :put, :confirm => "Are you sure?", class: "btn a-button" do %> Unresolve 
+                      <%= link_to problem_path(:problem => {:status => 1}), :method => :put, :confirm => "Are you sure?", class: "btn a-button btn-warning" do %><i class="icon-ban-circle"></i> Unresolve 
                       <% end %>
                   <% else %>
-                      <%= link_to "#", class: "btn btn-setting-list" do %>Add report to list
+                      <%= link_to "#", class: "btn btn-setting-second a-button btn-success" do %><i class="icon-plus"></i> Add report to list
                       <% end %>
                   <% end %>
 <!-- We enter here if the report is currently contained in a list--> 
@@ -306,7 +306,7 @@
 <!-- Here we prepare the modal window displaying all of the user's created lists to which
 he/she can add reports -->
 
-<div class="modal hide fade" id="myModalList">
+<div class="modal hide fade" id="mySecondModal">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal"></button>
     <h3>Choose a list</h3>
