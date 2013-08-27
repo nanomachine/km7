@@ -2,8 +2,6 @@ Km7::Application.routes.draw do
 devise_for :users
 #devise_for :users, :path => "auth", :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock', :registration => 'register', :sign_up => 'cmon_let_me_in' }
 
-#get "password_resets/new"
-
 resources :problems
 resources :users
 resource :user, only: [:show] do
@@ -13,8 +11,7 @@ resource :user, only: [:show] do
     #patch 'update_password'
   end
 end
-#resources :sessions, only: [:new, :create, :destroy]
-#resources :password_resets
+
 resources :lists do
   member do
     put "add_problem_list:problem_id", action: :add_problem, as: :add_problem
@@ -29,8 +26,6 @@ end
   match '/users', to: 'users#index'
   match '/edit_user', to: 'users#edit'
   
-  #match '/login',  to: 'sessions#new'
-  #match '/logout', to: 'sessions#destroy', via: :delete
 
   match '/reports', to: 'problems#index'
   match '/report', to: 'problems#new'
@@ -41,8 +36,6 @@ end
   devise_scope :user do
   root to: "devise/sessions#new"
   end
-  
-  #root to: 'static_pages#admin_dashboard'
 
   match '/help',    to: 'static_pages#help'
   match '/about_us',   to: 'static_pages#about'
@@ -51,7 +44,6 @@ end
 
   match "/problems/add_new_comment" => "problems#add_new_comment", :as => "add_new_comment_to_problems", :via => [:post]
   match "/problems/:id/delete_comment" => "problems#delete_comment", :as => "delete_comment_from_problems", :via => [:delete]
-  #match '/problems/:id/get_prob_type', :to => 'problems#get_prob_type', :as => "get_prob_type", :via => [:get]
 
 
   # The priority is based upon order of creation:

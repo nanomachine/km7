@@ -13,8 +13,10 @@ def new
     #Respond to will create a call to csv and prepare the list for .xls exporting
     #See lists/show.xls.erb for table formatting details
     respond_to do |format|
-      format.html
-      format.xls
+      format.html # index.html.erb
+      format.xlsx{
+        render :xlsx => "show", :filename => "#{@list.id}-#{@list.name}-#{@list.created_at.strftime("%b.%d %Y")}.xlsx"
+      }
     end
   end
 

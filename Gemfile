@@ -15,6 +15,8 @@ gem 'acts_as_commentable_with_threading'
 gem 'thin'
 gem 'gon'
 gem 'devise'
+gem 'axlsx_rails'
+gem 'acts_as_xlsx'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

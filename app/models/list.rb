@@ -1,4 +1,5 @@
 class List < ActiveRecord::Base
+	acts_as_xlsx
 	belongs_to :user
 	has_and_belongs_to_many :problems, :uniq => true
 
