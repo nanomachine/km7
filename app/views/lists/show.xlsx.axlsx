@@ -1,4 +1,56 @@
-List.where(active: true).to_xlsx package: xlsx_package
-wb=xlsx_package.workbook
+xlsx_package.use_autowidth = false
+wb = xlsx_package.workbook
 
+styles = wb.styles
+col_header = styles.add_style :bg_color => "A8D35D",
+								:sz => 13, 
+								:b => true, 
+								:alignment => {:horizontal => :center}
+label = styles.add_style :border => { :style => :thin, :color => "00" },
+								:sz => 10,
+								:alignment => { :indent => 1 }
+cent_field = styles.add_style :border => { :style => :thin, :color => "00" },
+								:sz => 10,
+								:alignment => {:horizontal => :center,
+									 :vertical => :center,
+									 :wrap_text => true}
+field = styles.add_style :border => { :style => :thin, :color => "00" }, 
+								:sz => 10,
+						 		:alignment => { :vertical => :center ,
+                                            :wrap_text => true}
+photo = styles.add_style :border => { :style => :thin, :color => "00" }
+
+
+wb.add_worksheet(name: 'List Summary') do |sheet|
+	
+	sheet.column_widths 4, 15, 20, 15, 10 ,11, 10, 10, 10, 12, 10
+	sheet.page_setup.fit_to :width => 1, :height => 1
+	sheet.add_row
+    sheet.merge_cells("A2:C2")
+    sheet.merge_cells("A3:B3")
+    sheet.merge_cells("A4:B4")
+    sheet.merge_cells("A5:B5")
+    sheet.merge_cells("A6:B6")
+    sheet.merge_cells("A7:B7")
+    sheet.add_row ["List #" + @list.id.to_s + ":" + @list.name], :style => [col_header, col_header, col_header]
+    sheet.add_row ["Description:", nil,  @list.description], :style => [label, label, cent_field]
+    sheet.add_row ["Reports:", nil, @list.problems.count], :style => [label, label, cent_field]
+    sheet.add_row ["Active?:", nil, @list.active], :style => [label, label, cent_field]
+    sheet.add_row ["Created by:", nil, @list.get_owner_name], :style => [label, label, cent_field]
+    sheet.add_row ["Created on:", nil, @list.created_at.strftime(" %b.%d %Y @ %T")], :style => [label, label, cent_field]
+   	sheet.add_row
+	sheet.add_row ["#", "Title:", "Description:", "Address:", "Latitude:", "Longitude:", "Type:", "Priority:", "Status:", "Created on:", "Reporter:"], :style => [col_header, col_header, col_header, col_header, col_header, col_header, col_header, col_header, col_header, col_header, col_header]
+	if !@list.problems.empty?
+#		top_x = 1
+#		top_y = 9
+	    @list.problems.each do |p|
+#	    	sheet.add_image(:image_src => p.avatar.path, end_at: true) do |image|
+#	    		image.start_at top_x, top_y
+#	    		image.end_at top_x + 1, top_y + 1
+#	    	end
+		    sheet.add_row [p.id, p.title, p.description, p.address.to_s + ", " + p.municipality.to_s, p.latitude, p.longitude, p.get_prob_type, p.get_prob_priority, p.get_prob_status, p.created_at.strftime("%b. %d %Y @ %T"), p.get_owner_name ], :style => [cent_field, field, field, field, cent_field, cent_field, cent_field, cent_field, cent_field, cent_field, cent_field]
+#		    top_y = top_y + 1
+	    end
+	end
+end
 
