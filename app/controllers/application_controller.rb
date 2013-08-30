@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   #protect_from_forgery with: :exception
   #include SessionsHelper
   before_filter :set_gon_values
-  before_filter :authenticate_user!, :except => [:about, :contact, :help]
+  #before_filter :authenticate_user!, :except => [:about, :contact, :help]
 
   private
 
@@ -16,13 +16,13 @@ class ApplicationController < ActionController::Base
 #this should be implemented by retreiving a hash with
 #ptype as key and count as value
 
-    gon.holes = Problem.where(ptype: 1 ).count  # or whatever you want to set here
-    gon.water = Problem.where(ptype: 2 ).count  # or whatever you want to set here
-    gon.electric = Problem.where(ptype: 3 ).count  # or whatever you want to set here
-    gon.light = Problem.where(ptype: 4 ).count  # or whatever you want to set here
-    gon.debris = Problem.where(ptype: 5 ).count  # or whatever you want to set here
-    gon.vandalism = Problem.where(ptype: 6 ).count  # or whatever you want to set here
-    gon.manhole = Problem.where(ptype: 7 ).count  # or whatever you want to set here
+    gon.holes = Problem.where(ptype: 1 ).count 
+    gon.water = Problem.where(ptype: 2 ).count 
+    gon.electric = Problem.where(ptype: 3 ).count 
+    gon.light = Problem.where(ptype: 4 ).count 
+    gon.debris = Problem.where(ptype: 5 ).count 
+    gon.vandalism = Problem.where(ptype: 6 ).count  
+    gon.manhole = Problem.where(ptype: 7 ).count  
 
     gon.u_holes = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='1' AND status='1'").count
     gon.a_holes = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='1' AND status='2'").count

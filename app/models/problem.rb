@@ -35,10 +35,10 @@ class Problem < ActiveRecord::Base
 	#The following must be present for the report to be worth anything,
 	#Title validation is commented because mobile app still does not provide one and validation would prevent upload.
 	#validates(:title, presence: true, uniqueness: true)
-	validates(:user_id, presence: true)
-	validates(:latitude, presence: true)
-	validates(:longitude, presence: true)
-	validates(:ptype, presence: true)
+	#validates(:user_id, presence: true)
+	#validates(:latitude, presence: true)
+	#validates(:longitude, presence: true)
+	#validates(:ptype, presence: true)
 
 
 	#Determine where to store image related to report, in production
@@ -57,9 +57,9 @@ class Problem < ActiveRecord::Base
 	end
 
 	#Make sure the image attachments are submitted
-	validates_attachment_presence :avatar
-	validates_attachment_size :avatar, :less_than => 5.megabytes
-	validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
+	#validates_attachment_presence :avatar
+	#validates_attachment_size :avatar, :less_than => 5.megabytes
+	#validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
 
 	def gmaps4rails_address
 		#describe how to retrieve the address from your model, if you use directly a db column, you can dry your code

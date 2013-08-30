@@ -18,7 +18,7 @@ field = styles.add_style :border => { :style => :thin, :color => "00" },
 								:sz => 10,
 						 		:alignment => { :vertical => :center ,
                                             :wrap_text => true}
-photo = styles.add_style :border => { :style => :thin, :color => "00" }
+#photo = styles.add_style :border => { :style => :thin, :color => "00" }
 
 
 wb.add_worksheet(name: 'List Summary') do |sheet|
