@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   #protect_from_forgery with: :exception
   #include SessionsHelper
   before_filter :set_gon_values
-  before_filter :authenticate_user!, :except => [:about, :contact, :help]
+  #before_filter :authenticate_user!, :except => [:about, :contact, :help]
 
   private
 
@@ -51,7 +51,5 @@ class ApplicationController < ActionController::Base
     gon.u_manhole = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='7' AND status='1'").count
     gon.a_manhole = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='7' AND status='2'").count
     gon.r_manhole = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='75' AND status='3'").count
-
   end
-
 end
