@@ -19,7 +19,7 @@ class ProblemsController < ApplicationController
     end
   end
 
-#Show list of reports and show all of them in gmap
+#Show list of reports and show all of them in gmap 
   def index
     @problems = Problem.paginate(page: params[:page])
   end

@@ -1,3 +1,4 @@
+=begin
 xlsx_package.use_autowidth = false
 wb = xlsx_package.workbook
 
@@ -41,16 +42,10 @@ wb.add_worksheet(name: 'List Summary') do |sheet|
    	sheet.add_row
 	sheet.add_row ["#", "Title:", "Description:", "Address:", "Latitude:", "Longitude:", "Type:", "Priority:", "Status:", "Created on:", "Reporter:"], :style => [col_header, col_header, col_header, col_header, col_header, col_header, col_header, col_header, col_header, col_header, col_header]
 	if !@list.problems.empty?
-#		top_x = 1
-#		top_y = 9
+
 	    @list.problems.each do |p|
-#	    	sheet.add_image(:image_src => p.avatar.path, end_at: true) do |image|
-#	    		image.start_at top_x, top_y
-#	    		image.end_at top_x + 1, top_y + 1
-#	    	end
 		    sheet.add_row [p.id, p.title, p.description, p.address.to_s + ", " + p.municipality.to_s, p.latitude, p.longitude, p.get_prob_type, p.get_prob_priority, p.get_prob_status, p.created_at.strftime("%b. %d %Y @ %T"), p.get_owner_name ], :style => [cent_field, field, field, field, cent_field, cent_field, cent_field, cent_field, cent_field, cent_field, cent_field]
-#		    top_y = top_y + 1
 	    end
 	end
-end
+=end
 
