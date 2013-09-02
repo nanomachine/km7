@@ -16,7 +16,7 @@ def new
     respond_to do |format|
       format.html # index.html.erb
       format.xlsx{
-        #render :xlsx => "show", :filename => "#{@list.id}-#{@list.name}-#{@list.created_at.strftime("%b.%d %Y")}.xlsx"
+        render :xlsx => "show", :filename => "#{@list.id}-#{@list.name}-#{@list.created_at.strftime("%b.%d %Y")}.xlsx"
       }
     end
   end

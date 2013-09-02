@@ -16,6 +16,7 @@ gem 'thin'
 gem 'gon'
 gem 'devise'
 gem 'axlsx_rails'
+#Had to force heroku to use rubyzip 0.9.9 or else error occurred and zip/zip was not found
 gem 'rubyzip', '~>0.9.9'
 
 
