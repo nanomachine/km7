@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+require 'zip/zip'
 
 def new
     @list = List.new
