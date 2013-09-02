@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+\source 'https://rubygems.org'
 
 ruby "1.9.3"
 gem 'rails', '3.2.11'
@@ -17,6 +17,7 @@ gem 'gon'
 gem 'devise'
 gem 'axlsx_rails'
 gem 'acts_as_xlsx'
+
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
