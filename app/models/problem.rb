@@ -14,9 +14,9 @@
 #  updated_at  :datetime        not null
 #
 class Problem < ActiveRecord::Base
-	acts_as_xlsx :columns => [:id, :title, :latitude, :longitude, :ptype, :description, 
-		:priority, :status, :created_at, :updated_at, :address, :municipality, :user_id, 
-		:assigned_at, :resolved_at, :resolved_id]
+#	acts_as_xlsx :columns => [:id, :title, :latitude, :longitude, :ptype, :description, 
+#		:priority, :status, :created_at, :updated_at, :address, :municipality, :user_id, 
+#		:assigned_at, :resolved_at, :resolved_id]
 	belongs_to :user
 	has_and_belongs_to_many :lists
 

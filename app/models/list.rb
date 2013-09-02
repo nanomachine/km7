@@ -1,5 +1,5 @@
 class List < ActiveRecord::Base
-	acts_as_xlsx :columns => [:id, :name, :description, :active, :user_id, :created_at, :updated_at]
+#	acts_as_xlsx :columns => [:id, :name, :description, :active, :user_id, :created_at, :updated_at]
 	belongs_to :user
 	belongs_to :user
 	has_and_belongs_to_many :problems, :uniq => true
