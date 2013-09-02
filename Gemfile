@@ -16,6 +16,7 @@ gem 'thin'
 gem 'gon'
 gem 'devise'
 gem 'axlsx_rails'
+gem 'rubyzip', '~>0.9.9'
 
 
 group :development, :test do
