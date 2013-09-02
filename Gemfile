@@ -17,7 +17,6 @@ gem 'gon'
 gem 'devise'
 gem 'axlsx_rails'
 gem 'acts_as_xlsx'
-gem 'rubyzip', :require => 'zip/zip'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
