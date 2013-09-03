@@ -31,10 +31,10 @@ class ProblemsController < ApplicationController
 
 #This works only for dev purposes for submitting reports from the web application 
 #and set the curret_user as the reporting, if the submitting problem has no id
-#assing the current_user as owner.
-    if !@problem.user_id
-      @problem.user_id = current_user.id
-    end
+#assign the current_user as owner.
+#    if !@problem.user_id
+#      @problem.user_id = current_user.id
+#    end
 #Geocoding addresses to coordinates does not work well in Puerto Rico hence its implementationwill be postponed or abandoned
    #@geocoded = Gmaps4rails.geocode(@problem.address)
    #puts @geocoded
