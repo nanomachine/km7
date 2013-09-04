@@ -25,6 +25,7 @@ class ProblemsController < ApplicationController
   end
 
   def create
+    puts params[:problem]
     @problem = Problem.new(params[:problem])
     
 #This works only for dev purposes for submitting reports from the web application 
