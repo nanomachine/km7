@@ -2,7 +2,10 @@ class ApplicationController < ActionController::Base
   #protect_from_forgery with: :exception
   #include SessionsHelper
   before_filter :set_gon_values
+  #before_filter :after_token_authentication
   #before_filter :authenticate_user!, :except => [:about, :contact, :help]
+
+
 
   private
 

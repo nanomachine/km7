@@ -51,7 +51,7 @@
 								<td><%= problem.get_prob_priority %></td>
 								<td><%= problem.get_prob_status %></td>
 								<td class="center"><%= problem.created_at.strftime(" %b.%d %Y") %></td>
-								<td><!--%= User.find(problem.user_id).name %--> <!--%= User.find(problem.user_id).last_name%--> </td>
+								<td><%=problem.get_owner_name%> </td>
 
 								<!--Action buttons for problem index table, Delete and More Info -->
 								<td class="center">
@@ -100,7 +100,7 @@
 								<td><%= problem.get_prob_priority %></td>
 								<td><%= problem.get_prob_status %></td>
 								<td class="center"><%= problem.created_at.strftime(" %b.%d %Y") %></td>
-								<td><!--%= User.find(problem.user_id).name %--> <!--%= User.find(problem.user_id).last_name%--> </td>
+								<td><%=problem.get_owner_name%> </td>
 
 								<!--Action buttons for problem index table, Delete and More Info -->
 								<td class="center">
