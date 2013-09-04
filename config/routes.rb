@@ -1,5 +1,8 @@
 Km7::Application.routes.draw do
 devise_for :users
+#constraints :protocol => "https" do
+#  devise_for :users
+#end
 #devise_for :users, :token_authentication_key => 'authentication_key'
 #devise_for :users, :path => "auth", :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock', :registration => 'register', :sign_up => 'cmon_let_me_in' }
 
@@ -10,6 +13,11 @@ resource :user, only: [:show] do
     put 'update_password'
     #Only works in Rails master branch
     #patch 'update_password'
+  end
+end
+namespace :api do
+  namespace :v1  do
+    resources :tokens,:only => [:create, :destroy]
   end
 end
 
