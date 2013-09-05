@@ -1,6 +1,11 @@
 class Api::V1::TokensController  < ApplicationController
-    skip_before_filter :verify_authenticity_token
+    skip_before_filter :authenticate_user!
+    #skip_before_filter :verify_authenticity_token
     respond_to :json
+
+#To create (sign in) send an HTTP POST with http://localhost:3000/api/v1/tokens.json
+#Content-Type: application/x-www-form-urlencoded
+#Body: email=email@kilometrosiete.com&password=password
     def create
       email = params[:email]
       password = params[:password]
@@ -34,6 +39,11 @@ class Api::V1::TokensController  < ApplicationController
     end
   end
  
+
+#To destroy (sign out) send an HTTP Delete with https://km7.herokuapp.com/api/v1/tokens/(authentication_token).json
+#Content-Type: application/x-www-form-urlencoded
+#To reset token the user must sign out from mobile app, otherwise it will continue using the
+#same authentication token
   def destroy
     @user=User.find_by_authentication_token(params[:id])
     if @user.nil?

@@ -33,6 +33,13 @@ Km7::Application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
 
+  #in config/environments/production.rb
+  #config.to_prepare { Devise::SessionsController.force_ssl }
+  #config.to_prepare { Devise::RegistrationsController.force_ssl }
+  #config.to_prepare { Devise::PasswordsController.force_ssl }
+  # or your customized controller, extending from Devise
+
+
   # See everything in the log (default is :info)
   # config.log_level = :debug
 
