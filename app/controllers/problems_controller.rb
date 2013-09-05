@@ -25,7 +25,10 @@ class ProblemsController < ApplicationController
   end
 
   def create
+
+    #Line added to debug POST requests from mobile app
     puts params[:problem]
+
     @problem = Problem.new(params[:problem])
     
 #This works only for dev purposes for submitting reports from the web application 
