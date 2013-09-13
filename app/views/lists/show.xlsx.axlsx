@@ -1,6 +1,7 @@
 xlsx_package.use_autowidth = false
 wb = xlsx_package.workbook
 
+# Cell styles---------------------------------------------------
 styles = wb.styles
 col_header = styles.add_style :bg_color => "A8D35D",
 								:sz => 13, 
@@ -22,7 +23,8 @@ field = styles.add_style :border => { :style => :thin, :color => "00" },
 
 
 wb.add_worksheet(name: 'List Summary') do |sheet|
-	
+
+#Preping cell format------------------------------------------
 	sheet.column_widths 4, 15, 20, 15, 10 ,11, 10, 10, 10, 12, 10
 	sheet.page_setup.fit_to :width => 1, :height => 1
 	sheet.add_row
@@ -32,6 +34,10 @@ wb.add_worksheet(name: 'List Summary') do |sheet|
     sheet.merge_cells("A5:B5")
     sheet.merge_cells("A6:B6")
     sheet.merge_cells("A7:B7")
+    sheet.merge_cells("H2:K2")
+    sheet.merge_cells("H3:K3")
+
+# Information Header---------------------------------------------
     sheet.add_row ["List #" + @list.id.to_s + ":" + @list.name], :style => [col_header, col_header, col_header]
     sheet.add_row ["Description:", nil,  @list.description], :style => [label, label, cent_field]
     sheet.add_row ["Reports:", nil, @list.problems.count], :style => [label, label, cent_field]
@@ -40,6 +46,10 @@ wb.add_worksheet(name: 'List Summary') do |sheet|
     sheet.add_row ["Created on:", nil, @list.created_at.strftime(" %b.%d %Y @ %T")], :style => [label, label, cent_field]
    	sheet.add_row
 	sheet.add_row ["#", "Title:", "Description:", "Address:", "Latitude:", "Longitude:", "Type:", "Priority:", "Status:", "Created on:", "Reporter:"], :style => [col_header, col_header, col_header, col_header, col_header, col_header, col_header, col_header, col_header, col_header, col_header]
+
+# Entity Logo and header--------------------------------------------
+
+# Populate spreadsheet with reports contained in list----------------
 	if !@list.problems.empty?
 
 	    @list.problems.each do |p|

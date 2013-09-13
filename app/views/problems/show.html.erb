@@ -122,7 +122,7 @@
               <div class="row-fluid">
                 <div class="box span6">
                   <h3>Reporter:</h3>
-                  <p><%= @problem.get_owner_name%></p>
+                  <p><%= link_to @problem.get_owner_name, User.find(@problem.user_id)%></p>
   <!-- Only show these fields if contained in a list -->
                   <% if @cont_list %>
                     <h3>Assigned to:</h3>
@@ -139,7 +139,7 @@
 
                   <div class="box span6">
                     <h3>Submitted on:</h3>
-                    <p><%= @problem.created_at.strftime("%b.%d %Y  @ %T") %></p>
+                    <p><%= @problem.created_at.strftime("%b.%d %Y @ %T") %></p>
   <!-- Only show this field if report has been assigned at some time -->
                     <% if @problem.assigned_at != nil %>
                       <h3>Assigned on:</h3>

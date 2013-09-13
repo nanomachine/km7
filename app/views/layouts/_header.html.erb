@@ -6,11 +6,13 @@
       <nav>
         <ul class="nav pull-right">
           <% if user_signed_in? %>
-              <!--li id= "fat-menu" class= "dropdown">
-                <%= link_to "Welcome " + current_user.name + ",", current_user %>
-              </li-->
 
-              <li id= "fat-menu" class="dropdown">
+
+              <li id= "fat-menu">
+                <%=link_to "Welcome back, " + current_user.name , current_user %>
+              </li>
+
+              <li id= "fat-menu">
                   <%= link_to "Sign Out", destroy_user_session_path, method: "delete" %>
               </li>
             <% end %>

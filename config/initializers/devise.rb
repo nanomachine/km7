@@ -252,6 +252,7 @@ Devise.setup do |config|
 
   # Added this line to resolve error of Heroku Devise updating from 3.0 to 3.1, 
   # this solution was presented as a solution in the plugin's Github wiki.
+  # https://github.com/plataformatec/devise/issues/2554
 
   config.secret_key = '3bfe1128a0b0fa664b485cb9894974758a4731975a119a8ba940e79c53c414387ee85a8ba8e92b14373a61e3e86eed62b4074742364c6cd28bb1be392c6084ef'
 

@@ -75,7 +75,7 @@
 
 	<div class="modal-body">
 		<div class="control-group">
-				<label class="control-label" for="focusedInput">First Name</label>
+				<label class="control-label" for="focusedInput">*First Name</label>
 					<div class="controls">
 						<div class="input-xlarge focused" id="focusedInput" type="text">
 							<%= f.text_field :name %>
@@ -84,7 +84,7 @@
 			</div>
 
 			<div class="control-group">
-				<label class="control-label" for="focusedInput">Last Name</label>
+				<label class="control-label" for="focusedInput">*Last Name</label>
 					<div class="controls">
 						<div class="input-xlarge focused" id="focusedInput" type="text">
 							<%= f.text_field :last_name %>
@@ -93,7 +93,7 @@
 			</div>
 
 			<div class="control-group">
-				<label class="control-label" for="focusedInput">Email</label>
+				<label class="control-label" for="focusedInput">*Email</label>
 					<div class="controls">
 						<div class="input-xlarge focused" id="focusedInput" type="text">
 							<%= f.text_field :email %>
@@ -102,7 +102,7 @@
 			</div>
 
 			<div class="control-group">
-				<label class="control-label" for="focusedInput">Password</label>
+				<label class="control-label" for="focusedInput">*Password</label>
 					<div class="controls">
 						<div class="input-xlarge focused" id="focusedInput" type="text">
 							<%= f.password_field :password %>
@@ -111,7 +111,7 @@
 			</div>
 
 			<div class="control-group">
-				<label class="control-label" for="focusedInput">Confirm Password</label>
+				<label class="control-label" for="focusedInput">*Confirm Password</label>
 					<div class="controls">
 						<div class="input-xlarge focused" id="focusedInput" type="text">
 							<%= f.password_field :password_confirmation %>
@@ -120,7 +120,7 @@
 			</div>
 
 			<div class="control-group">
-				<label class="control-label" for="focusedInput">Telephone</label>
+				<label class="control-label" for="focusedInput">*Telephone</label>
 					<div class="controls">
 						<div class="input-xlarge focused" id="focusedInput" type="text">
 							<%= f.text_field :telnum %>
@@ -139,7 +139,7 @@
 
 
 			<div class="control-group">
-				<label class="control-label" for="focusedInput">Upload Avatar</label>
+				<label class="control-label" for="focusedInput">*Upload Picture</label>
 					<div class="controls">
 						<div class="input-xlarge focused" id="focusedInput" type="text">
 							<%= f.file_field :avatar %>
@@ -148,7 +148,7 @@
 			</div>
 
 			<div class="control-group">
-				<label class="control-label" for="focusedInput">Administrator?</label>
+				<label class="control-label" for="focusedInput">*Administrator?</label>
 					<div class="controls">
 						<div class="input-xlarge focused" id="focusedInput" type="text">
 							<%= f.check_box(:admin) %>
@@ -156,6 +156,7 @@
 					</div>
 			</div>
 	<div class="modal-footer"> 
+		<small class="pull-left">* Are required fields.</small>
 		<a class="form-action btn" data-dismiss="modal">Close</a>
 		<a class="form-action"> <%= f.submit "Create", class: "btn btn-success" %> </a>
 	</div>

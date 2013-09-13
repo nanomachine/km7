@@ -23,11 +23,20 @@
       <h2 class="h2-profile"><i class="icon-map-marker"></i>    <%= @user.municipality %>, PR</h2>
       <h2 class="h2-profile"><i class="fa-icon-phone"></i>    <%= @user.telnum %></h2>
       <h2 class="h2-profile"><i class="icon-envelope"></i>    <%= @user.email %></h2> 
+<!-- To make sure no one other than the owner of the profile can edit the info or change the password -->
       <% if current_user == @user %>
         <h1 class="btn-group">
           <!--%= link_to "Edit Details", edit_user_path, :class => "btn a-button" %-->
-          <button class="btn btn-setting-second">Edit Details</button>
-          <button class="btn btn-setting">Change Password</button>
+          <%= link_to "#", class: "btn a-button btn-setting-second" do %>
+            <i class="icon-edit"></i> Edit Details
+          <% end %>
+
+          <%= link_to "#", class: "btn a-button btn-setting" do %>
+            <i class="icon-lock"></i> Change Password
+          <% end %>
+
+          <!--button class="btn btn-setting-second">Edit Details</button>
+          <button class="btn btn-setting">Change Password</button-->
         </h1>
       <% end %>
     </div><!--/span-->
@@ -215,7 +224,7 @@
 
     <div class="modal-body">
       <div class="control-group">
-          <label class="control-label" for="focusedInput">Password</label>
+          <label class="control-label" for="focusedInput">New Password</label>
             <div class="controls">
               <div class="input-xlarge focused" id="focusedInput" type="text">
                 <%= f.password_field :password, :autocomplete => "off"  %>
@@ -224,7 +233,7 @@
       </div>
 
       <div class="control-group">
-        <label class="control-label" for="focusedInput">Password Confirmation</label>
+        <label class="control-label" for="focusedInput">Confirm New Password</label>
           <div class="controls">
             <div class="input-xlarge focused" id="focusedInput" type="text">
               <%= f.password_field :password_confirmation %>

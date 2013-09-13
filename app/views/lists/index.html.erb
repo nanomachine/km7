@@ -126,7 +126,7 @@
 
 		<div class="modal-body">
 			<div class="control-group">
-				<label class="control-label" for="focusedInput">List Name</label>
+				<label class="control-label" for="focusedInput">*List Name</label>
 				<div class="controls">
 					<div class="input-xlarge focused" id="focusedInput" type="text">
 						<%= f.text_field :name,  :maxlength=>'30', :placeholder => "Give the list a new name..." %>
@@ -136,7 +136,7 @@
 
 
 			<div class="control-group">
-				<label class="control-label" for="focusedInput">Description</label>
+				<label class="control-label" for="focusedInput">*Description</label>
 				<div class="controls">
 					<div class="input-xlarge focused" id="focusedInput" type="text">
 						<%= f.text_area :description, size: "10x6", :placeholder => "Update list description..." %>
@@ -145,6 +145,7 @@
 			</div>
 		</div>
 		<div class="modal-footer"> 
+			<small class="pull-left">* Are required fields.</small>
 			<a class="form-action btn" data-dismiss="modal">Close</a>
 			<a class="form-action"> <%= f.submit "Create", class: "btn btn-success" %> </a>
 		</div>
