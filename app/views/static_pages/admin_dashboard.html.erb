@@ -174,9 +174,8 @@
 
 			</ul>
 
-				<ul class="tickets">
+				<!--ul class="tickets">
 					<li class="ticket">
-<!-- Show distinguished users to incentivate healthy competition -->
 						<% @distinguished = User.first %>
 						<span class="header"> 
 							<span class="title"><strong>*Most Resolved Reports (This week): </strong></span>
@@ -187,7 +186,6 @@
 
 
 							<span class="name"><u><%= link_to @distinguished.name+" "+@distinguished.last_name, @distinguished %></u></span>
-							<!-- Implement priority partial for viewing -->
 							<span class="date">Since: <u><%= @distinguished.created_at.strftime(" %b.%d %Y") %></u></span>
 							<span class="status">Role: <strong><%= @distinguished.get_role %> </strong> </span>  
 							<span class="priority ">Municipality: <%=@distinguished.municipality %></span> 
@@ -198,7 +196,6 @@
 
 				<ul class="tickets">
 					<li class="ticket">
-<!-- Show distinguished users to incentivate healthy competition -->
 						<% @distinguished = User.last %>
 						<span class="header"> 
 							<span class="title"><strong>*Most Submitted Reports (This week): </strong></span>
@@ -209,14 +206,13 @@
 
 
 							<span class="name"><u><%= link_to @distinguished.name+" "+@distinguished.last_name, @distinguished %></u></span>
-							<!-- Implement priority partial for viewing -->
 							<span class="date">Since: <u><%= @distinguished.created_at.strftime(" %b.%d %Y") %></u></span>
 							<span class="status">Role: <strong><%= @distinguished.get_role %> </strong> </span>  
 							<span class="priority ">Municipality: <%=@distinguished.municipality %></span> 
 						</span>                                                         
 				</li>
 
-			</ul>
+			</ul-->
 		</div>
 	</div><!--/span-->
 
