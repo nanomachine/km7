@@ -38,6 +38,9 @@ end
 
   match '/reports', to: 'problems#index'
   match '/report', to: 'problems#new'
+  get '/problems/map'
+  match '/reports/map', to: 'problems#map'
+
 
   match '/lists', to: 'lists#index'
   match '/new_list', to: 'lists#new'

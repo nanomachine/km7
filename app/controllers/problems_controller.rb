@@ -97,6 +97,18 @@ class ProblemsController < ApplicationController
       redirect_to :action => :show, :id => @problem
   end
 
+  def map
+      @json = Problem.all.to_gmaps4rails do |problem, marker|
+      marker.picture({
+                :picture => "/assets/markers/#{problem.ptype}.png",
+                :width   => 32,
+                :height  => 35
+                 })
+      marker.title   "#{problem.title}"
+      marker.json({ :id => problem.id})
+    end
+  end
+
 =begin  
   def get_last_month_reports
     @last_month = 0

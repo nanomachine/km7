@@ -1,0 +1,27 @@
+<% provide(:title, 'Dashboard') %>
+
+
+<html lang="en">
+<body>	
+	<!--div id="content" class="span10"-->
+	<!-- start: Content -->
+
+	<div class="row-fluid fluid-box">
+		<div class="box span12">
+			<div class="box-header" data-original-title>
+				<h2><i class="icon-globe"></i><span class="break"></span>Reports Global</h2>
+			</div>
+			<div class="box-content">
+				<div class="row-fluid">
+            		<div class="span12">
+              			<%= gmaps({"map_options" => {"auto_zoom" => false, "zoom" => 15 },"markers" => {"data" => @json }})%>
+            		</div>
+				</div>
+			</div>
+		</div>  
+	</div>
+<!-- end: Content -->
+<!--/div-->
+<!--/#content.span10-->
+</body>
+</html>
