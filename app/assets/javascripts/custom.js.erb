@@ -1104,7 +1104,8 @@ function charts() {
 				[ 
 					{ label: "Pending", data: d1},
 					{ label: "Assigned", data: d2},
-					{ label: "Resolved", data: d3}
+					{ label: "Resolved", data: d3},
+
 				],{
 				series: {
 					stack: stack,
@@ -1133,13 +1134,13 @@ function charts() {
 
 	/* ---------- Pie chart ---------- */
 	var data = [
-	{ label: "Pothole",  data: <%= "gon.holes" %> },
-	{ label: "Water Pipe",  data: <%= "gon.water" %>},
-	{ label: "Electric Cable",  data: <%= "gon.electric" %>},
-	{ label: "Light Post",  data: <%= "gon.light" %>},
-	{ label: "Road Debris",  data: <%= "gon.debris" %>},
-	{ label: "Vandalism",  data: <%= "gon.vandalism" %>},
-	{ label: "Manhole cover",  data: <%= "gon.manhole" %>}
+	{ label: "1-Pothole",  data: <%= "gon.holes" %> },
+	{ label: "2-Water Pipe",  data: <%= "gon.water" %>},
+	{ label: "3-Electric Cable",  data: <%= "gon.electric" %>},
+	{ label: "4-Light Post",  data: <%= "gon.light" %>},
+	{ label: "5-Road Debris",  data: <%= "gon.debris" %>},
+	{ label: "6-Vandalism",  data: <%= "gon.vandalism" %>},
+	{ label: "7-Manhole cover",  data: <%= "gon.manhole" %>}
 	];
 	
 	if($("#piechart").length)
