@@ -6,7 +6,6 @@
   -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
   -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
   box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
-  width: 800px;
 /*Added to fix info window display distortion, as suggested by apneadiving Gmaps4Rails */
   max-width: none;
     
@@ -18,11 +17,13 @@
 } 
 
 .gmaps4rails_map {
-  height:300px;
+  height:370px;
 }
 
 div.map_view_container #map {
-  height:450px;
+  min-height:450px;
+  height: auto;
+
 }
 
 div.map_view_container {
