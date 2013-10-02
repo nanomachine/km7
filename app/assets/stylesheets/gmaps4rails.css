@@ -18,5 +18,22 @@
 } 
 
 .gmaps4rails_map {
-  height:400px;
+  height:300px;
 }
+
+div.map_view_container #map {
+  height:450px;
+}
+
+div.map_view_container {
+  padding: 6px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ccc #ccc #999 #ccc;
+  -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
+  -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
+  box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
+  /*Added to fix info window display distortion, as suggested by apneadiving Gmaps4Rails */
+  max-width: none;
+}
+

@@ -14,7 +14,7 @@
 			<div class="box-content">
 				<div class="row-fluid">
             		<div class="span12">
-              			<%= gmaps({"map_options" => {"auto_zoom" => false, "zoom" => 15 },"markers" => {"data" => @json }})%>
+              			<%= gmaps({"map_options" => {"auto_zoom" => false, "zoom" => 9, :container_class => "map_view_container"   },"markers" => {"data" => @json }})%>
             		</div>
 				</div>
 			</div>
