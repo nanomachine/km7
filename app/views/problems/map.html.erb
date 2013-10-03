@@ -9,12 +9,12 @@
 	<div class="row-fluid fluid-box">
 		<div class="box span12">
 			<div class="box-header" data-original-title>
-				<h2><i class="icon-globe"></i><span class="break"></span>Reports Global</h2>
+				<h2><i class="fa-icon-globe"></i><span class="break"></span>Reports Global</h2>
 			</div>
 			<div class="box-content">
 				<div class="row-fluid">
             		<div class="span12">
-              			<%= gmaps({"map_options" => {"auto_zoom" => false, "zoom" => 9, :container_class => "map_view_container" },"markers" => {"data" => @json }})%>
+              			<%= gmaps({"map_options" => {"auto_zoom" => false, "zoom" => 10, :container_class => "map_view_container" },"markers" => {"data" => @json }})%>
             		</div>
 				</div>
 			</div>

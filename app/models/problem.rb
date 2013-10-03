@@ -69,11 +69,13 @@ class Problem < ActiveRecord::Base
 
 	#def gmaps4rails_infowindow
 		#<img src=\"#{self.avatar.url(:thumb)}\"> 
-    	#"<h1 class='h1-infowindow'>##{self.id} - #{self.title}</h1>
+    	#{}"<h1 class='h1-infowindow'>##{self.id} - #{self.title}</h1>
     	#<ul>
         #	<li><strong>Address:</strong> #{self.address}</li>
     	#	<li><strong>Latitude:</strong> #{self.latitude} </li>
     	#	<li><strong>Longitude:</strong> #{self.longitude} </li>
+   		#	<li><strong>Status:</strong> #{self.get_prob_status} </li>
+   		#	<li><strong>Priority:</strong> #{self.get_prob_priority}</li>
     	#</ul>"
     #end
 

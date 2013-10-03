@@ -100,7 +100,7 @@ class ProblemsController < ApplicationController
 
   def map
       @json = Problem.all.to_gmaps4rails do |problem, marker|
-      marker.infowindow render_to_string(:partial => "/problems/map_infowindow", :locals => { :problem => problem})
+      marker.infowindow render_to_string(:partial => "/problems/map_infowindow", :locals => { :object => problem})
       marker.picture({
                 :picture => "/assets/markers/#{problem.ptype}.png",
                 :width   => 32,
