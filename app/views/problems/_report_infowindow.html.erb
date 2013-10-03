@@ -1,0 +1,7 @@
+    <h1 class='h1-infowindow'>#<%= @problem.id %> - <%= @problem.title %></h1>
+   	<ul>
+       	<li><strong>Address:</strong> <%= @problem.address %></li>
+   		<li><strong>Latitude:</strong> <%= @problem.latitude %> </li>
+   		<li><strong>Longitude:</strong> <%= @problem.longitude %></li>
+   		<li><strong><%= link_to "...more", @problem %></strong> </li>
+	</ul>

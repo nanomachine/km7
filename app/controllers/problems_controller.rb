@@ -9,6 +9,7 @@ class ProblemsController < ApplicationController
   def show
     @problem = Problem.find(params[:id])
     @json = @problem.to_gmaps4rails do |problem, marker|
+      marker.infowindow render_to_string(:partial => "/problems/report_infowindow", :locals => { :problem => problem})
       marker.picture({
                 :picture => "/assets/markers/#{problem.ptype}.png",
                 :width   => 32,
@@ -99,6 +100,7 @@ class ProblemsController < ApplicationController
 
   def map
       @json = Problem.all.to_gmaps4rails do |problem, marker|
+      marker.infowindow render_to_string(:partial => "/problems/map_infowindow", :locals => { :problem => problem})
       marker.picture({
                 :picture => "/assets/markers/#{problem.ptype}.png",
                 :width   => 32,

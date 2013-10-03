@@ -26,7 +26,7 @@ div.map_view_container #map {
 
 }
 
-div.map_view_container {
+div.map_view_container img{
   padding: 6px;
   border-width: 1px;
   border-style: solid;

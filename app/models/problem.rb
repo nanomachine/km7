@@ -67,15 +67,15 @@ class Problem < ActiveRecord::Base
 		"#{self.latitude}, #{self.longitude}" 
 	end
 
-	def gmaps4rails_infowindow
+	#def gmaps4rails_infowindow
 		#<img src=\"#{self.avatar.url(:thumb)}\"> 
-    	"<h1 class='h1-infowindow'>##{self.id} - #{self.title}</h1>
-    	<ul>
-        	<li><strong>Address:</strong> #{self.address}</li>
-    		<li><strong>Latitude:</strong> #{self.latitude} </li>
-    		<li><strong>Longitude:</strong> #{self.longitude} </li>
-    	</ul>"
-    end
+    	#"<h1 class='h1-infowindow'>##{self.id} - #{self.title}</h1>
+    	#<ul>
+        #	<li><strong>Address:</strong> #{self.address}</li>
+    	#	<li><strong>Latitude:</strong> #{self.latitude} </li>
+    	#	<li><strong>Longitude:</strong> #{self.longitude} </li>
+    	#</ul>"
+    #end
 
     def gmaps4rails_title
     	"#{self.description}"
