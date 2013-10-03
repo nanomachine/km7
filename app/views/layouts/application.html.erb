@@ -26,7 +26,9 @@
       <%= render 'layouts/flash_messages' %>
       <%= yield %>
     </div>
-     <!-- % debug(params) if Rails.env.development? % -->
-    <%= render 'layouts/footer' %>
+    <!-- % debug(params) if Rails.env.development? % -->
+    <% if current_user %>
+      <%= render 'layouts/footer' %>
+    <% end %>
   </body>
 </html>

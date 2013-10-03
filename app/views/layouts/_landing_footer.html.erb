@@ -1,0 +1,16 @@
+<footer class="landing_footer">
+  <small>
+      <p>
+        <span style="text-align:left;float:left">&copy; <a href="http://www.kilometrosiete.com/" target="_blank">Kilómetro Siete</a> 2013</span>
+        <!--span style="text-align:right;float:right">By: <a href="#">nanomachine</a></span-->
+      </p>
+  </small>
+  <%= yield :scripts %>
+  <nav>
+    <ul>
+      <li><%= link_to "Help",    help_path %></li>
+      <li><%= link_to "About Us",   about_us_path %></li>
+      <li><%= link_to "Contact Us",   contact_us_path %></li>
+    </ul>
+  </nav>
+</footer>

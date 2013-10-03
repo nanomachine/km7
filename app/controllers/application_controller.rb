@@ -5,8 +5,6 @@ class ApplicationController < ActionController::Base
   #before_filter :after_token_authentication
   before_filter :authenticate_user!, :except => [:about, :contact, :help]
 
-
-
   private
 
   def after_sign_in_path_for(user)
