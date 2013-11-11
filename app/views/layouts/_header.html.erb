@@ -15,7 +15,11 @@
               <li id= "fat-menu">
                   <%= link_to "Sign Out", destroy_user_session_path, method: "delete" %>
               </li>
-            <% end %>
+          <% else %>
+            <li id= "fat-menu">
+              <%= link_to "Sign up", new_user_path %> 
+            </li>
+          <% end %>
         </ul>
       </nav>
     </div>
