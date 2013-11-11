@@ -35,7 +35,7 @@ class Problem < ActiveRecord::Base
 	#The following must be present for the report to be worth anything,
 	#Title validation is commented because mobile app still does not provide one and validation would prevent upload.
 	#validates(:title, presence: true, uniqueness: true)
-	validates(:title, presence: true)
+	#validates(:title, presence: true)
 	validates(:user_id, presence: true)
 	validates(:latitude, presence: true)
 	validates(:longitude, presence: true)
