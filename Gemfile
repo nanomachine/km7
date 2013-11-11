@@ -14,7 +14,7 @@ gem 'cocaine', '~>0.5.0'
 gem 'acts_as_commentable_with_threading'
 gem 'thin'
 gem 'gon'
-gem 'devise'
+gem 'devise', '3.1.1'
 gem 'axlsx_rails'
 # Had to force heroku to use rubyzip 0.9.9 or else error occurred and zip/zip was not found
 gem 'rubyzip', '~>0.9.9'
