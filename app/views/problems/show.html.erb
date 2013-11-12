@@ -7,10 +7,10 @@
   <div class="container-fluid">
     <div class="row-fluid">
         <div class="span12 hero-unit hero-unit-show">
-          <h1>#<%=@problem.id%> - <%= @problem.title %></h1>
+          <h1>#<%=@problem.id%> - <%= @problem.get_prob_type %></h1>
           <h2 class="h2-show"><%=@problem.description%></h2>
           <p class="center">
-            <span class="label label-hero-unit"><%= @problem.get_prob_type %></span>
+            <!--span class="label label-hero-unit"><%= @problem.get_prob_type %></span-->
             <% if @problem.status==3 %>
               <span class="label label-success label-hero-unit">Resolved</span>
             <% elsif @problem.status==2 %>

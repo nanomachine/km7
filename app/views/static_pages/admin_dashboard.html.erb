@@ -60,8 +60,8 @@
 						<% @unresolved.each do |problem| %>
 
 						<span class="header"> 
-							<span class="title"><%= link_to problem.title, problem %></span>
-							<span class="number"><%= link_to problem.get_prob_type, problem%> <%= link_to "[#"+problem.id.to_s+"]", problem %></span>
+							<!--span class="number"><%= link_to problem.title, problem %></span-->
+							<span class="title"><%= link_to "[#"+problem.id.to_s+"]", problem %> <%= link_to problem.get_prob_type, problem%></span>
 						</span>
 						<span class="content">
 							<span class="avatar"><%=link_to image_tag(problem.avatar.url(:thumb)), problem %> </span>

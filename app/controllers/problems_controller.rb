@@ -15,7 +15,7 @@ class ProblemsController < ApplicationController
                 :width   => 32,
                 :height  => 35
                  })
-      marker.title   "#{problem.title}"
+      marker.title   "##{problem.id}#{problem.get_prob_type}"
       marker.json({ :id => problem.id})
     end
   end
@@ -106,7 +106,7 @@ class ProblemsController < ApplicationController
                 :width   => 32,
                 :height  => 35
                  })
-      marker.title   "#{problem.title}"
+      marker.title   "##{problem.id} - #{problem.get_prob_type}"
       marker.json({ :id => problem.id})
     end
   end

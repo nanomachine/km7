@@ -113,8 +113,8 @@
             <% @user.problems.order("created_at desc").limit(5).each do |problem| %>
             <!-- Only show active reports, no Resolved reports -->
             <span class="header"> 
-              <span class="title"><%= link_to problem.title, problem %></span>
-              <span class="number"><%= link_to problem.get_prob_type, problem%> <%= link_to "[#"+problem.id.to_s+"]", problem%></span>
+              <!--span class="number"><%= link_to problem.title, problem %></span-->
+              <span class="title"><%= link_to "[#"+problem.id.to_s+"]", problem%> <%= link_to problem.get_prob_type, problem%></span>
             </span>
             <span class="content">
               <span class="avatar">  <img src=<%=problem.avatar.url(:thumb) %>> </span>
