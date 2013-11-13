@@ -16,3 +16,4 @@
 
 # Ignore uploaded images.
 /public/assets/problems
+/public/assets/users
