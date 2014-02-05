@@ -44,8 +44,10 @@ class ProblemsController < ApplicationController
 
 #When report is first created, its status is initially Unassigned, hence it is set to 1
     @problem.status = 1
+
     if @problem.save
       flash[:success] = "Report saved"
+      render :status => 200
       #@lists.problems.create(attributes={"list_id" =>3, "problem_id" => @problem.id})
       #redirect_to @problem
     else
