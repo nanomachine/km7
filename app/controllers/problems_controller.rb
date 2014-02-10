@@ -47,7 +47,7 @@ class ProblemsController < ApplicationController
 
     if @problem.save
       flash[:success] = "Report saved"
-      render :status =>200
+      #render :status =>200
       #@lists.problems.create(attributes={"list_id" =>3, "problem_id" => @problem.id})
       redirect_to @problem
     else
